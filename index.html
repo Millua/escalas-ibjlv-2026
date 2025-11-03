@@ -194,39 +194,6 @@
             font-style: italic;
         }
 
-        .month-nav {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-
-        .month-btn {
-            padding: 10px 15px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            color: white;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .month-btn:hover {
-            background: rgba(102, 126, 234, 0.3);
-        }
-
-        .current-month {
-            text-align: center;
-            font-size: 1.2em;
-            font-weight: bold;
-            color: #667eea;
-            padding: 10px;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
         .footer {
             text-align: center;
             padding: 30px 20px;
@@ -235,7 +202,11 @@
             margin-top: 40px;
         }
 
-        /* Responsividade */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         @media (max-width: 600px) {
             .container {
                 margin: 20px auto;
@@ -338,7 +309,7 @@
     <script>
         // ============ DADOS COMPLETOS DAS ESCALAS 2026 ============
         const escalas = [
-            // JANEIRO
+            // ==================== JANEIRO ====================
             { mes: "Janeiro", dia: 2, dia_semana: "Sexta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "" },
             { mes: "Janeiro", dia: 3, dia_semana: "Sábado", grupo: "G2", EBD: "", Tarde: "", Noite: "" },
             { mes: "Janeiro", dia: 4, dia_semana: "Domingo", grupo: "", EBD: "G6", Tarde: "G7", Noite: "G8" },
@@ -355,7 +326,7 @@
             { mes: "Janeiro", dia: 29, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", café: "G1" },
             { mes: "Janeiro", dia: 30, dia_semana: "Sexta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "" },
 
-            // FEVEREIRO
+            // ==================== FEVEREIRO ====================
             { mes: "Fevereiro", dia: 1, dia_semana: "Domingo", grupo: "", EBD: "G1", Tarde: "G2", Noite: "G3" },
             { mes: "Fevereiro", dia: 4, dia_semana: "Quarta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "" },
             { mes: "Fevereiro", dia: 6, dia_semana: "Sexta-feira", grupo: "G2", EBD: "", Tarde: "", Noite: "" },
@@ -369,7 +340,7 @@
             { mes: "Fevereiro", dia: 25, dia_semana: "Quarta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "" },
             { mes: "Fevereiro", dia: 27, dia_semana: "Sexta-feira", grupo: "G7", EBD: "", Tarde: "", Noite: "" },
 
-            // MARÇO
+            // ==================== MARÇO ====================
             { mes: "Março", dia: 1, dia_semana: "Domingo", grupo: "", EBD: "G4", Tarde: "G5", Noite: "G6" },
             { mes: "Março", dia: 4, dia_semana: "Quarta-feira", grupo: "G4", EBD: "", Tarde: "", Noite: "" },
             { mes: "Março", dia: 6, dia_semana: "Sexta-feira", grupo: "G2", EBD: "", Tarde: "", Noite: "" },
@@ -386,7 +357,7 @@
             { mes: "Março", dia: 28, dia_semana: "Sábado", grupo: "G3", EBD: "", Tarde: "", Noite: "" },
             { mes: "Março", dia: 29, dia_semana: "Domingo", grupo: "", EBD: "G8", Tarde: "G6", Noite: "G7" },
 
-            // ABRIL
+            // ==================== ABRIL ====================
             { mes: "Abril", dia: 1, dia_semana: "Quarta-feira", grupo: "G2", EBD: "", Tarde: "", Noite: "" },
             { mes: "Abril", dia: 3, dia_semana: "Sexta-feira", grupo: "G4", EBD: "", Tarde: "", Noite: "" },
             { mes: "Abril", dia: 5, dia_semana: "Domingo", grupo: "", EBD: "G7", Tarde: "G8", Noite: "G1" },
@@ -401,7 +372,7 @@
             { mes: "Abril", dia: 26, dia_semana: "Domingo", grupo: "", EBD: "G8", Tarde: "G1", Noite: "G2" },
             { mes: "Abril", dia: 29, dia_semana: "Quarta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "" },
 
-            // MAIO
+            // ==================== MAIO ====================
             { mes: "Maio", dia: 1, dia_semana: "Sexta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "" },
             { mes: "Maio", dia: 2, dia_semana: "Sábado", grupo: "G4", EBD: "", Tarde: "", Noite: "" },
             { mes: "Maio", dia: 3, dia_semana: "Domingo", grupo: "", EBD: "G2", Tarde: "G3", Noite: "G4" },
@@ -420,7 +391,7 @@
             { mes: "Maio", dia: 30, dia_semana: "Sábado", grupo: "G1", EBD: "", Tarde: "", Noite: "" },
             { mes: "Maio", dia: 31, dia_semana: "Domingo", grupo: "", EBD: "G5", Tarde: "G6", Noite: "G2" },
 
-            // JUNHO
+            // ==================== JUNHO ====================
             { mes: "Junho", dia: 3, dia_semana: "Quarta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "" },
             { mes: "Junho", dia: 5, dia_semana: "Sexta-feira", grupo: "G4", EBD: "", Tarde: "", Noite: "" },
             { mes: "Junho", dia: 6, dia_semana: "Sábado", grupo: "G8", EBD: "", Tarde: "", Noite: "" },
@@ -439,7 +410,7 @@
             { mes: "Junho", dia: 27, dia_semana: "Sábado", grupo: "G4", EBD: "", Tarde: "", Noite: "" },
             { mes: "Junho", dia: 28, dia_semana: "Domingo", grupo: "", EBD: "G6", Tarde: "G7", Noite: "G8" },
 
-            // JULHO
+            // ==================== JULHO ====================
             { mes: "Julho", dia: 1, dia_semana: "Quarta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "" },
             { mes: "Julho", dia: 3, dia_semana: "Sexta-feira", grupo: "G8", EBD: "", Tarde: "", Noite: "" },
             { mes: "Julho", dia: 5, dia_semana: "Domingo", grupo: "", EBD: "G2", Tarde: "G8", Noite: "G1" },
@@ -455,7 +426,7 @@
             { mes: "Julho", dia: 29, dia_semana: "Quarta-feira", grupo: "G3", EBD: "", Tarde: "", Noite: "" },
             { mes: "Julho", dia: 31, dia_semana: "Sexta-feira", grupo: "G7", EBD: "", Tarde: "", Noite: "" },
 
-            // AGOSTO
+            // ==================== AGOSTO ====================
             { mes: "Agosto", dia: 1, dia_semana: "Sábado", grupo: "G7", EBD: "", Tarde: "", Noite: "" },
             { mes: "Agosto", dia: 2, dia_semana: "Domingo", grupo: "", EBD: "G3", Tarde: "G4", Noite: "G5" },
             { mes: "Agosto", dia: 5, dia_semana: "Quarta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "" },
@@ -475,7 +446,7 @@
             { mes: "Agosto", dia: 29, dia_semana: "Sábado", grupo: "G5", EBD: "", Tarde: "", Noite: "" },
             { mes: "Agosto", dia: 30, dia_semana: "Domingo", grupo: "", EBD: "G2", Tarde: "G3", Noite: "G4" },
 
-            // SETEMBRO
+            // ==================== SETEMBRO ====================
             { mes: "Setembro", dia: 1, dia_semana: "Terça-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "" },
             { mes: "Setembro", dia: 3, dia_semana: "Quinta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "" },
             { mes: "Setembro", dia: 4, dia_semana: "Sexta-feira", grupo: "G5", EBD: "", Tarde: "", Noite: "" },
@@ -490,8 +461,9 @@
             { mes: "Setembro", dia: 24, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", café: "G1" },
             { mes: "Setembro", dia: 25, dia_semana: "Sexta-feira", grupo: "G4", EBD: "", Tarde: "", Noite: "" },
             { mes: "Setembro", dia: 27, dia_semana: "Domingo", grupo: "", EBD: "G2", Tarde: "G1", Noite: "G3" },
+            // ADICIONE MAIS ESCALAS DE SETEMBRO AQUI
 
-            // OUTUBRO
+            // ==================== OUTUBRO ====================
             { mes: "Outubro", dia: 1, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "" },
             { mes: "Outubro", dia: 2, dia_semana: "Sexta-feira", grupo: "", EBD: "", Tarde: "", Noite: "" },
             { mes: "Outubro", dia: 3, dia_semana: "Sábado", grupo: "", EBD: "", Tarde: "", Noite: "" },
@@ -507,8 +479,9 @@
             { mes: "Outubro", dia: 25, dia_semana: "Domingo", grupo: "", EBD: "G6", Tarde: "G5", Noite: "G7" },
             { mes: "Outubro", dia: 28, dia_semana: "Quarta-feira", grupo: "G7", EBD: "", Tarde: "", Noite: "" },
             { mes: "Outubro", dia: 30, dia_semana: "Sexta-feira", grupo: "G8", EBD: "", Tarde: "", Noite: "" },
+            // ADICIONE MAIS ESCALAS DE OUTUBRO AQUI
 
-            // NOVEMBRO
+            // ==================== NOVEMBRO ====================
             { mes: "Novembro", dia: 1, dia_semana: "Domingo", grupo: "", EBD: "G4", Tarde: "G5", Noite: "G6" },
             { mes: "Novembro", dia: 4, dia_semana: "Quarta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "" },
             { mes: "Novembro", dia: 6, dia_semana: "Sexta-feira", grupo: "G8", EBD: "", Tarde: "", Noite: "" },
@@ -524,8 +497,9 @@
             { mes: "Novembro", dia: 27, dia_semana: "Sexta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "" },
             { mes: "Novembro", dia: 28, dia_semana: "Sábado", grupo: "G7", EBD: "", Tarde: "", Noite: "" },
             { mes: "Novembro", dia: 29, dia_semana: "Domingo", grupo: "", EBD: "G6", Tarde: "G4", Noite: "G3" },
+            // ADICIONE MAIS ESCALAS DE NOVEMBRO AQUI
 
-            // DEZEMBRO
+            // ==================== DEZEMBRO ====================
             { mes: "Dezembro", dia: 1, dia_semana: "Terça-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "" },
             { mes: "Dezembro", dia: 2, dia_semana: "Quarta-feira", grupo: "G8", EBD: "", Tarde: "", Noite: "" },
             { mes: "Dezembro", dia: 3, dia_semana: "Quinta-feira", grupo: "G3", EBD: "", Tarde: "", Noite: "" },
@@ -543,6 +517,7 @@
             { mes: "Dezembro", dia: 25, dia_semana: "Sexta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "" },
             { mes: "Dezembro", dia: 27, dia_semana: "Domingo", grupo: "", EBD: "G3", Tarde: "G4", Noite: "G8" },
             { mes: "Dezembro", dia: 30, dia_semana: "Quarta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "" }
+            // ADICIONE MAIS ESCALAS DE DEZEMBRO AQUI
         ];
 
         // ============ FUNÇÕES DO SISTEMA ============
