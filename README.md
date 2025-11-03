@@ -1,6 +1,6 @@
 # 🤖 Consultor de Escalas 2026 - IBJLV
 
-**Site oficial para consulta de escalas da Igreja Batista Jardim Los Angeles**
+*Escala virtual para consulta de escalas da IBJLV**
 
 ## 🚀 Como Usar
 
