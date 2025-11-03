@@ -1,31 +1,27 @@
 # 🤖 Consultor de Escalas 2026 - IBJLV
 
-*Escala virtual para consulta de escalas da IBJLV**
+Site oficial para consulta de escalas da Igreja Batista Jardim Los Angeles
 
 ## 🚀 Como Usar
 
+Acesse o site e use as funcionalidades:
 
-### 📋 Funcionalidades:
+### 🔍 Consultar por Grupo
+- Digite o grupo (G1, G2, G3...)
+- Selecione o mês
+- Clique em "Consultar Grupo"
 
-- 🔍 **Consultar por Grupo** - Veja quando um grupo específico serve
-- 📅 **Consultar por Data** - Descubra quem escala em uma data específica  
-- 💬 **Consulta Rápida** - Pergunte de forma natural (ex: "G1 em Maio")
-
-### 🎯 Exemplos:
-
-- "G1 em Maio"
-- "15 de Abril" 
-- "escalas hoje"
-- "G6 em Junho"
+### 📅 Consultar por Data  
+- Digite o dia (1-31)
+- Selecione o mês
+- Clique em "Consultar Data"
 
 ## 📞 Contato
 
-**(IBJLV)**
-- Desenvolvido para facilitar a consulta de escalas dos grupos
+**Igreja Batista Jardim Los Angeles (IBJLV)**
+- Desenvolvido para facilitar a consulta de escalas
 - Dados oficiais de 2026
 
-## 🔧 Tecnologias
+---
 
-- HTML5, CSS3, JavaScript
-- Hospedagem gratuita no GitHub Pages
-- Design responsivo para todos os dispositivos
+*Site desenvolvido para a comunidade IBJLV*
