@@ -4,137 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consultor de Escalas 2026 - IBJLV</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .header h1 {
-            color: #333;
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
-
-        .header p {
-            color: #666;
-            font-size: 1.1em;
-        }
-
-        .consultas {
-            display: grid;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .consulta-box {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 10px;
-            border-left: 4px solid #667eea;
-        }
-
-        .consulta-box h3 {
-            margin-bottom: 15px;
-            color: #333;
-        }
-
-        input, select, button {
-            width: 100%;
-            padding: 12px;
-            margin: 5px 0;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 16px;
-        }
-
-        button {
-            background: #667eea;
-            color: white;
-            border: none;
-            cursor: pointer;
-            transition: background 0.3s;
-            font-weight: bold;
-        }
-
-        button:hover {
-            background: #5a6fd8;
-        }
-
-        .resultado {
-            background: #e8f4f8;
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 20px;
-            display: none;
-        }
-
-        .resultado.visible {
-            display: block;
-            animation: fadeIn 0.5s;
-        }
-
-        .escala-item {
-            background: white;
-            margin: 10px 0;
-            padding: 15px;
-            border-radius: 8px;
-            border-left: 4px solid #4CAF50;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .loading {
-            text-align: center;
-            padding: 20px;
-            display: none;
-        }
-
-        .loading.visible {
-            display: block;
-        }
-
-        .emoji {
-            font-size: 1.2em;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>🤖 Consultor de Escalas 2026</h1>
-            <p>IBJLV - IBJLV</p>
-        </div>
+        <h1>🤖 Consultor de Escalas 2026</h1>
+        <p>IBJLV - IBJLV</p>
 
         <div class="consultas">
-            <div class="consulta-box">
-                <h3>🔍 Consultar por Grupo</h3>
-                <input type="text" id="grupoInput" placeholder="Ex: G1, G2, G3..." maxlength="3">
+            <div class="consulta-grupo">
+                <h2>🔍 Consultar por Grupo</h2>
+                <input type="text" id="grupoInput" placeholder="Ex: G1">
                 <select id="mesSelect">
                     <option value="">Selecione o mês</option>
                     <option value="Janeiro">Janeiro</option>
@@ -150,11 +30,12 @@
                     <option value="Novembro">Novembro</option>
                     <option value="Dezembro">Dezembro</option>
                 </select>
-                <button onclick="consultarGrupo()">Consultar Grupo</button>
+                <button onclick="consultarGrupo()">Consultar</button>
+                <div id="resultadoGrupo"></div>
             </div>
 
-            <div class="consulta-box">
-                <h3>📅 Consultar por Data</h3>
+            <div class="consulta-data">
+                <h2>📅 Consultar por Data</h2>
                 <input type="number" id="diaInput" placeholder="Dia (1-31)" min="1" max="31">
                 <select id="mesSelectData">
                     <option value="">Selecione o mês</option>
@@ -171,25 +52,14 @@
                     <option value="Novembro">Novembro</option>
                     <option value="Dezembro">Dezembro</option>
                 </select>
-                <button onclick="consultarData()">Consultar Data</button>
-            </div>
-
-            <div class="consulta-box">
-                <h3>💬 Consulta Natural</h3>
-                <input type="text" id="perguntaInput" placeholder="Ex: Quando o G1 serve em Maio?">
-                <button onclick="consultaNatural()">Perguntar</button>
+                <button onclick="consultarData()">Consultar</button>
+                <div id="resultadoData"></div>
             </div>
         </div>
 
-        <div class="loading" id="loading">
-            <p>🔍 Consultando escalas...</p>
-        </div>
-
-        <div class="resultado" id="resultado">
-            <!-- Resultados aparecerão aqui -->
-        </div>
+        <div class="resultados" id="resultados"></div>
     </div>
 
-    <script src="app.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
