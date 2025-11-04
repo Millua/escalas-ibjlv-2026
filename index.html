@@ -407,7 +407,7 @@
     <div class="footer">
         IBJLV - Diaconia © 2026
         <br>
-        *Use a função "Imprimir / Gerar PDF" do navegador para salvar ou compartilhar.*
+        *Use a função "Imprimir / Gerar PDF".*
     </div>
 
     <script>
@@ -435,7 +435,7 @@
             // Setembro
             { mes: "Setembro", dia: 7, dia_semana: "Segunda-feira", nome: "Independência do Brasil" },
             // Outubro
-            { mes: "Outubro", dia: 12, dia_semana: "Segunda-feira", nome: "Nossa Senhora Aparecida / Dia das Crianças" }, // Adicionado Dia das Crianças
+            { mes: "Outubro", dia: 12, dia_semana: "Segunda-feira", nome: "Dia das Crianças" }, // Adicionado Dia das Crianças
             { mes: "Outubro", dia: 25, dia_semana: "Domingo", nome: "Aniversário de Jequié (Municipal)" },
             // Novembro
             { mes: "Novembro", dia: 2, dia_semana: "Segunda-feira", nome: "Finados" },
@@ -736,7 +736,7 @@
                 }
             }
             
-            // 3. Feriado no dia seguinte (Dia após o feriado)
+            // 3. Feriado no dia seguinte (Dia seguinte feriado)
             const diaSeguinte = new Date(diaDaEscala);
             diaSeguinte.setDate(diaDaEscala.getDate() + 1);
             
@@ -794,7 +794,7 @@
                     return isMes && isGrupo;
                 });
 
-                let conteudoEscalas = `<h3>Escalas de **${grupoSelecionado}** em **${mesSelecionado}**</h3>`;
+                let conteudoEscalas = `<h3>Escalas de ${grupoSelecionado} em ${mesSelecionado} </h3>`;
 
                 if (resultados.length > 0) {
                     resultados.forEach(item => {
