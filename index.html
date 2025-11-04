@@ -411,27 +411,42 @@
     </div>
 
     <script>
-        // ============ FERIADOS RELEVANTES 2026 (Nacionais, Bahia e Jequié) ============
+        // ============ FERIADOS RELEVANTES 2026 (Nacionais, Bahia e Jequié) - Datas e Dias da Semana de 2026 ============
         const feriados2026 = [
-            { mes: "Janeiro", dia: 1, nome: "Confraternização Universal" },
-            { mes: "Fevereiro", dia: 2, nome: "Nossa Senhora da Purificação (Bahia)" },
-            { mes: "Fevereiro", dia: 17, nome: "Carnaval (Ponto Facultativo)" }, // Terça-feira
-            { mes: "Abril", dia: 3, nome: "Sexta-feira da Paixão" },
-            { mes: "Abril", dia: 21, nome: "Tiradentes" },
-            { mes: "Maio", dia: 1, nome: "Dia do Trabalhador" },
-            { mes: "Junho", dia: 4, nome: "Corpus Christi (Ponto Facultativo)" },
-            { mes: "Junho", dia: 24, nome: "São João (Bahia/Jequié)" },
-            { mes: "Julho", dia: 2, nome: "Independência da Bahia" },
-            { mes: "Julho", dia: 25, nome: "Aniversário de Jequié (Municipal)" },
-            { mes: "Setembro", dia: 7, nome: "Independência do Brasil" },
-            { mes: "Outubro", dia: 12, nome: "Nossa Senhora Aparecida" },
-            { mes: "Novembro", dia: 2, nome: "Finados" },
-            { mes: "Novembro", dia: 15, nome: "Proclamação da República" },
-            { mes: "Novembro", dia: 20, nome: "Dia da Consciência Negra" },
-            { mes: "Dezembro", dia: 25, nome: "Natal" }
+            // Janeiro
+            { mes: "Janeiro", dia: 1, dia_semana: "Quinta-feira", nome: "Confraternização Universal" },
+            // Fevereiro
+            { mes: "Fevereiro", dia: 16, dia_semana: "Segunda-feira", nome: "Carnaval (Ponto Facultativo)" },
+            { mes: "Fevereiro", dia: 17, dia_semana: "Terça-feira", nome: "Carnaval (Ponto Facultativo)" }, 
+            { mes: "Fevereiro", dia: 18, dia_semana: "Quarta-feira", nome: "Quarta-feira de Cinzas (Ponto Facultativo)" },
+            // Abril
+            { mes: "Abril", dia: 3, dia_semana: "Sexta-feira", nome: "Paixão de Cristo (Sexta-feira Santa)" },
+            { mes: "Abril", dia: 21, dia_semana: "Terça-feira", nome: "Tiradentes" },
+            // Maio
+            { mes: "Maio", dia: 1, dia_semana: "Sexta-feira", nome: "Dia do Trabalho" },
+            // Junho
+            { mes: "Junho", dia: 4, dia_semana: "Quinta-feira", nome: "Corpus Christi (Ponto Facultativo)" },
+            { mes: "Junho", dia: 13, dia_semana: "Sábado", nome: "Dia de Santo Antônio (Jequié - Municipal)" },
+            { mes: "Junho", dia: 24, dia_semana: "Quarta-feira", nome: "São João (Jequié - Municipal)" },
+            // Julho
+            { mes: "Julho", dia: 2, dia_semana: "Quinta-feira", nome: "Independência da Bahia (Estadual)" },
+            // Agosto
+            { mes: "Agosto", dia: 20, dia_semana: "Quinta-feira", nome: "Dia do Evangélico (Jequié - Municipal)" },
+            // Setembro
+            { mes: "Setembro", dia: 7, dia_semana: "Segunda-feira", nome: "Independência do Brasil" },
+            // Outubro
+            { mes: "Outubro", dia: 12, dia_semana: "Segunda-feira", nome: "Nossa Senhora Aparecida / Dia das Crianças" }, // Adicionado Dia das Crianças
+            { mes: "Outubro", dia: 25, dia_semana: "Domingo", nome: "Aniversário de Jequié (Municipal)" },
+            // Novembro
+            { mes: "Novembro", dia: 2, dia_semana: "Segunda-feira", nome: "Finados" },
+            { mes: "Novembro", dia: 15, dia_semana: "Domingo", nome: "Proclamação da República" },
+            { mes: "Novembro", dia: 20, dia_semana: "Sexta-feira", nome: "Dia da Consciência Negra" },
+            // Dezembro
+            { mes: "Dezembro", dia: 25, dia_semana: "Sexta-feira", nome: "Natal" }
         ];
 
-        // ============ DADOS COMPLETOS DAS ESCALAS 2026 (CORRIGIDO SÁBADOS) ============
+        // ============ DADOS COMPLETOS DAS ESCALAS 2026 (CÓPIA DA VERSÃO ANTERIOR) ============
+        // OBS: Os Sábados "G?" devem ser editados por você.
         const escalas = [
             // ==================== JANEIRO ====================
             { mes: "Janeiro", dia: 2, dia_semana: "Sexta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "", cafe: "" },
@@ -495,7 +510,7 @@
 
             // ==================== ABRIL ====================
             { mes: "Abril", dia: 1, dia_semana: "Quarta-feira", grupo: "G2", EBD: "", Tarde: "", Noite: "", cafe: "" },
-            { mes: "Abril", dia: 3, dia_semana: "Sexta-feira", grupo: "G3", EBD: "", Tarde: "", Noite: "", cafe: "", feriado: "Sexta-feira da Paixão" },
+            { mes: "Abril", dia: 3, dia_semana: "Sexta-feira", grupo: "G3", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Abril", dia: 4, dia_semana: "Sábado", grupo: "G4", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Abril", dia: 5, dia_semana: "Domingo", grupo: "", EBD: "G7", Tarde: "G8", Noite: "G1", cafe: "" },
             { mes: "Abril", dia: 8, dia_semana: "Quarta-feira", grupo: "G3", EBD: "", Tarde: "", Noite: "", cafe: "" },
@@ -514,7 +529,7 @@
             { mes: "Abril", dia: 30, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", cafe: "G4" },
 
             // ==================== MAIO ====================
-            { mes: "Maio", dia: 1, dia_semana: "Sexta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "", cafe: "", feriado: "Dia do Trabalhador" },
+            { mes: "Maio", dia: 1, dia_semana: "Sexta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Maio", dia: 2, dia_semana: "Sábado", grupo: "G4", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Maio", dia: 3, dia_semana: "Domingo", grupo: "", EBD: "G2", Tarde: "G3", Noite: "G4", cafe: "" },
             { mes: "Maio", dia: 6, dia_semana: "Quarta-feira", grupo: "G8", EBD: "", Tarde: "", Noite: "", cafe: "" },
@@ -548,7 +563,7 @@
             { mes: "Junho", dia: 19, dia_semana: "Sexta-feira", grupo: "G7", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Junho", dia: 20, dia_semana: "Sábado", grupo: "G2", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Junho", dia: 21, dia_semana: "Domingo", grupo: "", EBD: "G3", Tarde: "G4", Noite: "G5", cafe: "" },
-            { mes: "Junho", dia: 24, dia_semana: "Quarta-feira", grupo: "G2", EBD: "", Tarde: "", Noite: "", cafe: "", feriado: "São João (Bahia/Jequié)" },
+            { mes: "Junho", dia: 24, dia_semana: "Quarta-feira", grupo: "G2", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Junho", dia: 25, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", cafe: "G6" },
             { mes: "Junho", dia: 26, dia_semana: "Sexta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Junho", dia: 27, dia_semana: "Sábado", grupo: "G4", EBD: "", Tarde: "", Noite: "", cafe: "" },
@@ -569,7 +584,7 @@
             { mes: "Julho", dia: 19, dia_semana: "Domingo", grupo: "", EBD: "G3", Tarde: "G4", Noite: "G5", cafe: "" },
             { mes: "Julho", dia: 22, dia_semana: "Quarta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Julho", dia: 24, dia_semana: "Sexta-feira", grupo: "G5", EBD: "", Tarde: "", Noite: "", cafe: "" },
-            { mes: "Julho", dia: 25, dia_semana: "Sábado", grupo: "G?", EBD: "", Tarde: "", Noite: "", cafe: "", feriado: "Aniversário de Jequié (Municipal)" }, // Adicionado Sábado faltante
+            { mes: "Julho", dia: 25, dia_semana: "Sábado", grupo: "G?", EBD: "", Tarde: "", Noite: "", cafe: "" }, // Adicionado Sábado faltante
             { mes: "Julho", dia: 26, dia_semana: "Domingo", grupo: "", EBD: "G8", Tarde: "G1", Noite: "G2", cafe: "" },
             { mes: "Julho", dia: 29, dia_semana: "Quarta-feira", grupo: "G3", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Julho", dia: 31, dia_semana: "Sexta-feira", grupo: "G7", EBD: "", Tarde: "", Noite: "", cafe: "" },
@@ -645,9 +660,9 @@
             { mes: "Novembro", dia: 11, dia_semana: "Quarta-feira", grupo: "G7", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Novembro", dia: 13, dia_semana: "Sexta-feira", grupo: "G5", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Novembro", dia: 14, dia_semana: "Sábado", grupo: "G?", EBD: "", Tarde: "", Noite: "", cafe: "" }, // Adicionado Sábado faltante
-            { mes: "Novembro", dia: 15, dia_semana: "Domingo", grupo: "", EBD: "G5", Tarde: "G6", Noite: "G7", cafe: "", feriado: "Proclamação da República" },
+            { mes: "Novembro", dia: 15, dia_semana: "Domingo", grupo: "", EBD: "G5", Tarde: "G6", Noite: "G7", cafe: "" },
             { mes: "Novembro", dia: 18, dia_semana: "Quarta-feira", grupo: "G4", EBD: "", Tarde: "", Noite: "", cafe: "" },
-            { mes: "Novembro", dia: 20, dia_semana: "Sexta-feira", grupo: "G2", EBD: "", Tarde: "", Noite: "", cafe: "", feriado: "Dia da Consciência Negra" },
+            { mes: "Novembro", dia: 20, dia_semana: "Sexta-feira", grupo: "G2", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Novembro", dia: 21, dia_semana: "Sábado", grupo: "G?", EBD: "", Tarde: "", Noite: "", cafe: "" }, // Adicionado Sábado faltante
             { mes: "Novembro", dia: 22, dia_semana: "Domingo", grupo: "", EBD: "G8", Tarde: "G1", Noite: "G2", cafe: "" },
             { mes: "Novembro", dia: 25, dia_semana: "Quarta-feira", grupo: "G5", EBD: "", Tarde: "", Noite: "", cafe: "" },
@@ -670,7 +685,7 @@
             { mes: "Dezembro", dia: 19, dia_semana: "Sábado", grupo: "G?", EBD: "", Tarde: "", Noite: "", cafe: "" }, // Adicionado Sábado faltante
             { mes: "Dezembro", dia: 20, dia_semana: "Domingo", grupo: "", EBD: "G6", Tarde: "G7", Noite: "G8", cafe: "" },
             { mes: "Dezembro", dia: 23, dia_semana: "Quarta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "", cafe: "" },
-            { mes: "Dezembro", dia: 25, dia_semana: "Sexta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "", cafe: "", feriado: "Natal" },
+            { mes: "Dezembro", dia: 25, dia_semana: "Sexta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Dezembro", dia: 26, dia_semana: "Sábado", grupo: "G?", EBD: "", Tarde: "", Noite: "", cafe: "" }, // Adicionado Sábado faltante
             { mes: "Dezembro", dia: 27, dia_semana: "Domingo", grupo: "", EBD: "G5", Tarde: "G6", Noite: "G7", cafe: "" },
             { mes: "Dezembro", dia: 30, dia_semana: "Quarta-feira", grupo: "G2", EBD: "", Tarde: "", Noite: "", cafe: "" },
@@ -707,26 +722,36 @@
                 classes += ' feriado-alerta';
             }
             
-            // 2. Feriado no dia anterior
+            // 2. Feriado no dia anterior (Véspera)
             const diaAnterior = new Date(diaDaEscala);
             diaAnterior.setDate(diaDaEscala.getDate() - 1);
-            if (diaAnterior.getFullYear() === 2026) { // Para evitar problemas de ano novo
-                const feriadoAnterior = getFeriado(item.mes, diaAnterior.getDate());
-                if (feriadoAnterior && item.dia_semana !== 'Domingo') { // Evitar alerta em dia de Domingo após feriado
-                    alertas.push(`⚠️ **Véspera de Feriado:** ${feriadoAnterior} (Dia anterior)`);
-                    classes += ' feriado-alerta';
+            
+            // Verifica se a data anterior ainda é em 2026 (Para evitar underflow de Janeiro)
+            if (diaAnterior.getFullYear() === 2026) { 
+                const nomeMesAnterior = new Date(2026, diaAnterior.getMonth()).toLocaleString('pt-BR', { month: 'long', timeZone: 'UTC' });
+                const feriadoAnterior = getFeriado(nomeMesAnterior.charAt(0).toUpperCase() + nomeMesAnterior.slice(1), diaAnterior.getDate());
+
+                if (feriadoAnterior && !feriadoNoDia) { // Alerta apenas se não for feriado no dia, para não duplicar.
+                    alertas.push(`⚠️ **Véspera de Feriado:** ${feriadoAnterior} (Dia seguinte é feriado)`);
                 }
             }
             
-            // 3. Feriado no dia seguinte
+            // 3. Feriado no dia seguinte (Dia após o feriado)
             const diaSeguinte = new Date(diaDaEscala);
             diaSeguinte.setDate(diaDaEscala.getDate() + 1);
+            
+            // Verifica se a data seguinte ainda é em 2026
             if (diaSeguinte.getFullYear() === 2026) {
-                const feriadoSeguinte = getFeriado(item.mes, diaSeguinte.getDate());
-                if (feriadoSeguinte && item.dia_semana !== 'Sábado') { // Evitar alerta em dia de Sábado antes de feriado
-                    alertas.push(`⚠️ **Dia Seguinte a Feriado:** ${feriadoSeguinte} (Dia seguinte)`);
-                    classes += ' feriado-alerta';
+                const nomeMesSeguinte = new Date(2026, diaSeguinte.getMonth()).toLocaleString('pt-BR', { month: 'long', timeZone: 'UTC' });
+                const feriadoSeguinte = getFeriado(nomeMesSeguinte.charAt(0).toUpperCase() + nomeMesSeguinte.slice(1), diaSeguinte.getDate());
+                
+                if (feriadoSeguinte && !feriadoNoDia) {
+                    alertas.push(`⚠️ **Dia após Feriado:** ${feriadoSeguinte} (Dia anterior foi feriado)`);
                 }
+            }
+            
+            if (alertas.length > 0 && !feriadoNoDia) {
+                 classes += ' feriado-alerta';
             }
 
             return { alertas, classes };
