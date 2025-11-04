@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Escalas 2026 - IBJLV</title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    
     <style>
         * {
             margin: 0;
@@ -89,12 +92,11 @@
             background: rgba(255, 255, 255, 0.15);
         }
         
-        /* Estilo para garantir que o texto do select seja branco, mesmo quando vazio */
         select {
-             color: #aaa; /* Cor padrão para placeholder */
+             color: #aaa;
         }
         select:valid {
-            color: white; /* Cor branca quando um valor é selecionado */
+            color: white;
         }
 
         input::placeholder {
@@ -113,11 +115,23 @@
             cursor: pointer;
             transition: all 0.3s ease;
             margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .download-btn {
+            background: #4CAF50;
+            margin-top: 15px;
         }
 
         button:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .download-btn:hover {
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
         }
 
         .quick-groups {
@@ -144,15 +158,40 @@
             transform: scale(1.05);
         }
 
+        /* --- NOVO LOADER PEIXE BRANCO --- */
         .loading {
             text-align: center;
             padding: 20px;
-            display: none;
+            display: none; /* Escondido por padrão */
         }
 
         .loading.visible {
-            display: block;
+            display: block; /* Visível quando a consulta é acionada */
         }
+        
+        .fish-loader {
+            width: 150px; /* Tamanho ajustado para a div de carregamento */
+            height: 67.5px; /* Proporcional a 150x67.5 */
+            margin: 20px auto;
+        }
+
+        .fish {
+            fill: none;
+            stroke: #ffffff;           /* BRANCO */
+            stroke-width: 10;
+            stroke-linecap: round;
+            stroke-dasharray: 755;
+            stroke-dashoffset: 755;
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)); /* Brilho suave */
+            animation: trace 2s linear infinite;
+        }
+
+        @keyframes trace {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+        /* --- FIM DO NOVO LOADER --- */
 
         .resultado {
             background: rgba(255, 255, 255, 0.1);
@@ -181,7 +220,7 @@
             margin: 12px 0;
             padding: 18px;
             border-radius: 10px;
-            border-left: 4px solid #4CAF50; /* Padrão: Verde */
+            border-left: 4px solid #4CAF50;
             transition: all 0.3s ease;
         }
 
@@ -191,16 +230,16 @@
         }
 
         .escala-item.cafe {
-            border-left-color: #ffc107; /* Café: Amarelo */
+            border-left-color: #ffc107;
             background: rgba(255, 193, 7, 0.1);
         }
         
         .escala-item.diaconia-culto {
-            border-left-color: #764ba2; /* Culto: Roxo */
+            border-left-color: #764ba2;
         }
         
         .escala-item.diaconia-ebd {
-            border-left-color: #667eea; /* EBD: Azul */
+            border-left-color: #667eea;
         }
 
         .no-data {
@@ -217,6 +256,11 @@
             font-size: 0.9em;
             margin-top: 40px;
         }
+        
+        #botaoDownload {
+            display: none;
+        }
+
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
@@ -307,13 +351,21 @@
                 </div>
             </div>
         </div>
-
+        
         <div class="loading" id="loading">
-            <p>⏳ Buscando escalas...</p>
+            <div id="fishLoader" class="fish-loader">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 160" width="100%" height="100%">
+                    <path class="fish" 
+                        d="M 340,15 C 215,185 90,145 20,75 C 90,15 215,-25 340,140" />
+                </svg>
+            </div>
         </div>
 
         <div class="resultado" id="resultado">
-            </div>
+            <button class="download-btn" id="botaoDownload" onclick="baixarEscala()">
+                ⬇️ BAIXAR PARA WHATSAPP
+            </button>
+        </div>
     </div>
 
     <div class="footer">
@@ -323,7 +375,7 @@
     </div>
 
     <script>
-        // ============ DADOS COMPLETOS DAS ESCALAS 2026 ============
+        // ============ DADOS COMPLETOS DAS ESCALAS 2026 (MANTIDOS INTACTOS) ============
         const escalas = [
             // ==================== JANEIRO ====================
             { mes: "Janeiro", dia: 2, dia_semana: "Sexta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "" },
@@ -529,7 +581,7 @@
             { mes: "Novembro", dia: 26, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", cafe: "G3" },
             { mes: "Novembro", dia: 27, dia_semana: "Sexta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "" },
             { mes: "Novembro", dia: 28, dia_semana: "Sábado", grupo: "G7", EBD: "", Tarde: "", Noite: "" },
-            { mes: "Novembro", dia: 29, dia_semana: "Domingo", grupo: "", EBD: "G6", Tarde: "G8", Noite: "G5" }, // Corrigindo a última linha que estava incompleta
+            { mes: "Novembro", dia: 29, dia_semana: "Domingo", grupo: "", EBD: "G6", Tarde: "G8", Noite: "G5" }, 
 
             // ==================== DEZEMBRO ====================
             { mes: "Dezembro", dia: 2, dia_semana: "Quarta-feira", grupo: "G2", EBD: "", Tarde: "", Noite: "" },
@@ -549,10 +601,9 @@
         ];
 
 
-        // ============ FUNÇÕES DE INTERAÇÃO (CORRIGIDAS) ============
+        // ============ FUNÇÕES DE INTERAÇÃO ============
 
         function selecionarGrupo(grupo) {
-            // Preenche o seletor principal com o grupo clicado e aciona a consulta se um mês já estiver selecionado
             document.getElementById('grupoSelect').value = grupo;
             const mesSelecionado = document.getElementById('mesSelect').value;
             if (mesSelecionado) {
@@ -565,25 +616,24 @@
             const mesSelecionado = document.getElementById('mesSelect').value;
             const loadingDiv = document.getElementById('loading');
             const resultadoDiv = document.getElementById('resultado');
+            const botaoDownload = document.getElementById('botaoDownload');
 
-            // 1. Validação
             if (!grupoSelecionado || !mesSelecionado) {
                 resultadoDiv.classList.remove('visible');
+                botaoDownload.style.display = 'none';
                 resultadoDiv.innerHTML = '<div class="no-data">Por favor, selecione **ambos** o Grupo e o Mês.</div>';
                 resultadoDiv.classList.add('visible');
                 return;
             }
 
-            // 2. Mostrar carregando
+            // Esconde resultados anteriores e mostra o novo loader de peixe
             resultadoDiv.classList.remove('visible');
+            botaoDownload.style.display = 'none';
             loadingDiv.classList.add('visible');
 
-            // Simulação de carregamento (meio segundo)
             setTimeout(() => {
-                // 3. Filtrar as escalas
                 const resultados = escalas.filter(escala => {
                     const isMes = escala.mes === mesSelecionado;
-                    // Verifica se o grupo está escalado em qualquer função (grupo, EBD, Tarde, Noite, café)
                     const isGrupo = escala.grupo === grupoSelecionado || 
                                     escala.EBD === grupoSelecionado || 
                                     escala.Tarde === grupoSelecionado || 
@@ -592,8 +642,8 @@
                     return isMes && isGrupo;
                 });
 
-                // 4. Montar o HTML de resultados
-                let htmlResultado = `<h3>Escalas de ${grupoSelecionado} em ${mesSelecionado}</h3>`;
+                // Cria uma DIV temporária para o conteúdo que será convertido em imagem
+                let conteudoEscalas = `<h3>Escalas de **${grupoSelecionado}** em **${mesSelecionado}**</h3>`;
 
                 if (resultados.length > 0) {
                     resultados.forEach(item => {
@@ -602,23 +652,23 @@
                         
                         // Define o tipo de função e a classe CSS
                         if (item.cafe === grupoSelecionado) {
-                            funcaoPrincipal = '☕ Café das Mulhres';
+                            funcaoPrincipal = '☕ Serviço de Café';
                             classesExtras = ' cafe';
                         } else if (item.grupo === grupoSelecionado) {
-                            funcaoPrincipal = `Servindo no Culto (${item.dia_semana})`;
+                            funcaoPrincipal = `De serviço no Culto (${item.dia_semana})`;
                             classesExtras = ' diaconia-culto';
                         } else if (item.EBD === grupoSelecionado) {
-                            funcaoPrincipal = 'Servindo na EBD (Manhã)';
+                            funcaoPrincipal = 'De serviço na EBD (Manhã)';
                             classesExtras = ' diaconia-ebd';
                         } else if (item.Tarde === grupoSelecionado) {
-                            funcaoPrincipal = 'Servindo no Culto da Tarde';
+                            funcaoPrincipal = 'De serviço no Culto da Tarde';
                             classesExtras = ' diaconia-culto';
                         } else if (item.Noite === grupoSelecionado) {
-                            funcaoPrincipal = 'Servindo no Culto da Noite';
+                            funcaoPrincipal = 'De serviço no Culto da Noite';
                             classesExtras = ' diaconia-culto';
                         }
 
-                        htmlResultado += `
+                        conteudoEscalas += `
                             <div class="escala-item${classesExtras}">
                                 <strong>Dia ${item.dia} (${item.dia_semana})</strong>
                                 <br>
@@ -626,15 +676,69 @@
                             </div>
                         `;
                     });
+                    
+                    // Substitui o conteúdo da div de resultado
+                    resultadoDiv.innerHTML = conteudoEscalas + `<button class="download-btn" id="botaoDownload" onclick="baixarEscala()">⬇️ BAIXAR PARA WHATSAPP</button>`;
+                    document.getElementById('botaoDownload').style.display = 'flex'; // Garante que o botão de download apareça
+                    
                 } else {
-                    htmlResultado += '<div class="no-data">Nenhuma escala encontrada para este grupo e mês.</div>';
+                    resultadoDiv.innerHTML = '<div class="no-data">Nenhuma escala encontrada para este grupo e mês.</div>' + `<button class="download-btn" id="botaoDownload" onclick="baixarEscala()" style="display:none">⬇️ BAIXAR PARA WHATSAPP</button>`;
                 }
 
-                // 5. Exibir resultados
-                resultadoDiv.innerHTML = htmlResultado;
+                // 5. Esconder carregamento e exibir resultados
                 loadingDiv.classList.remove('visible');
                 resultadoDiv.classList.add('visible');
-            }, 500); // 500ms de atraso
+            }, 1000); // Aumentei o atraso para 1 segundo para dar tempo de ver a animação
+        }
+
+
+        // FUNÇÃO PARA BAIXAR A ESCALA (IMAGEM PNG)
+        function baixarEscala() {
+            const grupo = document.getElementById('grupoSelect').value;
+            const mes = document.getElementById('mesSelect').value;
+            const nomeArquivo = `Escala_${grupo}_${mes}_IBJLV.png`;
+
+            const elemento = document.getElementById('resultado');
+
+            // Temporariamente esconde o botão de download para ele não aparecer na imagem
+            const botao = document.getElementById('botaoDownload');
+            if(botao) {
+                botao.style.display = 'none';
+            }
+
+            html2canvas(elemento, {
+                scale: 2, 
+                backgroundColor: '#1a1a2e',
+                onclone: (doc) => {
+                    const clonedButton = doc.getElementById('botaoDownload');
+                    if (clonedButton) {
+                        clonedButton.style.display = 'none';
+                    }
+                }
+            }).then(canvas => {
+                const image = canvas.toDataURL('image/png');
+                
+                const link = document.createElement('a');
+                link.href = image;
+                link.download = nomeArquivo;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+
+                // Reexibe o botão na página após a captura
+                if(botao) {
+                    botao.style.display = 'flex';
+                }
+
+                alert('✅ Download da imagem iniciado! Você pode agora compartilhar no WhatsApp.');
+                
+            }).catch(error => {
+                console.error('Erro ao gerar a imagem:', error);
+                alert('❌ Erro ao tentar baixar a escala. Tente novamente.');
+                if(botao) {
+                    botao.style.display = 'flex';
+                }
+            });
         }
     </script>
 </body>
