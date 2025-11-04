@@ -207,28 +207,28 @@
         /* NOVIDADE: Classe para aplicar um fundo claro e padding compacto SÓ PARA O PRINT */
         .resultado.print-mode {
             background: #f5f5f5 !important; /* Fundo claro para o PNG */
-            color: #333 !important; /* Cor de texto padrão escuro */
+            color: #000 !important; /* Cor de texto padrão preto puro */
             padding: 15px !important; 
             border: none !important;
             box-shadow: none !important;
         }
         
-        /* NOVIDADE: Ajuste de cor do H3 no modo print (Grupo e Mês) */
+        /* NOVIDADE: Ajuste de cor do H3 no modo print (Grupo e Mês) - roxo mais escuro */
         .resultado.print-mode h3 {
-             color: #764ba2 !important; /* Roxo principal para o cabeçalho */
+             color: #5b2c7e !important; /* Roxo principal para o cabeçalho, mais escuro */
              margin-bottom: 15px;
              font-size: 1.5em; /* Aumenta um pouco */
         }
         
-        /* NOVIDADE: Cor do texto em negrito no modo print */
+        /* NOVIDADE: Cor do texto em negrito no modo print - roxo mais escuro */
         .resultado.print-mode strong {
-            color: #764ba2 !important; /* Roxo para o destaque do dia */
+            color: #5b2c7e !important; /* Roxo para o destaque do dia, mais escuro */
             font-weight: 700 !important;
         }
 
-        /* NOVIDADE: Cor do texto da função no modo print */
+        /* NOVIDADE: Cor do texto da função no modo print - cinza muito escuro */
         .resultado.print-mode .funcao-texto {
-            color: #444 !important; /* Cinza escuro para a função, mais legível */
+            color: #222 !important; /* Cinza muito escuro para a função, mais legível */
             font-weight: 500 !important;
         }
 
@@ -257,8 +257,8 @@
         }
         
         .resultado.print-mode .escala-item {
-             background: rgba(255, 255, 255, 0.9) !important; /* Fundo claro do item */
-             color: #444; /* Cor de texto do item */
+             background: #ffffff !important; /* Branco puro para o fundo do item */
+             color: #222; /* Cor de texto do item, cinza escuro */
              line-height: 1.4;
         }
         
@@ -716,7 +716,7 @@
                             funcaoPrincipal = '☕ Serviço de Café';
                             classesExtras = ' cafe';
                         } else if (item.grupo === grupoSelecionado) {
-                            funcaoPrincipal = `De serviço no Culto/Reunião (${item.dia_semana})`;
+                            funcaoPrincipal = `De serviço no Culto (${item.dia_semana})`; // REMOVIDO "/Reunião"
                             classesExtras = ' diaconia-culto';
                         } else if (item.EBD === grupoSelecionado) {
                             funcaoPrincipal = 'De serviço na EBD (Manhã)';
