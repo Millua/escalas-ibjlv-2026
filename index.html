@@ -204,34 +204,37 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
-        /* NOVIDADE: Classe para aplicar um fundo claro e padding compacto SÓ PARA O PRINT */
+        /* NOVO: Estilos de PRÉ-PRINT para contraste e qualidade (do seu código) */
         .resultado.print-mode {
             background: #f5f5f5 !important; /* Fundo claro para o PNG */
-            color: #000 !important; /* Cor de texto padrão preto puro */
+            color: #000 !important;
             padding: 15px !important; 
             border: none !important;
             box-shadow: none !important;
         }
         
-        /* NOVIDADE: Ajuste de cor do H3 no modo print (Grupo e Mês) - roxo mais escuro */
-        .resultado.print-mode h3 {
-             color: #5b2c7e !important; /* Roxo principal para o cabeçalho, mais escuro */
-             margin-bottom: 15px;
-             font-size: 1.5em; /* Aumenta um pouco */
-        }
-        
-        /* NOVIDADE: Cor do texto em negrito no modo print - roxo mais escuro */
-        .resultado.print-mode strong {
-            color: #5b2c7e !important; /* Roxo para o destaque do dia, mais escuro */
-            font-weight: 700 !important;
-        }
-
-        /* NOVIDADE: Cor do texto da função no modo print - cinza muito escuro */
-        .resultado.print-mode .funcao-texto {
-            color: #222 !important; /* Cinza muito escuro para a função, mais legível */
+        /* NOVO: Garantir que o texto fique legível no print (do seu código) */
+        .resultado.print-mode * {
+            color: #000 !important;
             font-weight: 500 !important;
         }
 
+        /* NOVO: Header mais destacado (do seu código) */
+        .resultado.print-mode h3 {
+            color: #5b2c7e !important; /* Roxo principal para o cabeçalho, mais escuro */
+            font-size: 1.6em !important;
+            margin-bottom: 20px !important;
+            padding-bottom: 10px !important;
+            border-bottom: 2px solid #5b2c7e !important;
+        }
+        
+        /* NOVO: Melhor contraste para os itens (do seu código) */
+        .resultado.print-mode .escala-item {
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+            margin: 8px 0 !important;
+        }
+        
+        /* Fim dos estilos do print */
 
         .resultado.visible {
             display: block;
@@ -245,7 +248,7 @@
             font-size: 1.4em;
         }
 
-        /* NOVIDADE: Fundo e cor do item para o modo print */
+        /* Fundo e cor do item (ajustes de cores de fundo mais claros para o print mode) */
         .escala-item {
             background: rgba(255, 255, 255, 0.15);
             margin: 10px 0;
@@ -257,16 +260,8 @@
         }
         
         .resultado.print-mode .escala-item {
-             background: #ffffff !important; /* Branco puro para o fundo do item */
-             color: #222; /* Cor de texto do item, cinza escuro */
+             color: #222 !important; /* Cor de texto do item, cinza escuro */
              line-height: 1.4;
-        }
-        
-        /* NOVIDADE: Separador de linha para dar espaço */
-        .escala-item br {
-            line-height: 0.2;
-            display: block;
-            content: "";
         }
         
         /* Estilos dos tipos de função */
@@ -711,12 +706,12 @@
                         let classesExtras = '';
                         let funcaoPrincipal = '';
                         
-                        // Novo texto para as funções
+                        // Novo texto para as funções (REMOVIDO "Reunião")
                         if (item.cafe === grupoSelecionado) {
                             funcaoPrincipal = '☕ Serviço de Café';
                             classesExtras = ' cafe';
                         } else if (item.grupo === grupoSelecionado) {
-                            funcaoPrincipal = `De serviço no Culto (${item.dia_semana})`; // REMOVIDO "/Reunião"
+                            funcaoPrincipal = `De serviço no Culto (${item.dia_semana})`; 
                             classesExtras = ' diaconia-culto';
                         } else if (item.EBD === grupoSelecionado) {
                             funcaoPrincipal = 'De serviço na EBD (Manhã)';
@@ -729,7 +724,7 @@
                             classesExtras = ' diaconia-culto';
                         }
                         
-                        // NOVIDADE: Adicionando uma div com a classe 'funcao-texto' para facilitar a estilização no print
+                        // Adicionando uma div com a classe 'funcao-texto' para facilitar a estilização no print
                         conteudoEscalas += `
                             <div class="escala-item${classesExtras}">
                                 <strong>Dia ${item.dia} (${item.dia_semana})</strong>
@@ -741,73 +736,108 @@
                     
                     // Substitui o conteúdo da div de resultado
                     resultadoDiv.innerHTML = conteudoEscalas + `<button class="download-btn" id="botaoDownload" onclick="baixarEscala()">⬇️ BAIXAR PARA WHATSAPP</button>`;
-                    document.getElementById('botaoDownload').style.display = 'flex'; // Garante que o botão de download apareça
+                    document.getElementById('botaoDownload').style.display = 'flex'; 
                     
                 } else {
                     resultadoDiv.innerHTML = '<div class="no-data">Nenhuma escala encontrada para este grupo e mês.</div>' + `<button class="download-btn" id="botaoDownload" onclick="baixarEscala()" style="display:none">⬇️ BAIXAR PARA WHATSAPP</button>`;
                 }
 
-                // 5. Esconder carregamento e exibir resultados
+                // Esconder carregamento e exibir resultados
                 loadingDiv.classList.remove('visible');
                 resultadoDiv.classList.add('visible');
             }, 2000); // 2000ms de atraso
         }
 
 
-        // FUNÇÃO PARA BAIXAR A ESCALA (IMAGEM PNG)
+        // FUNÇÃO PARA BAIXAR A ESCALA (IMAGEM PNG) - VERSÃO OTIMIZADA (Seu código)
         function baixarEscala() {
             const grupo = document.getElementById('grupoSelect').value;
             const mes = document.getElementById('mesSelect').value;
+            
+            if (!grupo || !mes) {
+                alert('❌ Por favor, selecione um grupo e mês antes de baixar.');
+                return;
+            }
+            
             const nomeArquivo = `Escala_${grupo}_${mes}_IBJLV.png`;
-
             const elemento = document.getElementById('resultado');
-
-            // Temporariamente esconde o botão de download E aplica a classe de print
             const botao = document.getElementById('botaoDownload');
+
+            // Verifica se há dados para baixar
+            const escalaItems = elemento.querySelectorAll('.escala-item');
+            if (escalaItems.length === 0) {
+                alert('❌ Não há escalas para baixar.');
+                return;
+            }
+
+            // Esconde o botão e aplica estilo de impressão
             if(botao) {
                 botao.style.display = 'none';
             }
-            elemento.classList.add('print-mode'); 
+            elemento.classList.add('print-mode');
 
-            html2canvas(elemento, {
-                scale: 2, 
-                backgroundColor: '#f5f5f5', 
-                onclone: (doc) => {
-                    const clonedElement = doc.getElementById('resultado');
-                    clonedElement.classList.add('print-mode'); // Garante que o clone também tenha o estilo de print
-                    
-                    const clonedButton = doc.getElementById('botaoDownload');
-                    if (clonedButton) {
-                        clonedButton.style.display = 'none';
+            // Pequeno delay para garantir que o CSS seja aplicado
+            setTimeout(() => {
+                html2canvas(elemento, {
+                    scale: 3, // Aumenta a qualidade para 3x
+                    useCORS: true,
+                    logging: false,
+                    backgroundColor: '#f5f5f5',
+                    width: elemento.scrollWidth,
+                    height: elemento.scrollHeight,
+                    onclone: (clonedDoc) => {
+                        const clonedElement = clonedDoc.getElementById('resultado');
+                        const clonedButton = clonedDoc.getElementById('botaoDownload');
+                        
+                        if (clonedElement) {
+                            clonedElement.classList.add('print-mode');
+                        }
+                        if (clonedButton) {
+                            clonedButton.style.display = 'none';
+                        }
                     }
-                }
-            }).then(canvas => {
-                const image = canvas.toDataURL('image/png');
-                
-                const link = document.createElement('a');
-                link.href = image;
-                link.download = nomeArquivo;
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
+                }).then(canvas => {
+                    // Otimização da imagem
+                    canvas.toBlob((blob) => {
+                        const url = URL.createObjectURL(blob);
+                        const link = document.createElement('a');
+                        
+                        link.href = url;
+                        link.download = nomeArquivo;
+                        link.style.display = 'none';
+                        
+                        document.body.appendChild(link);
+                        link.click();
+                        
+                        // Limpeza
+                        setTimeout(() => {
+                            document.body.removeChild(link);
+                            URL.revokeObjectURL(url);
+                        }, 100);
+                        
+                    }, 'image/png', 0.9); // Qualidade 90%
 
-                // Reverte as alterações após a captura
-                if(botao) {
-                    botao.style.display = 'flex';
-                }
-                elemento.classList.remove('print-mode'); // Remove a classe para voltar ao fundo escuro normal
-
-                alert('✅ Download da imagem iniciado! Você pode agora compartilhar no WhatsApp.');
-                
-            }).catch(error => {
-                console.error('Erro ao gerar a imagem:', error);
-                alert('❌ Erro ao tentar baixar a escala. Tente novamente.');
-                // Reverte as alterações em caso de erro
-                if(botao) {
-                    botao.style.display = 'flex';
-                }
-                elemento.classList.remove('print-mode');
-            });
+                    // Restaura o estado original
+                    if(botao) {
+                        setTimeout(() => {
+                            botao.style.display = 'flex';
+                        }, 500);
+                    }
+                    elemento.classList.remove('print-mode');
+                    
+                    alert('✅ Download da escala iniciado! Agora você pode compartilhar no WhatsApp.');
+                    
+                }).catch(error => {
+                    console.error('Erro ao gerar a imagem:', error);
+                    alert('❌ Erro ao tentar baixar a escala. Tente novamente.');
+                    
+                    // Restaura em caso de erro
+                    if(botao) {
+                        botao.style.display = 'flex';
+                    }
+                    elemento.classList.remove('print-mode');
+                });
+            }, 100);
         }
     </script>
 </body>
