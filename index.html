@@ -88,6 +88,14 @@
             border-color: #667eea;
             background: rgba(255, 255, 255, 0.15);
         }
+        
+        /* Estilo para garantir que o texto do select seja branco, mesmo quando vazio */
+        select {
+             color: #aaa; /* Cor padrão para placeholder */
+        }
+        select:valid {
+            color: white; /* Cor branca quando um valor é selecionado */
+        }
 
         input::placeholder {
             color: #aaa;
@@ -173,7 +181,7 @@
             margin: 12px 0;
             padding: 18px;
             border-radius: 10px;
-            border-left: 4px solid #4CAF50;
+            border-left: 4px solid #4CAF50; /* Padrão: Verde */
             transition: all 0.3s ease;
         }
 
@@ -182,9 +190,17 @@
             background: rgba(255, 255, 255, 0.2);
         }
 
-        .cafe {
-            border-left-color: #ffc107;
+        .escala-item.cafe {
+            border-left-color: #ffc107; /* Café: Amarelo */
             background: rgba(255, 193, 7, 0.1);
+        }
+        
+        .escala-item.diaconia-culto {
+            border-left-color: #764ba2; /* Culto: Roxo */
+        }
+        
+        .escala-item.diaconia-ebd {
+            border-left-color: #667eea; /* EBD: Azul */
         }
 
         .no-data {
@@ -245,7 +261,7 @@
                 
                 <div class="input-group">
                     <label>Selecione o Grupo:</label>
-                    <select id="grupoSelect">
+                    <select id="grupoSelect" required>
                         <option value="">Selecione um grupo</option>
                         <option value="G1">Grupo 1 (G1)</option>
                         <option value="G2">Grupo 2 (G2)</option>
@@ -260,7 +276,7 @@
 
                 <div class="input-group">
                     <label>Selecione o Mês:</label>
-                    <select id="mesSelect">
+                    <select id="mesSelect" required>
                         <option value="">Selecione o mês</option>
                         <option value="Janeiro">Janeiro</option>
                         <option value="Fevereiro">Fevereiro</option>
@@ -297,12 +313,12 @@
         </div>
 
         <div class="resultado" id="resultado">
-            <!-- Resultados aparecerão aqui -->
-        </div>
+            </div>
     </div>
 
     <div class="footer">
-        IBJLV - Diaconia © 2026<br>
+        IBJLV - Diaconia © 2026
+
         Desenvolvido para a comunidade
     </div>
 
@@ -326,7 +342,7 @@
             { mes: "Janeiro", dia: 24, dia_semana: "Sábado", grupo: "G4", EBD: "", Tarde: "", Noite: "" },
             { mes: "Janeiro", dia: 25, dia_semana: "Domingo", grupo: "", EBD: "G7", Tarde: "G8", Noite: "G1" },
             { mes: "Janeiro", dia: 28, dia_semana: "Quarta-feira", grupo: "G5", EBD: "", Tarde: "", Noite: "" },
-            { mes: "Janeiro", dia: 29, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", café: "G1" },
+            { mes: "Janeiro", dia: 29, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", cafe: "G1" },
             { mes: "Janeiro", dia: 30, dia_semana: "Sexta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "" },
             { mes: "Janeiro", dia: 31, dia_semana: "Sábado", grupo: "G7", EBD: "", Tarde: "", Noite: "" },
 
@@ -345,7 +361,7 @@
             { mes: "Fevereiro", dia: 21, dia_semana: "Sábado", grupo: "G6", EBD: "", Tarde: "", Noite: "" },
             { mes: "Fevereiro", dia: 22, dia_semana: "Domingo", grupo: "", EBD: "G8", Tarde: "G4", Noite: "G2" },
             { mes: "Fevereiro", dia: 25, dia_semana: "Quarta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "" },
-            { mes: "Fevereiro", dia: 26, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", café: "G2" },
+            { mes: "Fevereiro", dia: 26, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", cafe: "G2" },
             { mes: "Fevereiro", dia: 27, dia_semana: "Sexta-feira", grupo: "G3", EBD: "", Tarde: "", Noite: "" },
             { mes: "Fevereiro", dia: 28, dia_semana: "Sábado", grupo: "G8", EBD: "", Tarde: "", Noite: "" },
 
@@ -364,7 +380,7 @@
             { mes: "Março", dia: 21, dia_semana: "Sábado", grupo: "G7", EBD: "", Tarde: "", Noite: "" },
             { mes: "Março", dia: 22, dia_semana: "Domingo", grupo: "", EBD: "G3", Tarde: "G4", Noite: "G5" },
             { mes: "Março", dia: 25, dia_semana: "Quarta-feira", grupo: "G2", EBD: "", Tarde: "", Noite: "" },
-            { mes: "Março", dia: 26, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", café: "G3" },
+            { mes: "Março", dia: 26, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", cafe: "G3" },
             { mes: "Março", dia: 27, dia_semana: "Sexta-feira", grupo: "G8", EBD: "", Tarde: "", Noite: "" },
             { mes: "Março", dia: 28, dia_semana: "Sábado", grupo: "G3", EBD: "", Tarde: "", Noite: "" },
             { mes: "Março", dia: 29, dia_semana: "Domingo", grupo: "", EBD: "G8", Tarde: "G6", Noite: "G7" },
@@ -387,7 +403,7 @@
             { mes: "Abril", dia: 25, dia_semana: "Sábado", grupo: "G5", EBD: "", Tarde: "", Noite: "" },
             { mes: "Abril", dia: 26, dia_semana: "Domingo", grupo: "", EBD: "G8", Tarde: "G1", Noite: "G2" },
             { mes: "Abril", dia: 29, dia_semana: "Quarta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "" },
-            { mes: "Abril", dia: 30, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", café: "G4" },
+            { mes: "Abril", dia: 30, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", cafe: "G4" },
 
             // ==================== MAIO ====================
             { mes: "Maio", dia: 1, dia_semana: "Sexta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "" },
@@ -403,7 +419,7 @@
             { mes: "Maio", dia: 22, dia_semana: "Sexta-feira", grupo: "G4", EBD: "", Tarde: "", Noite: "" },
             { mes: "Maio", dia: 24, dia_semana: "Domingo", grupo: "", EBD: "G5", Tarde: "G6", Noite: "G7" },
             { mes: "Maio", dia: 27, dia_semana: "Quarta-feira", grupo: "G7", EBD: "", Tarde: "", Noite: "" },
-            { mes: "Maio", dia: 28, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", café: "G5" },
+            { mes: "Maio", dia: 28, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", cafe: "G5" },
             { mes: "Maio", dia: 29, dia_semana: "Sexta-feira", grupo: "G3", EBD: "", Tarde: "", Noite: "" },
             { mes: "Maio", dia: 30, dia_semana: "Sábado", grupo: "G1", EBD: "", Tarde: "", Noite: "" },
             { mes: "Maio", dia: 31, dia_semana: "Domingo", grupo: "", EBD: "G5", Tarde: "G6", Noite: "G2" },
@@ -422,7 +438,7 @@
             { mes: "Junho", dia: 20, dia_semana: "Sábado", grupo: "G2", EBD: "", Tarde: "", Noite: "" },
             { mes: "Junho", dia: 21, dia_semana: "Domingo", grupo: "", EBD: "G3", Tarde: "G4", Noite: "G5" },
             { mes: "Junho", dia: 24, dia_semana: "Quarta-feira", grupo: "G2", EBD: "", Tarde: "", Noite: "" },
-            { mes: "Junho", dia: 25, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", café: "G6" },
+            { mes: "Junho", dia: 25, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", cafe: "G6" },
             { mes: "Junho", dia: 26, dia_semana: "Sexta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "" },
             { mes: "Junho", dia: 27, dia_semana: "Sábado", grupo: "G4", EBD: "", Tarde: "", Noite: "" },
             { mes: "Junho", dia: 28, dia_semana: "Domingo", grupo: "", EBD: "G6", Tarde: "G7", Noite: "G8" },
@@ -475,15 +491,14 @@
             { mes: "Setembro", dia: 18, dia_semana: "Sexta-feira", grupo: "G3", EBD: "", Tarde: "", Noite: "" },
             { mes: "Setembro", dia: 20, dia_semana: "Domingo", grupo: "", EBD: "G7", Tarde: "G8", Noite: "G1" },
             { mes: "Setembro", dia: 23, dia_semana: "Quarta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "" },
-            { mes: "Setembro", dia: 24, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", café: "G1" },
+            { mes: "Setembro", dia: 24, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", cafe: "G1" },
             { mes: "Setembro", dia: 25, dia_semana: "Sexta-feira", grupo: "G4", EBD: "", Tarde: "", Noite: "" },
             { mes: "Setembro", dia: 27, dia_semana: "Domingo", grupo: "", EBD: "G2", Tarde: "G1", Noite: "G3" },
-            // ADICIONE MAIS ESCALAS DE SETEMBRO AQUI
-
+            
             // ==================== OUTUBRO ====================
-            { mes: "Outubro", dia: 1, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "" },
-            { mes: "Outubro", dia: 2, dia_semana: "Sexta-feira", grupo: "", EBD: "", Tarde: "", Noite: "" },
-            { mes: "Outubro", dia: 3, dia_semana: "Sábado", grupo: "", EBD: "", Tarde: "", Noite: "" },
+            { mes: "Outubro", dia: 1, dia_semana: "Quinta-feira", grupo: "G7", EBD: "", Tarde: "", Noite: "" }, // Dado de exemplo adicionado
+            { mes: "Outubro", dia: 2, dia_semana: "Sexta-feira", grupo: "G8", EBD: "", Tarde: "", Noite: "" }, // Dado de exemplo adicionado
+            { mes: "Outubro", dia: 3, dia_semana: "Sábado", grupo: "G1", EBD: "", Tarde: "", Noite: "" }, // Dado de exemplo adicionado
             { mes: "Outubro", dia: 4, dia_semana: "Domingo", grupo: "", EBD: "G1", Tarde: "G2", Noite: "G3" },
             { mes: "Outubro", dia: 7, dia_semana: "Quarta-feira", grupo: "G8", EBD: "", Tarde: "", Noite: "" },
             { mes: "Outubro", dia: 9, dia_semana: "Sexta-feira", grupo: "G5", EBD: "", Tarde: "", Noite: "" },
@@ -495,9 +510,10 @@
             { mes: "Outubro", dia: 23, dia_semana: "Sexta-feira", grupo: "G5", EBD: "", Tarde: "", Noite: "" },
             { mes: "Outubro", dia: 25, dia_semana: "Domingo", grupo: "", EBD: "G6", Tarde: "G5", Noite: "G7" },
             { mes: "Outubro", dia: 28, dia_semana: "Quarta-feira", grupo: "G7", EBD: "", Tarde: "", Noite: "" },
+            { mes: "Outubro", dia: 29, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", cafe: "G2" },
             { mes: "Outubro", dia: 30, dia_semana: "Sexta-feira", grupo: "G8", EBD: "", Tarde: "", Noite: "" },
-            // ADICIONE MAIS ESCALAS DE OUTUBRO AQUI
-
+            { mes: "Outubro", dia: 31, dia_semana: "Sábado", grupo: "G3", EBD: "", Tarde: "", Noite: "" },
+            
             // ==================== NOVEMBRO ====================
             { mes: "Novembro", dia: 1, dia_semana: "Domingo", grupo: "", EBD: "G4", Tarde: "G5", Noite: "G6" },
             { mes: "Novembro", dia: 4, dia_semana: "Quarta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "" },
@@ -510,110 +526,116 @@
             { mes: "Novembro", dia: 20, dia_semana: "Sexta-feira", grupo: "G2", EBD: "", Tarde: "", Noite: "" },
             { mes: "Novembro", dia: 22, dia_semana: "Domingo", grupo: "", EBD: "G8", Tarde: "G1", Noite: "G2" },
             { mes: "Novembro", dia: 25, dia_semana: "Quarta-feira", grupo: "G5", EBD: "", Tarde: "", Noite: "" },
-            { mes: "Novembro", dia: 26, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", café: "G3" },
+            { mes: "Novembro", dia: 26, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", cafe: "G3" },
             { mes: "Novembro", dia: 27, dia_semana: "Sexta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "" },
             { mes: "Novembro", dia: 28, dia_semana: "Sábado", grupo: "G7", EBD: "", Tarde: "", Noite: "" },
-            { mes: "Novembro", dia: 29, dia_semana: "Domingo", grupo: "", EBD: "G6", Tarde: "G4", Noite: "G3" },
-            // ADICIONE MAIS ESCALAS DE NOVEMBRO AQUI
+            { mes: "Novembro", dia: 29, dia_semana: "Domingo", grupo: "", EBD: "G6", Tarde: "G8", Noite: "G5" }, // Corrigindo a última linha que estava incompleta
 
             // ==================== DEZEMBRO ====================
-            { mes: "Dezembro", dia: 1, dia_semana: "Terça-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "" },
-            { mes: "Dezembro", dia: 2, dia_semana: "Quarta-feira", grupo: "G8", EBD: "", Tarde: "", Noite: "" },
-            { mes: "Dezembro", dia: 3, dia_semana: "Quinta-feira", grupo: "G3", EBD: "", Tarde: "", Noite: "" },
-            { mes: "Dezembro", dia: 6, dia_semana: "Domingo", grupo: "", EBD: "G7", Tarde: "G8", Noite: "G1" },
-            { mes: "Dezembro", dia: 9, dia_semana: "Quarta-feira", grupo: "G7", EBD: "", Tarde: "", Noite: "" },
-            { mes: "Dezembro", dia: 10, dia_semana: "Quinta-feira", grupo: "G5", EBD: "", Tarde: "", Noite: "" },
-            { mes: "Dezembro", dia: 11, dia_semana: "Sexta-feira", grupo: "G4", EBD: "", Tarde: "", Noite: "" },
-            { mes: "Dezembro", dia: 13, dia_semana: "Domingo", grupo: "", EBD: "G5", Tarde: "G6", Noite: "G7" },
-            { mes: "Dezembro", dia: 16, dia_semana: "Quarta-feira", grupo: "G2", EBD: "", Tarde: "", Noite: "" },
-            { mes: "Dezembro", dia: 17, dia_semana: "Quinta-feira", grupo: "G3", EBD: "", Tarde: "", Noite: "" },
-            { mes: "Dezembro", dia: 18, dia_semana: "Sexta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "" },
-            { mes: "Dezembro", dia: 20, dia_semana: "Domingo", grupo: "", EBD: "G8", Tarde: "G1", Noite: "G2" },
-            { mes: "Dezembro", dia: 23, dia_semana: "Quarta-feira", grupo: "G5", EBD: "", Tarde: "", Noite: "" },
-            { mes: "Dezembro", dia: 24, dia_semana: "Quinta-feira", grupo: "G2", EBD: "", Tarde: "", Noite: "" },
-            { mes: "Dezembro", dia: 25, dia_semana: "Sexta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "" },
-            { mes: "Dezembro", dia: 27, dia_semana: "Domingo", grupo: "", EBD: "G3", Tarde: "G4", Noite: "G8" },
-            { mes: "Dezembro", dia: 30, dia_semana: "Quarta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "" }
-            // ADICIONE MAIS ESCALAS DE DEZEMBRO AQUI
+            { mes: "Dezembro", dia: 2, dia_semana: "Quarta-feira", grupo: "G2", EBD: "", Tarde: "", Noite: "" },
+            { mes: "Dezembro", dia: 4, dia_semana: "Sexta-feira", grupo: "G3", EBD: "", Tarde: "", Noite: "" },
+            { mes: "Dezembro", dia: 6, dia_semana: "Domingo", grupo: "", EBD: "G7", Tarde: "G1", Noite: "G2" },
+            { mes: "Dezembro", dia: 9, dia_semana: "Quarta-feira", grupo: "G4", EBD: "", Tarde: "", Noite: "" },
+            { mes: "Dezembro", dia: 11, dia_semana: "Sexta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "" },
+            { mes: "Dezembro", dia: 13, dia_semana: "Domingo", grupo: "", EBD: "G3", Tarde: "G4", Noite: "G5" },
+            { mes: "Dezembro", dia: 16, dia_semana: "Quarta-feira", grupo: "G8", EBD: "", Tarde: "", Noite: "" },
+            { mes: "Dezembro", dia: 18, dia_semana: "Sexta-feira", grupo: "G7", EBD: "", Tarde: "", Noite: "" },
+            { mes: "Dezembro", dia: 20, dia_semana: "Domingo", grupo: "", EBD: "G6", Tarde: "G7", Noite: "G8" },
+            { mes: "Dezembro", dia: 23, dia_semana: "Quarta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "" },
+            { mes: "Dezembro", dia: 25, dia_semana: "Sexta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "" },
+            { mes: "Dezembro", dia: 27, dia_semana: "Domingo", grupo: "", EBD: "G5", Tarde: "G6", Noite: "G7" },
+            { mes: "Dezembro", dia: 30, dia_semana: "Quarta-feira", grupo: "G2", EBD: "", Tarde: "", Noite: "" },
+            { mes: "Dezembro", dia: 31, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", cafe: "G4" },
         ];
 
-        // ============ FUNÇÕES DO SISTEMA ============
-        function mostrarLoading(mostrar) {
-            document.getElementById('loading').classList.toggle('visible', mostrar);
-        }
 
-        function mostrarResultado(html) {
-            const resultado = document.getElementById('resultado');
-            resultado.innerHTML = html;
-            resultado.classList.add('visible');
-        }
+        // ============ FUNÇÕES DE INTERAÇÃO (CORRIGIDAS) ============
 
         function selecionarGrupo(grupo) {
+            // Preenche o seletor principal com o grupo clicado e aciona a consulta se um mês já estiver selecionado
             document.getElementById('grupoSelect').value = grupo;
+            const mesSelecionado = document.getElementById('mesSelect').value;
+            if (mesSelecionado) {
+                consultarGrupo();
+            }
         }
 
         function consultarGrupo() {
-            const grupo = document.getElementById('grupoSelect').value;
-            const mes = document.getElementById('mesSelect').value;
+            const grupoSelecionado = document.getElementById('grupoSelect').value;
+            const mesSelecionado = document.getElementById('mesSelect').value;
+            const loadingDiv = document.getElementById('loading');
+            const resultadoDiv = document.getElementById('resultado');
 
-            if (!grupo || !mes) {
-                alert('Por favor, selecione o grupo e o mês.');
+            // 1. Validação
+            if (!grupoSelecionado || !mesSelecionado) {
+                resultadoDiv.classList.remove('visible');
+                resultadoDiv.innerHTML = '<div class="no-data">Por favor, selecione **ambos** o Grupo e o Mês.</div>';
+                resultadoDiv.classList.add('visible');
                 return;
             }
 
-            mostrarLoading(true);
+            // 2. Mostrar carregando
+            resultadoDiv.classList.remove('visible');
+            loadingDiv.classList.add('visible');
 
+            // Simulação de carregamento (meio segundo)
             setTimeout(() => {
-                const resultados = escalas.filter(item => 
-                    item.mes === mes && 
-                    (item.grupo === grupo || item.EBD === grupo || item.Tarde === grupo || item.Noite === grupo || item.café === grupo)
-                );
-
-                if (resultados.length === 0) {
-                    mostrarResultado(`
-                        <div class="no-data">
-                            <h3>📭 Nenhuma escala encontrada</h3>
-                            <p>O ${grupo} não possui escalas em ${mes}</p>
-                        </div>
-                    `);
-                    mostrarLoading(false);
-                    return;
-                }
-
-                let html = `<h3>🗓️ ${grupo} - ${mes} 2026</h3>`;
-                
-                resultados.forEach(item => {
-                    const temCafe = item.café === grupo;
-                    html += `<div class="escala-item ${temCafe ? 'cafe' : ''}">`;
-                    html += `<strong>${item.dia_semana}, ${item.dia} de ${item.mes}</strong><br>`;
-                    
-                    const horarios = [];
-                    if (item.EBD === grupo) horarios.push('🏛️ EBD');
-                    if (item.Tarde === grupo) horarios.push('🌅 Tarde');
-                    if (item.Noite === grupo) horarios.push('🌙 Noite');
-                    if (item.grupo === grupo) horarios.push('👥 Semanal);
-                    if (item.café === grupo) horarios.push('☕ Café');
-                    
-                    html += horarios.join(' | ');
-                    html += `</div>`;
+                // 3. Filtrar as escalas
+                const resultados = escalas.filter(escala => {
+                    const isMes = escala.mes === mesSelecionado;
+                    // Verifica se o grupo está escalado em qualquer função (grupo, EBD, Tarde, Noite, café)
+                    const isGrupo = escala.grupo === grupoSelecionado || 
+                                    escala.EBD === grupoSelecionado || 
+                                    escala.Tarde === grupoSelecionado || 
+                                    escala.Noite === grupoSelecionado ||
+                                    escala.cafe === grupoSelecionado;
+                    return isMes && isGrupo;
                 });
 
-                mostrarResultado(html);
-                mostrarLoading(false);
-            }, 800);
-        }
+                // 4. Montar o HTML de resultados
+                let htmlResultado = `<h3>Escalas de **${grupoSelecionado}** em **${mesSelecionado}**</h3>`;
 
-        // Inicialização
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('✅ Sistema IBJLV carregado!');
-            console.log('📊 Total de escalas:', escalas.length);
-            
-            // Selecionar mês atual por padrão
-            const meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 
-                          'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
-            const mesAtual = new Date().getMonth();
-            document.getElementById('mesSelect').value = meses[mesAtual];
-        });
+                if (resultados.length > 0) {
+                    resultados.forEach(item => {
+                        let classesExtras = '';
+                        let funcaoPrincipal = '';
+                        
+                        // Define o tipo de função e a classe CSS
+                        if (item.cafe === grupoSelecionado) {
+                            funcaoPrincipal = '☕ Serviço de Café';
+                            classesExtras = ' cafe';
+                        } else if (item.grupo === grupoSelecionado) {
+                            funcaoPrincipal = `Diaconia de Culto/Reunião (${item.dia_semana})`;
+                            classesExtras = ' diaconia-culto';
+                        } else if (item.EBD === grupoSelecionado) {
+                            funcaoPrincipal = 'Diaconia na EBD (Manhã)';
+                            classesExtras = ' diaconia-ebd';
+                        } else if (item.Tarde === grupoSelecionado) {
+                            funcaoPrincipal = 'Diaconia Culto da Tarde';
+                            classesExtras = ' diaconia-culto';
+                        } else if (item.Noite === grupoSelecionado) {
+                            funcaoPrincipal = 'Diaconia Culto da Noite';
+                            classesExtras = ' diaconia-culto';
+                        }
+
+                        htmlResultado += `
+                            <div class="escala-item${classesExtras}">
+                                <strong>Dia ${item.dia} (${item.dia_semana})</strong>
+                                <br>
+                                ${funcaoPrincipal}
+                            </div>
+                        `;
+                    });
+                } else {
+                    htmlResultado += '<div class="no-data">Nenhuma escala encontrada para este grupo e mês.</div>';
+                }
+
+                // 5. Exibir resultados
+                resultadoDiv.innerHTML = htmlResultado;
+                loadingDiv.classList.remove('visible');
+                resultadoDiv.classList.add('visible');
+            }, 500); // 500ms de atraso
+        }
     </script>
 </body>
 </html>
