@@ -593,7 +593,7 @@
                 });
 
                 // 4. Montar o HTML de resultados
-                let htmlResultado = `<h3>Escalas de **${grupoSelecionado}** em **${mesSelecionado}**</h3>`;
+                let htmlResultado = `<h3>Escalas de ${grupoSelecionado} em ${mesSelecionado}</h3>`;
 
                 if (resultados.length > 0) {
                     resultados.forEach(item => {
@@ -605,16 +605,16 @@
                             funcaoPrincipal = '☕ Café das Mulhres';
                             classesExtras = ' cafe';
                         } else if (item.grupo === grupoSelecionado) {
-                            funcaoPrincipal = `Diaconia de Culto (${item.dia_semana})`;
+                            funcaoPrincipal = `Servindo no Culto (${item.dia_semana})`;
                             classesExtras = ' diaconia-culto';
                         } else if (item.EBD === grupoSelecionado) {
-                            funcaoPrincipal = 'Diaconia na EBD (Manhã)';
+                            funcaoPrincipal = 'Servindo na EBD (Manhã)';
                             classesExtras = ' diaconia-ebd';
                         } else if (item.Tarde === grupoSelecionado) {
-                            funcaoPrincipal = 'Diaconia Culto da Tarde';
+                            funcaoPrincipal = 'Servindo no Culto da Tarde';
                             classesExtras = ' diaconia-culto';
                         } else if (item.Noite === grupoSelecionado) {
-                            funcaoPrincipal = 'Diaconia Culto da Noite';
+                            funcaoPrincipal = 'Servindo no da Noite';
                             classesExtras = ' diaconia-culto';
                         }
 
