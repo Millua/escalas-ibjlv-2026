@@ -670,84 +670,89 @@
             }
         }
 
-        function consultarGrupo() {
-            const grupoSelecionado = document.getElementById('grupoSelect').value;
-            const mesSelecionado = document.getElementById('mesSelect').value;
-            const loadingDiv = document.getElementById('loading');
-            const resultadoDiv = document.getElementById('resultado');
+          =// FUNÇÃO CORRIGIDA PARA BAIXAR A ESCALA
+function baixarEscala() {
+    const grupo = document.getElementById('grupoSelect').value;
+    const mes = document.getElementById('mesSelect').value;
+    
+    if (!grupo || !mes) {
+        alert('❌ Por favor, selecione um grupo e mês antes de baixar.');
+        return;
+    }
+    
+    const nomeArquivo = `Escala_${grupo}_${mes}_IBJLV.png`;
+    const elemento = document.getElementById('resultado');
+    const botao = document.getElementById('botaoDownload');
 
-            if (!grupoSelecionado || !mesSelecionado) {
-                resultadoDiv.classList.remove('visible');
-                resultadoDiv.innerHTML = '<div class="no-data">Por favor, selecione **ambos** o Grupo e o Mês.</div>';
-                resultadoDiv.classList.add('visible');
-                return;
-            }
+    // Verifica se há dados para baixar
+    const escalaItems = elemento.querySelectorAll('.escala-item');
+    if (escalaItems.length === 0) {
+        alert('❌ Não há escalas para baixar.');
+        return;
+    }
 
-            // Esconde resultados anteriores e mostra o novo loader de peixe
-            resultadoDiv.classList.remove('visible');
-            loadingDiv.classList.add('visible');
+    // Salva o estado original (apenas classes, para restaurar visibilidade)
+    const originalClasses = elemento.className;
+    
+    // Altera a classe e esconde o botão
+    elemento.className = 'resultado print-mode';
+    if(botao) {
+        botao.style.display = 'none'; // Esconde o botão para a captura
+    }
 
-            // Atraso de 2 segundos para o peixe completar o traço
-            setTimeout(() => {
-                const resultados = escalas.filter(escala => {
-                    const isMes = escala.mes === mesSelecionado;
-                    const isGrupo = escala.grupo === grupoSelecionado || 
-                                    escala.EBD === grupoSelecionado || 
-                                    escala.Tarde === grupoSelecionado || 
-                                    escala.Noite === grupoSelecionado ||
-                                    escala.cafe === grupoSelecionado;
-                    return isMes && isGrupo;
-                });
-
-                // Conteúdo do cabeçalho
-                let conteudoEscalas = `<h3>Escalas de **${grupoSelecionado}** em **${mesSelecionado}**</h3>`;
-
-                if (resultados.length > 0) {
-                    resultados.forEach(item => {
-                        let classesExtras = '';
-                        let funcaoPrincipal = '';
-                        
-                        // NOVO: Altera o texto do café para "Café das Mulheres"
-                        if (item.cafe === grupoSelecionado) {
-                            funcaoPrincipal = '☕ Café das Mulheres';
-                            classesExtras = ' cafe';
-                        } else if (item.grupo === grupoSelecionado) {
-                            funcaoPrincipal = `De serviço no Culto (${item.dia_semana})`; 
-                            classesExtras = ' diaconia-culto';
-                        } else if (item.EBD === grupoSelecionado) {
-                            funcaoPrincipal = 'De serviço na EBD (Manhã)';
-                            classesExtras = ' diaconia-ebd';
-                        } else if (item.Tarde === grupoSelecionado) {
-                            funcaoPrincipal = 'De serviço no Culto da Tarde';
-                            classesExtras = ' diaconia-culto';
-                        } else if (item.Noite === grupoSelecionado) {
-                            funcaoPrincipal = 'De serviço no Culto da Noite';
-                            classesExtras = ' diaconia-culto';
-                        }
-                        
-                        conteudoEscalas += `
-                            <div class="escala-item${classesExtras}">
-                                <strong>Dia ${item.dia} (${item.dia_semana})</strong>
-                                <br>
-                                <div class="funcao-texto">${funcaoPrincipal}</div>
-                            </div>
-                        `;
-                    });
-                    
-                    // Substitui o conteúdo da div de resultado
-                    resultadoDiv.innerHTML = conteudoEscalas + `<button class="download-btn" id="botaoDownload" onclick="baixarEscala()">⬇️ BAIXAR PARA WHATSAPP</button>`;
-                    
-                } else {
-                    // Adiciona o no-data e o botão escondido para manter a estrutura
-                    resultadoDiv.innerHTML = '<div class="no-data">Nenhuma escala encontrada para este grupo e mês.</div>';
-                    resultadoDiv.innerHTML += `<button class="download-btn" id="botaoDownload" onclick="baixarEscala()" style="display:none">⬇️ BAIXAR PARA WHATSAPP</button>`;
+    // Delay para o CSS ser aplicado
+    setTimeout(() => {
+        html2canvas(elemento, {
+            scale: 3, 
+            useCORS: true,
+            logging: false,
+            backgroundColor: '#ffffff',
+            width: elemento.scrollWidth,
+            height: elemento.scrollHeight,
+            onclone: function(clonedDoc) {
+                const clonedElement = clonedDoc.getElementById('resultado');
+                if (clonedElement) {
+                    clonedElement.className = 'resultado print-mode';
+                    const clonedButton = clonedDoc.getElementById('botaoDownload');
+                    if (clonedButton) {
+                        clonedButton.style.display = 'none';
+                    }
                 }
+            }
+        }).then(canvas => {
+            // Lógica de download
+            const link = document.createElement('a');
+            link.download = nomeArquivo;
+            link.href = canvas.toDataURL('image/png', 1.0);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
 
-                // Esconder carregamento e exibir resultados
-                loadingDiv.classList.remove('visible');
-                resultadoDiv.classList.add('visible');
-            }, 2000); // 2000ms de atraso
-        }
+            // 🌟 CORREÇÃO DE RESTAURAÇÃO: Restaura a classe de visibilidade
+            elemento.className = originalClasses; 
+
+            // Busca o botão no DOM e o torna visível
+            const botaoRestaurado = document.getElementById('botaoDownload');
+            if (botaoRestaurado) {
+                botaoRestaurado.style.display = 'flex'; 
+            }
+            
+            alert('✅ Download da escala iniciado! Agora você pode compartilhar no WhatsApp.');
+            
+        }).catch(error => {
+            console.error('Erro ao gerar a imagem:', error);
+            alert('❌ Erro ao tentar baixar a escala. Tente novamente.');
+            
+            // Restaura em caso de erro
+            elemento.className = originalClasses;
+            const botaoRestaurado = document.getElementById('botaoDownload');
+            if (botaoRestaurado) {
+                botaoRestaurado.style.display = 'flex'; 
+            }
+        });
+    }, 300);
+}
+
 
 
         // FUNÇÃO CORRIGIDA PARA BAIXAR A ESCALA (SUA VERSÃO OTIMIZADA COM RESTAURAÇÃO DE DOM)
