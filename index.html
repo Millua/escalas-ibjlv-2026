@@ -8,6 +8,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     
     <style>
+        /* Estilos Globais */
         * {
             margin: 0;
             padding: 0;
@@ -99,10 +100,6 @@
             color: white;
         }
 
-        input::placeholder {
-            color: #aaa;
-        }
-
         button {
             width: 100%;
             padding: 15px;
@@ -158,7 +155,7 @@
             transform: scale(1.05);
         }
 
-        /* --- LOADER PEIXE BRANCO --- */
+        /* LOADER */
         .loading {
             text-align: center;
             padding: 20px;
@@ -191,7 +188,7 @@
                 stroke-dashoffset: 0;
             }
         }
-        /* --- FIM DO LOADER --- */
+        /* FIM DO LOADER */
 
         .resultado {
             /* Fundo escuro padrão para a tela */
@@ -204,38 +201,6 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
-        /* NOVO: Estilos de PRÉ-PRINT para contraste e qualidade (do seu código) */
-        .resultado.print-mode {
-            background: #f5f5f5 !important; /* Fundo claro para o PNG */
-            color: #000 !important;
-            padding: 15px !important; 
-            border: none !important;
-            box-shadow: none !important;
-        }
-        
-        /* NOVO: Garantir que o texto fique legível no print (do seu código) */
-        .resultado.print-mode * {
-            color: #000 !important;
-            font-weight: 500 !important;
-        }
-
-        /* NOVO: Header mais destacado (do seu código) */
-        .resultado.print-mode h3 {
-            color: #5b2c7e !important; /* Roxo principal para o cabeçalho, mais escuro */
-            font-size: 1.6em !important;
-            margin-bottom: 20px !important;
-            padding-bottom: 10px !important;
-            border-bottom: 2px solid #5b2c7e !important;
-        }
-        
-        /* NOVO: Melhor contraste para os itens (do seu código) */
-        .resultado.print-mode .escala-item {
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
-            margin: 8px 0 !important;
-        }
-        
-        /* Fim dos estilos do print */
-
         .resultado.visible {
             display: block;
             animation: fadeIn 0.5s ease;
@@ -248,7 +213,7 @@
             font-size: 1.4em;
         }
 
-        /* Fundo e cor do item (ajustes de cores de fundo mais claros para o print mode) */
+        /* Estilos Padrão dos Itens */
         .escala-item {
             background: rgba(255, 255, 255, 0.15);
             margin: 10px 0;
@@ -259,44 +224,86 @@
             font-size: 0.95em; 
         }
         
-        .resultado.print-mode .escala-item {
-             color: #222 !important; /* Cor de texto do item, cinza escuro */
-             line-height: 1.4;
-        }
-        
-        /* Estilos dos tipos de função */
+        /* Estilos dos tipos de função (TELA ESCURA) */
         .escala-item.cafe {
             border-left-color: #ffc107; /* Amarelo */
             background: rgba(255, 193, 7, 0.1);
-        }
-        
-        .resultado.print-mode .escala-item.cafe {
-             background: #fff8e1 !important; /* Amarelo muito claro */
         }
         
         .escala-item.diaconia-culto {
             border-left-color: #764ba2; /* Roxo */
         }
         
-        .resultado.print-mode .escala-item.diaconia-culto {
-             background: #f3f3ff !important; /* Roxo muito claro */
-        }
-        
         .escala-item.diaconia-ebd {
             border-left-color: #667eea; /* Azul */
         }
         
+        /* NOVO: ESTILOS CORRIGIDOS PARA O MODO DE IMPRESSÃO (SEU CÓDIGO) */
+        .resultado.print-mode {
+            background: #ffffff !important; /* FUNDO BRANCO SÓLIDO */
+            color: #000000 !important; /* TEXTO PRETO */
+            padding: 20px !important;
+            border: 2px solid #5b2c7e !important; /* BORDA ROXA PARA DESTAQUE */
+            border-radius: 10px !important;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1) !important;
+            backdrop-filter: none !important;
+        }
+
+        .resultado.print-mode h3 {
+            color: #5b2c7e !important; /* ROXO ESCURO */
+            font-size: 1.6em !important;
+            font-weight: bold !important;
+            text-align: center !important;
+            margin-bottom: 20px !important;
+            padding-bottom: 10px !important;
+            border-bottom: 2px solid #5b2c7e !important;
+        }
+
+        .resultado.print-mode .escala-item {
+            background: #f8f9fa !important; /* FUNDO CINZA MUITO CLARO */
+            color: #000000 !important; /* TEXTO PRETO */
+            border-left: 4px solid #5b2c7e !important; /* BORDA ROXA */
+            margin: 10px 0 !important;
+            padding: 12px 15px !important;
+            border-radius: 8px !important;
+            font-weight: 500 !important;
+        }
+
+        .resultado.print-mode .escala-item strong {
+            color: #5b2c7e !important; /* ROXO PARA AS DATAS */
+            font-weight: bold !important;
+            font-size: 1.1em !important;
+        }
+
+        .resultado.print-mode .funcao-texto {
+            color: #000000 !important; /* TEXTO PRETO PARA AS FUNÇÕES */
+            font-weight: 500 !important;
+            margin-top: 5px !important;
+        }
+
+        /* ESTILOS ESPECÍFICOS PARA TIPOS DE SERVIÇO NO PRINT */
+        .resultado.print-mode .escala-item.cafe {
+            background: #fff3cd !important; /* AMARELO BEM CLARO */
+            border-left-color: #ffc107 !important; /* AMARELO */
+        }
+
+        .resultado.print-mode .escala-item.diaconia-culto {
+            background: #e7f3ff !important; /* AZUL BEM CLARO */
+            border-left-color: #667eea !important; /* AZUL */
+        }
+
         .resultado.print-mode .escala-item.diaconia-ebd {
-             background: #e9e9ff !important; /* Azul muito claro */
+            background: #f0e7ff !important; /* ROXO BEM CLARO */
+            border-left-color: #764ba2 !important; /* ROXO */
         }
 
-
-        .escala-item:hover {
-            transform: translateX(5px);
-            background: rgba(255, 255, 255, 0.2);
+        /* GARANTIR QUE TODO O TEXTO SEJA VISÍVEL */
+        .resultado.print-mode * {
+            color: #000000 !important;
+            text-shadow: none !important;
         }
-        /* Fim dos estilos do item */
-        
+        /* FIM DOS NOVOS ESTILOS */
+
         .no-data {
             text-align: center;
             padding: 30px;
@@ -417,10 +424,7 @@
         </div>
 
         <div class="resultado" id="resultado">
-            <button class="download-btn" id="botaoDownload" onclick="baixarEscala()">
-                ⬇️ BAIXAR PARA WHATSAPP
-            </button>
-        </div>
+            </div>
     </div>
 
     <div class="footer">
@@ -432,7 +436,7 @@
     <script>
         // ============ DADOS COMPLETOS DAS ESCALAS 2026 (MANTIDOS INTACTOS) ============
         const escalas = [
-            // ==================== JANEIRO ====================
+            // ... (Os dados das escalas permanecem aqui) ...
             { mes: "Janeiro", dia: 2, dia_semana: "Sexta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "" },
             { mes: "Janeiro", dia: 3, dia_semana: "Sábado", grupo: "G2", EBD: "", Tarde: "", Noite: "" },
             { mes: "Janeiro", dia: 4, dia_semana: "Domingo", grupo: "", EBD: "G6", Tarde: "G7", Noite: "G8" },
@@ -671,11 +675,9 @@
             const mesSelecionado = document.getElementById('mesSelect').value;
             const loadingDiv = document.getElementById('loading');
             const resultadoDiv = document.getElementById('resultado');
-            const botaoDownload = document.getElementById('botaoDownload');
 
             if (!grupoSelecionado || !mesSelecionado) {
                 resultadoDiv.classList.remove('visible');
-                botaoDownload.style.display = 'none';
                 resultadoDiv.innerHTML = '<div class="no-data">Por favor, selecione **ambos** o Grupo e o Mês.</div>';
                 resultadoDiv.classList.add('visible');
                 return;
@@ -683,7 +685,6 @@
 
             // Esconde resultados anteriores e mostra o novo loader de peixe
             resultadoDiv.classList.remove('visible');
-            botaoDownload.style.display = 'none';
             loadingDiv.classList.add('visible');
 
             // Atraso de 2 segundos para o peixe completar o traço
@@ -699,14 +700,14 @@
                 });
 
                 // Conteúdo do cabeçalho
-                let conteudoEscalas = `<h3>Escalas de ${grupoSelecionado} em ${mesSelecionado}</h3>`;
+                let conteudoEscalas = `<h3>Escalas de **${grupoSelecionado}** em **${mesSelecionado}**</h3>`;
 
                 if (resultados.length > 0) {
                     resultados.forEach(item => {
                         let classesExtras = '';
                         let funcaoPrincipal = '';
                         
-                        // Novo texto para as funções (REMOVIDO "Reunião")
+                        // NOVO: Altera o texto do café para "Café das Mulheres"
                         if (item.cafe === grupoSelecionado) {
                             funcaoPrincipal = '☕ Café das Mulheres';
                             classesExtras = ' cafe';
@@ -724,7 +725,6 @@
                             classesExtras = ' diaconia-culto';
                         }
                         
-                        // Adicionando uma div com a classe 'funcao-texto' para facilitar a estilização no print
                         conteudoEscalas += `
                             <div class="escala-item${classesExtras}">
                                 <strong>Dia ${item.dia} (${item.dia_semana})</strong>
@@ -736,10 +736,11 @@
                     
                     // Substitui o conteúdo da div de resultado
                     resultadoDiv.innerHTML = conteudoEscalas + `<button class="download-btn" id="botaoDownload" onclick="baixarEscala()">⬇️ BAIXAR PARA WHATSAPP</button>`;
-                    document.getElementById('botaoDownload').style.display = 'flex'; 
                     
                 } else {
-                    resultadoDiv.innerHTML = '<div class="no-data">Nenhuma escala encontrada para este grupo e mês.</div>' + `<button class="download-btn" id="botaoDownload" onclick="baixarEscala()" style="display:none">⬇️ BAIXAR PARA WHATSAPP</button>`;
+                    // Adiciona o no-data e o botão escondido para manter a estrutura
+                    resultadoDiv.innerHTML = '<div class="no-data">Nenhuma escala encontrada para este grupo e mês.</div>';
+                    resultadoDiv.innerHTML += `<button class="download-btn" id="botaoDownload" onclick="baixarEscala()" style="display:none">⬇️ BAIXAR PARA WHATSAPP</button>`;
                 }
 
                 // Esconder carregamento e exibir resultados
@@ -749,7 +750,7 @@
         }
 
 
-        // FUNÇÃO PARA BAIXAR A ESCALA (IMAGEM PNG) - VERSÃO OTIMIZADA (Seu código)
+        // FUNÇÃO CORRIGIDA PARA BAIXAR A ESCALA (SUA VERSÃO OTIMIZADA COM RESTAURAÇÃO DE DOM)
         function baixarEscala() {
             const grupo = document.getElementById('grupoSelect').value;
             const mes = document.getElementById('mesSelect').value;
@@ -770,60 +771,63 @@
                 return;
             }
 
-            // Esconde o botão e aplica estilo de impressão
+            // Salva o estado original
+            const originalClasses = elemento.className;
+            const originalHTML = elemento.innerHTML;
+            
+            // Remove todas as classes e aplica apenas o estilo de print
+            // NOTA: É importante que o resultado final da consultaGrupo() seja apenas 'resultado visible'
+            elemento.className = 'resultado print-mode';
+            
+            // Esconde o botão
             if(botao) {
                 botao.style.display = 'none';
             }
-            elemento.classList.add('print-mode');
 
-            // Pequeno delay para garantir que o CSS seja aplicado
+            // Aumentamos o delay para 300ms, dando certeza que o CSS é aplicado (melhoria do seu código)
             setTimeout(() => {
                 html2canvas(elemento, {
-                    scale: 3, // Aumenta a qualidade para 3x
+                    scale: 3, // ALTA QUALIDADE
                     useCORS: true,
                     logging: false,
-                    backgroundColor: '#f5f5f5',
+                    backgroundColor: '#ffffff', // Fundo BRANCO sólido
                     width: elemento.scrollWidth,
                     height: elemento.scrollHeight,
-                    onclone: (clonedDoc) => {
+                    onclone: function(clonedDoc) {
                         const clonedElement = clonedDoc.getElementById('resultado');
-                        const clonedButton = clonedDoc.getElementById('botaoDownload');
-                        
                         if (clonedElement) {
-                            clonedElement.classList.add('print-mode');
-                        }
-                        if (clonedButton) {
-                            clonedButton.style.display = 'none';
+                            clonedElement.className = 'resultado print-mode';
+                            const clonedButton = clonedDoc.getElementById('botaoDownload');
+                            if (clonedButton) {
+                                clonedButton.style.display = 'none';
+                            }
                         }
                     }
                 }).then(canvas => {
-                    // Otimização da imagem
-                    canvas.toBlob((blob) => {
-                        const url = URL.createObjectURL(blob);
-                        const link = document.createElement('a');
-                        
-                        link.href = url;
-                        link.download = nomeArquivo;
-                        link.style.display = 'none';
-                        
-                        document.body.appendChild(link);
-                        link.click();
-                        
-                        // Limpeza
-                        setTimeout(() => {
-                            document.body.removeChild(link);
-                            URL.revokeObjectURL(url);
-                        }, 100);
-                        
-                    }, 'image/png', 0.9); // Qualidade 90%
+                    // Cria um link de download (DataURL é mais robusto que toBlob para essa finalidade)
+                    const link = document.createElement('a');
+                    link.download = nomeArquivo;
+                    link.href = canvas.toDataURL('image/png', 1.0); // Qualidade máxima de PNG
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
 
                     // Restaura o estado original
-                    if(botao) {
-                        setTimeout(() => {
-                            botao.style.display = 'flex';
-                        }, 500);
+                    elemento.className = originalClasses;
+                    elemento.innerHTML = originalHTML;
+                    
+                    // Recria o botão de download dinamicamente, garantindo que o evento funcione
+                    const novoBotao = document.createElement('button');
+                    novoBotao.className = 'download-btn';
+                    novoBotao.id = 'botaoDownload';
+                    novoBotao.onclick = baixarEscala; // Reconecta a função
+                    novoBotao.innerHTML = '⬇️ BAIXAR PARA WHATSAPP';
+                    novoBotao.style.display = 'flex';
+                    // É preciso garantir que o elemento restaurado o contenha
+                    const elementoRestaurado = document.getElementById('resultado'); 
+                    if (elementoRestaurado) {
+                        elementoRestaurado.appendChild(novoBotao);
                     }
-                    elemento.classList.remove('print-mode');
                     
                     alert('✅ Download da escala iniciado! Agora você pode compartilhar no WhatsApp.');
                     
@@ -832,12 +836,10 @@
                     alert('❌ Erro ao tentar baixar a escala. Tente novamente.');
                     
                     // Restaura em caso de erro
-                    if(botao) {
-                        botao.style.display = 'flex';
-                    }
-                    elemento.classList.remove('print-mode');
+                    elemento.className = originalClasses;
+                    elemento.innerHTML = originalHTML;
                 });
-            }, 100);
+            }, 300);
         }
     </script>
 </body>
