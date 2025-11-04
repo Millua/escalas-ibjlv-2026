@@ -197,7 +197,7 @@
         .footer {
             text-align: center;
             padding: 30px 20px;
-            color: #666;
+            color: #667eea;
             font-size: 0.9em;
             margin-top: 40px;
         }
@@ -371,18 +371,23 @@
 
             // ==================== ABRIL ====================
             { mes: "Abril", dia: 1, dia_semana: "Quarta-feira", grupo: "G2", EBD: "", Tarde: "", Noite: "" },
-            { mes: "Abril", dia: 3, dia_semana: "Sexta-feira", grupo: "G4", EBD: "", Tarde: "", Noite: "" },
+            { mes: "Abril", dia: 3, dia_semana: "Sexta-feira", grupo: "G3", EBD: "", Tarde: "", Noite: "" },
+            { mes: "Abril", dia: 4, dia_semana: "Sábado", grupo: "G4", EBD: "", Tarde: "", Noite: "" },
             { mes: "Abril", dia: 5, dia_semana: "Domingo", grupo: "", EBD: "G7", Tarde: "G8", Noite: "G1" },
             { mes: "Abril", dia: 8, dia_semana: "Quarta-feira", grupo: "G3", EBD: "", Tarde: "", Noite: "" },
-            { mes: "Abril", dia: 10, dia_semana: "Sexta-feira", grupo: "G5", EBD: "", Tarde: "", Noite: "" },
+            { mes: "Abril", dia: 10, dia_semana: "Sexta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "" },
+            { mes: "Abril", dia: 11, dia_semana: "Sábado", grupo: "G7", EBD: "", Tarde: "", Noite: "" },
             { mes: "Abril", dia: 12, dia_semana: "Domingo", grupo: "", EBD: "G2", Tarde: "G5", Noite: "G4" },
             { mes: "Abril", dia: 15, dia_semana: "Quarta-feira", grupo: "G5", EBD: "", Tarde: "", Noite: "" },
-            { mes: "Abril", dia: 17, dia_semana: "Sexta-feira", grupo: "G8", EBD: "", Tarde: "", Noite: "" },
+            { mes: "Abril", dia: 17, dia_semana: "Sexta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "" },
+            { mes: "Abril", dia: 18, dia_semana: "Sábado", grupo: "G2", EBD: "", Tarde: "", Noite: "" },
             { mes: "Abril", dia: 19, dia_semana: "Domingo", grupo: "", EBD: "G6", Tarde: "G7", Noite: "G3" },
             { mes: "Abril", dia: 22, dia_semana: "Quarta-feira", grupo: "G8", EBD: "", Tarde: "", Noite: "" },
-            { mes: "Abril", dia: 24, dia_semana: "Sexta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "" },
+            { mes: "Abril", dia: 24, dia_semana: "Sexta-feira", grupo: "G4", EBD: "", Tarde: "", Noite: "" },
+            { mes: "Abril", dia: 25, dia_semana: "Sábado", grupo: "G5", EBD: "", Tarde: "", Noite: "" },
             { mes: "Abril", dia: 26, dia_semana: "Domingo", grupo: "", EBD: "G8", Tarde: "G1", Noite: "G2" },
             { mes: "Abril", dia: 29, dia_semana: "Quarta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "" },
+            { mes: "Abril", dia: 30, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", café: "G4" },
 
             // ==================== MAIO ====================
             { mes: "Maio", dia: 1, dia_semana: "Sexta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "" },
@@ -586,7 +591,7 @@
                     if (item.EBD === grupo) horarios.push('🏛️ EBD');
                     if (item.Tarde === grupo) horarios.push('🌅 Tarde');
                     if (item.Noite === grupo) horarios.push('🌙 Noite');
-                    if (item.grupo === grupo) horarios.push('👥 Grupo');
+                    if (item.grupo === grupo) horarios.push('👥 Semanal);
                     if (item.café === grupo) horarios.push('☕ Café');
                     
                     html += horarios.join(' | ');
