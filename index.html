@@ -709,7 +709,7 @@
             return new Date(2026, mesIndex, dia); 
         }
 
-        // Função principal para checar feriados ao redor da data da escala
+               // Função principal para checar feriados ao redor da data da escala
         function checarAlertasFeriado(item) {
             const diaDaEscala = formatDate(item.mes, item.dia);
             let alertas = [];
@@ -722,31 +722,35 @@
                 classes += ' feriado-alerta';
             }
             
-            // 2. Feriado no dia anterior (Véspera)
+            // 2. Feriado no dia anterior (VÉSPERA da escala)
             const diaAnterior = new Date(diaDaEscala);
             diaAnterior.setDate(diaDaEscala.getDate() - 1);
             
             // Verifica se a data anterior ainda é em 2026 (Para evitar underflow de Janeiro)
             if (diaAnterior.getFullYear() === 2026) { 
                 const nomeMesAnterior = new Date(2026, diaAnterior.getMonth()).toLocaleString('pt-BR', { month: 'long', timeZone: 'UTC' });
-                const feriadoAnterior = getFeriado(nomeMesAnterior.charAt(0).toUpperCase() + nomeMesAnterior.slice(1), diaAnterior.getDate());
+                const mesAnterior = nomeMesAnterior.charAt(0).toUpperCase() + nomeMesAnterior.slice(1);
+                const feriadoAnterior = getFeriado(mesAnterior, diaAnterior.getDate());
 
-                if (feriadoAnterior && !feriadoNoDia) { // Alerta apenas se não for feriado no dia, para não duplicar.
-                    alertas.push(`⚠️ **Véspera de Feriado:** ${feriadoAnterior} (Dia seguinte é feriado)`);
+                // SE O DIA ANTERIOR É FERIADO, ENTÃO O DIA DA ESCALA É O 'DIA APÓS FERIADO'
+                if (feriadoAnterior && !feriadoNoDia) { 
+                    alertas.push(`⚠️ **Dia após Feriado:** ${feriadoAnterior} (Dia anterior foi feriado)`);
                 }
             }
             
-            // 3. Feriado no dia seguinte (Dia seguinte feriado)
+            // 3. Feriado no dia seguinte (VÉSPERA da escala)
             const diaSeguinte = new Date(diaDaEscala);
             diaSeguinte.setDate(diaDaEscala.getDate() + 1);
             
             // Verifica se a data seguinte ainda é em 2026
             if (diaSeguinte.getFullYear() === 2026) {
                 const nomeMesSeguinte = new Date(2026, diaSeguinte.getMonth()).toLocaleString('pt-BR', { month: 'long', timeZone: 'UTC' });
-                const feriadoSeguinte = getFeriado(nomeMesSeguinte.charAt(0).toUpperCase() + nomeMesSeguinte.slice(1), diaSeguinte.getDate());
+                const mesSeguinte = nomeMesSeguinte.charAt(0).toUpperCase() + nomeMesSeguinte.slice(1);
+                const feriadoSeguinte = getFeriado(mesSeguinte, diaSeguinte.getDate());
                 
+                // SE O DIA SEGUINTE É FERIADO, ENTÃO O DIA DA ESCALA É A 'VÉSPERA DE FERIADO'
                 if (feriadoSeguinte && !feriadoNoDia) {
-                    alertas.push(`⚠️ **Dia após Feriado:** ${feriadoSeguinte} (Dia anterior foi feriado)`);
+                    alertas.push(`⚠️ **Véspera de Feriado:** ${feriadoSeguinte} (Dia seguinte é feriado)`);
                 }
             }
             
