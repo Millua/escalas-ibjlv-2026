@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Escalas 2026 - IBJLV</title>
-    
     <style>
-        /* Estilos Globais */
+        /* ===== ESTILOS GLOBAIS ===== */
         * {
             margin: 0;
             padding: 0;
@@ -21,6 +20,7 @@
             background: linear-gradient(135deg, #000000 0%, #1a1a2e 50%, #16213e 100%);
         }
 
+        /* ===== CABEÇALHO ===== */
         .header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             padding: 30px 20px;
@@ -41,6 +41,7 @@
             margin-bottom: 15px;
         }
 
+        /* ===== CONTAINER PRINCIPAL ===== */
         .container {
             max-width: 500px;
             margin: 30px auto;
@@ -63,6 +64,7 @@
             color: #667eea;
         }
 
+        /* ===== FORMULÁRIO ===== */
         .input-group {
             margin-bottom: 20px;
         }
@@ -90,14 +92,20 @@
             border-color: #667eea;
             background: rgba(255, 255, 255, 0.15);
         }
-        
+
         select {
-             color: #aaa;
+            color: #aaa;
         }
+
         select:valid {
             color: white;
         }
 
+        input::placeholder {
+            color: #aaa;
+        }
+
+        /* ===== BOTÕES ===== */
         button {
             width: 100%;
             padding: 15px;
@@ -120,6 +128,16 @@
             box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
         }
 
+        .btn-print {
+            background: #4CAF50;
+            margin-top: 15px;
+        }
+
+        .btn-print:hover {
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+        }
+
+        /* ===== GRUPOS RÁPIDOS ===== */
         .quick-groups {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -144,20 +162,20 @@
             transform: scale(1.05);
         }
 
-        /* LOADER */
+        /* ===== LOADER ===== */
         .loading {
             text-align: center;
             padding: 20px;
-            display: none; 
+            display: none;
         }
 
         .loading.visible {
-            display: block; 
+            display: block;
         }
-        
+
         .fish-loader {
-            width: 150px; 
-            height: 67.5px; 
+            width: 150px;
+            height: 67.5px;
             margin: 20px auto;
         }
 
@@ -177,8 +195,8 @@
                 stroke-dashoffset: 0;
             }
         }
-        /* FIM DO LOADER */
 
+        /* ===== RESULTADOS ===== */
         .resultado {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
@@ -188,7 +206,7 @@
             display: none;
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
-        
+
         .resultado.visible {
             display: block;
             animation: fadeIn 0.5s ease;
@@ -201,80 +219,101 @@
             font-size: 1.4em;
         }
 
-        /* Estilos Padrão dos Itens (TELA ESCURA) */
+        /* ===== ITENS DA ESCALA ===== */
         .escala-item {
             background: rgba(255, 255, 255, 0.15);
             margin: 10px 0;
-            padding: 15px; 
+            padding: 15px;
             border-radius: 10px;
             border-left: 4px solid #4CAF50;
             transition: all 0.3s ease;
-            font-size: 0.95em; 
+            font-size: 0.95em;
         }
-        
-        /* Estilos dos tipos de função (TELA ESCURA) */
+
+        .escala-item:hover {
+            transform: translateX(5px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
         .escala-item.cafe {
-            border-left-color: #ffc107; /* Amarelo */
+            border-left-color: #ffc107;
             background: rgba(255, 193, 7, 0.1);
         }
-        
+
         .escala-item.diaconia-culto {
-            border-left-color: #764ba2; /* Roxo */
+            border-left-color: #764ba2;
         }
-        
+
         .escala-item.diaconia-ebd {
-            border-left-color: #667eea; /* Azul */
+            border-left-color: #667eea;
         }
 
         .escala-item.feriado-alerta {
-             /* Cor laranja para feriados */
-            border-left-color: #ff9800 !important; 
-            background: rgba(255, 152, 0, 0.1) !important; 
+            border-left-color: #ff9800 !important;
+            background: rgba(255, 152, 0, 0.1) !important;
         }
 
         .alerta-feriado {
             display: block;
-            color: #ff9800; /* Laranja */
+            color: #ff9800;
             font-weight: bold;
             margin-top: 5px;
             font-size: 0.9em;
         }
-        
-        /* ESTILOS DE IMPRESSÃO - ATIVAÇÃO VIA @media print */
+
+        .no-data {
+            text-align: center;
+            padding: 30px;
+            color: #ccc;
+            font-style: italic;
+        }
+
+        /* ===== RODAPÉ ===== */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #667eea;
+            font-size: 0.9em;
+            margin-top: 40px;
+            line-height: 1.6;
+        }
+
+        /* ===== ESTILOS DE IMPRESSÃO ===== */
         @media print {
-            /* Esconder elementos desnecessários na impressão */
-            .header, .consultas, .loading, .footer {
-                display: none;
+            .header, .consultas, .loading, .footer, button {
+                display: none !important;
             }
-            
-            body {
+
+            body, .container {
                 background: #ffffff !important;
                 color: #000000 !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                max-width: 100% !important;
             }
-            
+
             .container {
-                max-width: none;
-                margin: 0;
-                padding: 0;
+                margin: 0 !important;
+                padding: 0 !important;
             }
-            
+
             .resultado {
-                display: block;
-                /* Fundo BRANCO para impressão */
-                background: #ffffff !important; 
+                display: block !important;
+                background: #ffffff !important;
                 color: #000000 !important;
-                padding: 15px !important;
+                padding: 20px !important;
                 border: 2px solid #5b2c7e !important;
-                border-radius: 0 !important;
+                border-radius: 10px !important;
+                margin: 0 !important;
                 box-shadow: none !important;
-                margin-top: 0 !important;
             }
 
             .resultado h3 {
-                color: #5b2c7e !important; 
+                color: #5b2c7e !important;
                 font-size: 1.4em !important;
                 font-weight: bold !important;
                 border-bottom: 2px solid #5b2c7e !important;
+                padding-bottom: 10px !important;
             }
 
             .escala-item {
@@ -283,45 +322,47 @@
                 border-left-color: #5b2c7e !important;
                 border-radius: 5px !important;
             }
-            
+
             .escala-item.cafe {
                 background: #fff3cd !important;
                 border-left-color: #ffc107 !important;
             }
 
             .escala-item.feriado-alerta {
-                background: #ffe0b2 !important; /* Laranja mais claro para o print */
+                background: #ffe0b2 !important;
             }
 
             .alerta-feriado {
-                color: #d84315 !important; /* Laranja escuro para o print */
+                color: #d84315 !important;
             }
         }
-        
+
+        /* ===== ANIMAÇÕES ===== */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* ===== RESPONSIVIDADE ===== */
         @media (max-width: 600px) {
             .container {
                 margin: 20px auto;
                 padding: 0 15px;
             }
-            
+
             .consultas {
                 padding: 20px;
             }
-            
+
             .quick-groups {
                 grid-template-columns: repeat(4, 1fr);
             }
-            
+
             .group-btn {
                 padding: 10px 5px;
                 font-size: 14px;
             }
-            
+
             .church-name {
                 font-size: 1.5em;
             }
@@ -374,8 +415,7 @@
                 </div>
 
                 <button onclick="consultarGrupo()">BUSCAR ESCALAS</button>
-                
-                <button onclick="window.print()" style="background: #4CAF50; margin-top: 15px;">🖨️ Imprimir / Gerar PDF</button>
+                <button class="btn-print" onclick="imprimirEscala()">🖨️ Imprimir / Gerar PDF</button>
 
                 <div class="quick-groups">
                     <div class="group-btn" onclick="selecionarGrupo('G1')">G1</div>
@@ -411,41 +451,7 @@
     </div>
 
     <script>
-        // ============ FERIADOS RELEVANTES 2026 (Nacionais, Bahia e Jequié) - Datas e Dias da Semana de 2026 ============
-        const feriados2026 = [
-            // Janeiro
-            { mes: "Janeiro", dia: 1, dia_semana: "Quinta-feira", nome: "Confraternização Universal" },
-            // Fevereiro
-            { mes: "Fevereiro", dia: 16, dia_semana: "Segunda-feira", nome: "Carnaval (Ponto Facultativo)" },
-            { mes: "Fevereiro", dia: 17, dia_semana: "Terça-feira", nome: "Carnaval (Ponto Facultativo)" }, 
-            { mes: "Fevereiro", dia: 18, dia_semana: "Quarta-feira", nome: "Quarta-feira de Cinzas (Ponto Facultativo)" },
-            // Abril
-            { mes: "Abril", dia: 3, dia_semana: "Sexta-feira", nome: "Paixão de Cristo (Sexta-feira Santa)" },
-            { mes: "Abril", dia: 21, dia_semana: "Terça-feira", nome: "Tiradentes" },
-            // Maio
-            { mes: "Maio", dia: 1, dia_semana: "Sexta-feira", nome: "Dia do Trabalho" },
-            // Junho
-            { mes: "Junho", dia: 4, dia_semana: "Quinta-feira", nome: "Corpus Christi (Ponto Facultativo)" },
-            { mes: "Junho", dia: 13, dia_semana: "Sábado", nome: "Dia de Santo Antônio (Jequié - Municipal)" },
-            { mes: "Junho", dia: 24, dia_semana: "Quarta-feira", nome: "São João (Jequié - Municipal)" },
-            // Julho
-            { mes: "Julho", dia: 2, dia_semana: "Quinta-feira", nome: "Independência da Bahia (Estadual)" },
-            // Agosto
-            { mes: "Agosto", dia: 20, dia_semana: "Quinta-feira", nome: "Dia do Evangélico (Jequié - Municipal)" },
-            // Setembro
-            { mes: "Setembro", dia: 7, dia_semana: "Segunda-feira", nome: "Independência do Brasil" },
-            // Outubro
-            { mes: "Outubro", dia: 12, dia_semana: "Segunda-feira", nome: "Dia das Crianças" }, // Adicionado Dia das Crianças
-            { mes: "Outubro", dia: 25, dia_semana: "Domingo", nome: "Aniversário de Jequié (Municipal)" },
-            // Novembro
-            { mes: "Novembro", dia: 2, dia_semana: "Segunda-feira", nome: "Finados" },
-            { mes: "Novembro", dia: 15, dia_semana: "Domingo", nome: "Proclamação da República" },
-            { mes: "Novembro", dia: 20, dia_semana: "Sexta-feira", nome: "Dia da Consciência Negra" },
-            // Dezembro
-            { mes: "Dezembro", dia: 25, dia_semana: "Sexta-feira", nome: "Natal" }
-        ];
-
-        // ============ DADOS COMPLETOS DAS ESCALAS 2026 (CÓPIA DA VERSÃO ANTERIOR) ============
+               // ============ DADOS COMPLETOS DAS ESCALAS 2026 (CÓPIA DA VERSÃO ANTERIOR) ============
         // OBS: Os Sábados "G?" devem ser editados por você.
         const escalas = [
             // ==================== JANEIRO ====================
@@ -630,7 +636,7 @@
             { mes: "Setembro", dia: 25, dia_semana: "Sexta-feira", grupo: "G4", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Setembro", dia: 26, dia_semana: "Sábado", grupo: "G?", EBD: "", Tarde: "", Noite: "", cafe: "" }, // Adicionado Sábado faltante
             { mes: "Setembro", dia: 27, dia_semana: "Domingo", grupo: "", EBD: "G2", Tarde: "G1", Noite: "G3", cafe: "" },
-            
+
             // ==================== OUTUBRO ====================
             { mes: "Outubro", dia: 1, dia_semana: "Quinta-feira", grupo: "G7", EBD: "", Tarde: "", Noite: "", cafe: "" }, 
             { mes: "Outubro", dia: 2, dia_semana: "Sexta-feira", grupo: "G8", EBD: "", Tarde: "", Noite: "", cafe: "" }, 
@@ -652,7 +658,7 @@
             { mes: "Outubro", dia: 29, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", cafe: "G2" },
             { mes: "Outubro", dia: 30, dia_semana: "Sexta-feira", grupo: "G8", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Outubro", dia: 31, dia_semana: "Sábado", grupo: "G3", EBD: "", Tarde: "", Noite: "", cafe: "" },
-            
+
             // ==================== NOVEMBRO ====================
             { mes: "Novembro", dia: 1, dia_semana: "Domingo", grupo: "", EBD: "G4", Tarde: "G5", Noite: "G6", cafe: "" },
             { mes: "Novembro", dia: 4, dia_semana: "Quarta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "", cafe: "" },
@@ -695,74 +701,45 @@
         ];
 
 
-        // ============ FUNÇÕES DE INTERAÇÃO E LÓGICA DE FERIADOS ============
+               // ============ FERIADOS RELEVANTES 2026 (Nacionais, Bahia e Jequié) - Datas e Dias da Semana de 2026 ============
+        const feriados2026 = [
+            // Janeiro
+            { mes: "Janeiro", dia: 1, dia_semana: "Quinta-feira", nome: "Confraternização Universal" },
+            // Fevereiro
+            { mes: "Fevereiro", dia: 16, dia_semana: "Segunda-feira", nome: "Carnaval (Ponto Facultativo)" },
+            { mes: "Fevereiro", dia: 17, dia_semana: "Terça-feira", nome: "Carnaval (Ponto Facultativo)" }, 
+            { mes: "Fevereiro", dia: 18, dia_semana: "Quarta-feira", nome: "Quarta-feira de Cinzas (Ponto Facultativo)" },
+            // Abril
+            { mes: "Abril", dia: 3, dia_semana: "Sexta-feira", nome: "Paixão de Cristo (Sexta-feira Santa)" },
+            { mes: "Abril", dia: 21, dia_semana: "Terça-feira", nome: "Tiradentes" },
+            // Maio
+            { mes: "Maio", dia: 1, dia_semana: "Sexta-feira", nome: "Dia do Trabalho" },
+            // Junho
+            { mes: "Junho", dia: 4, dia_semana: "Quinta-feira", nome: "Corpus Christi (Ponto Facultativo)" },
+            { mes: "Junho", dia: 13, dia_semana: "Sábado", nome: "Dia de Santo Antônio (Jequié - Municipal)" },
+            { mes: "Junho", dia: 24, dia_semana: "Quarta-feira", nome: "São João (Jequié - Municipal)" },
+            // Julho
+            { mes: "Julho", dia: 2, dia_semana: "Quinta-feira", nome: "Independência da Bahia (Estadual)" },
+            // Agosto
+            { mes: "Agosto", dia: 20, dia_semana: "Quinta-feira", nome: "Dia do Evangélico (Jequié - Municipal)" },
+            // Setembro
+            { mes: "Setembro", dia: 7, dia_semana: "Segunda-feira", nome: "Independência do Brasil" },
+            // Outubro
+            { mes: "Outubro", dia: 12, dia_semana: "Segunda-feira", nome: "Dia das Crianças" }, // Adicionado Dia das Crianças
+            { mes: "Outubro", dia: 25, dia_semana: "Domingo", nome: "Aniversário de Jequié (Municipal)" },
+            // Novembro
+            { mes: "Novembro", dia: 2, dia_semana: "Segunda-feira", nome: "Finados" },
+            { mes: "Novembro", dia: 15, dia_semana: "Domingo", nome: "Proclamação da República" },
+            { mes: "Novembro", dia: 20, dia_semana: "Sexta-feira", nome: "Dia da Consciência Negra" },
+            // Dezembro
+            { mes: "Dezembro", dia: 25, dia_semana: "Sexta-feira", nome: "Natal" }
+        ];
 
-        // Função auxiliar para obter o nome do feriado em uma data específica
-        function getFeriado(mes, dia) {
-            const feriado = feriados2026.find(f => f.mes === mes && f.dia === dia);
-            return feriado ? feriado.nome : null;
-        }
+        // ============ DADOS COMPLETOS DAS ESCALAS 2026 (CÓPIA DA VERSÃO ANTERIOR) ============
 
-        // Função auxiliar para formatar a data para comparação
-        function formatDate(mes, dia) {
-            const meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
-            const mesIndex = meses.indexOf(mes);
-            // Criamos uma data fictícia em 2026 para fazer cálculos de dia anterior/seguinte
-            return new Date(2026, mesIndex, dia); 
-        }
-
-               // Função principal para checar feriados ao redor da data da escala
-        function checarAlertasFeriado(item) {
-            const diaDaEscala = formatDate(item.mes, item.dia);
-            let alertas = [];
-            let classes = '';
-
-            // 1. Feriado no dia da escala
-            const feriadoNoDia = getFeriado(item.mes, item.dia);
-            if (feriadoNoDia) {
-                alertas.push(`🚨 **Feriado:** ${feriadoNoDia}`);
-                classes += ' feriado-alerta';
-            }
-            
-            // 2. Feriado no dia anterior (VÉSPERA da escala)
-            const diaAnterior = new Date(diaDaEscala);
-            diaAnterior.setDate(diaDaEscala.getDate() - 1);
-            
-            // Verifica se a data anterior ainda é em 2026 (Para evitar underflow de Janeiro)
-            if (diaAnterior.getFullYear() === 2026) { 
-                const nomeMesAnterior = new Date(2026, diaAnterior.getMonth()).toLocaleString('pt-BR', { month: 'long', timeZone: 'UTC' });
-                const mesAnterior = nomeMesAnterior.charAt(0).toUpperCase() + nomeMesAnterior.slice(1);
-                const feriadoAnterior = getFeriado(mesAnterior, diaAnterior.getDate());
-
-                // SE O DIA ANTERIOR É FERIADO, ENTÃO O DIA DA ESCALA É O 'DIA APÓS FERIADO'
-                if (feriadoAnterior && !feriadoNoDia) { 
-                    alertas.push(`⚠️ **Dia após Feriado:** ${feriadoAnterior} (Dia anterior foi feriado)`);
-                }
-            }
-            
-            // 3. Feriado no dia seguinte (VÉSPERA da escala)
-            const diaSeguinte = new Date(diaDaEscala);
-            diaSeguinte.setDate(diaDaEscala.getDate() + 1);
-            
-            // Verifica se a data seguinte ainda é em 2026
-            if (diaSeguinte.getFullYear() === 2026) {
-                const nomeMesSeguinte = new Date(2026, diaSeguinte.getMonth()).toLocaleString('pt-BR', { month: 'long', timeZone: 'UTC' });
-                const mesSeguinte = nomeMesSeguinte.charAt(0).toUpperCase() + nomeMesSeguinte.slice(1);
-                const feriadoSeguinte = getFeriado(mesSeguinte, diaSeguinte.getDate());
-                
-                // SE O DIA SEGUINTE É FERIADO, ENTÃO O DIA DA ESCALA É A 'VÉSPERA DE FERIADO'
-                if (feriadoSeguinte && !feriadoNoDia) {
-                    alertas.push(`⚠️ **Véspera de Feriado:** ${feriadoSeguinte} (Dia seguinte é feriado)`);
-                }
-            }
-            
-            if (alertas.length > 0 && !feriadoNoDia) {
-                 classes += ' feriado-alerta';
-            }
-
-            return { alertas, classes };
-        }
-
+        // ===== FUNÇÕES PRINCIPAIS =====
+        
+        // Função para selecionar grupo rapidamente
         function selecionarGrupo(grupo) {
             document.getElementById('grupoSelect').value = grupo;
             const mesSelecionado = document.getElementById('mesSelect').value;
@@ -771,7 +748,68 @@
             }
         }
 
-        // FUNÇÃO CONSULTAR GRUPO (FINAL)
+        // Função para obter feriado em uma data específica
+        function getFeriado(mes, dia) {
+            const feriado = feriados2026.find(f => f.mes === mes && f.dia === dia);
+            return feriado ? feriado.nome : null;
+        }
+
+        // Função para formatar data para comparação
+        function formatDate(mes, dia) {
+            const meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+            const mesIndex = meses.indexOf(mes);
+            return new Date(2026, mesIndex, dia);
+        }
+
+        // Função para verificar alertas de feriado
+        function checarAlertasFeriado(item) {
+            const diaDaEscala = formatDate(item.mes, item.dia);
+            let alertas = [];
+            let classes = '';
+
+            // Feriado no dia da escala
+            const feriadoNoDia = getFeriado(item.mes, item.dia);
+            if (feriadoNoDia) {
+                alertas.push(`🚨 **Feriado:** ${feriadoNoDia}`);
+                classes += ' feriado-alerta';
+            }
+
+            // Feriado no dia anterior
+            const diaAnterior = new Date(diaDaEscala);
+            diaAnterior.setDate(diaDaEscala.getDate() - 1);
+
+            if (diaAnterior.getFullYear() === 2026) {
+                const nomeMesAnterior = new Date(2026, diaAnterior.getMonth()).toLocaleString('pt-BR', { month: 'long', timeZone: 'UTC' });
+                const mesAnterior = nomeMesAnterior.charAt(0).toUpperCase() + nomeMesAnterior.slice(1);
+                const feriadoAnterior = getFeriado(mesAnterior, diaAnterior.getDate());
+
+                if (feriadoAnterior && !feriadoNoDia) {
+                    alertas.push(`⚠️ **Dia após Feriado:** ${feriadoAnterior} (Dia anterior foi feriado)`);
+                }
+            }
+
+            // Feriado no dia seguinte
+            const diaSeguinte = new Date(diaDaEscala);
+            diaSeguinte.setDate(diaDaEscala.getDate() + 1);
+
+            if (diaSeguinte.getFullYear() === 2026) {
+                const nomeMesSeguinte = new Date(2026, diaSeguinte.getMonth()).toLocaleString('pt-BR', { month: 'long', timeZone: 'UTC' });
+                const mesSeguinte = nomeMesSeguinte.charAt(0).toUpperCase() + nomeMesSeguinte.slice(1);
+                const feriadoSeguinte = getFeriado(mesSeguinte, diaSeguinte.getDate());
+
+                if (feriadoSeguinte && !feriadoNoDia) {
+                    alertas.push(`⚠️ **Véspera de Feriado:** ${feriadoSeguinte} (Dia seguinte é feriado)`);
+                }
+            }
+
+            if (alertas.length > 0 && !feriadoNoDia) {
+                classes += ' feriado-alerta';
+            }
+
+            return { alertas, classes };
+        }
+
+        // Função principal para consultar as escalas
         function consultarGrupo() {
             const grupoSelecionado = document.getElementById('grupoSelect').value;
             const mesSelecionado = document.getElementById('mesSelect').value;
@@ -780,7 +818,7 @@
 
             if (!grupoSelecionado || !mesSelecionado) {
                 resultadoDiv.classList.remove('visible');
-                resultadoDiv.innerHTML = '<div class="no-data">Por favor, selecione **ambos** o Grupo e o Mês.</div>';
+                resultadoDiv.innerHTML = '<div class="no-data">Por favor, selecione <strong>ambos</strong> o Grupo e o Mês.</div>';
                 resultadoDiv.classList.add('visible');
                 return;
             }
@@ -788,7 +826,6 @@
             resultadoDiv.classList.remove('visible');
             loadingDiv.classList.add('visible');
 
-            // Atraso de 2 segundos para o peixe completar o traço
             setTimeout(() => {
                 const resultados = escalas.filter(escala => {
                     const isMes = escala.mes === mesSelecionado;
@@ -800,20 +837,20 @@
                     return isMes && isGrupo;
                 });
 
-                let conteudoEscalas = `<h3>Escalas de ${grupoSelecionado} em ${mesSelecionado} </h3>`;
+                let conteudoEscalas = `<h3>Escalas de ${grupoSelecionado} em ${mesSelecionado}</h3>`;
 
                 if (resultados.length > 0) {
                     resultados.forEach(item => {
                         let classesExtras = '';
                         let funcaoPrincipal = '';
-                        
-                        // Lógica de determinação da função
+
+                        // Determinar a função principal
                         if (item.cafe === grupoSelecionado) {
                             funcaoPrincipal = '☕ Café das Mulheres';
                             classesExtras = ' cafe';
                         } else if (item.grupo === grupoSelecionado) {
-                            funcaoPrincipal = `Diaconia no Culto (${item.dia_semana})`; 
-                            classesExtras = (item.dia_semana === 'Sábado') ? ' diaconia-culto' : ' diaconia-culto';
+                            funcaoPrincipal = `Diaconia no Culto (${item.dia_semana})`;
+                            classesExtras = ' diaconia-culto';
                             funcaoPrincipal += (item.grupo === 'G?') ? ' (GRUPO PENDENTE DE DEFINIÇÃO)' : '';
                         } else if (item.EBD === grupoSelecionado) {
                             funcaoPrincipal = 'Diaconia na EBD (Manhã)';
@@ -826,14 +863,14 @@
                             classesExtras = ' diaconia-culto';
                         }
 
-                        // Lógica de Feriados
+                        // Verificar alertas de feriado
                         const feriadoData = checarAlertasFeriado(item);
                         classesExtras += feriadoData.classes;
-                        
+
                         let alertasHtml = feriadoData.alertas.map(alerta => 
                             `<span class="alerta-feriado">${alerta.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</span>`
                         ).join('');
-                        
+
                         conteudoEscalas += `
                             <div class="escala-item${classesExtras}">
                                 <strong>Dia ${item.dia} (${item.dia_semana})</strong>
@@ -843,17 +880,120 @@
                             </div>
                         `;
                     });
-                    
+
+                    // Adicionar rodapé interno para impressão
+                    conteudoEscalas += `
+                        <div class="footer" style="display: none;">
+                            IBJLV - Diaconia © 2026<br>
+                            <small>Use a função "Imprimir / Gerar PDF"</small>
+                        </div>
+                    `;
+
                     resultadoDiv.innerHTML = conteudoEscalas;
-                    
                 } else {
                     resultadoDiv.innerHTML = '<div class="no-data">Nenhuma escala encontrada para este grupo e mês.</div>';
                 }
 
-                // Esconder carregamento e exibir resultados
                 loadingDiv.classList.remove('visible');
                 resultadoDiv.classList.add('visible');
-            }, 2000); // 2000ms de atraso
+            }, 2000);
+        }
+
+        // Função para impressão/geração de PDF
+        function imprimirEscala() {
+            const grupo = document.getElementById('grupoSelect').value;
+            const mes = document.getElementById('mesSelect').value;
+            
+            if (!grupo || !mes) {
+                alert('❌ Por favor, selecione um grupo e mês antes de imprimir.');
+                return;
+            }
+
+            const resultadoDiv = document.getElementById('resultado');
+            const escalaItems = resultadoDiv.querySelectorAll('.escala-item');
+            
+            if (escalaItems.length === 0) {
+                alert('❌ Não há escalas para imprimir.');
+                return;
+            }
+
+            // Criar uma nova janela para impressão
+            const janelaImpressao = window.open('', '_blank');
+            const estilo = `
+                <style>
+                    body { 
+                        font-family: Arial, sans-serif; 
+                        margin: 20px; 
+                        color: #000; 
+                        background: #fff;
+                    }
+                    .cabecalho { 
+                        text-align: center; 
+                        color: #5b2c7e; 
+                        margin-bottom: 30px;
+                        border-bottom: 3px solid #5b2c7e;
+                        padding-bottom: 15px;
+                    }
+                    .escala-item { 
+                        background: #f8f9fa; 
+                        margin: 10px 0; 
+                        padding: 15px; 
+                        border-left: 4px solid #5b2c7e;
+                        border-radius: 5px;
+                    }
+                    .escala-item.cafe { 
+                        background: #fff3cd; 
+                        border-left-color: #ffc107;
+                    }
+                    .feriado-alerta { 
+                        background: #ffe0b2 !important;
+                    }
+                    .alerta-feriado { 
+                        color: #d84315; 
+                        font-weight: bold; 
+                        display: block; 
+                        margin-top: 5px;
+                    }
+                    .rodape { 
+                        text-align: center; 
+                        margin-top: 40px; 
+                        padding-top: 20px; 
+                        border-top: 2px solid #5b2c7e; 
+                        color: #5b2c7e; 
+                        font-size: 0.9em;
+                    }
+                    strong { color: #5b2c7e; }
+                </style>
+            `;
+
+            const conteudo = `
+                <html>
+                    <head>
+                        <title>Escala ${grupo} - ${mes} - IBJLV</title>
+                        ${estilo}
+                    </head>
+                    <body>
+                        <div class="cabecalho">
+                            <h1>Escalas de ${grupo} em ${mes}</h1>
+                            <h2>IGREJA BATISTA JESUS LÍRIO DOS VALES</h2>
+                        </div>
+                        ${resultadoDiv.innerHTML}
+                        <div class="rodape">
+                            IBJLV - Diaconia © 2026<br>
+                            <small>Emitido em ${new Date().toLocaleDateString('pt-BR')}</small>
+                        </div>
+                    </body>
+                </html>
+            `;
+
+            janelaImpressao.document.write(conteudo);
+            janelaImpressao.document.close();
+            
+            // Esperar o conteúdo carregar antes de imprimir
+            setTimeout(() => {
+                janelaImpressao.print();
+                // janelaImpressao.close(); // Opcional: fechar após imprimir
+            }, 500);
         }
     </script>
 </body>
