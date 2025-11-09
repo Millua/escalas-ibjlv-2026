@@ -997,5 +997,49 @@
             }, 500);
         }
     </script>
+<!-- ============================================ -->
+    <!-- PWA: REGISTRAR SERVICE WORKER               -->
+    <!-- ============================================ -->
+    <script>
+        // Verifica se o navegador suporta Service Workers
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./service-worker.js')
+                    .then(registration => {
+                        console.log('✅ PWA: Service Worker registrado com sucesso!');
+                        console.log('📍 Escopo:', registration.scope);
+                        
+                        // Verifica atualizações
+                        registration.addEventListener('updatefound', () => {
+                            const newWorker = registration.installing;
+                            console.log('🔄 PWA: Nova versão encontrada, atualizando...');
+                            
+                            newWorker.addEventListener('statechange', () => {
+                                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                    console.log('✨ PWA: Nova versão disponível!');
+                                    // Opcional: Mostrar notificação ao usuário
+                                    // alert('Nova versão disponível! Recarregue a página.');
+                                }
+                            });
+                        });
+                    })
+                    .catch(error => {
+                        console.error('❌ PWA: Erro ao registrar Service Worker:', error);
+                    });
+            });
+
+            // Detecta quando o app volta a ficar online
+            window.addEventListener('online', () => {
+                console.log('🌐 Conexão restaurada!');
+            });
+
+            // Detecta quando o app fica offline
+            window.addEventListener('offline', () => {
+                console.log('📵 Você está offline');
+            });
+        } else {
+            console.warn('⚠️ Service Workers não são suportados neste navegador');
+        }
+    </script>
 </body>
 </html>
