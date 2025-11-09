@@ -1246,6 +1246,79 @@
         } else {
             console.warn('⚠️ Service Workers não são suportados neste navegador');
         }
+    <!-- ============================================ -->
+    <!-- BOTÃO INSTALAR APP                          -->
+    <!-- ============================================ -->
+    <script>
+        let deferredPrompt;
+        const installBanner = document.getElementById('installBanner');
+        const installButton = document.getElementById('installButton');
+        const closeInstall = document.getElementById('closeInstall');
+
+        // Captura o evento de instalação
+        window.addEventListener('beforeinstallprompt', (e) => {
+            console.log('📱 Evento beforeinstallprompt capturado');
+            
+            // Previne o mini-infobar padrão do Chrome
+            e.preventDefault();
+            
+            // Guarda o evento para usar depois
+            deferredPrompt = e;
+            
+            // Verifica se usuário já negou instalação antes
+            const installDismissed = localStorage.getItem('installDismissed');
+            if (!installDismissed) {
+                // Mostra o banner depois de 3 segundos
+                setTimeout(() => {
+                    installBanner.style.display = 'block';
+                }, 3000);
+            }
+        });
+
+        // Quando clicar no botão Instalar
+        installButton.addEventListener('click', async () => {
+            if (!deferredPrompt) {
+                console.log('❌ deferredPrompt não está disponível');
+                return;
+            }
+
+            // Mostra o prompt de instalação
+            deferredPrompt.prompt();
+            
+            // Aguarda a escolha do usuário
+            const { outcome } = await deferredPrompt.userChoice;
+            
+            console.log(`👤 Usuário escolheu: ${outcome}`);
+            
+            if (outcome === 'accepted') {
+                console.log('✅ App instalado!');
+            } else {
+                console.log('❌ Instalação cancelada');
+            }
+            
+            // Limpa o prompt
+            deferredPrompt = null;
+            
+            // Esconde o banner
+            installBanner.style.display = 'none';
+        });
+
+        // Quando clicar no X (fechar)
+        closeInstall.addEventListener('click', () => {
+            installBanner.style.display = 'none';
+            // Salva que o usuário fechou (não mostra mais)
+            localStorage.setItem('installDismissed', 'true');
+            console.log('🚫 Banner de instalação fechado');
+        });
+
+        // Detecta quando o app foi instalado
+        window.addEventListener('appinstalled', () => {
+            console.log('🎉 App instalado com sucesso!');
+            installBanner.style.display = 'none';
+            
+            // Opcional: Mostrar mensagem de sucesso
+            alert('✅ App instalado! Agora você pode acessar pelo ícone na tela inicial.');
+        });
     </script>
 </body>
 </html>
