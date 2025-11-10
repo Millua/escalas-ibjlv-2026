@@ -1,49 +1,38 @@
-const CACHE_NAME = 'ibjlv-escalas-v1.0.0';
+const CACHE_NAME = 'ibjlv-escalas-v1';
+const BASE_PATH = '/escalas-ibjlv-2026/';
 const urlsToCache = [
-  './',
-  './index.html'
+  BASE_PATH,
+  BASE_PATH + 'index.html'
 ];
 
 // Instalação
 self.addEventListener('install', event => {
-  console.log('🔧 Service Worker: Instalando...');
-  
+  console.log('[SW] Instalando...');
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
-        console.log('✅ Cache aberto');
+        console.log('[SW] Cache aberto');
         return cache.addAll(urlsToCache);
       })
-      .then(() => {
-        console.log('✅ Instalado com sucesso');
-        return self.skipWaiting();
-      })
-      .catch(error => {
-        console.error('❌ Erro na instalação:', error);
-      })
+      .then(() => self.skipWaiting())
+      .catch(err => console.error('[SW] Erro:', err))
   );
 });
 
 // Ativação
 self.addEventListener('activate', event => {
-  console.log('🔄 Service Worker: Ativando...');
-  
+  console.log('[SW] Ativando...');
   event.waitUntil(
     caches.keys()
-      .then(cacheNames => {
-        return Promise.all(
-          cacheNames.map(cacheName => {
-            if (cacheName !== CACHE_NAME) {
-              console.log('🗑️ Removendo cache antigo:', cacheName);
-              return caches.delete(cacheName);
-            }
-          })
-        );
-      })
-      .then(() => {
-        console.log('✅ Ativado com sucesso');
-        return self.clients.claim();
-      })
+      .then(keys => Promise.all(
+        keys.map(key => {
+          if (key !== CACHE_NAME) {
+            console.log('[SW] Removendo cache:', key);
+            return caches.delete(key);
+          }
+        })
+      ))
+      .then(() => self.clients.claim())
   );
 });
 
@@ -51,6 +40,26 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request)
-      .then(cachedResponse => {
-        if (cachedResponse) {
-          return
+      .then(response => {
+        if (response) {
+          return response;
+        }
+        return fetch(event.request)
+          .then(response => {
+            if (!response || response.status !== 200) {
+              return response;
+            }
+            const responseClone = response.clone();
+            caches.open(CACHE_NAME)
+              .then(cache => cache.put(event.request, responseClone));
+            return response;
+          });
+      })
+      .catch(() => {
+        return new Response(
+          '<html><body><h1>Offline</h1><p>Sem conexão</p></body></html>',
+          { headers: { 'Content-Type': 'text/html' } }
+        );
+      })
+  );
+});
