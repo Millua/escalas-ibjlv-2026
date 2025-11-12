@@ -2197,6 +2197,22 @@ ${reading.description}
                 }
             }, 2100);
         };
+        // DEBUG: Mostrar quantas notificações foram agendadas
+window.addEventListener('load', () => {
+    if (localStorage.getItem('notificationsEnabled') === 'true') {
+        const userGroup = localStorage.getItem('userGroup');
+        if (userGroup) {
+            const hoje = new Date();
+            const proximas = escalas.filter(escala => {
+                const data = formatDate(escala.mes, escala.dia);
+                const isGrupo = [escala.grupo, escala.EBD, escala.Tarde, escala.Noite, escala.cafe].includes(userGroup);
+                return data > hoje && isGrupo;
+            });
+            console.log(`🔔 [DEBUG] ${proximas.length} escalas agendadas para ${userGroup}`);
+            proximas.forEach(e => console.log(`   - ${e.dia}/${e.mes} (${e.dia_semana})`));
+        }
+    }
+});
     </script>
 </body>
 </html>
