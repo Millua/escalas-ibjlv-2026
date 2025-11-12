@@ -2,7 +2,12 @@ const CACHE_NAME = 'ibjlv-escalas-v1';
 const BASE_PATH = '/escalas-ibjlv-2026/';
 const urlsToCache = [
   BASE_PATH,
-  BASE_PATH + 'index.html'
+  BASE_PATH + 'index.html',
+  // Adicione todos os recursos estáticos que você usa
+  BASE_PATH + 'manifest.json', // Certifique-se de que é o nome final (sem 'e')
+  BASE_PATH + 'logo-ilbj.png', // O nome exato da sua logo
+  BASE_PATH + 'icons/icon-192x192.png', // Ícones do PWA
+  BASE_PATH + 'icons/icon-512x512.png'
 ];
 
 // Instalação
