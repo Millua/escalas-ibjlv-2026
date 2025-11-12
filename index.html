@@ -1875,33 +1875,38 @@ body.font-large {
         // ============================================
 
         // PWA: REGISTRAR SERVICE WORKER
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                // ATENÇÃO: Se o arquivo service-worker.js não existir, isso gerará um 404.
-                navigator.serviceWorker.register('./service-worker.js')
-                    .then(registration => {
-                        console.log('✅ PWA: Service Worker registrado com sucesso!');
-                        console.log('📍 Escopo:', registration.scope);
+       // O bloco abaixo substitui o código que começa em 'if ('serviceWorker' in navigator) {'
 
-                        // Verifica atualizações
-                        registration.addEventListener('updatefound', () => {
-                            const newWorker = registration.installing;
-                            console.log('🔄 PWA: Nova versão encontrada, atualizando...');
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        // CORREÇÃO ESSENCIAL: Usando o caminho absoluto e o escopo do seu repositório.
+        const swUrl = '/escalas-ibjlv-2026/service-worker.js'; 
+        const swScope = '/escalas-ibjlv-2026/'; 
 
-                            newWorker.addEventListener('statechange', () => {
-                                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                                    console.log('✨ PWA: Nova versão disponível!');
-                                    // Opcional: Mostrar notificação ao usuário
-                                    // alert('Nova versão disponível! Recarregue a página.');
-                                }
-                            });
-                        });
-                    })
-                    .catch(error => {
-                        console.error('❌ PWA: Erro ao registrar Service Worker:', error);
+        navigator.serviceWorker.register(swUrl, { scope: swScope })
+            .then(registration => {
+                console.log('✅ PWA: Service Worker registrado com sucesso!');
+                console.log('📍 Escopo:', registration.scope);
+
+                // Verifica atualizações
+                registration.addEventListener('updatefound', () => {
+                    const newWorker = registration.installing;
+                    console.log('🔄 PWA: Nova versão encontrada, atualizando...');
+
+                    newWorker.addEventListener('statechange', () => {
+                        if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                            console.log('✨ PWA: Nova versão disponível!');
+                            // Opcional: Mostrar notificação ao usuário
+                            // alert('Nova versão disponível! Recarregue a página.');
+                        }
                     });
+                });
+            })
+            .catch(error => {
+                console.error('❌ PWA: Erro ao registrar Service Worker:', error);
             });
-
+    });
+}
             // Detecta quando o app volta a ficar online
             window.addEventListener('online', () => {
                 console.log('🌐 Conexão restaurada!');
