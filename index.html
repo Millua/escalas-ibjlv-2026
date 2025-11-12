@@ -12,7 +12,6 @@
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #000000;
@@ -20,39 +19,35 @@
             min-height: 100vh;
             background: linear-gradient(135deg, #000000 0%, #1a1a2e 50%, #16213e 100%);
         }
-
         /* ===== CABEÇALHO COM LOGO (ALTERADO) ===== */
         .header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             padding: 30px 20px;
             text-align: center;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            display: flex; /* Adicionado para centralizar verticalmente */
-            flex-direction: column; /* Organiza logo e textos em coluna */
+            display: flex;
+            flex-direction: column;
             align-items: center;
         }
-
-        .logo { /* NOVO ESTILO PARA A LOGO */
-            max-width: 100px; /* Tamanho ajustável da logo */
+        .logo {
+            max-width: 100px;
             height: auto;
-            margin-bottom: 15px; /* Espaço entre a logo e o texto */
+            margin-bottom: 15px;
             filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
-            border-radius: 50%; /* Se a logo for circular ou para dar um efeito */
+            border-radius: 50%;
         }
-
         .church-name {
             font-size: 1.8em;
             font-weight: bold;
             margin-bottom: 5px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
-
         .church-subtitle {
             font-size: 1.1em;
             opacity: 0.9;
-            margin-bottom: 0; /* Removido margem extra */
+            margin-bottom: 0;
         }
-/* ===== BOTÃO INSTALAR APP (NOVO) ===== */
+        /* ===== BOTÃO INSTALAR APP (NOVO) ===== */
         .install-banner {
             position: fixed;
             bottom: 20px;
@@ -66,9 +61,8 @@
             box-shadow: 0 10px 40px rgba(102, 126, 234, 0.5);
             z-index: 9999;
             animation: slideUp 0.5s ease;
-            display: none; /* Inicia escondido */
+            display: none;
         }
-
         @keyframes slideUp {
             from {
                 transform: translateX(-50%) translateY(100px);
@@ -79,35 +73,29 @@
                 opacity: 1;
             }
         }
-
         .install-content {
             display: flex;
             align-items: center;
             gap: 15px;
             position: relative;
         }
-
         .install-icon {
             font-size: 3em;
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
         }
-
         .install-text {
             flex: 1;
         }
-
         .install-text strong {
             display: block;
             font-size: 1.1em;
             margin-bottom: 3px;
         }
-
         .install-text p {
             margin: 0;
             font-size: 0.9em;
             opacity: 0.9;
         }
-
         .btn-install {
             padding: 12px 25px;
             background: white;
@@ -119,12 +107,10 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
-
         .btn-install:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(0,0,0,0.3);
         }
-
         .btn-close {
             position: absolute;
             top: -10px;
@@ -142,20 +128,16 @@
             justify-content: center;
             transition: all 0.3s ease;
         }
-
         .btn-close:hover {
             background: rgba(255, 255, 255, 0.5);
             transform: rotate(90deg);
         }
-
-
         /* ===== CONTAINER PRINCIPAL ===== */
         .container {
             max-width: 500px;
             margin: 30px auto;
             padding: 0 20px;
         }
-
         .consultas {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
@@ -164,26 +146,22 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 8px 32px rgba(0,0,0,0.3);
         }
-
         .consulta-box h3 {
             text-align: center;
             margin-bottom: 25px;
             font-size: 1.5em;
             color: #667eea;
         }
-
         /* ===== FORMULÁRIO ===== */
         .input-group {
             margin-bottom: 20px;
         }
-
         .input-group label {
             display: block;
             margin-bottom: 8px;
             font-weight: 500;
             color: #ccc;
         }
-
         input, select {
             width: 100%;
             padding: 15px;
@@ -194,25 +172,20 @@
             font-size: 16px;
             transition: all 0.3s ease;
         }
-
         input:focus, select:focus {
             outline: none;
             border-color: #667eea;
             background: rgba(255, 255, 255, 0.15);
         }
-
         select {
             color: #aaa;
         }
-
         select:valid {
             color: white;
         }
-
         input::placeholder {
             color: #aaa;
         }
-
         /* ===== BOTÕES ===== */
         button {
             width: 100%;
@@ -230,21 +203,17 @@
             align-items: center;
             justify-content: center;
         }
-
         button:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
         }
-
         .btn-print {
             background: #4CAF50;
             margin-top: 15px;
         }
-
         .btn-print:hover {
             box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
         }
-
         /* ===== GRUPOS RÁPIDOS ===== */
         .quick-groups {
             display: grid;
@@ -252,7 +221,6 @@
             gap: 10px;
             margin-top: 20px;
         }
-
         .group-btn {
             padding: 12px 5px;
             background: rgba(255, 255, 255, 0.1);
@@ -264,29 +232,24 @@
             text-align: center;
             font-weight: bold;
         }
-
         .group-btn:hover {
             background: rgba(102, 126, 234, 0.3);
             transform: scale(1.05);
         }
-
         /* ===== LOADER ===== */
         .loading {
             text-align: center;
             padding: 20px;
             display: none;
         }
-
         .loading.visible {
             display: block;
         }
-
         .fish-loader {
             width: 150px;
             height: 67.5px;
             margin: 20px auto;
         }
-
         .fish {
             fill: none;
             stroke: #ffffff;
@@ -297,13 +260,11 @@
             filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
             animation: trace 2s linear infinite;
         }
-
         @keyframes trace {
             to {
                 stroke-dashoffset: 0;
             }
         }
-
         /* ===== RESULTADOS ===== */
         .resultado {
             background: rgba(255, 255, 255, 0.1);
@@ -314,19 +275,16 @@
             display: none;
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
-
         .resultado.visible {
             display: block;
             animation: fadeIn 0.5s ease;
         }
-
         .resultado h3 {
             color: #667eea;
             margin-bottom: 20px;
             text-align: center;
             font-size: 1.4em;
         }
-
         /* ===== ITENS DA ESCALA ===== */
         .escala-item {
             background: rgba(255, 255, 255, 0.15);
@@ -337,30 +295,24 @@
             transition: all 0.3s ease;
             font-size: 0.95em;
         }
-
         .escala-item:hover {
             transform: translateX(5px);
             background: rgba(255, 255, 255, 0.2);
         }
-
         .escala-item.cafe {
             border-left-color: #ffc107;
             background: rgba(255, 193, 7, 0.1);
         }
-
         .escala-item.diaconia-culto {
             border-left-color: #764ba2;
         }
-
         .escala-item.diaconia-ebd {
             border-left-color: #667eea;
         }
-
         .escala-item.feriado-alerta {
             border-left-color: #ff9800 !important;
             background: rgba(255, 152, 0, 0.1) !important;
         }
-
         .alerta-feriado {
             display: block;
             color: #ff9800;
@@ -368,14 +320,12 @@
             margin-top: 5px;
             font-size: 0.9em;
         }
-
         .no-data {
             text-align: center;
             padding: 30px;
             color: #ccc;
             font-style: italic;
         }
-
         /* ===== RODAPÉ ===== */
         .footer {
             text-align: center;
@@ -385,13 +335,11 @@
             margin-top: 40px;
             line-height: 1.6;
         }
-
         /* ===== ESTILOS DE IMPRESSÃO ===== */
         @media print {
-            .header, .consultas, .loading, .footer, button, .install-banner { /* Adicionado .install-banner */
+            .header, .consultas, .loading, .footer, button, .install-banner {
                 display: none !important;
             }
-
             body, .container {
                 background: #ffffff !important;
                 color: #000000 !important;
@@ -399,12 +347,10 @@
                 padding: 0 !important;
                 max-width: 100% !important;
             }
-
             .container {
                 margin: 0 !important;
                 padding: 0 !important;
             }
-
             .resultado {
                 display: block !important;
                 background: #ffffff !important;
@@ -415,7 +361,6 @@
                 margin: 0 !important;
                 box-shadow: none !important;
             }
-
             .resultado h3 {
                 color: #5b2c7e !important;
                 font-size: 1.4em !important;
@@ -423,671 +368,585 @@
                 border-bottom: 2px solid #5b2c7e !important;
                 padding-bottom: 10px !important;
             }
-
             .escala-item {
                 background: #f8f9fa !important;
                 color: #000000 !important;
                 border-left-color: #5b2c7e !important;
                 border-radius: 5px !important;
             }
-
             .escala-item.cafe {
                 background: #fff3cd !important;
                 border-left-color: #ffc107 !important;
             }
-
             .escala-item.feriado-alerta {
                 background: #ffe0b2 !important;
             }
-
             .alerta-feriado {
                 color: #d84315 !important;
             }
         }
-
         /* ===== ANIMAÇÕES ===== */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
         /* ===== RESPONSIVIDADE ===== */
         @media (max-width: 600px) {
             .container {
                 margin: 20px auto;
                 padding: 0 15px;
             }
-
             .consultas {
                 padding: 20px;
             }
-
             .quick-groups {
                 grid-template-columns: repeat(4, 1fr);
             }
-
             .group-btn {
                 padding: 10px 5px;
                 font-size: 14px;
             }
-
             .church-name {
                 font-size: 1.5em;
             }
         }
-        /* Ajustes para o Banner de Instalação no final do CSS */
         .install-banner {
-            display: none; /* Garante que inicia escondido */
+            display: none;
         }
-   /* ===== NOTIFICAÇÕES (SININHO) ===== */
-.notification-bell {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: rgba(255, 255, 255, 0.2);
-  border: none;
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  font-size: 1.5em;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 100;
-}
-
-.notification-bell:hover {
-  background: rgba(255, 255, 255, 0.3);
-  transform: scale(1.1);
-}
-
-.notification-bell.has-notifications {
-  animation: ring 2s infinite;
-}
-
-@keyframes ring {
-  0%, 100% { transform: rotate(0deg); }
-  10%, 30% { transform: rotate(-15deg); }
-  20%, 40% { transform: rotate(15deg); }
-}
-
-.notification-badge {
-  position: absolute;
-  top: -5px;
-  right: -5px;
-  background: #ff4444;
-  color: white;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  font-size: 0.7em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-}
-
-/* ===== MODAL NOTIFICAÇÕES ===== */
-.notification-modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(10px);
-  z-index: 10002;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-
-.notification-modal.visible {
-  display: flex;
-}
-
-.notification-content {
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-  border: 2px solid rgba(102, 126, 234, 0.3);
-  border-radius: 20px;
-  padding: 30px;
-  max-width: 500px;
-  width: 100%;
-  position: relative;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-  animation: slideIn 0.3s ease;
-}
-
-.notification-header {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  margin-bottom: 25px;
-  padding-bottom: 15px;
-  border-bottom: 2px solid rgba(102, 126, 234, 0.2);
-}
-
-.notification-header h2 {
-  color: #667eea;
-  font-size: 1.5em;
-}
-
-.notification-toggle {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 12px;
-  padding: 15px;
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.notification-toggle label {
-  color: #ccc;
-  font-size: 0.95em;
-}
-
-.toggle-switch {
-  position: relative;
-  width: 60px;
-  height: 30px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 15px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.toggle-switch.active {
-  background: #4CAF50;
-}
-
-.toggle-switch::after {
-  content: '';
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  width: 24px;
-  height: 24px;
-  background: white;
-  border-radius: 50%;
-  transition: transform 0.3s ease;
-}
-
-.toggle-switch.active::after {
-  transform: translateX(30px);
-}
-
-.group-select-box {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 15px;
-  margin-top: 15px;
-}
-
-.group-select-box label {
-  display: block;
-  color: #667eea;
-  margin-bottom: 10px;
-  font-weight: 600;
-}
-
-.group-select-box select {
-  width: 100%;
-  padding: 12px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 8px;
-  color: white;
-  font-size: 1em;
-}
-
-/* ===== PAINEL DE ACESSIBILIDADE ===== */
-.accessibility-panel {
-  position: fixed;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 15px;
-  padding: 15px;
-  z-index: 9998;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-}
-
-.accessibility-btn {
-  width: 50px;
-  height: 50px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border: none;
-  border-radius: 12px;
-  color: white;
-  font-size: 1.5em;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-.accessibility-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-}
-
-.accessibility-btn.active {
-  background: #4CAF50;
-  box-shadow: 0 0 15px #4CAF50;
-}
-
-.accessibility-tooltip {
-  position: absolute;
-  right: 60px;
-  background: rgba(0, 0, 0, 0.9);
-  color: white;
-  padding: 8px 12px;
-  border-radius: 8px;
-  white-space: nowrap;
-  font-size: 0.85em;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.accessibility-btn:hover .accessibility-tooltip {
-  opacity: 1;
-}
-
-body.high-contrast {
-  background: #000 !important;
-}
-
-body.high-contrast .header {
-  background: #fff !important;
-  color: #000 !important;
-}
-
-body.high-contrast .church-name,
-body.high-contrast .church-subtitle {
-  color: #000 !important;
-}
-
-body.high-contrast .consultas,
-body.high-contrast .resultado,
-body.high-contrast .escala-item {
-  background: #fff !important;
-  color: #000 !important;
-  border: 3px solid #000 !important;
-}
-
-body.high-contrast button {
-  background: #000 !important;
-  color: #fff !important;
-  border: 3px solid #fff !important;
-}
-
-body.font-medium {
-  font-size: 18px;
-}
-
-body.font-large {
-  font-size: 22px;
-}
-
-.reading-indicator {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #4CAF50, #22d3ee);
-  transform-origin: left;
-  transform: scaleX(0);
-  z-index: 10001;
-  animation: reading-progress 2s linear;
-}
-
-@keyframes reading-progress {
-  from { transform: scaleX(0); }
-  to { transform: scaleX(1); }
-}
-
-/* ===== BOTÃO LIVRO DO MÊS ===== */
-.bible-float-btn {
-  position: fixed;
-  left: 20px;
-  bottom: 20px;
-  width: 60px;
-  height: 60px;
-  background: linear-gradient(135deg, #ffd700 0%, #ff8c00 100%);
-  border: none;
-  border-radius: 50%;
-  box-shadow: 0 8px 30px rgba(255, 140, 0, 0.4);
-  cursor: pointer;
-  z-index: 9997;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2em;
-  transition: all 0.3s ease;
-  animation: pulse 2s infinite;
-}
-
-.bible-float-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 12px 40px rgba(255, 140, 0, 0.6);
-}
-
-@keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-}
-
-.bible-modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(10px);
-  z-index: 10000;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-
-.bible-modal.visible {
-  display: flex;
-}
-
-.bible-content {
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-  border: 2px solid rgba(255, 215, 0, 0.3);
-  border-radius: 20px;
-  padding: 30px;
-  max-width: 500px;
-  width: 100%;
-  position: relative;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-  animation: slideIn 0.3s ease;
-}
-
-.bible-header {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  margin-bottom: 25px;
-  padding-bottom: 15px;
-  border-bottom: 2px solid rgba(255, 215, 0, 0.2);
-}
-
-.bible-icon {
-  font-size: 3em;
-}
-
-.bible-title h2 {
-  color: #ffd700;
-  font-size: 1.5em;
-  margin-bottom: 5px;
-}
-
-.bible-title .month-label {
-  color: #999;
-  font-size: 0.9em;
-}
-
-.bible-text {
-  background: rgba(255, 255, 255, 0.05);
-  border-left: 4px solid #ffd700;
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-}
-
-.bible-text h3 {
-  color: #ffd700;
-  font-size: 1.3em;
-  margin-bottom: 10px;
-}
-
-.bible-text p {
-  color: #ccc;
-  line-height: 1.6;
-  font-size: 1.05em;
-}
-
-.bible-empty {
-  text-align: center;
-  color: #999;
-  padding: 40px 20px;
-}
-
-.bible-empty-icon {
-  font-size: 4em;
-  margin-bottom: 15px;
-  opacity: 0.5;
-}
-
-.bible-admin-btn {
-  width: 100%;
-  padding: 15px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border: none;
-  border-radius: 12px;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-bottom: 10px;
-}
-
-.bible-share-btn {
-  width: 100%;
-  padding: 15px;
-  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-  border: none;
-  border-radius: 12px;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-
-.bible-share-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
-}
-
-.bible-admin-panel {
-  display: none;
-  margin-top: 20px;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
-  border: 1px solid rgba(255, 215, 0, 0.2);
-}
-
-.bible-admin-panel.visible {
-  display: block;
-  animation: fadeIn 0.3s ease;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.admin-input-group {
-  margin-bottom: 15px;
-}
-
-.admin-input-group label {
-  display: block;
-  color: #ffd700;
-  margin-bottom: 8px;
-  font-weight: 600;
-}
-
-.admin-input-group input,
-.admin-input-group textarea,
-.admin-input-group select {
-  width: 100%;
-  padding: 12px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 8px;
-  color: white;
-  font-size: 1em;
-}
-
-.admin-input-group textarea {
-  min-height: 100px;
-  resize: vertical;
-  font-family: inherit;
-}
-
-.admin-buttons {
-  display: flex;
-  gap: 10px;
-  margin-top: 20px;
-}
-
-.btn-save {
-  flex: 1;
-  padding: 12px;
-  background: #4CAF50;
-  border: none;
-  border-radius: 10px;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.btn-cancel {
-  padding: 12px 20px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
-  color: white;
-  cursor: pointer;
-}
-
-.password-input {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 15px;
-}
-
-.password-input input {
-  flex: 1;
-}
-
-.bible-badge {
-  position: absolute;
-  top: -5px;
-  right: -5px;
-  background: #ff4444;
-  color: white;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.7em;
-  font-weight: bold;
-  box-shadow: 0 2px 10px rgba(255, 68, 68, 0.5);
-  animation: bounce 1s infinite;
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
-}
-
-/* ===== BOTÃO COMPARTILHAR WHATSAPP ===== */
-.share-whatsapp-btn {
-  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.share-whatsapp-btn:hover {
-  box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
-}
-
-/* ===== RESPONSIVO ===== */
-@media (max-width: 768px) {
-  .notification-bell {
-    width: 40px;
-    height: 40px;
-    font-size: 1.3em;
-  }
-  
-  .accessibility-panel {
-    right: 10px;
-    top: auto;
-    bottom: 150px;
-    transform: none;
-  }
-  
-  .accessibility-btn {
-    width: 45px;
-    height: 45px;
-    font-size: 1.3em;
-  }
-  
-  .bible-float-btn {
-    width: 55px;
-    height: 55px;
-    font-size: 1.8em;
-    left: 15px;
-    bottom: 15px;
-  }
-  
-  .bible-content,
-  .notification-content {
-    padding: 20px;
-  }
-}
-
-@media print {
-  .notification-bell,
-  .accessibility-panel,
-  .bible-float-btn,
-  .bible-modal,
-  .notification-modal,
-  .install-banner {
-    display: none !important;
-  }
- </style>
+        /* ===== NOTIFICAÇÕES (SININHO) ===== */
+        .notification-bell {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+        }
+        .notification-bell:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+        .notification-bell.has-notifications {
+            animation: ring 2s infinite;
+        }
+        @keyframes ring {
+            0%, 100% { transform: rotate(0deg); }
+            10%, 30% { transform: rotate(-15deg); }
+            20%, 40% { transform: rotate(15deg); }
+        }
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ff4444;
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            font-size: 0.7em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        /* ===== MODAL NOTIFICAÇÕES ===== */
+        .notification-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 10002;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .notification-modal.visible {
+            display: flex;
+        }
+        .notification-content {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            animation: slideIn 0.3s ease;
+        }
+        .notification-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(102, 126, 234, 0.2);
+        }
+        .notification-header h2 {
+            color: #667eea;
+            font-size: 1.5em;
+        }
+        .notification-toggle {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .notification-toggle label {
+            color: #ccc;
+            font-size: 0.95em;
+        }
+        .toggle-switch {
+            position: relative;
+            width: 60px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .toggle-switch.active {
+            background: #4CAF50;
+        }
+        .toggle-switch::after {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 24px;
+            height: 24px;
+            background: white;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+        .toggle-switch.active::after {
+            transform: translateX(30px);
+        }
+        .group-select-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+        .group-select-box label {
+            display: block;
+            color: #667eea;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .group-select-box select {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: white;
+            font-size: 1em;
+        }
+        /* ===== PAINEL DE ACESSIBILIDADE ===== */
+        .accessibility-panel {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 15px;
+            z-index: 9998;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        .accessibility-btn {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .accessibility-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        .accessibility-btn.active {
+            background: #4CAF50;
+            box-shadow: 0 0 15px #4CAF50;
+        }
+        .accessibility-tooltip {
+            position: absolute;
+            right: 60px;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            white-space: nowrap;
+            font-size: 0.85em;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .accessibility-btn:hover .accessibility-tooltip {
+            opacity: 1;
+        }
+        body.high-contrast {
+            background: #000 !important;
+        }
+        body.high-contrast .header {
+            background: #fff !important;
+            color: #000 !important;
+        }
+        body.high-contrast .church-name,
+        body.high-contrast .church-subtitle {
+            color: #000 !important;
+        }
+        body.high-contrast .consultas,
+        body.high-contrast .resultado,
+        body.high-contrast .escala-item {
+            background: #fff !important;
+            color: #000 !important;
+            border: 3px solid #000 !important;
+        }
+        body.high-contrast button {
+            background: #000 !important;
+            color: #fff !important;
+            border: 3px solid #fff !important;
+        }
+        body.font-medium {
+            font-size: 18px;
+        }
+        body.font-large {
+            font-size: 22px;
+        }
+        .reading-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #4CAF50, #22d3ee);
+            transform-origin: left;
+            transform: scaleX(0);
+            z-index: 10001;
+            animation: reading-progress 2s linear;
+        }
+        @keyframes reading-progress {
+            from { transform: scaleX(0); }
+            to { transform: scaleX(1); }
+        }
+        /* ===== BOTÃO LIVRO DO MÊS ===== */
+        .bible-float-btn {
+            position: fixed;
+            left: 20px;
+            bottom: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #ffd700 0%, #ff8c00 100%);
+            border: none;
+            border-radius: 50%;
+            box-shadow: 0 8px 30px rgba(255, 140, 0, 0.4);
+            cursor: pointer;
+            z-index: 9997;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+        .bible-float-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 40px rgba(255, 140, 0, 0.6);
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .bible-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .bible-modal.visible {
+            display: flex;
+        }
+        .bible-content {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            animation: slideIn 0.3s ease;
+        }
+        .bible-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(255, 215, 0, 0.2);
+        }
+        .bible-icon {
+            font-size: 3em;
+        }
+        .bible-title h2 {
+            color: #ffd700;
+            font-size: 1.5em;
+            margin-bottom: 5px;
+        }
+        .bible-title .month-label {
+            color: #999;
+            font-size: 0.9em;
+        }
+        .bible-text {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid #ffd700;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .bible-text h3 {
+            color: #ffd700;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+        .bible-text p {
+            color: #ccc;
+            line-height: 1.6;
+            font-size: 1.05em;
+        }
+        .bible-empty {
+            text-align: center;
+            color: #999;
+            padding: 40px 20px;
+        }
+        .bible-empty-icon {
+            font-size: 4em;
+            margin-bottom: 15px;
+            opacity: 0.5;
+        }
+        .bible-admin-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 10px;
+        }
+        .bible-share-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .bible-share-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+        }
+        .bible-admin-panel {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+        .bible-admin-panel.visible {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .admin-input-group {
+            margin-bottom: 15px;
+        }
+        .admin-input-group label {
+            display: block;
+            color: #ffd700;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .admin-input-group input,
+        .admin-input-group textarea,
+        .admin-input-group select {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: white;
+            font-size: 1em;
+        }
+        .admin-input-group textarea {
+            min-height: 100px;
+            resize: vertical;
+            font-family: inherit;
+        }
+        .admin-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .btn-save {
+            flex: 1;
+            padding: 12px;
+            background: #4CAF50;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .btn-cancel {
+            padding: 12px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            color: white;
+            cursor: pointer;
+        }
+        .password-input {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .password-input input {
+            flex: 1;
+        }
+        .bible-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ff4444;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7em;
+            font-weight: bold;
+            box-shadow: 0 2px 10px rgba(255, 68, 68, 0.5);
+            animation: bounce 1s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        /* ===== BOTÃO COMPARTILHAR WHATSAPP ===== */
+        .share-whatsapp-btn {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .share-whatsapp-btn:hover {
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+        }
+        /* ===== RESPONSIVO ===== */
+        @media (max-width: 768px) {
+            .notification-bell {
+                width: 40px;
+                height: 40px;
+                font-size: 1.3em;
+            }
+            .accessibility-panel {
+                right: 10px;
+                top: auto;
+                bottom: 150px;
+                transform: none;
+            }
+            .accessibility-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 1.3em;
+            }
+            .bible-float-btn {
+                width: 55px;
+                height: 55px;
+                font-size: 1.8em;
+                left: 15px;
+                bottom: 15px;
+            }
+            .bible-content,
+            .notification-content {
+                padding: 20px;
+            }
+        }
+        @media print {
+            .notification-bell,
+            .accessibility-panel,
+            .bible-float-btn,
+            .bible-modal,
+            .notification-modal,
+            .install-banner {
+                display: none !important;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="header">
         <img src="logo-ibjlv.png" alt="Logo IBJLV" class="logo">
-
         <div class="church-name">IGREJA BATISTA JESUS LÍRIO DOS VALES</div>
         <div class="church-subtitle">Consultor de Escalas 2026</div>
     </div>
-
     <div class="container">
         <div class="consultas">
             <div class="consulta-box">
                 <h3>🔍 CONSULTAR ESCALAS</h3>
-
                 <div class="input-group">
                     <label>Selecione o Grupo:</label>
                     <select id="grupoSelect" required>
@@ -1102,7 +961,6 @@ body.font-large {
                         <option value="G8">Grupo 8 (G8)</option>
                     </select>
                 </div>
-
                 <div class="input-group">
                     <label>Selecione o Mês:</label>
                     <select id="mesSelect" required>
@@ -1121,10 +979,8 @@ body.font-large {
                         <option value="Dezembro">Dezembro</option>
                     </select>
                 </div>
-
                 <button onclick="consultarGrupo()">BUSCAR ESCALAS</button>
                 <button class="btn-print" onclick="imprimirEscala()">🖨️ Imprimir / Gerar PDF</button>
-
                 <div class="quick-groups">
                     <div class="group-btn" onclick="selecionarGrupo('G1')">G1</div>
                     <div class="group-btn" onclick="selecionarGrupo('G2')">G2</div>
@@ -1137,7 +993,6 @@ body.font-large {
                 </div>
             </div>
         </div>
-
         <div class="loading" id="loading">
             <div id="fishLoader" class="fish-loader">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 160" width="100%" height="100%">
@@ -1146,12 +1001,10 @@ body.font-large {
                 </svg>
             </div>
         </div>
-
         <div class="resultado" id="resultado">
             <div class="no-data">Selecione seu grupo e o mês para começar a consulta.</div>
         </div>
     </div>
-
     <div id="installBanner" class="install-banner">
         <div class="install-content">
             <span class="install-icon">📲</span>
@@ -1163,34 +1016,28 @@ body.font-large {
             <button id="closeInstall" class="btn-close">X</button>
         </div>
     </div>
-
-
     <div class="footer">
         IBJLV - Diaconia © 2026
         <br>
          Use a função "Imprimir / Gerar PDF".
     </div>
-<!-- ===== BOTÃO NOTIFICAÇÕES (SININHO) ===== -->
+    <!-- ===== BOTÃO NOTIFICAÇÕES (SININHO) ===== -->
     <button class="notification-bell" id="notificationBell" title="Notificações">
       🔔
       <span class="notification-badge" id="notificationBadge" style="display: none;">0</span>
     </button>
-
     <!-- ===== MODAL NOTIFICAÇÕES ===== -->
     <div class="notification-modal" id="notificationModal">
       <div class="notification-content">
         <button class="btn-close" onclick="closeNotificationModal()">✕</button>
-        
         <div class="notification-header">
           <div style="font-size: 2em;">🔔</div>
           <h2>Configurar Notificações</h2>
         </div>
-        
         <div class="notification-toggle" onclick="toggleNotifications()">
           <label>Ativar Lembretes</label>
           <div class="toggle-switch" id="notificationToggle"></div>
         </div>
-        
         <div class="group-select-box" id="groupSelectBox" style="display: none;">
           <label>Selecione seu Grupo:</label>
           <select id="userGroupSelect">
@@ -1205,7 +1052,6 @@ body.font-large {
             <option value="G8">Grupo 8 (G8)</option>
           </select>
         </div>
-        
         <div style="margin-top: 20px; padding: 15px; background: rgba(255, 193, 7, 0.1); border-radius: 10px; border-left: 4px solid #ffc107;">
           <p style="font-size: 0.9em; color: #ccc; margin: 0;">
             💡 Você receberá uma notificação <strong>12 horas antes</strong> de cada escala do seu grupo.
@@ -1213,18 +1059,15 @@ body.font-large {
         </div>
       </div>
     </div>
-
     <!-- ===== BOTÃO FLUTUANTE LIVRO DO MÊS ===== -->
     <button class="bible-float-btn" id="bibleFloatBtn" title="Livro do Mês">
       📖
       <span class="bible-badge" id="bibleBadge" style="display: none;">!</span>
     </button>
-
     <!-- ===== MODAL LIVRO DO MÊS ===== -->
     <div class="bible-modal" id="bibleModal">
       <div class="bible-content">
         <button class="btn-close" id="bibleCloseBtn">✕</button>
-        
         <div class="bible-header">
           <div class="bible-icon">📖</div>
           <div class="bible-title">
@@ -1232,24 +1075,19 @@ body.font-large {
             <div class="month-label" id="currentMonthLabel">Janeiro 2026</div>
           </div>
         </div>
-        
         <div id="bibleDisplay"></div>
-        
         <button class="bible-share-btn" id="shareWhatsAppBtn" style="display: none;">
           <span style="font-size: 1.5em;">💬</span>
           Compartilhar no WhatsApp
         </button>
-        
         <button class="bible-admin-btn" id="adminToggleBtn">
           🔐 Gerenciar Livro do Mês
         </button>
-        
         <div class="bible-admin-panel" id="adminPanel">
           <div class="password-input">
             <input type="password" id="adminPassword" placeholder="Senha de administrador">
             <button class="btn-save" onclick="verifyPassword()" style="flex: 0;">🔓</button>
           </div>
-          
           <div id="adminForm" style="display: none;">
             <div class="admin-input-group">
               <label>Mês:</label>
@@ -1268,17 +1106,14 @@ body.font-large {
                 <option value="Dezembro">Dezembro</option>
               </select>
             </div>
-            
             <div class="admin-input-group">
               <label>Livro/Capítulo da Bíblia:</label>
               <input type="text" id="adminBook" placeholder="Ex: Salmos 23, João 1-3">
             </div>
-            
             <div class="admin-input-group">
               <label>Descrição (opcional):</label>
               <textarea id="adminDescription" placeholder="Mensagem sobre a leitura..."></textarea>
             </div>
-            
             <div class="admin-buttons">
               <button class="btn-save" onclick="saveBibleReading()">💾 Salvar</button>
               <button class="btn-cancel" onclick="closeAdminPanel()">Cancelar</button>
@@ -1287,42 +1122,34 @@ body.font-large {
         </div>
       </div>
     </div>
-
     <!-- ===== PAINEL DE ACESSIBILIDADE ===== -->
     <div class="accessibility-panel" id="accessibilityPanel">
       <button class="accessibility-btn" id="speakBtn" title="Ler Escala">
         <span class="accessibility-tooltip">Ler Escala</span>
         🔊
       </button>
-      
       <button class="accessibility-btn" id="fontIncreaseBtn" title="Aumentar Fonte">
         <span class="accessibility-tooltip">Aumentar Fonte</span>
         A+
       </button>
-      
       <button class="accessibility-btn" id="fontDecreaseBtn" title="Diminuir Fonte">
         <span class="accessibility-tooltip">Diminuir Fonte</span>
         A-
       </button>
-      
       <button class="accessibility-btn" id="contrastBtn" title="Alto Contraste">
         <span class="accessibility-tooltip">Alto Contraste</span>
         ◐
       </button>
-      
       <button class="accessibility-btn" id="stopSpeakBtn" title="Parar Leitura" style="display: none;">
         <span class="accessibility-tooltip">Parar</span>
         ⏹
       </button>
     </div>
-
     <div class="reading-indicator" id="readingIndicator" style="display: none;"></div>
-
     <script>
-        // ============ DADOS COMPLETOS DAS ESCALAS 2026 (CÓPIA DA VERSÃO ANTERIOR) ============
-        // OBS: Os Sábados "G?" devem ser editados por você.
+        // ============ DADOS COMPLETOS DAS ESCALAS 2026 ============
         const escalas = [
-            // ==================== JANEIRO ====================
+            // JANEIRO
             { mes: "Janeiro", dia: 2, dia_semana: "Sexta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Janeiro", dia: 3, dia_semana: "Sábado", grupo: "G2", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Janeiro", dia: 4, dia_semana: "Domingo", grupo: "", EBD: "G6", Tarde: "G7", Noite: "G8", cafe: "" },
@@ -1342,8 +1169,7 @@ body.font-large {
             { mes: "Janeiro", dia: 29, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", cafe: "G2" },
             { mes: "Janeiro", dia: 30, dia_semana: "Sexta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Janeiro", dia: 31, dia_semana: "Sábado", grupo: "G7", EBD: "", Tarde: "", Noite: "", cafe: "" },
-
-            // ==================== FEVEREIRO ====================
+            // FEVEREIRO
             { mes: "Fevereiro", dia: 1, dia_semana: "Domingo", grupo: "", EBD: "G1", Tarde: "G2", Noite: "G3", cafe: "" },
             { mes: "Fevereiro", dia: 4, dia_semana: "Quarta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Fevereiro", dia: 6, dia_semana: "Sexta-feira", grupo: "G7", EBD: "", Tarde: "", Noite: "", cafe: "" },
@@ -1361,8 +1187,7 @@ body.font-large {
             { mes: "Fevereiro", dia: 26, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", cafe: "G1" },
             { mes: "Fevereiro", dia: 27, dia_semana: "Sexta-feira", grupo: "G3", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Fevereiro", dia: 28, dia_semana: "Sábado", grupo: "G8", EBD: "", Tarde: "", Noite: "", cafe: "" },
-
-            // ==================== MARÇO ====================
+            // MARÇO
             { mes: "Março", dia: 1, dia_semana: "Domingo", grupo: "", EBD: "G4", Tarde: "G5", Noite: "G6", cafe: "" },
             { mes: "Março", dia: 4, dia_semana: "Quarta-feira", grupo: "G2", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Março", dia: 6, dia_semana: "Sexta-feira", grupo: "G8", EBD: "", Tarde: "", Noite: "", cafe: "" },
@@ -1381,8 +1206,7 @@ body.font-large {
             { mes: "Março", dia: 27, dia_semana: "Sexta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Março", dia: 28, dia_semana: "Sábado", grupo: "G2", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Março", dia: 29, dia_semana: "Domingo", grupo: "", EBD: "G8", Tarde: "G6", Noite: "G7", cafe: "" },
-
-            // ==================== ABRIL ====================
+            // ABRIL
             { mes: "Abril", dia: 1, dia_semana: "Quarta-feira", grupo: "G2", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Abril", dia: 3, dia_semana: "Sexta-feira", grupo: "G3", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Abril", dia: 4, dia_semana: "Sábado", grupo: "G4", EBD: "", Tarde: "", Noite: "", cafe: "" },
@@ -1401,30 +1225,28 @@ body.font-large {
             { mes: "Abril", dia: 26, dia_semana: "Domingo", grupo: "", EBD: "G8", Tarde: "G1", Noite: "G2", cafe: "" },
             { mes: "Abril", dia: 29, dia_semana: "Quarta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Abril", dia: 30, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", cafe: "G4" },
-
-            // ==================== MAIO ====================
+            // MAIO
             { mes: "Maio", dia: 1, dia_semana: "Sexta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Maio", dia: 2, dia_semana: "Sábado", grupo: "G6", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Maio", dia: 3, dia_semana: "Domingo", grupo: "", EBD: "G2", Tarde: "G3", Noite: "G4", cafe: "" },
             { mes: "Maio", dia: 6, dia_semana: "Quarta-feira", grupo: "G5", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Maio", dia: 8, dia_semana: "Sexta-feira", grupo: "G8", EBD: "", Tarde: "", Noite: "", cafe: "" },
-            { mes: "Maio", dia: 9, dia_semana: "Sábado", grupo: "G4", EBD: "", Tarde: "", Noite: "", cafe: "" }, // Adicionado Sábado faltante
+            { mes: "Maio", dia: 9, dia_semana: "Sábado", grupo: "G4", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Maio", dia: 10, dia_semana: "Domingo", grupo: "", EBD: "G1", Tarde: "G2", Noite: "G3", cafe: "" },
             { mes: "Maio", dia: 13, dia_semana: "Quarta-feira", grupo: "G7", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Maio", dia: 15, dia_semana: "Sexta-feira", grupo: "G5", EBD: "", Tarde: "", Noite: "", cafe: "" },
-            { mes: "Maio", dia: 16, dia_semana: "Sábado", grupo: "G7", EBD: "", Tarde: "", Noite: "", cafe: "" }, // Adicionado Sábado faltante
+            { mes: "Maio", dia: 16, dia_semana: "Sábado", grupo: "G7", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Maio", dia: 17, dia_semana: "Domingo", grupo: "", EBD: "G4", Tarde: "G8", Noite: "G1", cafe: "" },
             { mes: "Maio", dia: 20, dia_semana: "Quarta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Maio", dia: 22, dia_semana: "Sexta-feira", grupo: "G4", EBD: "", Tarde: "", Noite: "", cafe: "" },
-            { mes: "Maio", dia: 23, dia_semana: "Sábado", grupo: "G3", EBD: "", Tarde: "", Noite: "", cafe: "" }, // Adicionado Sábado faltante
+            { mes: "Maio", dia: 23, dia_semana: "Sábado", grupo: "G3", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Maio", dia: 24, dia_semana: "Domingo", grupo: "", EBD: "G6", Tarde: "G5", Noite: "G7", cafe: "" },
             { mes: "Maio", dia: 27, dia_semana: "Quarta-feira", grupo: "G8", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Maio", dia: 28, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", cafe: "G8" },
             { mes: "Maio", dia: 29, dia_semana: "Sexta-feira", grupo: "G3", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Maio", dia: 30, dia_semana: "Sábado", grupo: "G1", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Maio", dia: 31, dia_semana: "Domingo", grupo: "", EBD: "G5", Tarde: "G6", Noite: "G2", cafe: "" },
-
-            // ==================== JUNHO ====================
+            // JUNHO
             { mes: "Junho", dia: 3, dia_semana: "Quarta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Junho", dia: 5, dia_semana: "Sexta-feira", grupo: "G4", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Junho", dia: 6, dia_semana: "Sábado", grupo: "G8", EBD: "", Tarde: "", Noite: "", cafe: "" },
@@ -1442,29 +1264,27 @@ body.font-large {
             { mes: "Junho", dia: 26, dia_semana: "Sexta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Junho", dia: 27, dia_semana: "Sábado", grupo: "G4", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Junho", dia: 28, dia_semana: "Domingo", grupo: "", EBD: "G6", Tarde: "G7", Noite: "G8", cafe: "" },
-
-            // ==================== JULHO ====================
+            // JULHO
             { mes: "Julho", dia: 1, dia_semana: "Quarta-feira", grupo: "G4", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Julho", dia: 3, dia_semana: "Sexta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "", cafe: "" },
-            { mes: "Julho", dia: 4, dia_semana: "Sábado", grupo: "G7", EBD: "", Tarde: "", Noite: "", cafe: "" }, // Adicionado Sábado faltante
+            { mes: "Julho", dia: 4, dia_semana: "Sábado", grupo: "G7", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Julho", dia: 5, dia_semana: "Domingo", grupo: "", EBD: "G8", Tarde: "G1", Noite: "G2", cafe: "" },
             { mes: "Julho", dia: 8, dia_semana: "Quarta-feira", grupo: "G7", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Julho", dia: 10, dia_semana: "Sexta-feira", grupo: "G3", EBD: "", Tarde: "", Noite: "", cafe: "" },
-            { mes: "Julho", dia: 11, dia_semana: "Sábado", grupo: "G4", EBD: "", Tarde: "", Noite: "", cafe: "" }, // Adicionado Sábado faltante
+            { mes: "Julho", dia: 11, dia_semana: "Sábado", grupo: "G4", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Julho", dia: 12, dia_semana: "Domingo", grupo: "", EBD: "G2", Tarde: "G8", Noite: "G1", cafe: "" },
             { mes: "Julho", dia: 15, dia_semana: "Quarta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Julho", dia: 17, dia_semana: "Sexta-feira", grupo: "G5", EBD: "", Tarde: "", Noite: "", cafe: "" },
-            { mes: "Julho", dia: 18, dia_semana: "Sábado", grupo: "G2", EBD: "", Tarde: "", Noite: "", cafe: "" }, // Adicionado Sábado faltante
+            { mes: "Julho", dia: 18, dia_semana: "Sábado", grupo: "G2", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Julho", dia: 19, dia_semana: "Domingo", grupo: "", EBD: "G3", Tarde: "G4", Noite: "G5", cafe: "" },
             { mes: "Julho", dia: 22, dia_semana: "Quarta-feira", grupo: "G8", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Julho", dia: 24, dia_semana: "Sexta-feira", grupo: "G2", EBD: "", Tarde: "", Noite: "", cafe: "" },
-            { mes: "Julho", dia: 25, dia_semana: "Sábado", grupo: "G3", EBD: "", Tarde: "", Noite: "", cafe: "" }, // Adicionado Sábado faltante
+            { mes: "Julho", dia: 25, dia_semana: "Sábado", grupo: "G3", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Julho", dia: 26, dia_semana: "Domingo", grupo: "", EBD: "G6", Tarde: "G7", Noite: "G8", cafe: "" },
             { mes: "Julho", dia: 29, dia_semana: "Quarta-feira", grupo: "G5", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Julho", dia: 30, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", cafe: "G7" },
             { mes: "Julho", dia: 31, dia_semana: "Sexta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "", cafe: "" },
-
-            // ==================== AGOSTO ====================
+            // AGOSTO
             { mes: "Agosto", dia: 1, dia_semana: "Sábado", grupo: "G7", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Agosto", dia: 2, dia_semana: "Domingo", grupo: "", EBD: "G3", Tarde: "G4", Noite: "G5", cafe: "" },
             { mes: "Agosto", dia: 5, dia_semana: "Quarta-feira", grupo: "G8", EBD: "", Tarde: "", Noite: "", cafe: "" },
@@ -1484,129 +1304,109 @@ body.font-large {
             { mes: "Agosto", dia: 28, dia_semana: "Sexta-feira", grupo: "G8", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Agosto", dia: 29, dia_semana: "Sábado", grupo: "G5", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Agosto", dia: 30, dia_semana: "Domingo", grupo: "", EBD: "G2", Tarde: "G3", Noite: "G4", cafe: "" },
-
-            // ==================== SETEMBRO ====================
+            // SETEMBRO
             { mes: "Setembro", dia: 2, dia_semana: "Quarta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Setembro", dia: 4, dia_semana: "Sexta-feira", grupo: "G3", EBD: "", Tarde: "", Noite: "", cafe: "" },
-            { mes: "Setembro", dia: 5, dia_semana: "Sábado", grupo: "G5", EBD: "", Tarde: "", Noite: "", cafe: "" }, // Adicionado Sábado faltante
+            { mes: "Setembro", dia: 5, dia_semana: "Sábado", grupo: "G5", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Setembro", dia: 6, dia_semana: "Domingo", grupo: "", EBD: "G6", Tarde: "G7", Noite: "G8", cafe: "" },
             { mes: "Setembro", dia: 9, dia_semana: "Quarta-feira", grupo: "G5", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Setembro", dia: 11, dia_semana: "Sexta-feira", grupo: "G2", EBD: "", Tarde: "", Noite: "", cafe: "" },
-            { mes: "Setembro", dia: 12, dia_semana: "Sábado", grupo: "G7", EBD: "", Tarde: "", Noite: "", cafe: "" }, // Adicionado Sábado faltante
+            { mes: "Setembro", dia: 12, dia_semana: "Sábado", grupo: "G7", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Setembro", dia: 13, dia_semana: "Domingo", grupo: "", EBD: "G4", Tarde: "G5", Noite: "G3", cafe: "" },
             { mes: "Setembro", dia: 16, dia_semana: "Quarta-feira", grupo: "G2", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Setembro", dia: 18, dia_semana: "Sexta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "", cafe: "" },
-            { mes: "Setembro", dia: 19, dia_semana: "Sábado", grupo: "G3", EBD: "", Tarde: "", Noite: "", cafe: "" }, // Adicionado Sábado faltante
+            { mes: "Setembro", dia: 19, dia_semana: "Sábado", grupo: "G3", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Setembro", dia: 20, dia_semana: "Domingo", grupo: "", EBD: "G7", Tarde: "G8", Noite: "G1", cafe: "" },
             { mes: "Setembro", dia: 23, dia_semana: "Quarta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Setembro", dia: 24, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", cafe: "G1" },
             { mes: "Setembro", dia: 25, dia_semana: "Sexta-feira", grupo: "G4", EBD: "", Tarde: "", Noite: "", cafe: "" },
-            { mes: "Setembro", dia: 26, dia_semana: "Sábado", grupo: "G8", EBD: "", Tarde: "", Noite: "", cafe: "" }, // Adicionado Sábado faltante
+            { mes: "Setembro", dia: 26, dia_semana: "Sábado", grupo: "G8", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Setembro", dia: 27, dia_semana: "Domingo", grupo: "", EBD: "G2", Tarde: "G1", Noite: "G6", cafe: "" },
             { mes: "Setembro", dia: 30, dia_semana: "Quarta-feira", grupo: "G4", EBD: "", Tarde: "", Noite: "", cafe: "" },
-
-            // ==================== OUTUBRO ==================== 
-            { mes: "Outubro", dia: 2, dia_semana: "Sexta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "", cafe: "" }, 
-            { mes: "Outubro", dia: 3, dia_semana: "Sábado", grupo: "G5", EBD: "", Tarde: "", Noite: "", cafe: "" }, 
+            // OUTUBRO
+            { mes: "Outubro", dia: 2, dia_semana: "Sexta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Outubro", dia: 3, dia_semana: "Sábado", grupo: "G5", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Outubro", dia: 4, dia_semana: "Domingo", grupo: "", EBD: "G1", Tarde: "G2", Noite: "G3", cafe: "" },
             { mes: "Outubro", dia: 7, dia_semana: "Quarta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Outubro", dia: 9, dia_semana: "Sexta-feira", grupo: "G7", EBD: "", Tarde: "", Noite: "", cafe: "" },
-            { mes: "Outubro", dia: 10, dia_semana: "Sábado", grupo: "G2", EBD: "", Tarde: "", Noite: "", cafe: "" }, // Adicionado Sábado faltante
+            { mes: "Outubro", dia: 10, dia_semana: "Sábado", grupo: "G2", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Outubro", dia: 11, dia_semana: "Domingo", grupo: "", EBD: "G4", Tarde: "G8", Noite: "G1", cafe: "" },
             { mes: "Outubro", dia: 14, dia_semana: "Quarta-feira", grupo: "G5", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Outubro", dia: 16, dia_semana: "Sexta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "", cafe: "" },
-            { mes: "Outubro", dia: 17, dia_semana: "Sábado", grupo: "G7", EBD: "", Tarde: "", Noite: "", cafe: "" }, // Adicionado Sábado faltante
+            { mes: "Outubro", dia: 17, dia_semana: "Sábado", grupo: "G7", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Outubro", dia: 18, dia_semana: "Domingo", grupo: "", EBD: "G2", Tarde: "G3", Noite: "G4", cafe: "" },
             { mes: "Outubro", dia: 21, dia_semana: "Quarta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Outubro", dia: 23, dia_semana: "Sexta-feira", grupo: "G4", EBD: "", Tarde: "", Noite: "", cafe: "" },
-            { mes: "Outubro", dia: 24, dia_semana: "Sábado", grupo: "G8", EBD: "", Tarde: "", Noite: "", cafe: "" }, // Adicionado Sábado faltante
+            { mes: "Outubro", dia: 24, dia_semana: "Sábado", grupo: "G8", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Outubro", dia: 25, dia_semana: "Domingo", grupo: "", EBD: "G6", Tarde: "G5", Noite: "G7", cafe: "" },
             { mes: "Outubro", dia: 28, dia_semana: "Quarta-feira", grupo: "G8", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Outubro", dia: 29, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", cafe: "G3" },
             { mes: "Outubro", dia: 30, dia_semana: "Sexta-feira", grupo: "G2", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Outubro", dia: 31, dia_semana: "Sábado", grupo: "G3", EBD: "", Tarde: "", Noite: "", cafe: "" },
-
-            // ==================== NOVEMBRO ====================
+            // NOVEMBRO
             { mes: "Novembro", dia: 1, dia_semana: "Domingo", grupo: "", EBD: "G4", Tarde: "G5", Noite: "G6", cafe: "" },
             { mes: "Novembro", dia: 4, dia_semana: "Quarta-feira", grupo: "G7", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Novembro", dia: 6, dia_semana: "Sexta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "", cafe: "" },
-            { mes: "Novembro", dia: 7, dia_semana: "Sábado", grupo: "G1", EBD: "", Tarde: "", Noite: "", cafe: "" }, // Adicionado Sábado faltante
+            { mes: "Novembro", dia: 7, dia_semana: "Sábado", grupo: "G1", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Novembro", dia: 8, dia_semana: "Domingo", grupo: "", EBD: "G2", Tarde: "G3", Noite: "G4", cafe: "" },
             { mes: "Novembro", dia: 11, dia_semana: "Quarta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Novembro", dia: 13, dia_semana: "Sexta-feira", grupo: "G2", EBD: "", Tarde: "", Noite: "", cafe: "" },
-            { mes: "Novembro", dia: 14, dia_semana: "Sábado", grupo: "G8", EBD: "", Tarde: "", Noite: "", cafe: "" }, // Adicionado Sábado faltante
+            { mes: "Novembro", dia: 14, dia_semana: "Sábado", grupo: "G8", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Novembro", dia: 15, dia_semana: "Domingo", grupo: "", EBD: "G5", Tarde: "G6", Noite: "G7", cafe: "" },
             { mes: "Novembro", dia: 18, dia_semana: "Quarta-feira", grupo: "G4", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Novembro", dia: 20, dia_semana: "Sexta-feira", grupo: "G5", EBD: "", Tarde: "", Noite: "", cafe: "" },
-            { mes: "Novembro", dia: 21, dia_semana: "Sábado", grupo: "G3", EBD: "", Tarde: "", Noite: "", cafe: "" }, // Adicionado Sábado faltante
+            { mes: "Novembro", dia: 21, dia_semana: "Sábado", grupo: "G3", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Novembro", dia: 22, dia_semana: "Domingo", grupo: "", EBD: "G8", Tarde: "G1", Noite: "G2", cafe: "" },
             { mes: "Novembro", dia: 25, dia_semana: "Quarta-feira", grupo: "G5", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Novembro", dia: 26, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", cafe: "G2" },
             { mes: "Novembro", dia: 27, dia_semana: "Sexta-feira", grupo: "G8", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Novembro", dia: 28, dia_semana: "Sábado", grupo: "G7", EBD: "", Tarde: "", Noite: "", cafe: "" },
-            { mes: "Novembro", dia: 29, dia_semana: "Domingo", grupo: "", EBD: "G6", Tarde: "G4", Noite: "G3", cafe: "" }, 
-
-            // ==================== DEZEMBRO ====================
+            { mes: "Novembro", dia: 29, dia_semana: "Domingo", grupo: "", EBD: "G6", Tarde: "G4", Noite: "G3", cafe: "" },
+            // DEZEMBRO
             { mes: "Dezembro", dia: 2, dia_semana: "Quarta-feira", grupo: "G2", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Dezembro", dia: 4, dia_semana: "Sexta-feira", grupo: "G3", EBD: "", Tarde: "", Noite: "", cafe: "" },
-            { mes: "Dezembro", dia: 5, dia_semana: "Sábado", grupo: "G4", EBD: "", Tarde: "", Noite: "", cafe: "" }, // Adicionado Sábado faltante
+            { mes: "Dezembro", dia: 5, dia_semana: "Sábado", grupo: "G4", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Dezembro", dia: 6, dia_semana: "Domingo", grupo: "", EBD: "G7", Tarde: "G8", Noite: "G1", cafe: "" },
             { mes: "Dezembro", dia: 9, dia_semana: "Quarta-feira", grupo: "G5", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Dezembro", dia: 11, dia_semana: "Sexta-feira", grupo: "G8", EBD: "", Tarde: "", Noite: "", cafe: "" },
-            { mes: "Dezembro", dia: 12, dia_semana: "Sábado", grupo: "G3", EBD: "", Tarde: "", Noite: "", cafe: "" }, // Adicionado Sábado faltante
+            { mes: "Dezembro", dia: 12, dia_semana: "Sábado", grupo: "G3", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Dezembro", dia: 13, dia_semana: "Domingo", grupo: "", EBD: "G5", Tarde: "G6", Noite: "G7", cafe: "" },
             { mes: "Dezembro", dia: 16, dia_semana: "Quarta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Dezembro", dia: 18, dia_semana: "Sexta-feira", grupo: "G2", EBD: "", Tarde: "", Noite: "", cafe: "" },
-            { mes: "Dezembro", dia: 19, dia_semana: "Sábado", grupo: "G6", EBD: "", Tarde: "", Noite: "", cafe: "" }, // Adicionado Sábado faltante
+            { mes: "Dezembro", dia: 19, dia_semana: "Sábado", grupo: "G6", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Dezembro", dia: 20, dia_semana: "Domingo", grupo: "", EBD: "G8", Tarde: "G1", Noite: "G2", cafe: "" },
             { mes: "Dezembro", dia: 23, dia_semana: "Quarta-feira", grupo: "G7", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Dezembro", dia: 25, dia_semana: "Sexta-feira", grupo: "G5", EBD: "", Tarde: "", Noite: "", cafe: "" },
-            { mes: "Dezembro", dia: 26, dia_semana: "Sábado", grupo: "G1", EBD: "", Tarde: "", Noite: "", cafe: "" }, // Adicionado Sábado faltante
+            { mes: "Dezembro", dia: 26, dia_semana: "Sábado", grupo: "G1", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Dezembro", dia: 27, dia_semana: "Domingo", grupo: "", EBD: "G3", Tarde: "G4", Noite: "G8", cafe: "" },
             { mes: "Dezembro", dia: 30, dia_semana: "Quarta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Dezembro", dia: 31, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", cafe: "G4" },
         ];
 
-
-        // ============ FERIADOS RELEVANTES 2026 (Nacionais, Bahia e Jequié) - Datas e Dias da Semana de 2026 ============
+        // ============ FERIADOS RELEVANTES 2026 ============
         const feriados2026 = [
-            // Janeiro
             { mes: "Janeiro", dia: 1, dia_semana: "Quinta-feira", nome: "Confraternização Universal" },
-            // Fevereiro
             { mes: "Fevereiro", dia: 16, dia_semana: "Segunda-feira", nome: "Carnaval (Ponto Facultativo)" },
-            { mes: "Fevereiro", dia: 17, dia_semana: "Terça-feira", nome: "Carnaval (Ponto Facultativo)" }, 
+            { mes: "Fevereiro", dia: 17, dia_semana: "Terça-feira", nome: "Carnaval (Ponto Facultativo)" },
             { mes: "Fevereiro", dia: 18, dia_semana: "Quarta-feira", nome: "Quarta-feira de Cinzas (Ponto Facultativo)" },
-            // Abril
             { mes: "Abril", dia: 3, dia_semana: "Sexta-feira", nome: "Paixão de Cristo (Sexta-feira Santa)" },
             { mes: "Abril", dia: 21, dia_semana: "Terça-feira", nome: "Tiradentes" },
-            // Maio
             { mes: "Maio", dia: 1, dia_semana: "Sexta-feira", nome: "Dia do Trabalho" },
-            // Junho
             { mes: "Junho", dia: 4, dia_semana: "Quinta-feira", nome: "Corpus Christi (Ponto Facultativo)" },
             { mes: "Junho", dia: 13, dia_semana: "Sábado", nome: "Dia de Santo Antônio (Jequié - Municipal)" },
             { mes: "Junho", dia: 24, dia_semana: "Quarta-feira", nome: "São João (Jequié - Municipal)" },
-            // Julho
             { mes: "Julho", dia: 2, dia_semana: "Quinta-feira", nome: "Independência da Bahia (Estadual)" },
-            // Agosto
             { mes: "Agosto", dia: 20, dia_semana: "Quinta-feira", nome: "Dia do Evangélico (Jequié - Municipal)" },
-            // Setembro
             { mes: "Setembro", dia: 7, dia_semana: "Segunda-feira", nome: "Independência do Brasil" },
-            // Outubro
-            { mes: "Outubro", dia: 12, dia_semana: "Segunda-feira", nome: "Dia das Crianças" }, // Adicionado Dia das Crianças
+            { mes: "Outubro", dia: 12, dia_semana: "Segunda-feira", nome: "Dia das Crianças" },
             { mes: "Outubro", dia: 25, dia_semana: "Domingo", nome: "Aniversário de Jequié (Municipal)" },
-            // Novembro
             { mes: "Novembro", dia: 2, dia_semana: "Segunda-feira", nome: "Finados" },
             { mes: "Novembro", dia: 15, dia_semana: "Domingo", nome: "Proclamação da República" },
             { mes: "Novembro", dia: 20, dia_semana: "Sexta-feira", nome: "Dia da Consciência Negra" },
-            // Dezembro
             { mes: "Dezembro", dia: 25, dia_semana: "Sexta-feira", nome: "Natal" }
         ];
 
-        // ============ DADOS COMPLETOS DAS ESCALAS 2026 (CÓPIA DA VERSÃO ANTERIOR) ============
-
         // ===== FUNÇÕES PRINCIPAIS =====
-
-        // Função para selecionar grupo rapidamente
         function selecionarGrupo(grupo) {
             document.getElementById('grupoSelect').value = grupo;
             const mesSelecionado = document.getElementById('mesSelect').value;
@@ -1615,55 +1415,44 @@ body.font-large {
             }
         }
 
-        // Função para obter feriado em uma data específica
         function getFeriado(mes, dia) {
             const feriado = feriados2026.find(f => f.mes === mes && f.dia === dia);
             return feriado ? feriado.nome : null;
         }
 
-        // Função para formatar data para comparação
         function formatDate(mes, dia) {
             const meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
             const mesIndex = meses.indexOf(mes);
             return new Date(2026, mesIndex, dia);
         }
 
-        // Função para verificar alertas de feriado
         function checarAlertasFeriado(item) {
             const diaDaEscala = formatDate(item.mes, item.dia);
             let alertas = [];
             let classes = '';
-
-            // Feriado no dia da escala
             const feriadoNoDia = getFeriado(item.mes, item.dia);
             if (feriadoNoDia) {
                 alertas.push(`🚨 **Feriado:** ${feriadoNoDia}`);
                 classes += ' feriado-alerta';
             }
 
-            // Feriado no dia anterior
             const diaAnterior = new Date(diaDaEscala);
             diaAnterior.setDate(diaDaEscala.getDate() - 1);
-
             if (diaAnterior.getFullYear() === 2026) {
                 const nomeMesAnterior = new Date(2026, diaAnterior.getMonth()).toLocaleString('pt-BR', { month: 'long', timeZone: 'UTC' });
                 const mesAnterior = nomeMesAnterior.charAt(0).toUpperCase() + nomeMesAnterior.slice(1);
                 const feriadoAnterior = getFeriado(mesAnterior, diaAnterior.getDate());
-
                 if (feriadoAnterior && !feriadoNoDia) {
                     alertas.push(`⚠️ **Dia após Feriado:** ${feriadoAnterior} (Dia anterior foi feriado)`);
                 }
             }
 
-            // Feriado no dia seguinte
             const diaSeguinte = new Date(diaDaEscala);
             diaSeguinte.setDate(diaDaEscala.getDate() + 1);
-
             if (diaSeguinte.getFullYear() === 2026) {
                 const nomeMesSeguinte = new Date(2026, diaSeguinte.getMonth()).toLocaleString('pt-BR', { month: 'long', timeZone: 'UTC' });
                 const mesSeguinte = nomeMesSeguinte.charAt(0).toUpperCase() + nomeMesSeguinte.slice(1);
                 const feriadoSeguinte = getFeriado(mesSeguinte, diaSeguinte.getDate());
-
                 if (feriadoSeguinte && !feriadoNoDia) {
                     alertas.push(`⚠️ **Véspera de Feriado:** ${feriadoSeguinte} (Dia seguinte é feriado)`);
                 }
@@ -1672,27 +1461,22 @@ body.font-large {
             if (alertas.length > 0 && !feriadoNoDia) {
                 classes += ' feriado-alerta';
             }
-
             return { alertas, classes };
         }
 
-        // Função principal para consultar as escalas
         function consultarGrupo() {
             const grupoSelecionado = document.getElementById('grupoSelect').value;
             const mesSelecionado = document.getElementById('mesSelect').value;
             const loadingDiv = document.getElementById('loading');
             const resultadoDiv = document.getElementById('resultado');
-
             if (!grupoSelecionado || !mesSelecionado) {
                 resultadoDiv.classList.remove('visible');
                 resultadoDiv.innerHTML = '<div class="no-data">Por favor, selecione <strong>ambos</strong> o Grupo e o Mês.</div>';
                 resultadoDiv.classList.add('visible');
                 return;
             }
-
             resultadoDiv.classList.remove('visible');
             loadingDiv.classList.add('visible');
-
             setTimeout(() => {
                 const resultados = escalas.filter(escala => {
                     const isMes = escala.mes === mesSelecionado;
@@ -1705,13 +1489,10 @@ body.font-large {
                 });
 
                 let conteudoEscalas = `<h3>Escalas de ${grupoSelecionado} em ${mesSelecionado}</h3>`;
-
                 if (resultados.length > 0) {
                     resultados.forEach(item => {
                         let classesExtras = '';
                         let funcaoPrincipal = '';
-
-                        // Determinar a função principal
                         if (item.cafe === grupoSelecionado) {
                             funcaoPrincipal = '☕ Café das Mulheres';
                             classesExtras = ' cafe';
@@ -1730,10 +1511,8 @@ body.font-large {
                             classesExtras = ' diaconia-culto';
                         }
 
-                        // Verificar alertas de feriado
                         const feriadoData = checarAlertasFeriado(item);
                         classesExtras += feriadoData.classes;
-
                         let alertasHtml = feriadoData.alertas.map(alerta => 
                             `<span class="alerta-feriado">${alerta.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</span>`
                         ).join('');
@@ -1748,43 +1527,35 @@ body.font-large {
                         `;
                     });
 
-                    // Adicionar rodapé interno para impressão
                     conteudoEscalas += `
                         <div class="footer" style="display: none;">
                             IBJLV - Diaconia © 2026<br>
                             <small>Use a função "Imprimir / Gerar PDF"</small>
                         </div>
                     `;
-
                     resultadoDiv.innerHTML = conteudoEscalas;
                 } else {
                     resultadoDiv.innerHTML = '<div class="no-data">Nenhuma escala encontrada para este grupo e mês.</div>';
                 }
-
                 loadingDiv.classList.remove('visible');
                 resultadoDiv.classList.add('visible');
             }, 2000);
         }
 
-        // Função para impressão/geração de PDF
         function imprimirEscala() {
             const grupo = document.getElementById('grupoSelect').value;
             const mes = document.getElementById('mesSelect').value;
-
             if (!grupo || !mes) {
                 alert('❌ Por favor, selecione um grupo e mês antes de imprimir.');
                 return;
             }
-
             const resultadoDiv = document.getElementById('resultado');
             const escalaItems = resultadoDiv.querySelectorAll('.escala-item');
-
             if (escalaItems.length === 0) {
                 alert('❌ Não há escalas para imprimir.');
                 return;
             }
 
-            // Criar uma nova janela para impressão
             const janelaImpressao = window.open('', '_blank');
             const estilo = `
                 <style>
@@ -1830,7 +1601,6 @@ body.font-large {
                         font-size: 0.9em;
                     }
                     strong { color: #5b2c7e; }
-                    /* Estilo para a logo na impressão */
                     .logo-print {
                         max-width: 80px; 
                         margin-bottom: 10px;
@@ -1838,7 +1608,6 @@ body.font-large {
                     }
                 </style>
             `;
-
             const conteudo = `
                 <html>
                     <head>
@@ -1859,839 +1628,575 @@ body.font-large {
                     </body>
                 </html>
             `;
-
             janelaImpressao.document.write(conteudo);
             janelaImpressao.document.close();
-
-            // Esperar o conteúdo carregar antes de imprimir
             setTimeout(() => {
                 janelaImpressao.print();
-                // janelaImpressao.close(); // Opcional: fechar após imprimir
             }, 500);
         }
 
         // ============================================
-        // PWA: SERVICE WORKER E BOTÃO INSTALAR (COMBINADOS E CORRIGIDOS)
+        // PWA: SERVICE WORKER E BOTÃO INSTALAR (ÚNICA INSTÂNCIA)
         // ============================================
-
-        // PWA: REGISTRAR SERVICE WORKER
-       // O bloco abaixo substitui o código que começa em 'if ('serviceWorker' in navigator) {'
-
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        // CORREÇÃO ESSENCIAL: Usando o caminho absoluto e o escopo do seu repositório.
-        const swUrl = '/escalas-ibjlv-2026/service-worker.js'; 
-        const swScope = '/escalas-ibjlv-2026/'; 
-
-        navigator.serviceWorker.register(swUrl, { scope: swScope })
-            .then(registration => {
-                console.log('✅ PWA: Service Worker registrado com sucesso!');
-                console.log('📍 Escopo:', registration.scope);
-
-                // Verifica atualizações
-                registration.addEventListener('updatefound', () => {
-                    const newWorker = registration.installing;
-                    console.log('🔄 PWA: Nova versão encontrada, atualizando...');
-
-                    newWorker.addEventListener('statechange', () => {
-                        if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                            console.log('✨ PWA: Nova versão disponível!');
-                            // Opcional: Mostrar notificação ao usuário
-                            // alert('Nova versão disponível! Recarregue a página.');
-                        }
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./service-worker.js')
+                    .then(registration => {
+                        console.log('✅ PWA: Service Worker registrado com sucesso!');
+                        console.log('📍 Escopo:', registration.scope);
+                        registration.addEventListener('updatefound', () => {
+                            const newWorker = registration.installing;
+                            newWorker.addEventListener('statechange', () => {
+                                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                    console.log('✨ PWA: Nova versão disponível!');
+                                }
+                            });
+                        });
+                    })
+                    .catch(error => {
+                        console.error('❌ PWA: Erro ao registrar Service Worker:', error);
                     });
-                });
-            })
-            .catch(error => {
-                console.error('❌ PWA: Erro ao registrar Service Worker:', error);
             });
-    });
-}
-            // Detecta quando o app volta a ficar online
-            window.addEventListener('online', () => {
-                console.log('🌐 Conexão restaurada!');
-            });
-
-            // Detecta quando o app fica offline
-            window.addEventListener('offline', () => {
-                console.log('📵 Você está offline');
-            });
-        } else {
-            console.warn('⚠️ Service Workers não são suportados neste navegador');
+            window.addEventListener('online', () => console.log('🌐 Conexão restaurada!'));
+            window.addEventListener('offline', () => console.log('📵 Você está offline'));
         }
 
-
-        // BOTÃO INSTALAR APP (depende do elemento #installBanner no HTML)
         let deferredPrompt;
         const installBanner = document.getElementById('installBanner');
         const installButton = document.getElementById('installButton');
         const closeInstall = document.getElementById('closeInstall');
 
-        // Captura o evento de instalação
         window.addEventListener('beforeinstallprompt', (e) => {
             console.log('📱 Evento beforeinstallprompt capturado');
-
-            // Previne o mini-infobar padrão do Chrome
             e.preventDefault();
-
-            // Guarda o evento para usar depois
             deferredPrompt = e;
-
-            // Verifica se usuário já negou instalação antes
             const installDismissed = localStorage.getItem('installDismissed');
             if (installBanner && !installDismissed) {
-                // Mostra o banner depois de 3 segundos
                 setTimeout(() => {
                     installBanner.style.display = 'block';
                 }, 3000);
             }
         });
 
-        // Adiciona listeners com verificação de null (para evitar o TypeError)
         if (installButton) {
             installButton.addEventListener('click', async () => {
                 if (!deferredPrompt) {
                     console.log('❌ deferredPrompt não está disponível');
                     return;
                 }
-
-                // Mostra o prompt de instalação
                 deferredPrompt.prompt();
-
-                // Aguarda a escolha do usuário
                 const { outcome } = await deferredPrompt.userChoice;
-
                 console.log(`👤 Usuário escolheu: ${outcome}`);
-
-                if (outcome === 'accepted') {
-                    console.log('✅ App instalado!');
-                } else {
-                    console.log('❌ Instalação cancelada');
-                }
-
-                // Limpa o prompt
                 deferredPrompt = null;
-
-                // Esconde o banner
-                if(installBanner) installBanner.style.display = 'none';
+                if (installBanner) installBanner.style.display = 'none';
             });
         }
 
         if (closeInstall) {
-            // Quando clicar no X (fechar)
             closeInstall.addEventListener('click', () => {
-                if(installBanner) installBanner.style.display = 'none';
-                // Salva que o usuário fechou (não mostra mais)
+                if (installBanner) installBanner.style.display = 'none';
                 localStorage.setItem('installDismissed', 'true');
                 console.log('🚫 Banner de instalação fechado');
             });
         }
 
-
-        // Detecta quando o app foi instalado
         window.addEventListener('appinstalled', () => {
             console.log('🎉 App instalado com sucesso!');
-            if(installBanner) installBanner.style.display = 'none';
-
-            // Opcional: Mostrar mensagem de sucesso
+            if (installBanner) installBanner.style.display = 'none';
             alert('✅ App instalado! Agora você pode acessar pelo ícone na tela inicial.');
         });
-// ============================================
-// SISTEMA DE NOTIFICAÇÕES E LEMBRETES
-// ============================================
 
-const ADMIN_PASSWORD = 'ibjlv2026'; // ⚠️ MUDE ESTA SENHA!
+        // ============================================
+        // SISTEMA DE NOTIFICAÇÕES E LEMBRETES
+        // ============================================
+        const ADMIN_PASSWORD = 'ibjlv2026';
+        let notificationsEnabled = false;
+        let userGroup = '';
+        const notificationBell = document.getElementById('notificationBell');
+        const notificationBadge = document.getElementById('notificationBadge');
+        const notificationModal = document.getElementById('notificationModal');
+        const notificationToggle = document.getElementById('notificationToggle');
+        const groupSelectBox = document.getElementById('groupSelectBox');
+        const userGroupSelect = document.getElementById('userGroupSelect');
 
-let notificationsEnabled = false;
-let userGroup = '';
-
-// Elementos
-const notificationBell = document.getElementById('notificationBell');
-const notificationBadge = document.getElementById('notificationBadge');
-const notificationModal = document.getElementById('notificationModal');
-const notificationToggle = document.getElementById('notificationToggle');
-const groupSelectBox = document.getElementById('groupSelectBox');
-const userGroupSelect = document.getElementById('userGroupSelect');
-
-// ===== FUNÇÕES DE NOTIFICAÇÃO =====
-
-function openNotificationModal() {
-    notificationModal.classList.add('visible');
-    loadNotificationSettings();
-}
-
-function closeNotificationModal() {
-    notificationModal.classList.remove('visible');
-}
-
-function loadNotificationSettings() {
-    notificationsEnabled = localStorage.getItem('notificationsEnabled') === 'true';
-    userGroup = localStorage.getItem('userGroup') || '';
-    
-    if (notificationsEnabled) {
-        notificationToggle.classList.add('active');
-        groupSelectBox.style.display = 'block';
-    }
-    
-    if (userGroup) {
-        userGroupSelect.value = userGroup;
-    }
-}
-
-async function toggleNotifications() {
-    if (!notificationsEnabled) {
-        // Ativar notificações
-        if ('Notification' in window) {
-            const permission = await Notification.requestPermission();
-            
-            if (permission === 'granted') {
-                notificationsEnabled = true;
+        function openNotificationModal() {
+            notificationModal.classList.add('visible');
+            loadNotificationSettings();
+        }
+        function closeNotificationModal() {
+            notificationModal.classList.remove('visible');
+        }
+        function loadNotificationSettings() {
+            notificationsEnabled = localStorage.getItem('notificationsEnabled') === 'true';
+            userGroup = localStorage.getItem('userGroup') || '';
+            if (notificationsEnabled) {
                 notificationToggle.classList.add('active');
                 groupSelectBox.style.display = 'block';
-                localStorage.setItem('notificationsEnabled', 'true');
-                
-                alert('✅ Notificações ativadas! Selecione seu grupo.');
-                
-                if (typeof speak === 'function') {
-                    speak('Notificações ativadas');
+            }
+            if (userGroup) {
+                userGroupSelect.value = userGroup;
+            }
+        }
+        async function toggleNotifications() {
+            if (!notificationsEnabled) {
+                if ('Notification' in window) {
+                    const permission = await Notification.requestPermission();
+                    if (permission === 'granted') {
+                        notificationsEnabled = true;
+                        notificationToggle.classList.add('active');
+                        groupSelectBox.style.display = 'block';
+                        localStorage.setItem('notificationsEnabled', 'true');
+                        alert('✅ Notificações ativadas! Selecione seu grupo.');
+                    } else {
+                        alert('❌ Você precisa permitir notificações no navegador.');
+                    }
+                } else {
+                    alert('❌ Seu navegador não suporta notificações.');
                 }
             } else {
-                alert('❌ Você precisa permitir notificações no navegador.');
+                notificationsEnabled = false;
+                notificationToggle.classList.remove('active');
+                groupSelectBox.style.display = 'none';
+                localStorage.setItem('notificationsEnabled', 'false');
+                localStorage.removeItem('userGroup');
+                alert('🔕 Notificações desativadas.');
             }
-        } else {
-            alert('❌ Seu navegador não suporta notificações.');
         }
-    } else {
-        // Desativar notificações
-        notificationsEnabled = false;
-        notificationToggle.classList.remove('active');
-        groupSelectBox.style.display = 'none';
-        localStorage.setItem('notificationsEnabled', 'false');
-        localStorage.removeItem('userGroup');
-        
-        alert('🔕 Notificações desativadas.');
-        
-        if (typeof speak === 'function') {
-            speak('Notificações desativadas');
+
+        userGroupSelect.addEventListener('change', (e) => {
+            userGroup = e.target.value;
+            localStorage.setItem('userGroup', userGroup);
+            if (userGroup) {
+                alert(`✅ Grupo ${userGroup} selecionado! Você receberá lembretes 12h antes das suas escalas.`);
+                scheduleNotifications();
+            }
+        });
+
+        function scheduleNotifications() {
+            if (!notificationsEnabled || !userGroup) return;
+            const hoje = new Date();
+            const proximasEscalas = escalas.filter(escala => {
+                const dataEscala = formatDate(escala.mes, escala.dia);
+                const isGrupo = escala.grupo === userGroup || 
+                                escala.EBD === userGroup || 
+                                escala.Tarde === userGroup || 
+                                escala.Noite === userGroup ||
+                                escala.cafe === userGroup;
+                return dataEscala > hoje && isGrupo;
+            }).slice(0, 5);
+
+            if (proximasEscalas.length > 0) {
+                notificationBadge.textContent = proximasEscalas.length;
+                notificationBadge.style.display = 'flex';
+                notificationBell.classList.add('has-notifications');
+            }
+
+            proximasEscalas.forEach(escala => {
+                const dataEscala = formatDate(escala.mes, escala.dia);
+                const dozeHorasAntes = new Date(dataEscala);
+                dozeHorasAntes.setHours(dozeHorasAntes.getHours() - 12);
+                const tempoAte = dozeHorasAntes.getTime() - hoje.getTime();
+                if (tempoAte > 0 && tempoAte < 7 * 24 * 60 * 60 * 1000) {
+                    setTimeout(() => {
+                        mostrarNotificacao(escala);
+                    }, tempoAte);
+                }
+            });
         }
-    }
-}
 
-userGroupSelect.addEventListener('change', (e) => {
-    userGroup = e.target.value;
-    localStorage.setItem('userGroup', userGroup);
-    
-    if (userGroup) {
-        alert(`✅ Grupo ${userGroup} selecionado! Você receberá lembretes 12h antes das suas escalas.`);
-        scheduleNotifications();
-    }
-});
+        function mostrarNotificacao(escala) {
+            if (!('Notification' in window) || Notification.permission !== 'granted') return;
+            let funcao = '';
+            if (escala.cafe === userGroup) funcao = 'Café das Mulheres';
+            else if (escala.grupo === userGroup) funcao = `Diaconia no Culto (${escala.dia_semana})`;
+            else if (escala.EBD === userGroup) funcao = 'Diaconia na EBD (Manhã)';
+            else if (escala.Tarde === userGroup) funcao = 'Diaconia no Culto da Tarde';
+            else if (escala.Noite === userGroup) funcao = 'Diaconia no Culto da Noite';
 
-// ===== AGENDAR NOTIFICAÇÕES =====
-
-function scheduleNotifications() {
-    if (!notificationsEnabled || !userGroup) return;
-    
-    // Buscar próximas escalas do grupo
-    const hoje = new Date();
-    const proximasEscalas = escalas.filter(escala => {
-        const dataEscala = formatDate(escala.mes, escala.dia);
-        const isGrupo = escala.grupo === userGroup || 
-                        escala.EBD === userGroup || 
-                        escala.Tarde === userGroup || 
-                        escala.Noite === userGroup ||
-                        escala.cafe === userGroup;
-        
-        return dataEscala > hoje && isGrupo;
-    }).slice(0, 5); // Próximas 5 escalas
-    
-    // Atualizar badge
-    if (proximasEscalas.length > 0) {
-        notificationBadge.textContent = proximasEscalas.length;
-        notificationBadge.style.display = 'flex';
-        notificationBell.classList.add('has-notifications');
-    }
-    
-    // Agendar notificações
-    proximasEscalas.forEach(escala => {
-        const dataEscala = formatDate(escala.mes, escala.dia);
-        const dozeHorasAntes = new Date(dataEscala);
-        dozeHorasAntes.setHours(dozeHorasAntes.getHours() - 12);
-        
-        const tempoAte = dozeHorasAntes.getTime() - hoje.getTime();
-        
-        if (tempoAte > 0 && tempoAte < 7 * 24 * 60 * 60 * 1000) { // Próximos 7 dias
-            setTimeout(() => {
-                mostrarNotificacao(escala);
-            }, tempoAte);
+            const notification = new Notification('🔔 Lembrete de Escala - IBJLV', {
+                body: `Amanhã, dia ${escala.dia} (${escala.dia_semana}):
+${funcao}`,
+                icon: 'logo-menora.png',
+                badge: 'logo-menora.png',
+                vibrate: [200, 100, 200],
+                tag: 'escala-reminder',
+                requireInteraction: true
+            });
+            notification.onclick = () => {
+                window.focus();
+                notification.close();
+            };
         }
-    });
-}
 
-function mostrarNotificacao(escala) {
-    if (!('Notification' in window) || Notification.permission !== 'granted') return;
-    
-    let funcao = '';
-    if (escala.cafe === userGroup) {
-        funcao = 'Café das Mulheres';
-    } else if (escala.grupo === userGroup) {
-        funcao = `Diaconia no Culto (${escala.dia_semana})`;
-    } else if (escala.EBD === userGroup) {
-        funcao = 'Diaconia na EBD (Manhã)';
-    } else if (escala.Tarde === userGroup) {
-        funcao = 'Diaconia no Culto da Tarde';
-    } else if (escala.Noite === userGroup) {
-        funcao = 'Diaconia no Culto da Noite';
-    }
-    
-    const notification = new Notification('🔔 Lembrete de Escala - IBJLV', {
-        body: `Amanhã, dia ${escala.dia} (${escala.dia_semana}):\n${funcao}`,
-        icon: 'logo-menora.png',
-        badge: 'logo-menora.png',
-        vibrate: [200, 100, 200],
-        tag: 'escala-reminder',
-        requireInteraction: true
-    });
-    
-    notification.onclick = () => {
-        window.focus();
-        notification.close();
-    };
-}
+        notificationBell.addEventListener('click', openNotificationModal);
+        window.addEventListener('load', () => {
+            loadNotificationSettings();
+            if (notificationsEnabled && userGroup) {
+                scheduleNotifications();
+            }
+        });
 
-// ===== INICIALIZAR NOTIFICAÇÕES =====
-
-notificationBell.addEventListener('click', openNotificationModal);
-
-window.addEventListener('load', () => {
-    loadNotificationSettings();
-    if (notificationsEnabled && userGroup) {
-        scheduleNotifications();
-    }
-});
-
-// ============================================
-// SISTEMA DE ACESSIBILIDADE
-// ============================================
-
-const accessibility = {
-    fontSize: 'normal',
-    highContrast: false,
-    speaking: false
-};
-
-const speakBtn = document.getElementById('speakBtn');
-const stopSpeakBtn = document.getElementById('stopSpeakBtn');
-const fontIncreaseBtn = document.getElementById('fontIncreaseBtn');
-const fontDecreaseBtn = document.getElementById('fontDecreaseBtn');
-const contrastBtn = document.getElementById('contrastBtn');
-const readingIndicator = document.getElementById('readingIndicator');
-
-// ===== FUNCIONALIDADE DE FALA =====
-
-if (!('speechSynthesis' in window)) {
-    speakBtn.style.opacity = '0.5';
-    speakBtn.style.cursor = 'not-allowed';
-    speakBtn.title = 'Seu navegador não suporta leitura de voz';
-}
-
-function speakSchedule() {
-    window.speechSynthesis.cancel();
-    
-    const resultadoDiv = document.getElementById('resultado');
-    const escalaItems = resultadoDiv.querySelectorAll('.escala-item');
-    
-    if (escalaItems.length === 0) {
-        speak('Nenhuma escala selecionada. Por favor, selecione um grupo e um mês.');
-        return;
-    }
-    
-    const grupo = document.getElementById('grupoSelect').value;
-    const mes = document.getElementById('mesSelect').value;
-    
-    accessibility.speaking = true;
-    speakBtn.style.display = 'none';
-    stopSpeakBtn.style.display = 'flex';
-    readingIndicator.style.display = 'block';
-    
-    let textoCompleto = `Escalas do ${grupo} no mês de ${mes}. `;
-    
-    escalaItems.forEach((item) => {
-        const texto = item.textContent.trim();
-        textoCompleto += texto + '. ';
-    });
-    
-    speak(textoCompleto, () => {
-        accessibility.speaking = false;
-        speakBtn.style.display = 'flex';
-        stopSpeakBtn.style.display = 'none';
-        readingIndicator.style.display = 'none';
-    });
-}
-
-function speak(text, onEnd) {
-    const utterance = new SpeechSynthesisUtterance(text);
-    
-    utterance.lang = 'pt-BR';
-    utterance.rate = 0.9;
-    utterance.pitch = 1;
-    utterance.volume = 1;
-    
-    const voices = window.speechSynthesis.getVoices();
-    const ptVoice = voices.find(voice => voice.lang.includes('pt'));
-    if (ptVoice) {
-        utterance.voice = ptVoice;
-    }
-    
-    utterance.onend = () => {
-        if (onEnd) onEnd();
-    };
-    
-    utterance.onerror = (error) => {
-        console.error('Erro na síntese de voz:', error);
-        accessibility.speaking = false;
-        speakBtn.style.display = 'flex';
-        stopSpeakBtn.style.display = 'none';
-        readingIndicator.style.display = 'none';
-    };
-    
-    window.speechSynthesis.speak(utterance);
-}
-
-function stopSpeaking() {
-    window.speechSynthesis.cancel();
-    accessibility.speaking = false;
-    speakBtn.style.display = 'flex';
-    stopSpeakBtn.style.display = 'none';
-    readingIndicator.style.display = 'none';
-}
-
-// ===== FUNCIONALIDADE DE FONTE =====
-
-function changeFontSize(action) {
-    const body = document.body;
-    
-    if (action === 'increase') {
-        if (accessibility.fontSize === 'normal') {
-            accessibility.fontSize = 'medium';
-            body.classList.remove('font-large');
-            body.classList.add('font-medium');
-        } else if (accessibility.fontSize === 'medium') {
-            accessibility.fontSize = 'large';
-            body.classList.remove('font-medium');
-            body.classList.add('font-large');
-        }
-    } else if (action === 'decrease') {
-        if (accessibility.fontSize === 'large') {
-            accessibility.fontSize = 'medium';
-            body.classList.remove('font-large');
-            body.classList.add('font-medium');
-        } else if (accessibility.fontSize === 'medium') {
-            accessibility.fontSize = 'normal';
-            body.classList.remove('font-medium');
-        }
-    }
-    
-    localStorage.setItem('accessibility_fontSize', accessibility.fontSize);
-    
-    if (!accessibility.speaking) {
-        const texts = {
-            normal: 'Fonte normal',
-            medium: 'Fonte média',
-            large: 'Fonte grande'
+        // ============================================
+        // SISTEMA DE ACESSIBILIDADE
+        // ============================================
+        const accessibility = {
+            fontSize: 'normal',
+            highContrast: false,
+            speaking: false
         };
-        speak(texts[accessibility.fontSize]);
-    }
-}
+        const speakBtn = document.getElementById('speakBtn');
+        const stopSpeakBtn = document.getElementById('stopSpeakBtn');
+        const fontIncreaseBtn = document.getElementById('fontIncreaseBtn');
+        const fontDecreaseBtn = document.getElementById('fontDecreaseBtn');
+        const contrastBtn = document.getElementById('contrastBtn');
+        const readingIndicator = document.getElementById('readingIndicator');
 
-// ===== FUNCIONALIDADE DE ALTO CONTRASTE =====
-
-function toggleHighContrast() {
-    accessibility.highContrast = !accessibility.highContrast;
-    document.body.classList.toggle('high-contrast');
-    
-    if (accessibility.highContrast) {
-        contrastBtn.classList.add('active');
-    } else {
-        contrastBtn.classList.remove('active');
-    }
-    
-    localStorage.setItem('accessibility_contrast', accessibility.highContrast);
-    speak(accessibility.highContrast ? 'Alto contraste ativado' : 'Alto contraste desativado');
-}
-
-// ===== EVENT LISTENERS =====
-
-speakBtn.addEventListener('click', speakSchedule);
-stopSpeakBtn.addEventListener('click', stopSpeaking);
-fontIncreaseBtn.addEventListener('click', () => changeFontSize('increase'));
-fontDecreaseBtn.addEventListener('click', () => changeFontSize('decrease'));
-contrastBtn.addEventListener('click', toggleHighContrast);
-
-// ===== CARREGAR PREFERÊNCIAS =====
-
-window.addEventListener('load', () => {
-    if ('speechSynthesis' in window) {
-        window.speechSynthesis.getVoices();
-    }
-    
-    const savedFontSize = localStorage.getItem('accessibility_fontSize');
-    if (savedFontSize) {
-        accessibility.fontSize = savedFontSize;
-        if (savedFontSize === 'medium') {
-            document.body.classList.add('font-medium');
-        } else if (savedFontSize === 'large') {
-            document.body.classList.add('font-large');
+        if (!('speechSynthesis' in window)) {
+            speakBtn.style.opacity = '0.5';
+            speakBtn.style.cursor = 'not-allowed';
         }
-    }
-    
-    const savedContrast = localStorage.getItem('accessibility_contrast');
-    if (savedContrast === 'true') {
-        accessibility.highContrast = true;
-        document.body.classList.add('high-contrast');
-        contrastBtn.classList.add('active');
-    }
-});
 
-// ===== ATALHOS DE TECLADO =====
-
-document.addEventListener('keydown', (e) => {
-    if (e.ctrlKey && e.key === 'l') {
-        e.preventDefault();
-        speakSchedule();
-    }
-    
-    if (e.ctrlKey && (e.key === '+' || e.key === '=')) {
-        e.preventDefault();
-        changeFontSize('increase');
-    }
-    
-    if (e.ctrlKey && e.key === '-') {
-        e.preventDefault();
-        changeFontSize('decrease');
-    }
-    
-    if (e.ctrlKey && e.key === 'h') {
-        e.preventDefault();
-        toggleHighContrast();
-    }
-    
-    if (e.key === 'Escape' && accessibility.speaking) {
-        stopSpeaking();
-    }
-    
-    if (e.ctrlKey && e.key === 'b') {
-        e.preventDefault();
-        if (bibleModal.classList.contains('visible')) {
-            closeBibleModal();
-        } else {
-            openBibleModal();
+        function speakSchedule() {
+            window.speechSynthesis.cancel();
+            const resultadoDiv = document.getElementById('resultado');
+            const escalaItems = resultadoDiv.querySelectorAll('.escala-item');
+            if (escalaItems.length === 0) {
+                speak('Nenhuma escala selecionada. Por favor, selecione um grupo e um mês.');
+                return;
+            }
+            const grupo = document.getElementById('grupoSelect').value;
+            const mes = document.getElementById('mesSelect').value;
+            accessibility.speaking = true;
+            speakBtn.style.display = 'none';
+            stopSpeakBtn.style.display = 'flex';
+            readingIndicator.style.display = 'block';
+            let textoCompleto = `Escalas do ${grupo} no mês de ${mes}. `;
+            escalaItems.forEach((item) => {
+                const texto = item.textContent.trim();
+                textoCompleto += texto + '. ';
+            });
+            speak(textoCompleto, () => {
+                accessibility.speaking = false;
+                speakBtn.style.display = 'flex';
+                stopSpeakBtn.style.display = 'none';
+                readingIndicator.style.display = 'none';
+            });
         }
-    }
-});
 
-// ============================================
-// SISTEMA LIVRO DO MÊS
-// ============================================
-
-let bibleReadings = {};
-
-const bibleFloatBtn = document.getElementById('bibleFloatBtn');
-const bibleModal = document.getElementById('bibleModal');
-const bibleCloseBtn = document.getElementById('bibleCloseBtn');
-const adminToggleBtn = document.getElementById('adminToggleBtn');
-const adminPanel = document.getElementById('adminPanel');
-const bibleBadge = document.getElementById('bibleBadge');
-const shareWhatsAppBtn = document.getElementById('shareWhatsAppBtn');
-
-// ===== FUNÇÕES PRINCIPAIS =====
-
-function loadBibleReadings() {
-    const saved = localStorage.getItem('bibleReadings');
-    if (saved) {
-        bibleReadings = JSON.parse(saved);
-    }
-    updateBibleDisplay();
-}
-
-function getCurrentMonth() {
-    const months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 
-                    'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
-    const now = new Date();
-    return months[now.getMonth()];
-}
-
-function updateBibleDisplay() {
-    const currentMonth = getCurrentMonth();
-    const reading = bibleReadings[currentMonth];
-    const display = document.getElementById('bibleDisplay');
-    const monthLabel = document.getElementById('currentMonthLabel');
-    
-    monthLabel.textContent = `${currentMonth} 2026`;
-    
-    if (reading) {
-        display.innerHTML = `
-            <div class="bible-text">
-                <h3>📖 ${reading.book}</h3>
-                ${reading.description ? `<p>${reading.description}</p>` : ''}
-            </div>
-        `;
-        bibleBadge.style.display = 'none';
-        shareWhatsAppBtn.style.display = 'flex';
-    } else {
-        display.innerHTML = `
-            <div class="bible-empty">
-                <div class="bible-empty-icon">📕</div>
-                <p>Nenhuma leitura definida para ${currentMonth}</p>
-            </div>
-        `;
-        bibleBadge.style.display = 'flex';
-        shareWhatsAppBtn.style.display = 'none';
-    }
-}
-
-function openBibleModal() {
-    bibleModal.classList.add('visible');
-    updateBibleDisplay();
-}
-
-function closeBibleModal() {
-    bibleModal.classList.remove('visible');
-    closeAdminPanel();
-}
-
-// ===== COMPARTILHAR WHATSAPP =====
-
-shareWhatsAppBtn.addEventListener('click', () => {
-    const currentMonth = getCurrentMonth();
-    const reading = bibleReadings[currentMonth];
-    
-    if (!reading) return;
-    
-    let texto = `📖 *Livro do Mês - ${currentMonth} 2026*\n\n`;
-    texto += `📚 ${reading.book}\n`;
-    if (reading.description) {
-        texto += `\n${reading.description}\n`;
-    }
-    texto += `\n🏛️ IBJLV - Igreja Batista Jesus Lírio dos Vales`;
-    
-    const url = `https://wa.me/?text=${encodeURIComponent(texto)}`;
-    window.open(url, '_blank');
-    
-    if (typeof speak === 'function' && !accessibility.speaking) {
-        speak('Compartilhando no WhatsApp');
-    }
-});
-
-adminToggleBtn.addEventListener('click', () => {
-    adminPanel.classList.toggle('visible');
-    document.getElementById('adminPassword').value = '';
-    document.getElementById('adminForm').style.display = 'none';
-});
-
-function verifyPassword() {
-    const password = document.getElementById('adminPassword').value;
-    
-    if (password === ADMIN_PASSWORD) {
-        document.getElementById('adminForm').style.display = 'block';
-        document.getElementById('adminPassword').style.display = 'none';
-        
-        const currentMonth = getCurrentMonth();
-        document.getElementById('adminMonth').value = currentMonth;
-        
-        if (bibleReadings[currentMonth]) {
-            document.getElementById('adminBook').value = bibleReadings[currentMonth].book;
-            document.getElementById('adminDescription').value = bibleReadings[currentMonth].description || '';
+        function speak(text, onEnd) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'pt-BR';
+            utterance.rate = 0.9;
+            utterance.pitch = 1;
+            utterance.volume = 1;
+            const voices = window.speechSynthesis.getVoices();
+            const ptVoice = voices.find(voice => voice.lang.includes('pt'));
+            if (ptVoice) {
+                utterance.voice = ptVoice;
+            }
+            utterance.onend = () => {
+                if (onEnd) onEnd();
+            };
+            utterance.onerror = (error) => {
+                console.error('Erro na síntese de voz:', error);
+                accessibility.speaking = false;
+                speakBtn.style.display = 'flex';
+                stopSpeakBtn.style.display = 'none';
+                readingIndicator.style.display = 'none';
+            };
+            window.speechSynthesis.speak(utterance);
         }
-        
-        if (typeof speak === 'function' && !accessibility.speaking) {
-            speak('Acesso concedido');
+
+        function stopSpeaking() {
+            window.speechSynthesis.cancel();
+            accessibility.speaking = false;
+            speakBtn.style.display = 'flex';
+            stopSpeakBtn.style.display = 'none';
+            readingIndicator.style.display = 'none';
         }
-    } else {
-        alert('❌ Senha incorreta!');
-        if (typeof speak === 'function' && !accessibility.speaking) {
-            speak('Senha incorreta');
+
+        function changeFontSize(action) {
+            const body = document.body;
+            if (action === 'increase') {
+                if (accessibility.fontSize === 'normal') {
+                    accessibility.fontSize = 'medium';
+                    body.classList.remove('font-large');
+                    body.classList.add('font-medium');
+                } else if (accessibility.fontSize === 'medium') {
+                    accessibility.fontSize = 'large';
+                    body.classList.remove('font-medium');
+                    body.classList.add('font-large');
+                }
+            } else if (action === 'decrease') {
+                if (accessibility.fontSize === 'large') {
+                    accessibility.fontSize = 'medium';
+                    body.classList.remove('font-large');
+                    body.classList.add('font-medium');
+                } else if (accessibility.fontSize === 'medium') {
+                    accessibility.fontSize = 'normal';
+                    body.classList.remove('font-medium');
+                }
+            }
+            localStorage.setItem('accessibility_fontSize', accessibility.fontSize);
         }
-    }
-}
 
-function saveBibleReading() {
-    const month = document.getElementById('adminMonth').value;
-    const book = document.getElementById('adminBook').value.trim();
-    const description = document.getElementById('adminDescription').value.trim();
-    
-    if (!book) {
-        alert('❌ Por favor, preencha o Livro/Capítulo!');
-        return;
-    }
-    
-    bibleReadings[month] = {
-        book: book,
-        description: description
-    };
-    
-    localStorage.setItem('bibleReadings', JSON.stringify(bibleReadings));
-    
-    updateBibleDisplay();
-    closeAdminPanel();
-    
-    alert(`✅ Leitura de ${month} salva com sucesso!`);
-    
-    if (typeof speak === 'function' && !accessibility.speaking) {
-        speak(`Leitura de ${month} salva com sucesso`);
-    }
-}
+        function toggleHighContrast() {
+            accessibility.highContrast = !accessibility.highContrast;
+            document.body.classList.toggle('high-contrast');
+            if (accessibility.highContrast) {
+                contrastBtn.classList.add('active');
+            } else {
+                contrastBtn.classList.remove('active');
+            }
+            localStorage.setItem('accessibility_contrast', accessibility.highContrast);
+        }
 
-function closeAdminPanel() {
-    adminPanel.classList.remove('visible');
-    document.getElementById('adminPassword').value = '';
-    document.getElementById('adminPassword').style.display = 'block';
-    document.getElementById('adminForm').style.display = 'none';
-}
+        speakBtn.addEventListener('click', speakSchedule);
+        stopSpeakBtn.addEventListener('click', stopSpeaking);
+        fontIncreaseBtn.addEventListener('click', () => changeFontSize('increase'));
+        fontDecreaseBtn.addEventListener('click', () => changeFontSize('decrease'));
+        contrastBtn.addEventListener('click', toggleHighContrast);
 
-// ===== EVENT LISTENERS =====
+        window.addEventListener('load', () => {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.getVoices();
+            }
+            const savedFontSize = localStorage.getItem('accessibility_fontSize');
+            if (savedFontSize) {
+                accessibility.fontSize = savedFontSize;
+                if (savedFontSize === 'medium') {
+                    document.body.classList.add('font-medium');
+                } else if (savedFontSize === 'large') {
+                    document.body.classList.add('font-large');
+                }
+            }
+            const savedContrast = localStorage.getItem('accessibility_contrast');
+            if (savedContrast === 'true') {
+                accessibility.highContrast = true;
+                document.body.classList.add('high-contrast');
+                contrastBtn.classList.add('active');
+            }
+        });
 
-bibleFloatBtn.addEventListener('click', openBibleModal);
-bibleCloseBtn.addEventListener('click', closeBibleModal);
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === 'l') {
+                e.preventDefault();
+                speakSchedule();
+            }
+            if (e.ctrlKey && (e.key === '+' || e.key === '=')) {
+                e.preventDefault();
+                changeFontSize('increase');
+            }
+            if (e.ctrlKey && e.key === '-') {
+                e.preventDefault();
+                changeFontSize('decrease');
+            }
+            if (e.ctrlKey && e.key === 'h') {
+                e.preventDefault();
+                toggleHighContrast();
+            }
+            if (e.key === 'Escape' && accessibility.speaking) {
+                stopSpeaking();
+            }
+            if (e.ctrlKey && e.key === 'b') {
+                e.preventDefault();
+                if (bibleModal.classList.contains('visible')) {
+                    closeBibleModal();
+                } else {
+                    openBibleModal();
+                }
+            }
+        });
 
-bibleModal.addEventListener('click', (e) => {
-    if (e.target === bibleModal) {
-        closeBibleModal();
-    }
-});
+        // ============================================
+        // SISTEMA LIVRO DO MÊS
+        // ============================================
+        let bibleReadings = {};
+        const bibleFloatBtn = document.getElementById('bibleFloatBtn');
+        const bibleModal = document.getElementById('bibleModal');
+        const bibleCloseBtn = document.getElementById('bibleCloseBtn');
+        const adminToggleBtn = document.getElementById('adminToggleBtn');
+        const adminPanel = document.getElementById('adminPanel');
+        const bibleBadge = document.getElementById('bibleBadge');
+        const shareWhatsAppBtn = document.getElementById('shareWhatsAppBtn');
 
-// ===== INICIALIZAÇÃO =====
+        function loadBibleReadings() {
+            const saved = localStorage.getItem('bibleReadings');
+            if (saved) {
+                bibleReadings = JSON.parse(saved);
+            }
+            updateBibleDisplay();
+        }
 
-window.addEventListener('load', () => {
-    loadBibleReadings();
-    
-    const currentMonth = getCurrentMonth();
-    if (!bibleReadings[currentMonth]) {
-        bibleBadge.style.display = 'flex';
-    }
-});
+        function getCurrentMonth() {
+            const months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 
+                            'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+            const now = new Date();
+            return months[now.getMonth()];
+        }
 
-// ============================================
-// COMPARTILHAR ESCALA NO WHATSAPP
-// ============================================
-
-function compartilharEscalaWhatsApp() {
-    const grupo = document.getElementById('grupoSelect').value;
-    const mes = document.getElementById('mesSelect').value;
-    const resultadoDiv = document.getElementById('resultado');
-    const escalaItems = resultadoDiv.querySelectorAll('.escala-item');
-    
-    if (!grupo || !mes || escalaItems.length === 0) {
-        alert('❌ Por favor, busque uma escala primeiro!');
-        return;
-    }
-    
-    let texto = `📋 *Escalas ${grupo} - ${mes} 2026*\n`;
-    texto += `🏛️ *IBJLV - Diaconia*\n\n`;
-    
-    escalaItems.forEach((item, index) => {
-        const textoItem = item.textContent.trim().replace(/\n+/g, ' - ');
-        texto += `${index + 1}. ${textoItem}\n`;
-    });
-    
-    texto += `\n📱 Consulte todas as escalas: ${window.location.href}`;
-    
-    const url = `https://wa.me/?text=${encodeURIComponent(texto)}`;
-    window.open(url, '_blank');
-    
-    if (typeof speak === 'function' && !accessibility.speaking) {
-        speak('Compartilhando escala no WhatsApp');
-    }
-}
-
-// Adicionar botão de compartilhar após buscar escalas
-const originalConsultarGrupo = consultarGrupo;
-consultarGrupo = function() {
-    originalConsultarGrupo();
-    
-    setTimeout(() => {
-        const resultadoDiv = document.getElementById('resultado');
-        const btnPrint = document.querySelector('.btn-print');
-        
-        if (resultadoDiv.classList.contains('visible') && btnPrint) {
-            const hasShareBtn = document.getElementById('shareWhatsAppEscalaBtn');
-            
-            if (!hasShareBtn) {
-                const shareBtn = document.createElement('button');
-                shareBtn.id = 'shareWhatsAppEscalaBtn';
-                shareBtn.className = 'share-whatsapp-btn';
-                shareBtn.innerHTML = '<span style="font-size: 1.5em;">💬</span> Compartilhar no WhatsApp';
-                shareBtn.onclick = compartilharEscalaWhatsApp;
-                
-                btnPrint.parentNode.insertBefore(shareBtn, btnPrint.nextSibling);
+        function updateBibleDisplay() {
+            const currentMonth = getCurrentMonth();
+            const reading = bibleReadings[currentMonth];
+            const display = document.getElementById('bibleDisplay');
+            const monthLabel = document.getElementById('currentMonthLabel');
+            monthLabel.textContent = `${currentMonth} 2026`;
+            if (reading) {
+                display.innerHTML = `
+                    <div class="bible-text">
+                        <h3>📖 ${reading.book}</h3>
+                        ${reading.description ? `<p>${reading.description}</p>` : ''}
+                    </div>
+                `;
+                bibleBadge.style.display = 'none';
+                shareWhatsAppBtn.style.display = 'flex';
+            } else {
+                display.innerHTML = `
+                    <div class="bible-empty">
+                        <div class="bible-empty-icon">📕</div>
+                        <p>Nenhuma leitura definida para ${currentMonth}</p>
+                    </div>
+                `;
+                bibleBadge.style.display = 'flex';
+                shareWhatsAppBtn.style.display = 'none';
             }
         }
-    }, 2100);
-};
 
-// ============================================
-// BOTÃO INSTALAR APP (já estava no código)
-// ============================================
+        function openBibleModal() {
+            bibleModal.classList.add('visible');
+            updateBibleDisplay();
+        }
 
-let deferredPrompt;
-const installBanner = document.getElementById('installBanner');
-const installButton = document.getElementById('installButton');
-const closeInstall = document.getElementById('closeInstall');
+        function closeBibleModal() {
+            bibleModal.classList.remove('visible');
+            closeAdminPanel();
+        }
 
-if (installBanner && installButton && closeInstall) {
-    window.addEventListener('beforeinstallprompt', (e) => {
-        console.log('📱 Evento beforeinstallprompt capturado');
-        e.preventDefault();
-        deferredPrompt = e;
-        
-        const installDismissed = localStorage.getItem('installDismissed');
-        if (!installDismissed) {
+        shareWhatsAppBtn.addEventListener('click', () => {
+            const currentMonth = getCurrentMonth();
+            const reading = bibleReadings[currentMonth];
+            if (!reading) return;
+            let texto = `📖 *Livro do Mês - ${currentMonth} 2026*
+`;
+            texto += `📚 ${reading.book}
+`;
+            if (reading.description) {
+                texto += `
+${reading.description}
+`;
+            }
+            texto += `
+🏛️ IBJLV - Igreja Batista Jesus Lírio dos Vales`;
+            const url = `https://wa.me/?text=${encodeURIComponent(texto)}`;
+            window.open(url, '_blank');
+        });
+
+        adminToggleBtn.addEventListener('click', () => {
+            adminPanel.classList.toggle('visible');
+            document.getElementById('adminPassword').value = '';
+            document.getElementById('adminForm').style.display = 'none';
+        });
+
+        function verifyPassword() {
+            const password = document.getElementById('adminPassword').value;
+            if (password === ADMIN_PASSWORD) {
+                document.getElementById('adminForm').style.display = 'block';
+                document.getElementById('adminPassword').style.display = 'none';
+                const currentMonth = getCurrentMonth();
+                document.getElementById('adminMonth').value = currentMonth;
+                if (bibleReadings[currentMonth]) {
+                    document.getElementById('adminBook').value = bibleReadings[currentMonth].book;
+                    document.getElementById('adminDescription').value = bibleReadings[currentMonth].description || '';
+                }
+            } else {
+                alert('❌ Senha incorreta!');
+            }
+        }
+
+        function saveBibleReading() {
+            const month = document.getElementById('adminMonth').value;
+            const book = document.getElementById('adminBook').value.trim();
+            const description = document.getElementById('adminDescription').value.trim();
+            if (!book) {
+                alert('❌ Por favor, preencha o Livro/Capítulo!');
+                return;
+            }
+            bibleReadings[month] = { book: book, description: description };
+            localStorage.setItem('bibleReadings', JSON.stringify(bibleReadings));
+            updateBibleDisplay();
+            closeAdminPanel();
+            alert(`✅ Leitura de ${month} salva com sucesso!`);
+        }
+
+        function closeAdminPanel() {
+            adminPanel.classList.remove('visible');
+            document.getElementById('adminPassword').value = '';
+            document.getElementById('adminPassword').style.display = 'block';
+            document.getElementById('adminForm').style.display = 'none';
+        }
+
+        bibleFloatBtn.addEventListener('click', openBibleModal);
+        bibleCloseBtn.addEventListener('click', closeBibleModal);
+        bibleModal.addEventListener('click', (e) => {
+            if (e.target === bibleModal) {
+                closeBibleModal();
+            }
+        });
+
+        window.addEventListener('load', () => {
+            loadBibleReadings();
+            const currentMonth = getCurrentMonth();
+            if (!bibleReadings[currentMonth]) {
+                bibleBadge.style.display = 'flex';
+            }
+        });
+
+        // ============================================
+        // COMPARTILHAR ESCALA NO WHATSAPP
+        // ============================================
+        function compartilharEscalaWhatsApp() {
+            const grupo = document.getElementById('grupoSelect').value;
+            const mes = document.getElementById('mesSelect').value;
+            const resultadoDiv = document.getElementById('resultado');
+            const escalaItems = resultadoDiv.querySelectorAll('.escala-item');
+            if (!grupo || !mes || escalaItems.length === 0) {
+                alert('❌ Por favor, busque uma escala primeiro!');
+                return;
+            }
+            let texto = `📋 *Escalas ${grupo} - ${mes} 2026*
+`;
+            texto += `🏛️ *IBJLV - Diaconia*
+`;
+            escalaItems.forEach((item, index) => {
+                const textoItem = item.textContent.trim().replace(/\s+/g, ' - ');
+                texto += `${index + 1}. ${textoItem}
+`;
+            });
+            texto += `
+📱 Consulte todas as escalas: ${window.location.href}`;
+            const url = `https://wa.me/?text=${encodeURIComponent(texto)}`;
+            window.open(url, '_blank');
+        }
+
+        const originalConsultarGrupo = consultarGrupo;
+        consultarGrupo = function() {
+            originalConsultarGrupo();
             setTimeout(() => {
-                installBanner.style.display = 'block';
-            }, 3000);
-        }
-    });
-
-    installButton.addEventListener('click', async () => {
-        if (!deferredPrompt) {
-            console.log('❌ deferredPrompt não está disponível');
-            return;
-        }
-
-        deferredPrompt.prompt();
-        const { outcome } = await deferredPrompt.userChoice;
-        
-        console.log(`👤 Usuário escolheu: ${outcome}`);
-        
-        if (outcome === 'accepted') {
-            console.log('✅ App instalado!');
-        }
-        
-        deferredPrompt = null;
-        installBanner.style.display = 'none';
-    });
-
-    closeInstall.addEventListener('click', () => {
-        installBanner.style.display = 'none';
-        localStorage.setItem('installDismissed', 'true');
-        console.log('🚫 Banner de instalação fechado');
-    });
-
-    window.addEventListener('appinstalled', () => {
-        console.log('🎉 App instalado com sucesso!');
-        installBanner.style.display = 'none';
-    });
-}
-// Adicione este bloco antes da lógica do PWA que você acabou de mostrar.
-
-document.getElementById('searchInput').addEventListener('input', () => {
-    // Isso chamará a sua função de filtragem toda vez que algo for digitado
-    consultarGrupo();
-});
-
-// Opcional: Para garantir que os selects de Mês e Grupo também funcionem (se já não estiverem ligados)
-document.getElementById('mesSelect').addEventListener('change', consultarGrupo);
-document.getElementById('grupoSelect').addEventListener('change', consultarGrupo);
+                const resultadoDiv = document.getElementById('resultado');
+                const btnPrint = document.querySelector('.btn-print');
+                if (resultadoDiv.classList.contains('visible') && btnPrint) {
+                    const hasShareBtn = document.getElementById('shareWhatsAppEscalaBtn');
+                    if (!hasShareBtn) {
+                        const shareBtn = document.createElement('button');
+                        shareBtn.id = 'shareWhatsAppEscalaBtn';
+                        shareBtn.className = 'share-whatsapp-btn';
+                        shareBtn.innerHTML = '<span style="font-size: 1.5em;">💬</span> Compartilhar no WhatsApp';
+                        shareBtn.onclick = compartilharEscalaWhatsApp;
+                        btnPrint.parentNode.insertBefore(shareBtn, btnPrint.nextSibling);
+                    }
+                }
+            }, 2100);
+        };
     </script>
 </body>
 </html>
