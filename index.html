@@ -19,7 +19,7 @@
             min-height: 100vh;
             background: linear-gradient(135deg, #000000 0%, #1a1a2e 50%, #16213e 100%);
         }
-        /* ===== CABEÇALHO COM LOGO (ALTERADO) ===== */
+        /* ===== CABEÇALHO COM LOGO ===== */
         .header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             padding: 30px 20px;
@@ -46,91 +46,6 @@
             font-size: 1.1em;
             opacity: 0.9;
             margin-bottom: 0;
-        }
-        /* ===== BOTÃO INSTALAR APP (NOVO) ===== */
-        .install-banner {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 90%;
-            max-width: 500px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.5);
-            z-index: 9999;
-            animation: slideUp 0.5s ease;
-            display: none;
-        }
-        @keyframes slideUp {
-            from {
-                transform: translateX(-50%) translateY(100px);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(-50%) translateY(0);
-                opacity: 1;
-            }
-        }
-        .install-content {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            position: relative;
-        }
-        .install-icon {
-            font-size: 3em;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
-        }
-        .install-text {
-            flex: 1;
-        }
-        .install-text strong {
-            display: block;
-            font-size: 1.1em;
-            margin-bottom: 3px;
-        }
-        .install-text p {
-            margin: 0;
-            font-size: 0.9em;
-            opacity: 0.9;
-        }
-        .btn-install {
-            padding: 12px 25px;
-            background: white;
-            color: #667eea;
-            border: none;
-            border-radius: 10px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-        .btn-install:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-        }
-        .btn-close {
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            width: 30px;
-            height: 30px;
-            background: rgba(255, 255, 255, 0.3);
-            border: none;
-            border-radius: 50%;
-            color: white;
-            cursor: pointer;
-            font-size: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-        .btn-close:hover {
-            background: rgba(255, 255, 255, 0.5);
-            transform: rotate(90deg);
         }
         /* ===== CONTAINER PRINCIPAL ===== */
         .container {
@@ -337,7 +252,7 @@
         }
         /* ===== ESTILOS DE IMPRESSÃO ===== */
         @media print {
-            .header, .consultas, .loading, .footer, button, .install-banner {
+            .header, .consultas, .loading, .footer, button {
                 display: none !important;
             }
             body, .container {
@@ -346,10 +261,6 @@
                 margin: 0 !important;
                 padding: 0 !important;
                 max-width: 100% !important;
-            }
-            .container {
-                margin: 0 !important;
-                padding: 0 !important;
             }
             .resultado {
                 display: block !important;
@@ -410,155 +321,7 @@
                 font-size: 1.5em;
             }
         }
-        .install-banner {
-            display: none;
-        }
-        /* ===== NOTIFICAÇÕES (SININHO) ===== */
-        .notification-bell {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            font-size: 1.5em;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 100;
-        }
-        .notification-bell:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(1.1);
-        }
-        .notification-bell.has-notifications {
-            animation: ring 2s infinite;
-        }
-        @keyframes ring {
-            0%, 100% { transform: rotate(0deg); }
-            10%, 30% { transform: rotate(-15deg); }
-            20%, 40% { transform: rotate(15deg); }
-        }
-        .notification-badge {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background: #ff4444;
-            color: white;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            font-size: 0.7em;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
-        /* ===== MODAL NOTIFICAÇÕES ===== */
-        .notification-modal {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(10px);
-            z-index: 10002;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-        .notification-modal.visible {
-            display: flex;
-        }
-        .notification-content {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            border: 2px solid rgba(102, 126, 234, 0.3);
-            border-radius: 20px;
-            padding: 30px;
-            max-width: 500px;
-            width: 100%;
-            position: relative;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-            animation: slideIn 0.3s ease;
-        }
-        .notification-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid rgba(102, 126, 234, 0.2);
-        }
-        .notification-header h2 {
-            color: #667eea;
-            font-size: 1.5em;
-        }
-        .notification-toggle {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 12px;
-            padding: 15px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .notification-toggle label {
-            color: #ccc;
-            font-size: 0.95em;
-        }
-        .toggle-switch {
-            position: relative;
-            width: 60px;
-            height: 30px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-        .toggle-switch.active {
-            background: #4CAF50;
-        }
-        .toggle-switch::after {
-            content: '';
-            position: absolute;
-            top: 3px;
-            left: 3px;
-            width: 24px;
-            height: 24px;
-            background: white;
-            border-radius: 50%;
-            transition: transform 0.3s ease;
-        }
-        .toggle-switch.active::after {
-            transform: translateX(30px);
-        }
-        .group-select-box {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 15px;
-            margin-top: 15px;
-        }
-        .group-select-box label {
-            display: block;
-            color: #667eea;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-        .group-select-box select {
-            width: 100%;
-            padding: 12px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            color: white;
-            font-size: 1em;
-        }
-        /* ===== PAINEL DE ACESSIBILIDADE ===== */
+        /* ===== PAINEL DE ACESSIBILIDADE (PROFISSIONAL) ===== */
         .accessibility-panel {
             position: fixed;
             right: 20px;
@@ -567,373 +330,54 @@
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 15px;
-            padding: 15px;
+            border-radius: 12px;
+            padding: 12px;
             z-index: 9998;
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            gap: 8px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
         .accessibility-btn {
-            width: 50px;
-            height: 50px;
+            width: 42px;
+            height: 42px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border: none;
-            border-radius: 12px;
+            border-radius: 8px;
             color: white;
-            font-size: 1.5em;
+            font-size: 14px;
+            font-weight: 600;
+            font-family: 'Segoe UI', system-ui, sans-serif;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.25s ease;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
         }
         .accessibility-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            transform: scale(1.08);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.5);
         }
         .accessibility-btn.active {
             background: #4CAF50;
-            box-shadow: 0 0 15px #4CAF50;
+            box-shadow: 0 0 12px #4CAF50;
         }
         .accessibility-tooltip {
             position: absolute;
-            right: 60px;
-            background: rgba(0, 0, 0, 0.9);
+            right: 52px;
+            background: rgba(0, 0, 0, 0.85);
             color: white;
-            padding: 8px 12px;
-            border-radius: 8px;
+            padding: 6px 10px;
+            border-radius: 6px;
             white-space: nowrap;
-            font-size: 0.85em;
+            font-size: 12px;
             pointer-events: none;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.25s ease;
         }
         .accessibility-btn:hover .accessibility-tooltip {
             opacity: 1;
-        }
-        body.high-contrast {
-            background: #000 !important;
-        }
-        body.high-contrast .header {
-            background: #fff !important;
-            color: #000 !important;
-        }
-        body.high-contrast .church-name,
-        body.high-contrast .church-subtitle {
-            color: #000 !important;
-        }
-        body.high-contrast .consultas,
-        body.high-contrast .resultado,
-        body.high-contrast .escala-item {
-            background: #fff !important;
-            color: #000 !important;
-            border: 3px solid #000 !important;
-        }
-        body.high-contrast button {
-            background: #000 !important;
-            color: #fff !important;
-            border: 3px solid #fff !important;
-        }
-        body.font-medium {
-            font-size: 18px;
-        }
-        body.font-large {
-            font-size: 22px;
-        }
-        .reading-indicator {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #4CAF50, #22d3ee);
-            transform-origin: left;
-            transform: scaleX(0);
-            z-index: 10001;
-            animation: reading-progress 2s linear;
-        }
-        @keyframes reading-progress {
-            from { transform: scaleX(0); }
-            to { transform: scaleX(1); }
-        }
-        /* ===== BOTÃO LIVRO DO MÊS ===== */
-        .bible-float-btn {
-            position: fixed;
-            left: 20px;
-            bottom: 20px;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #ffd700 0%, #ff8c00 100%);
-            border: none;
-            border-radius: 50%;
-            box-shadow: 0 8px 30px rgba(255, 140, 0, 0.4);
-            cursor: pointer;
-            z-index: 9997;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2em;
-            transition: all 0.3s ease;
-            animation: pulse 2s infinite;
-        }
-        .bible-float-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 12px 40px rgba(255, 140, 0, 0.6);
-        }
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-        .bible-modal {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(10px);
-            z-index: 10000;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-        .bible-modal.visible {
-            display: flex;
-        }
-        .bible-content {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            border: 2px solid rgba(255, 215, 0, 0.3);
-            border-radius: 20px;
-            padding: 30px;
-            max-width: 500px;
-            width: 100%;
-            position: relative;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-            animation: slideIn 0.3s ease;
-        }
-        .bible-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid rgba(255, 215, 0, 0.2);
-        }
-        .bible-icon {
-            font-size: 3em;
-        }
-        .bible-title h2 {
-            color: #ffd700;
-            font-size: 1.5em;
-            margin-bottom: 5px;
-        }
-        .bible-title .month-label {
-            color: #999;
-            font-size: 0.9em;
-        }
-        .bible-text {
-            background: rgba(255, 255, 255, 0.05);
-            border-left: 4px solid #ffd700;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-        .bible-text h3 {
-            color: #ffd700;
-            font-size: 1.3em;
-            margin-bottom: 10px;
-        }
-        .bible-text p {
-            color: #ccc;
-            line-height: 1.6;
-            font-size: 1.05em;
-        }
-        .bible-empty {
-            text-align: center;
-            color: #999;
-            padding: 40px 20px;
-        }
-        .bible-empty-icon {
-            font-size: 4em;
-            margin-bottom: 15px;
-            opacity: 0.5;
-        }
-        .bible-admin-btn {
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border: none;
-            border-radius: 12px;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-bottom: 10px;
-        }
-        .bible-share-btn {
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-            border: none;
-            border-radius: 12px;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-        .bible-share-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
-        }
-        .bible-admin-panel {
-            display: none;
-            margin-top: 20px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            border: 1px solid rgba(255, 215, 0, 0.2);
-        }
-        .bible-admin-panel.visible {
-            display: block;
-            animation: fadeIn 0.3s ease;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        .admin-input-group {
-            margin-bottom: 15px;
-        }
-        .admin-input-group label {
-            display: block;
-            color: #ffd700;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-        .admin-input-group input,
-        .admin-input-group textarea,
-        .admin-input-group select {
-            width: 100%;
-            padding: 12px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            color: white;
-            font-size: 1em;
-        }
-        .admin-input-group textarea {
-            min-height: 100px;
-            resize: vertical;
-            font-family: inherit;
-        }
-        .admin-buttons {
-            display: flex;
-            gap: 10px;
-            margin-top: 20px;
-        }
-        .btn-save {
-            flex: 1;
-            padding: 12px;
-            background: #4CAF50;
-            border: none;
-            border-radius: 10px;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        .btn-cancel {
-            padding: 12px 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            color: white;
-            cursor: pointer;
-        }
-        .password-input {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-        .password-input input {
-            flex: 1;
-        }
-        .bible-badge {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background: #ff4444;
-            color: white;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.7em;
-            font-weight: bold;
-            box-shadow: 0 2px 10px rgba(255, 68, 68, 0.5);
-            animation: bounce 1s infinite;
-        }
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
-        /* ===== BOTÃO COMPARTILHAR WHATSAPP ===== */
-        .share-whatsapp-btn {
-            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 10px;
-        }
-        .share-whatsapp-btn:hover {
-            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
-        }
-        /* ===== RESPONSIVO ===== */
-        @media (max-width: 768px) {
-            .notification-bell {
-                width: 40px;
-                height: 40px;
-                font-size: 1.3em;
-            }
-            .accessibility-panel {
-                right: 10px;
-                top: auto;
-                bottom: 150px;
-                transform: none;
-            }
-            .accessibility-btn {
-                width: 45px;
-                height: 45px;
-                font-size: 1.3em;
-            }
-            .bible-float-btn {
-                width: 55px;
-                height: 55px;
-                font-size: 1.8em;
-                left: 15px;
-                bottom: 15px;
-            }
-            .bible-content,
-            .notification-content {
-                padding: 20px;
-            }
-        }
-        @media print {
-            .notification-bell,
-            .accessibility-panel,
-            .bible-float-btn,
-            .bible-modal,
-            .notification-modal,
-            .install-banner {
-                display: none !important;
-            }
         }
     </style>
 </head>
@@ -1005,128 +449,16 @@
             <div class="no-data">Selecione seu grupo e o mês para começar a consulta.</div>
         </div>
     </div>
-    <div id="installBanner" class="install-banner">
-        <div class="install-content">
-            <span class="install-icon">📲</span>
-            <div class="install-text">
-                <strong>Instale o App das Escalas!</strong>
-                <p>Acesse as escalas rapidamente pela sua tela inicial.</p>
-            </div>
-            <button id="installButton" class="btn-install">INSTALAR</button>
-            <button id="closeInstall" class="btn-close">X</button>
-        </div>
-    </div>
     <div class="footer">
         IBJLV - Diaconia © 2026
         <br>
          Use a função "Imprimir / Gerar PDF".
     </div>
-    <!-- ===== BOTÃO NOTIFICAÇÕES (SININHO) ===== -->
-    <button class="notification-bell" id="notificationBell" title="Notificações">
-      🔔
-      <span class="notification-badge" id="notificationBadge" style="display: none;">0</span>
-    </button>
-    <!-- ===== MODAL NOTIFICAÇÕES ===== -->
-    <div class="notification-modal" id="notificationModal">
-      <div class="notification-content">
-        <button class="btn-close" onclick="closeNotificationModal()">✕</button>
-        <div class="notification-header">
-          <div style="font-size: 2em;">🔔</div>
-          <h2>Configurar Notificações</h2>
-        </div>
-        <div class="notification-toggle" onclick="toggleNotifications()">
-          <label>Ativar Lembretes</label>
-          <div class="toggle-switch" id="notificationToggle"></div>
-        </div>
-        <div class="group-select-box" id="groupSelectBox" style="display: none;">
-          <label>Selecione seu Grupo:</label>
-          <select id="userGroupSelect">
-            <option value="">Escolha seu grupo</option>
-            <option value="G1">Grupo 1 (G1)</option>
-            <option value="G2">Grupo 2 (G2)</option>
-            <option value="G3">Grupo 3 (G3)</option>
-            <option value="G4">Grupo 4 (G4)</option>
-            <option value="G5">Grupo 5 (G5)</option>
-            <option value="G6">Grupo 6 (G6)</option>
-            <option value="G7">Grupo 7 (G7)</option>
-            <option value="G8">Grupo 8 (G8)</option>
-          </select>
-        </div>
-        <div style="margin-top: 20px; padding: 15px; background: rgba(255, 193, 7, 0.1); border-radius: 10px; border-left: 4px solid #ffc107;">
-          <p style="font-size: 0.9em; color: #ccc; margin: 0;">
-            💡 Você receberá uma notificação <strong>12 horas antes</strong> de cada escala do seu grupo.
-          </p>
-        </div>
-      </div>
-    </div>
-    <!-- ===== BOTÃO FLUTUANTE LIVRO DO MÊS ===== -->
-    <button class="bible-float-btn" id="bibleFloatBtn" title="Livro do Mês">
-      📖
-      <span class="bible-badge" id="bibleBadge" style="display: none;">!</span>
-    </button>
-    <!-- ===== MODAL LIVRO DO MÊS ===== -->
-    <div class="bible-modal" id="bibleModal">
-      <div class="bible-content">
-        <button class="btn-close" id="bibleCloseBtn">✕</button>
-        <div class="bible-header">
-          <div class="bible-icon">📖</div>
-          <div class="bible-title">
-            <h2>Livro do Mês</h2>
-            <div class="month-label" id="currentMonthLabel">Janeiro 2026</div>
-          </div>
-        </div>
-        <div id="bibleDisplay"></div>
-        <button class="bible-share-btn" id="shareWhatsAppBtn" style="display: none;">
-          <span style="font-size: 1.5em;">💬</span>
-          Compartilhar no WhatsApp
-        </button>
-        <button class="bible-admin-btn" id="adminToggleBtn">
-          🔐 Gerenciar Livro do Mês
-        </button>
-        <div class="bible-admin-panel" id="adminPanel">
-          <div class="password-input">
-            <input type="password" id="adminPassword" placeholder="Senha de administrador">
-            <button class="btn-save" onclick="verifyPassword()" style="flex: 0;">🔓</button>
-          </div>
-          <div id="adminForm" style="display: none;">
-            <div class="admin-input-group">
-              <label>Mês:</label>
-              <select id="adminMonth">
-                <option value="Janeiro">Janeiro</option>
-                <option value="Fevereiro">Fevereiro</option>
-                <option value="Março">Março</option>
-                <option value="Abril">Abril</option>
-                <option value="Maio">Maio</option>
-                <option value="Junho">Junho</option>
-                <option value="Julho">Julho</option>
-                <option value="Agosto">Agosto</option>
-                <option value="Setembro">Setembro</option>
-                <option value="Outubro">Outubro</option>
-                <option value="Novembro">Novembro</option>
-                <option value="Dezembro">Dezembro</option>
-              </select>
-            </div>
-            <div class="admin-input-group">
-              <label>Livro/Capítulo da Bíblia:</label>
-              <input type="text" id="adminBook" placeholder="Ex: Salmos 23, João 1-3">
-            </div>
-            <div class="admin-input-group">
-              <label>Descrição (opcional):</label>
-              <textarea id="adminDescription" placeholder="Mensagem sobre a leitura..."></textarea>
-            </div>
-            <div class="admin-buttons">
-              <button class="btn-save" onclick="saveBibleReading()">💾 Salvar</button>
-              <button class="btn-cancel" onclick="closeAdminPanel()">Cancelar</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- ===== PAINEL DE ACESSIBILIDADE ===== -->
+    <!-- ===== PAINEL DE ACESSIBILIDADE (PROFISSIONAL) ===== -->
     <div class="accessibility-panel" id="accessibilityPanel">
       <button class="accessibility-btn" id="speakBtn" title="Ler Escala">
         <span class="accessibility-tooltip">Ler Escala</span>
-        🔊
+        A🔊
       </button>
       <button class="accessibility-btn" id="fontIncreaseBtn" title="Aumentar Fonte">
         <span class="accessibility-tooltip">Aumentar Fonte</span>
@@ -1138,7 +470,7 @@
       </button>
       <button class="accessibility-btn" id="contrastBtn" title="Alto Contraste">
         <span class="accessibility-tooltip">Alto Contraste</span>
-        ◐
+        C
       </button>
       <button class="accessibility-btn" id="stopSpeakBtn" title="Parar Leitura" style="display: none;">
         <span class="accessibility-tooltip">Parar</span>
@@ -1382,7 +714,6 @@
             { mes: "Dezembro", dia: 30, dia_semana: "Quarta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Dezembro", dia: 31, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", cafe: "G4" },
         ];
-
         // ============ FERIADOS RELEVANTES 2026 ============
         const feriados2026 = [
             { mes: "Janeiro", dia: 1, dia_semana: "Quinta-feira", nome: "Confraternização Universal" },
@@ -1405,7 +736,6 @@
             { mes: "Novembro", dia: 20, dia_semana: "Sexta-feira", nome: "Dia da Consciência Negra" },
             { mes: "Dezembro", dia: 25, dia_semana: "Sexta-feira", nome: "Natal" }
         ];
-
         // ===== FUNÇÕES PRINCIPAIS =====
         function selecionarGrupo(grupo) {
             document.getElementById('grupoSelect').value = grupo;
@@ -1414,18 +744,15 @@
                 consultarGrupo();
             }
         }
-
         function getFeriado(mes, dia) {
             const feriado = feriados2026.find(f => f.mes === mes && f.dia === dia);
             return feriado ? feriado.nome : null;
         }
-
         function formatDate(mes, dia) {
             const meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
             const mesIndex = meses.indexOf(mes);
             return new Date(2026, mesIndex, dia);
         }
-
         function checarAlertasFeriado(item) {
             const diaDaEscala = formatDate(item.mes, item.dia);
             let alertas = [];
@@ -1435,7 +762,6 @@
                 alertas.push(`🚨 **Feriado:** ${feriadoNoDia}`);
                 classes += ' feriado-alerta';
             }
-
             const diaAnterior = new Date(diaDaEscala);
             diaAnterior.setDate(diaDaEscala.getDate() - 1);
             if (diaAnterior.getFullYear() === 2026) {
@@ -1446,7 +772,6 @@
                     alertas.push(`⚠️ **Dia após Feriado:** ${feriadoAnterior} (Dia anterior foi feriado)`);
                 }
             }
-
             const diaSeguinte = new Date(diaDaEscala);
             diaSeguinte.setDate(diaDaEscala.getDate() + 1);
             if (diaSeguinte.getFullYear() === 2026) {
@@ -1457,13 +782,11 @@
                     alertas.push(`⚠️ **Véspera de Feriado:** ${feriadoSeguinte} (Dia seguinte é feriado)`);
                 }
             }
-
             if (alertas.length > 0 && !feriadoNoDia) {
                 classes += ' feriado-alerta';
             }
             return { alertas, classes };
         }
-
         function consultarGrupo() {
             const grupoSelecionado = document.getElementById('grupoSelect').value;
             const mesSelecionado = document.getElementById('mesSelect').value;
@@ -1487,7 +810,6 @@
                                     escala.cafe === grupoSelecionado;
                     return isMes && isGrupo;
                 });
-
                 let conteudoEscalas = `<h3>Escalas de ${grupoSelecionado} em ${mesSelecionado}</h3>`;
                 if (resultados.length > 0) {
                     resultados.forEach(item => {
@@ -1510,13 +832,11 @@
                             funcaoPrincipal = 'Diaconia no Culto da Noite';
                             classesExtras = ' diaconia-culto';
                         }
-
                         const feriadoData = checarAlertasFeriado(item);
                         classesExtras += feriadoData.classes;
                         let alertasHtml = feriadoData.alertas.map(alerta => 
                             `<span class="alerta-feriado">${alerta.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</span>`
                         ).join('');
-
                         conteudoEscalas += `
                             <div class="escala-item${classesExtras}">
                                 <strong>Dia ${item.dia} (${item.dia_semana})</strong>
@@ -1526,7 +846,6 @@
                             </div>
                         `;
                     });
-
                     conteudoEscalas += `
                         <div class="footer" style="display: none;">
                             IBJLV - Diaconia © 2026<br>
@@ -1541,7 +860,6 @@
                 resultadoDiv.classList.add('visible');
             }, 2000);
         }
-
         function imprimirEscala() {
             const grupo = document.getElementById('grupoSelect').value;
             const mes = document.getElementById('mesSelect').value;
@@ -1555,7 +873,6 @@
                 alert('❌ Não há escalas para imprimir.');
                 return;
             }
-
             const janelaImpressao = window.open('', '_blank');
             const estilo = `
                 <style>
@@ -1634,223 +951,17 @@
                 janelaImpressao.print();
             }, 500);
         }
-
         // ============================================
-        // PWA: SERVICE WORKER E BOTÃO INSTALAR (ÚNICA INSTÂNCIA)
+        // PWA: SERVICE WORKER (APENAS REGISTRO - OFFLINE FUNCIONAL)
         // ============================================
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('./service-worker.js')
-                    .then(registration => {
-                        console.log('✅ PWA: Service Worker registrado com sucesso!');
-                        console.log('📍 Escopo:', registration.scope);
-                        registration.addEventListener('updatefound', () => {
-                            const newWorker = registration.installing;
-                            newWorker.addEventListener('statechange', () => {
-                                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                                    console.log('✨ PWA: Nova versão disponível!');
-                                }
-                            });
-                        });
-                    })
-                    .catch(error => {
-                        console.error('❌ PWA: Erro ao registrar Service Worker:', error);
-                    });
-            });
-            window.addEventListener('online', () => console.log('🌐 Conexão restaurada!'));
-            window.addEventListener('offline', () => console.log('📵 Você está offline'));
-        }
-
-        let deferredPrompt;
-        const installBanner = document.getElementById('installBanner');
-        const installButton = document.getElementById('installButton');
-        const closeInstall = document.getElementById('closeInstall');
-
-        window.addEventListener('beforeinstallprompt', (e) => {
-            console.log('📱 Evento beforeinstallprompt capturado');
-            e.preventDefault();
-            deferredPrompt = e;
-            const installDismissed = localStorage.getItem('installDismissed');
-            if (installBanner && !installDismissed) {
-                setTimeout(() => {
-                    installBanner.style.display = 'block';
-                }, 3000);
-            }
-        });
-
-        if (installButton) {
-            installButton.addEventListener('click', async () => {
-                if (!deferredPrompt) {
-                    console.log('❌ deferredPrompt não está disponível');
-                    return;
-                }
-                deferredPrompt.prompt();
-                const { outcome } = await deferredPrompt.userChoice;
-                console.log(`👤 Usuário escolheu: ${outcome}`);
-                deferredPrompt = null;
-                if (installBanner) installBanner.style.display = 'none';
+                    .catch(error => console.error('❌ Erro ao registrar Service Worker:', error));
             });
         }
-
-        if (closeInstall) {
-            closeInstall.addEventListener('click', () => {
-                if (installBanner) installBanner.style.display = 'none';
-                localStorage.setItem('installDismissed', 'true');
-                console.log('🚫 Banner de instalação fechado');
-            });
-        }
-
-        window.addEventListener('appinstalled', () => {
-            console.log('🎉 App instalado com sucesso!');
-            if (installBanner) installBanner.style.display = 'none';
-            alert('✅ App instalado! Agora você pode acessar pelo ícone na tela inicial.');
-        });
-
-   // ============================================
-// SISTEMA DE NOTIFICAÇÕES E LEMBRETES (CORRIGIDO)
-// ============================================
-const ADMIN_PASSWORD = 'ibjlv2026';
-let notificationsEnabled = false;
-let userGroup = '';
-
-const notificationBell = document.getElementById('notificationBell');
-const notificationBadge = document.getElementById('notificationBadge');
-const notificationModal = document.getElementById('notificationModal');
-const notificationToggle = document.getElementById('notificationToggle');
-const groupSelectBox = document.getElementById('groupSelectBox');
-const userGroupSelect = document.getElementById('userGroupSelect');
-
-function openNotificationModal() {
-    notificationModal.classList.add('visible');
-    loadNotificationSettings();
-}
-
-function closeNotificationModal() {
-    notificationModal.classList.remove('visible');
-}
-
-function loadNotificationSettings() {
-    notificationsEnabled = localStorage.getItem('notificationsEnabled') === 'true';
-    userGroup = localStorage.getItem('userGroup') || '';
-    if (notificationsEnabled) {
-        notificationToggle.classList.add('active');
-        groupSelectBox.style.display = 'block';
-    } else {
-        notificationToggle.classList.remove('active');
-        groupSelectBox.style.display = 'none';
-    }
-    if (userGroup) {
-        userGroupSelect.value = userGroup;
-    }
-}
-
-async function toggleNotifications() {
-    if (!notificationsEnabled) {
-        if ('Notification' in window) {
-            const permission = await Notification.requestPermission();
-            if (permission === 'granted') {
-                notificationsEnabled = true;
-                notificationToggle.classList.add('active');
-                groupSelectBox.style.display = 'block';
-                localStorage.setItem('notificationsEnabled', 'true');
-                alert('✅ Notificações ativadas! Selecione seu grupo.');
-            } else {
-                alert('❌ Você precisa permitir notificações no navegador.');
-            }
-        } else {
-            alert('❌ Seu navegador não suporta notificações.');
-        }
-    } else {
-        notificationsEnabled = false;
-        notificationToggle.classList.remove('active');
-        groupSelectBox.style.display = 'none';
-        localStorage.setItem('notificationsEnabled', 'false');
-        localStorage.removeItem('userGroup');
-        alert('🔕 Notificações desativadas.');
-    }
-}
-
-userGroupSelect.addEventListener('change', (e) => {
-    userGroup = e.target.value;
-    localStorage.setItem('userGroup', userGroup);
-    if (userGroup) {
-        alert(`✅ Grupo ${userGroup} selecionado!`);
-        scheduleNotifications(); // Agenda imediatamente
-    }
-});
-
-function scheduleNotifications() {
-    if (!notificationsEnabled || !userGroup) return;
-
-    const hoje = new Date();
-    const proximasEscalas = escalas.filter(escala => {
-        const dataEscala = formatDate(escala.mes, escala.dia);
-        const isGrupo = [escala.grupo, escala.EBD, escala.Tarde, escala.Noite, escala.cafe].includes(userGroup);
-        return dataEscala > hoje && isGrupo;
-    }).slice(0, 5);
-
-    // Atualiza o badge
-    if (proximasEscalas.length > 0) {
-        notificationBadge.textContent = proximasEscalas.length;
-        notificationBadge.style.display = 'flex';
-        notificationBell.classList.add('has-notifications');
-    } else {
-        notificationBadge.style.display = 'none';
-        notificationBell.classList.remove('has-notifications');
-    }
-
-    // Agenda notificações (12h antes)
-    proximasEscalas.forEach(escala => {
-        const dataEscala = formatDate(escala.mes, escala.dia);
-        const dozeHorasAntes = new Date(dataEscala);
-        dozeHorasAntes.setHours(dozeHorasAntes.getHours() - 12);
-        const agora = new Date();
-        const tempoRestante = dozeHorasAntes.getTime() - agora.getTime();
-
-        if (tempoRestante > 0 && tempoRestante < 7 * 24 * 60 * 60 * 1000) {
-            setTimeout(() => {
-                if (Notification.permission === 'granted') {
-                    mostrarNotificacao(escala);
-                }
-            }, tempoRestante);
-        }
-    });
-}
-
-function mostrarNotificacao(escala) {
-    let funcao = '';
-    if (escala.cafe === userGroup) funcao = '☕ Café das Mulheres';
-    else if (escala.grupo === userGroup) funcao = `Diaconia no Culto (${escala.dia_semana})`;
-    else if (escala.EBD === userGroup) funcao = 'Diaconia na EBD (Manhã)';
-    else if (escala.Tarde === userGroup) funcao = 'Diaconia no Culto da Tarde';
-    else if (escala.Noite === userGroup) funcao = 'Diaconia no Culto da Noite';
-
-    const notification = new Notification('🔔 Lembrete de Escala - IBJLV', {
-        body: `Amanhã, dia ${escala.dia} de ${escala.mes} (${escala.dia_semana}):\n${funcao}`,
-        icon: 'logo-ibjlv.png',
-        vibrate: [200, 100, 200],
-        tag: 'escala-reminder'
-    });
-
-    notification.onclick = () => {
-        window.focus();
-        notification.close();
-    };
-}
-
-// Inicializa ao carregar a página
-window.addEventListener('load', () => {
-    loadNotificationSettings();
-    if (notificationsEnabled && userGroup) {
-        scheduleNotifications(); // ← AGORA FUNCIONA AO CARREGAR!
-    }
-});
-
-// Event listeners
-notificationBell.addEventListener('click', openNotificationModal);
-notificationToggle.addEventListener('click', toggleNotifications);
         // ============================================
-        // SISTEMA DE ACESSIBILIDADE
+        // SISTEMA DE ACESSIBILIDADE (SEM NOTIFICAÇÕES)
         // ============================================
         const accessibility = {
             fontSize: 'normal',
@@ -1863,12 +974,10 @@ notificationToggle.addEventListener('click', toggleNotifications);
         const fontDecreaseBtn = document.getElementById('fontDecreaseBtn');
         const contrastBtn = document.getElementById('contrastBtn');
         const readingIndicator = document.getElementById('readingIndicator');
-
         if (!('speechSynthesis' in window)) {
             speakBtn.style.opacity = '0.5';
             speakBtn.style.cursor = 'not-allowed';
         }
-
         function speakSchedule() {
             window.speechSynthesis.cancel();
             const resultadoDiv = document.getElementById('resultado');
@@ -1895,7 +1004,6 @@ notificationToggle.addEventListener('click', toggleNotifications);
                 readingIndicator.style.display = 'none';
             });
         }
-
         function speak(text, onEnd) {
             const utterance = new SpeechSynthesisUtterance(text);
             utterance.lang = 'pt-BR';
@@ -1919,7 +1027,6 @@ notificationToggle.addEventListener('click', toggleNotifications);
             };
             window.speechSynthesis.speak(utterance);
         }
-
         function stopSpeaking() {
             window.speechSynthesis.cancel();
             accessibility.speaking = false;
@@ -1927,7 +1034,6 @@ notificationToggle.addEventListener('click', toggleNotifications);
             stopSpeakBtn.style.display = 'none';
             readingIndicator.style.display = 'none';
         }
-
         function changeFontSize(action) {
             const body = document.body;
             if (action === 'increase') {
@@ -1952,7 +1058,6 @@ notificationToggle.addEventListener('click', toggleNotifications);
             }
             localStorage.setItem('accessibility_fontSize', accessibility.fontSize);
         }
-
         function toggleHighContrast() {
             accessibility.highContrast = !accessibility.highContrast;
             document.body.classList.toggle('high-contrast');
@@ -1963,13 +1068,11 @@ notificationToggle.addEventListener('click', toggleNotifications);
             }
             localStorage.setItem('accessibility_contrast', accessibility.highContrast);
         }
-
         speakBtn.addEventListener('click', speakSchedule);
         stopSpeakBtn.addEventListener('click', stopSpeaking);
         fontIncreaseBtn.addEventListener('click', () => changeFontSize('increase'));
         fontDecreaseBtn.addEventListener('click', () => changeFontSize('decrease'));
         contrastBtn.addEventListener('click', toggleHighContrast);
-
         window.addEventListener('load', () => {
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.getVoices();
@@ -1990,7 +1093,6 @@ notificationToggle.addEventListener('click', toggleNotifications);
                 contrastBtn.classList.add('active');
             }
         });
-
         document.addEventListener('keydown', (e) => {
             if (e.ctrlKey && e.key === 'l') {
                 e.preventDefault();
@@ -2011,159 +1113,7 @@ notificationToggle.addEventListener('click', toggleNotifications);
             if (e.key === 'Escape' && accessibility.speaking) {
                 stopSpeaking();
             }
-            if (e.ctrlKey && e.key === 'b') {
-                e.preventDefault();
-                if (bibleModal.classList.contains('visible')) {
-                    closeBibleModal();
-                } else {
-                    openBibleModal();
-                }
-            }
         });
-
-        // ============================================
-        // SISTEMA LIVRO DO MÊS
-        // ============================================
-        let bibleReadings = {};
-        const bibleFloatBtn = document.getElementById('bibleFloatBtn');
-        const bibleModal = document.getElementById('bibleModal');
-        const bibleCloseBtn = document.getElementById('bibleCloseBtn');
-        const adminToggleBtn = document.getElementById('adminToggleBtn');
-        const adminPanel = document.getElementById('adminPanel');
-        const bibleBadge = document.getElementById('bibleBadge');
-        const shareWhatsAppBtn = document.getElementById('shareWhatsAppBtn');
-
-        function loadBibleReadings() {
-            const saved = localStorage.getItem('bibleReadings');
-            if (saved) {
-                bibleReadings = JSON.parse(saved);
-            }
-            updateBibleDisplay();
-        }
-
-        function getCurrentMonth() {
-            const months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 
-                            'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
-            const now = new Date();
-            return months[now.getMonth()];
-        }
-
-        function updateBibleDisplay() {
-            const currentMonth = getCurrentMonth();
-            const reading = bibleReadings[currentMonth];
-            const display = document.getElementById('bibleDisplay');
-            const monthLabel = document.getElementById('currentMonthLabel');
-            monthLabel.textContent = `${currentMonth} 2026`;
-            if (reading) {
-                display.innerHTML = `
-                    <div class="bible-text">
-                        <h3>📖 ${reading.book}</h3>
-                        ${reading.description ? `<p>${reading.description}</p>` : ''}
-                    </div>
-                `;
-                bibleBadge.style.display = 'none';
-                shareWhatsAppBtn.style.display = 'flex';
-            } else {
-                display.innerHTML = `
-                    <div class="bible-empty">
-                        <div class="bible-empty-icon">📕</div>
-                        <p>Nenhuma leitura definida para ${currentMonth}</p>
-                    </div>
-                `;
-                bibleBadge.style.display = 'flex';
-                shareWhatsAppBtn.style.display = 'none';
-            }
-        }
-
-        function openBibleModal() {
-            bibleModal.classList.add('visible');
-            updateBibleDisplay();
-        }
-
-        function closeBibleModal() {
-            bibleModal.classList.remove('visible');
-            closeAdminPanel();
-        }
-
-        shareWhatsAppBtn.addEventListener('click', () => {
-            const currentMonth = getCurrentMonth();
-            const reading = bibleReadings[currentMonth];
-            if (!reading) return;
-            let texto = `📖 *Livro do Mês - ${currentMonth} 2026*
-`;
-            texto += `📚 ${reading.book}
-`;
-            if (reading.description) {
-                texto += `
-${reading.description}
-`;
-            }
-            texto += `
-🏛️ IBJLV - Igreja Batista Jesus Lírio dos Vales`;
-            const url = `https://wa.me/?text=${encodeURIComponent(texto)}`;
-            window.open(url, '_blank');
-        });
-
-        adminToggleBtn.addEventListener('click', () => {
-            adminPanel.classList.toggle('visible');
-            document.getElementById('adminPassword').value = '';
-            document.getElementById('adminForm').style.display = 'none';
-        });
-
-        function verifyPassword() {
-            const password = document.getElementById('adminPassword').value;
-            if (password === ADMIN_PASSWORD) {
-                document.getElementById('adminForm').style.display = 'block';
-                document.getElementById('adminPassword').style.display = 'none';
-                const currentMonth = getCurrentMonth();
-                document.getElementById('adminMonth').value = currentMonth;
-                if (bibleReadings[currentMonth]) {
-                    document.getElementById('adminBook').value = bibleReadings[currentMonth].book;
-                    document.getElementById('adminDescription').value = bibleReadings[currentMonth].description || '';
-                }
-            } else {
-                alert('❌ Senha incorreta!');
-            }
-        }
-
-        function saveBibleReading() {
-            const month = document.getElementById('adminMonth').value;
-            const book = document.getElementById('adminBook').value.trim();
-            const description = document.getElementById('adminDescription').value.trim();
-            if (!book) {
-                alert('❌ Por favor, preencha o Livro/Capítulo!');
-                return;
-            }
-            bibleReadings[month] = { book: book, description: description };
-            localStorage.setItem('bibleReadings', JSON.stringify(bibleReadings));
-            updateBibleDisplay();
-            closeAdminPanel();
-            alert(`✅ Leitura de ${month} salva com sucesso!`);
-        }
-
-        function closeAdminPanel() {
-            adminPanel.classList.remove('visible');
-            document.getElementById('adminPassword').value = '';
-            document.getElementById('adminPassword').style.display = 'block';
-            document.getElementById('adminForm').style.display = 'none';
-        }
-
-        bibleFloatBtn.addEventListener('click', openBibleModal);
-        bibleCloseBtn.addEventListener('click', closeBibleModal);
-        bibleModal.addEventListener('click', (e) => {
-            if (e.target === bibleModal) {
-                closeBibleModal();
-            }
-        });
-
-        window.addEventListener('load', () => {
-            loadBibleReadings();
-            const currentMonth = getCurrentMonth();
-            if (!bibleReadings[currentMonth]) {
-                bibleBadge.style.display = 'flex';
-            }
-        });
-
         // ============================================
         // COMPARTILHAR ESCALA NO WHATSAPP
         // ============================================
@@ -2190,7 +1140,6 @@ ${reading.description}
             const url = `https://wa.me/?text=${encodeURIComponent(texto)}`;
             window.open(url, '_blank');
         }
-
         const originalConsultarGrupo = consultarGrupo;
         consultarGrupo = function() {
             originalConsultarGrupo();
@@ -2210,22 +1159,6 @@ ${reading.description}
                 }
             }, 2100);
         };
-        // DEBUG: Mostrar quantas notificações foram agendadas
-window.addEventListener('load', () => {
-    if (localStorage.getItem('notificationsEnabled') === 'true') {
-        const userGroup = localStorage.getItem('userGroup');
-        if (userGroup) {
-            const hoje = new Date();
-            const proximas = escalas.filter(escala => {
-                const data = formatDate(escala.mes, escala.dia);
-                const isGrupo = [escala.grupo, escala.EBD, escala.Tarde, escala.Noite, escala.cafe].includes(userGroup);
-                return data > hoje && isGrupo;
-            });
-            console.log(`🔔 [DEBUG] ${proximas.length} escalas agendadas para ${userGroup}`);
-            proximas.forEach(e => console.log(`   - ${e.dia}/${e.mes} (${e.dia_semana})`));
-        }
-    }
-});
     </script>
 </body>
 </html>
