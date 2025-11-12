@@ -1706,136 +1706,149 @@
             alert('✅ App instalado! Agora você pode acessar pelo ícone na tela inicial.');
         });
 
-        // ============================================
-        // SISTEMA DE NOTIFICAÇÕES E LEMBRETES
-        // ============================================
-        const ADMIN_PASSWORD = 'ibjlv2026';
-        let notificationsEnabled = false;
-        let userGroup = '';
-        const notificationBell = document.getElementById('notificationBell');
-        const notificationBadge = document.getElementById('notificationBadge');
-        const notificationModal = document.getElementById('notificationModal');
-        const notificationToggle = document.getElementById('notificationToggle');
-        const groupSelectBox = document.getElementById('groupSelectBox');
-        const userGroupSelect = document.getElementById('userGroupSelect');
+   // ============================================
+// SISTEMA DE NOTIFICAÇÕES E LEMBRETES (CORRIGIDO)
+// ============================================
+const ADMIN_PASSWORD = 'ibjlv2026';
+let notificationsEnabled = false;
+let userGroup = '';
 
-        function openNotificationModal() {
-            notificationModal.classList.add('visible');
-            loadNotificationSettings();
-        }
-        function closeNotificationModal() {
-            notificationModal.classList.remove('visible');
-        }
-        function loadNotificationSettings() {
-            notificationsEnabled = localStorage.getItem('notificationsEnabled') === 'true';
-            userGroup = localStorage.getItem('userGroup') || '';
-            if (notificationsEnabled) {
+const notificationBell = document.getElementById('notificationBell');
+const notificationBadge = document.getElementById('notificationBadge');
+const notificationModal = document.getElementById('notificationModal');
+const notificationToggle = document.getElementById('notificationToggle');
+const groupSelectBox = document.getElementById('groupSelectBox');
+const userGroupSelect = document.getElementById('userGroupSelect');
+
+function openNotificationModal() {
+    notificationModal.classList.add('visible');
+    loadNotificationSettings();
+}
+
+function closeNotificationModal() {
+    notificationModal.classList.remove('visible');
+}
+
+function loadNotificationSettings() {
+    notificationsEnabled = localStorage.getItem('notificationsEnabled') === 'true';
+    userGroup = localStorage.getItem('userGroup') || '';
+    if (notificationsEnabled) {
+        notificationToggle.classList.add('active');
+        groupSelectBox.style.display = 'block';
+    } else {
+        notificationToggle.classList.remove('active');
+        groupSelectBox.style.display = 'none';
+    }
+    if (userGroup) {
+        userGroupSelect.value = userGroup;
+    }
+}
+
+async function toggleNotifications() {
+    if (!notificationsEnabled) {
+        if ('Notification' in window) {
+            const permission = await Notification.requestPermission();
+            if (permission === 'granted') {
+                notificationsEnabled = true;
                 notificationToggle.classList.add('active');
                 groupSelectBox.style.display = 'block';
-            }
-            if (userGroup) {
-                userGroupSelect.value = userGroup;
-            }
-        }
-        async function toggleNotifications() {
-            if (!notificationsEnabled) {
-                if ('Notification' in window) {
-                    const permission = await Notification.requestPermission();
-                    if (permission === 'granted') {
-                        notificationsEnabled = true;
-                        notificationToggle.classList.add('active');
-                        groupSelectBox.style.display = 'block';
-                        localStorage.setItem('notificationsEnabled', 'true');
-                        alert('✅ Notificações ativadas! Selecione seu grupo.');
-                    } else {
-                        alert('❌ Você precisa permitir notificações no navegador.');
-                    }
-                } else {
-                    alert('❌ Seu navegador não suporta notificações.');
-                }
+                localStorage.setItem('notificationsEnabled', 'true');
+                alert('✅ Notificações ativadas! Selecione seu grupo.');
             } else {
-                notificationsEnabled = false;
-                notificationToggle.classList.remove('active');
-                groupSelectBox.style.display = 'none';
-                localStorage.setItem('notificationsEnabled', 'false');
-                localStorage.removeItem('userGroup');
-                alert('🔕 Notificações desativadas.');
+                alert('❌ Você precisa permitir notificações no navegador.');
             }
+        } else {
+            alert('❌ Seu navegador não suporta notificações.');
         }
+    } else {
+        notificationsEnabled = false;
+        notificationToggle.classList.remove('active');
+        groupSelectBox.style.display = 'none';
+        localStorage.setItem('notificationsEnabled', 'false');
+        localStorage.removeItem('userGroup');
+        alert('🔕 Notificações desativadas.');
+    }
+}
 
-        userGroupSelect.addEventListener('change', (e) => {
-            userGroup = e.target.value;
-            localStorage.setItem('userGroup', userGroup);
-            if (userGroup) {
-                alert(`✅ Grupo ${userGroup} selecionado! Você receberá lembretes 12h antes das suas escalas.`);
-                scheduleNotifications();
-            }
-        });
+userGroupSelect.addEventListener('change', (e) => {
+    userGroup = e.target.value;
+    localStorage.setItem('userGroup', userGroup);
+    if (userGroup) {
+        alert(`✅ Grupo ${userGroup} selecionado!`);
+        scheduleNotifications(); // Agenda imediatamente
+    }
+});
 
-        function scheduleNotifications() {
-            if (!notificationsEnabled || !userGroup) return;
-            const hoje = new Date();
-            const proximasEscalas = escalas.filter(escala => {
-                const dataEscala = formatDate(escala.mes, escala.dia);
-                const isGrupo = escala.grupo === userGroup || 
-                                escala.EBD === userGroup || 
-                                escala.Tarde === userGroup || 
-                                escala.Noite === userGroup ||
-                                escala.cafe === userGroup;
-                return dataEscala > hoje && isGrupo;
-            }).slice(0, 5);
+function scheduleNotifications() {
+    if (!notificationsEnabled || !userGroup) return;
 
-            if (proximasEscalas.length > 0) {
-                notificationBadge.textContent = proximasEscalas.length;
-                notificationBadge.style.display = 'flex';
-                notificationBell.classList.add('has-notifications');
-            }
+    const hoje = new Date();
+    const proximasEscalas = escalas.filter(escala => {
+        const dataEscala = formatDate(escala.mes, escala.dia);
+        const isGrupo = [escala.grupo, escala.EBD, escala.Tarde, escala.Noite, escala.cafe].includes(userGroup);
+        return dataEscala > hoje && isGrupo;
+    }).slice(0, 5);
 
-            proximasEscalas.forEach(escala => {
-                const dataEscala = formatDate(escala.mes, escala.dia);
-                const dozeHorasAntes = new Date(dataEscala);
-                dozeHorasAntes.setHours(dozeHorasAntes.getHours() - 12);
-                const tempoAte = dozeHorasAntes.getTime() - hoje.getTime();
-                if (tempoAte > 0 && tempoAte < 7 * 24 * 60 * 60 * 1000) {
-                    setTimeout(() => {
-                        mostrarNotificacao(escala);
-                    }, tempoAte);
+    // Atualiza o badge
+    if (proximasEscalas.length > 0) {
+        notificationBadge.textContent = proximasEscalas.length;
+        notificationBadge.style.display = 'flex';
+        notificationBell.classList.add('has-notifications');
+    } else {
+        notificationBadge.style.display = 'none';
+        notificationBell.classList.remove('has-notifications');
+    }
+
+    // Agenda notificações (12h antes)
+    proximasEscalas.forEach(escala => {
+        const dataEscala = formatDate(escala.mes, escala.dia);
+        const dozeHorasAntes = new Date(dataEscala);
+        dozeHorasAntes.setHours(dozeHorasAntes.getHours() - 12);
+        const agora = new Date();
+        const tempoRestante = dozeHorasAntes.getTime() - agora.getTime();
+
+        if (tempoRestante > 0 && tempoRestante < 7 * 24 * 60 * 60 * 1000) {
+            setTimeout(() => {
+                if (Notification.permission === 'granted') {
+                    mostrarNotificacao(escala);
                 }
-            });
+            }, tempoRestante);
         }
+    });
+}
 
-        function mostrarNotificacao(escala) {
-            if (!('Notification' in window) || Notification.permission !== 'granted') return;
-            let funcao = '';
-            if (escala.cafe === userGroup) funcao = 'Café das Mulheres';
-            else if (escala.grupo === userGroup) funcao = `Diaconia no Culto (${escala.dia_semana})`;
-            else if (escala.EBD === userGroup) funcao = 'Diaconia na EBD (Manhã)';
-            else if (escala.Tarde === userGroup) funcao = 'Diaconia no Culto da Tarde';
-            else if (escala.Noite === userGroup) funcao = 'Diaconia no Culto da Noite';
+function mostrarNotificacao(escala) {
+    let funcao = '';
+    if (escala.cafe === userGroup) funcao = '☕ Café das Mulheres';
+    else if (escala.grupo === userGroup) funcao = `Diaconia no Culto (${escala.dia_semana})`;
+    else if (escala.EBD === userGroup) funcao = 'Diaconia na EBD (Manhã)';
+    else if (escala.Tarde === userGroup) funcao = 'Diaconia no Culto da Tarde';
+    else if (escala.Noite === userGroup) funcao = 'Diaconia no Culto da Noite';
 
-            const notification = new Notification('🔔 Lembrete de Escala - IBJLV', {
-                body: `Amanhã, dia ${escala.dia} (${escala.dia_semana}):
-${funcao}`,
-                icon: 'logo-menora.png',
-                badge: 'logo-menora.png',
-                vibrate: [200, 100, 200],
-                tag: 'escala-reminder',
-                requireInteraction: true
-            });
-            notification.onclick = () => {
-                window.focus();
-                notification.close();
-            };
-        }
+    const notification = new Notification('🔔 Lembrete de Escala - IBJLV', {
+        body: `Amanhã, dia ${escala.dia} de ${escala.mes} (${escala.dia_semana}):\n${funcao}`,
+        icon: 'logo-ibjlv.png',
+        vibrate: [200, 100, 200],
+        tag: 'escala-reminder'
+    });
 
-        notificationBell.addEventListener('click', openNotificationModal);
-        window.addEventListener('load', () => {
-            loadNotificationSettings();
-            if (notificationsEnabled && userGroup) {
-                scheduleNotifications();
-            }
-        });
+    notification.onclick = () => {
+        window.focus();
+        notification.close();
+    };
+}
 
+// Inicializa ao carregar a página
+window.addEventListener('load', () => {
+    loadNotificationSettings();
+    if (notificationsEnabled && userGroup) {
+        scheduleNotifications(); // ← AGORA FUNCIONA AO CARREGAR!
+    }
+});
+
+// Event listeners
+notificationBell.addEventListener('click', openNotificationModal);
+notificationToggle.addEventListener('click', toggleNotifications);
         // ============================================
         // SISTEMA DE ACESSIBILIDADE
         // ============================================
