@@ -3,14 +3,13 @@ const BASE_PATH = '/escalas-ibjlv-2026/';
 const urlsToCache = [
   BASE_PATH,
   BASE_PATH + 'index.html',
-  // Adicione todos os recursos estáticos que você usa
-  BASE_PATH + 'manifest.json', // Certifique-se de que é o nome final (sem 'e')
-  BASE_PATH + 'logo-ilbj.png', // O nome exato da sua logo
-  BASE_PATH + 'icons/icon-192x192.png', // Ícones do PWA
+  BASE_PATH + 'manifest.json',
+  BASE_PATH + 'logo-ibjlv.png',      // ✅ Corrigido!
+  BASE_PATH + 'logo-menora.png',     // ✅ Adicionado (usado nas notificações)
+  BASE_PATH + 'icons/icon-192x192.png',
   BASE_PATH + 'icons/icon-512x512.png'
 ];
 
-// Instalação
 self.addEventListener('install', event => {
   console.log('[SW] Instalando...');
   event.waitUntil(
@@ -24,7 +23,6 @@ self.addEventListener('install', event => {
   );
 });
 
-// Ativação
 self.addEventListener('activate', event => {
   console.log('[SW] Ativando...');
   event.waitUntil(
@@ -41,8 +39,12 @@ self.addEventListener('activate', event => {
   );
 });
 
-// Fetch
 self.addEventListener('fetch', event => {
+  // ⚠️ Evita erro com extensões (como o seu erro de 'chrome-extension')
+  if (event.request.url.startsWith('chrome-extension://')) {
+    return;
+  }
+
   event.respondWith(
     caches.match(event.request)
       .then(response => {
@@ -51,7 +53,7 @@ self.addEventListener('fetch', event => {
         }
         return fetch(event.request)
           .then(response => {
-            if (!response || response.status !== 200) {
+            if (!response || response.status !== 200 || response.type !== 'basic') {
               return response;
             }
             const responseClone = response.clone();
@@ -62,7 +64,7 @@ self.addEventListener('fetch', event => {
       })
       .catch(() => {
         return new Response(
-          '<html><body><h1>Offline</h1><p>Sem conexão</p></body></html>',
+          '<html><body style="background:#1a1a2e;color:white;text-align:center;padding:40px;"><h1>Offline</h1><p>Você está sem conexão.<br>As escalas recentes estão disponíveis mesmo offline!</p></body></html>',
           { headers: { 'Content-Type': 'text/html' } }
         );
       })
