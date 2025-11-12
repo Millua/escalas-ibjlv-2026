@@ -2682,6 +2682,16 @@ if (installBanner && installButton && closeInstall) {
         installBanner.style.display = 'none';
     });
 }
+// Adicione este bloco antes da lógica do PWA que você acabou de mostrar.
+
+document.getElementById('searchInput').addEventListener('input', () => {
+    // Isso chamará a sua função de filtragem toda vez que algo for digitado
+    consultarGrupo();
+});
+
+// Opcional: Para garantir que os selects de Mês e Grupo também funcionem (se já não estiverem ligados)
+document.getElementById('mesSelect').addEventListener('change', consultarGrupo);
+document.getElementById('grupoSelect').addEventListener('change', consultarGrupo);
     </script>
 </body>
 </html>
