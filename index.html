@@ -325,8 +325,7 @@
         .accessibility-panel {
             position: fixed;
             right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
+            top: 20px;
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -339,14 +338,14 @@
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
         .accessibility-btn {
-            width: 42px;
-            height: 42px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            width: 48px;
+            height: 48px;
+            background: rgba(102, 126, 234, 0.9);
             border: none;
             border-radius: 8px;
             color: white;
-            font-size: 14px;
-            font-weight: 600;
+            font-size: 18px;
+            font-weight: 500;
             font-family: 'Segoe UI', system-ui, sans-serif;
             cursor: pointer;
             transition: all 0.25s ease;
@@ -356,7 +355,8 @@
             position: relative;
         }
         .accessibility-btn:hover {
-            transform: scale(1.08);
+            background: rgba(102, 126, 234, 1);
+            transform: scale(1.05);
             box-shadow: 0 4px 12px rgba(102, 126, 234, 0.5);
         }
         .accessibility-btn.active {
@@ -365,19 +365,54 @@
         }
         .accessibility-tooltip {
             position: absolute;
-            right: 52px;
-            background: rgba(0, 0, 0, 0.85);
+            right: 58px;
+            background: rgba(0, 0, 0, 0.9);
             color: white;
-            padding: 6px 10px;
+            padding: 8px 12px;
             border-radius: 6px;
             white-space: nowrap;
-            font-size: 12px;
+            font-size: 13px;
             pointer-events: none;
             opacity: 0;
             transition: opacity 0.25s ease;
         }
         .accessibility-btn:hover .accessibility-tooltip {
             opacity: 1;
+        }
+        /* ===== SELEÇÃO DE MÊS COM BOTÕES ===== */
+        .month-selector {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .month-btn {
+            padding: 12px 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .month-btn:hover {
+            background: rgba(102, 126, 234, 0.3);
+            transform: scale(1.05);
+            border-color: rgba(102, 126, 234, 0.5);
+        }
+        .month-btn.selected {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+            transform: scale(1.05);
+        }
+        @media (max-width: 600px) {
+            .month-selector {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
@@ -407,21 +442,20 @@
                 </div>
                 <div class="input-group">
                     <label>Selecione o Mês:</label>
-                    <select id="mesSelect" required>
-                        <option value="">Selecione o mês</option>
-                        <option value="Janeiro">Janeiro</option>
-                        <option value="Fevereiro">Fevereiro</option>
-                        <option value="Março">Março</option>
-                        <option value="Abril">Abril</option>
-                        <option value="Maio">Maio</option>
-                        <option value="Junho">Junho</option>
-                        <option value="Julho">Julho</option>
-                        <option value="Agosto">Agosto</option>
-                        <option value="Setembro">Setembro</option>
-                        <option value="Outubro">Outubro</option>
-                        <option value="Novembro">Novembro</option>
-                        <option value="Dezembro">Dezembro</option>
-                    </select>
+                    <div class="month-selector" id="monthSelector">
+                        <div class="month-btn" onclick="selecionarMes('Janeiro')">Janeiro</div>
+                        <div class="month-btn" onclick="selecionarMes('Fevereiro')">Fevereiro</div>
+                        <div class="month-btn" onclick="selecionarMes('Março')">Março</div>
+                        <div class="month-btn" onclick="selecionarMes('Abril')">Abril</div>
+                        <div class="month-btn" onclick="selecionarMes('Maio')">Maio</div>
+                        <div class="month-btn" onclick="selecionarMes('Junho')">Junho</div>
+                        <div class="month-btn" onclick="selecionarMes('Julho')">Julho</div>
+                        <div class="month-btn" onclick="selecionarMes('Agosto')">Agosto</div>
+                        <div class="month-btn" onclick="selecionarMes('Setembro')">Setembro</div>
+                        <div class="month-btn" onclick="selecionarMes('Outubro')">Outubro</div>
+                        <div class="month-btn" onclick="selecionarMes('Novembro')">Novembro</div>
+                        <div class="month-btn" onclick="selecionarMes('Dezembro')">Dezembro</div>
+                    </div>
                 </div>
                 <button onclick="consultarGrupo()">BUSCAR ESCALAS</button>
                 <button class="btn-print" onclick="imprimirEscala()">🖨️ Imprimir / Gerar PDF</button>
@@ -458,7 +492,7 @@
     <div class="accessibility-panel" id="accessibilityPanel">
       <button class="accessibility-btn" id="speakBtn" title="Ler Escala">
         <span class="accessibility-tooltip">Ler Escala</span>
-        A🔊
+        🔊
       </button>
       <button class="accessibility-btn" id="fontIncreaseBtn" title="Aumentar Fonte">
         <span class="accessibility-tooltip">Aumentar Fonte</span>
@@ -468,16 +502,11 @@
         <span class="accessibility-tooltip">Diminuir Fonte</span>
         A-
       </button>
-      <button class="accessibility-btn" id="contrastBtn" title="Alto Contraste">
-        <span class="accessibility-tooltip">Alto Contraste</span>
-        C
-      </button>
       <button class="accessibility-btn" id="stopSpeakBtn" title="Parar Leitura" style="display: none;">
         <span class="accessibility-tooltip">Parar</span>
         ⏹
       </button>
     </div>
-    <div class="reading-indicator" id="readingIndicator" style="display: none;"></div>
     <script>
         // ============ DADOS COMPLETOS DAS ESCALAS 2026 ============
         const escalas = [
@@ -531,7 +560,8 @@
             { mes: "Março", dia: 15, dia_semana: "Domingo", grupo: "", EBD: "G7", Tarde: "G8", Noite: "G1", cafe: "" },
             { mes: "Março", dia: 18, dia_semana: "Quarta-feira", grupo: "G5", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Março", dia: 20, dia_semana: "Sexta-feira", grupo: "G7", EBD: "", Tarde: "", Noite: "", cafe: "" },
-            { mes: "Março", dia: 21, dia_semana: "Sábado", grupo: "G3", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Março", dia: 21, dia_semana: "Sábado", grupo: "G3", EBD: "", Tarde: "", Noite: "", cafe```javascript
+: "" },
             { mes: "Março", dia: 22, dia_semana: "Domingo", grupo: "", EBD: "G3", Tarde: "G4", Noite: "G5", cafe: "" },
             { mes: "Março", dia: 25, dia_semana: "Quarta-feira", grupo: "G8", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Março", dia: 26, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", cafe: "G3" },
@@ -702,7 +732,7 @@
             { mes: "Dezembro", dia: 9, dia_semana: "Quarta-feira", grupo: "G5", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Dezembro", dia: 11, dia_semana: "Sexta-feira", grupo: "G8", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Dezembro", dia: 12, dia_semana: "Sábado", grupo: "G3", EBD: "", Tarde: "", Noite: "", cafe: "" },
-            { mes: "Dezembro", dia: 13, dia_semana: "Domingo", grupo: "", EBD: "G5", Tarde: "G6", Noite: "G7", cafe: "" },
+            { mes:"Dezembro", dia: 13, dia_semana: "Domingo", grupo: "", EBD: "G5", Tarde: "G6", Noite: "G7", cafe: "" },
             { mes: "Dezembro", dia: 16, dia_semana: "Quarta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Dezembro", dia: 18, dia_semana: "Sexta-feira", grupo: "G2", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Dezembro", dia: 19, dia_semana: "Sábado", grupo: "G6", EBD: "", Tarde: "", Noite: "", cafe: "" },
@@ -737,9 +767,29 @@
             { mes: "Dezembro", dia: 25, dia_semana: "Sexta-feira", nome: "Natal" }
         ];
         // ===== FUNÇÕES PRINCIPAIS =====
+        let mesSelecionado = '';
+
+        function selecionarMes(mes) {
+            mesSelecionado = mes;
+            
+            // Atualizar visual dos botões
+            const monthBtns = document.querySelectorAll('.month-btn');
+            monthBtns.forEach(btn => {
+                if (btn.textContent === mes) {
+                    btn.classList.add('selected');
+                } else {
+                    btn.classList.remove('selected');
+                }
+            });
+            
+            const grupoSelecionado = document.getElementById('grupoSelect').value;
+            if (grupoSelecionado) {
+                consultarGrupo();
+            }
+        }
+
         function selecionarGrupo(grupo) {
             document.getElementById('grupoSelect').value = grupo;
-            const mesSelecionado = document.getElementById('mesSelect').value;
             if (mesSelecionado) {
                 consultarGrupo();
             }
@@ -789,7 +839,6 @@
         }
         function consultarGrupo() {
             const grupoSelecionado = document.getElementById('grupoSelect').value;
-            const mesSelecionado = document.getElementById('mesSelect').value;
             const loadingDiv = document.getElementById('loading');
             const resultadoDiv = document.getElementById('resultado');
             if (!grupoSelecionado || !mesSelecionado) {
@@ -862,7 +911,7 @@
         }
         function imprimirEscala() {
             const grupo = document.getElementById('grupoSelect').value;
-            const mes = document.getElementById('mesSelect').value;
+            const mes = mesSelecionado;
             if (!grupo || !mes) {
                 alert('❌ Por favor, selecione um grupo e mês antes de imprimir.');
                 return;
@@ -961,24 +1010,27 @@
             });
         }
         // ============================================
-        // SISTEMA DE ACESSIBILIDADE (SEM NOTIFICAÇÕES)
+        // SISTEMA DE ACESSIBILIDADE SIMPLIFICADO
         // ============================================
         const accessibility = {
             fontSize: 'normal',
-            highContrast: false,
             speaking: false
         };
         const speakBtn = document.getElementById('speakBtn');
         const stopSpeakBtn = document.getElementById('stopSpeakBtn');
         const fontIncreaseBtn = document.getElementById('fontIncreaseBtn');
         const fontDecreaseBtn = document.getElementById('fontDecreaseBtn');
-        const contrastBtn = document.getElementById('contrastBtn');
-        const readingIndicator = document.getElementById('readingIndicator');
+
         if (!('speechSynthesis' in window)) {
-            speakBtn.style.opacity = '0.5';
-            speakBtn.style.cursor = 'not-allowed';
+            if (speakBtn) {
+                speakBtn.style.opacity = '0.5';
+                speakBtn.style.cursor = 'not-allowed';
+                speakBtn.disabled = true;
+            }
         }
         function speakSchedule() {
+            if (!window.speechSynthesis) return;
+            
             window.speechSynthesis.cancel();
             const resultadoDiv = document.getElementById('resultado');
             const escalaItems = resultadoDiv.querySelectorAll('.escala-item');
@@ -987,11 +1039,10 @@
                 return;
             }
             const grupo = document.getElementById('grupoSelect').value;
-            const mes = document.getElementById('mesSelect').value;
+            const mes = mesSelecionado;
             accessibility.speaking = true;
-            speakBtn.style.display = 'none';
-            stopSpeakBtn.style.display = 'flex';
-            readingIndicator.style.display = 'block';
+            if (speakBtn) speakBtn.style.display = 'none';
+            if (stopSpeakBtn) stopSpeakBtn.style.display = 'flex';
             let textoCompleto = `Escalas do ${grupo} no mês de ${mes}. `;
             escalaItems.forEach((item) => {
                 const texto = item.textContent.trim();
@@ -999,19 +1050,18 @@
             });
             speak(textoCompleto, () => {
                 accessibility.speaking = false;
-                speakBtn.style.display = 'flex';
-                stopSpeakBtn.style.display = 'none';
-                readingIndicator.style.display = 'none';
+                if (speakBtn) speakBtn.style.display = 'flex';
+                if (stopSpeakBtn) stopSpeakBtn.style.display = 'none';
             });
         }
         function speak(text, onEnd) {
             const utterance = new SpeechSynthesisUtterance(text);
             utterance.lang = 'pt-BR';
-            utterance.rate = 0.9;
+            utterance.rate = 0.85;
             utterance.pitch = 1;
             utterance.volume = 1;
             const voices = window.speechSynthesis.getVoices();
-            const ptVoice = voices.find(voice => voice.lang.includes('pt'));
+            const ptVoice = voices.find(voice => voice.lang.includes('pt-BR') || voice.lang.includes('pt'));
             if (ptVoice) {
                 utterance.voice = ptVoice;
             }
@@ -1021,58 +1071,46 @@
             utterance.onerror = (error) => {
                 console.error('Erro na síntese de voz:', error);
                 accessibility.speaking = false;
-                speakBtn.style.display = 'flex';
-                stopSpeakBtn.style.display = 'none';
-                readingIndicator.style.display = 'none';
+                if (speakBtn) speakBtn.style.display = 'flex';
+                if (stopSpeakBtn) stopSpeakBtn.style.display = 'none';
             };
             window.speechSynthesis.speak(utterance);
         }
         function stopSpeaking() {
-            window.speechSynthesis.cancel();
+            if (window.speechSynthesis) {
+                window.speechSynthesis.cancel();
+            }
             accessibility.speaking = false;
-            speakBtn.style.display = 'flex';
-            stopSpeakBtn.style.display = 'none';
-            readingIndicator.style.display = 'none';
+            if (speakBtn) speakBtn.style.display = 'flex';
+            if (stopSpeakBtn) stopSpeakBtn.style.display = 'none';
         }
         function changeFontSize(action) {
             const body = document.body;
             if (action === 'increase') {
                 if (accessibility.fontSize === 'normal') {
                     accessibility.fontSize = 'medium';
-                    body.classList.remove('font-large');
-                    body.classList.add('font-medium');
+                    body.style.fontSize = '110%';
                 } else if (accessibility.fontSize === 'medium') {
                     accessibility.fontSize = 'large';
-                    body.classList.remove('font-medium');
-                    body.classList.add('font-large');
+                    body.style.fontSize = '120%';
                 }
             } else if (action === 'decrease') {
                 if (accessibility.fontSize === 'large') {
                     accessibility.fontSize = 'medium';
-                    body.classList.remove('font-large');
-                    body.classList.add('font-medium');
+                    body.style.fontSize = '110%';
                 } else if (accessibility.fontSize === 'medium') {
                     accessibility.fontSize = 'normal';
-                    body.classList.remove('font-medium');
+                    body.style.fontSize = '100%';
                 }
             }
             localStorage.setItem('accessibility_fontSize', accessibility.fontSize);
         }
-        function toggleHighContrast() {
-            accessibility.highContrast = !accessibility.highContrast;
-            document.body.classList.toggle('high-contrast');
-            if (accessibility.highContrast) {
-                contrastBtn.classList.add('active');
-            } else {
-                contrastBtn.classList.remove('active');
-            }
-            localStorage.setItem('accessibility_contrast', accessibility.highContrast);
-        }
-        speakBtn.addEventListener('click', speakSchedule);
-        stopSpeakBtn.addEventListener('click', stopSpeaking);
-        fontIncreaseBtn.addEventListener('click', () => changeFontSize('increase'));
-        fontDecreaseBtn.addEventListener('click', () => changeFontSize('decrease'));
-        contrastBtn.addEventListener('click', toggleHighContrast);
+
+        if (speakBtn) speakBtn.addEventListener('click', speakSchedule);
+        if (stopSpeakBtn) stopSpeakBtn.addEventListener('click', stopSpeaking);
+        if (fontIncreaseBtn) fontIncreaseBtn.addEventListener('click', () => changeFontSize('increase'));
+        if (fontDecreaseBtn) fontDecreaseBtn.addEventListener('click', () => changeFontSize('decrease'));
+
         window.addEventListener('load', () => {
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.getVoices();
@@ -1080,17 +1118,12 @@
             const savedFontSize = localStorage.getItem('accessibility_fontSize');
             if (savedFontSize) {
                 accessibility.fontSize = savedFontSize;
+                const body = document.body;
                 if (savedFontSize === 'medium') {
-                    document.body.classList.add('font-medium');
+                    body.style.fontSize = '110%';
                 } else if (savedFontSize === 'large') {
-                    document.body.classList.add('font-large');
+                    body.style.fontSize = '120%';
                 }
-            }
-            const savedContrast = localStorage.getItem('accessibility_contrast');
-            if (savedContrast === 'true') {
-                accessibility.highContrast = true;
-                document.body.classList.add('high-contrast');
-                contrastBtn.classList.add('active');
             }
         });
         document.addEventListener('keydown', (e) => {
@@ -1106,10 +1139,6 @@
                 e.preventDefault();
                 changeFontSize('decrease');
             }
-            if (e.ctrlKey && e.key === 'h') {
-                e.preventDefault();
-                toggleHighContrast();
-            }
             if (e.key === 'Escape' && accessibility.speaking) {
                 stopSpeaking();
             }
@@ -1119,24 +1148,20 @@
         // ============================================
         function compartilharEscalaWhatsApp() {
             const grupo = document.getElementById('grupoSelect').value;
-            const mes = document.getElementById('mesSelect').value;
+            const mes = mesSelecionado;
             const resultadoDiv = document.getElementById('resultado');
             const escalaItems = resultadoDiv.querySelectorAll('.escala-item');
             if (!grupo || !mes || escalaItems.length === 0) {
                 alert('❌ Por favor, busque uma escala primeiro!');
                 return;
             }
-            let texto = `📋 *Escalas ${grupo} - ${mes} 2026*
-`;
-            texto += `🏛️ *IBJLV - Diaconia*
-`;
+            let texto = `📋 *Escalas ${grupo} - ${mes} 2026*\n`;
+            texto += `🏛️ *IBJLV - Diaconia*\n\n`;
             escalaItems.forEach((item, index) => {
                 const textoItem = item.textContent.trim().replace(/\s+/g, ' - ');
-                texto += `${index + 1}. ${textoItem}
-`;
+                texto += `${index + 1}. ${textoItem}\n`;
             });
-            texto += `
-📱 Consulte todas as escalas: ${window.location.href}`;
+            texto += `\n📱 Consulte todas as escalas: ${window.location.href}`;
             const url = `https://wa.me/?text=${encodeURIComponent(texto)}`;
             window.open(url, '_blank');
         }
@@ -1146,13 +1171,14 @@
             setTimeout(() => {
                 const resultadoDiv = document.getElementById('resultado');
                 const btnPrint = document.querySelector('.btn-print');
-                if (resultadoDiv.classList.contains('visible') && btnPrint) {
+                if (resultadoDiv && resultadoDiv.classList.contains('visible') && btnPrint) {
                     const hasShareBtn = document.getElementById('shareWhatsAppEscalaBtn');
                     if (!hasShareBtn) {
                         const shareBtn = document.createElement('button');
                         shareBtn.id = 'shareWhatsAppEscalaBtn';
-                        shareBtn.className = 'share-whatsapp-btn';
-                        shareBtn.innerHTML = '<span style="font-size: 1.5em;">💬</span> Compartilhar no WhatsApp';
+                        shareBtn.className = 'btn-print';
+                        shareBtn.style.background = '#25D366';
+                        shareBtn.innerHTML = '💬 Compartilhar no WhatsApp';
                         shareBtn.onclick = compartilharEscalaWhatsApp;
                         btnPrint.parentNode.insertBefore(shareBtn, btnPrint.nextSibling);
                     }
