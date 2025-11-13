@@ -1,57 +1,58 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+<meta name="theme-color" content="#1e88e5">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#667eea">
     <title>Escalas 2026 - IBJLV</title>
     <style>
+        /* ===== ESTILOS GLOBAIS ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #000000 0%, #1a1a2e 50%, #16213e 100%);
+            background: #000000;
             color: white;
             min-height: 100vh;
+            background: linear-gradient(135deg, #000000 0%, #1a1a2e 50%, #16213e 100%);
         }
-        
+        /* ===== CABEÇALHO COM LOGO ===== */
         .header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             padding: 30px 20px;
             text-align: center;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        
         .logo {
             max-width: 100px;
             height: auto;
             margin-bottom: 15px;
-            border-radius: 50%;
             filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
+            border-radius: 50%;
         }
-        
         .church-name {
             font-size: 1.8em;
             font-weight: bold;
             margin-bottom: 5px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
-        
         .church-subtitle {
             font-size: 1.1em;
             opacity: 0.9;
+            margin-bottom: 0;
         }
-        
+        /* ===== CONTAINER PRINCIPAL ===== */
         .container {
             max-width: 500px;
             margin: 30px auto;
             padding: 0 20px;
         }
-        
         .consultas {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
@@ -60,27 +61,23 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 8px 32px rgba(0,0,0,0.3);
         }
-        
         .consulta-box h3 {
             text-align: center;
             margin-bottom: 25px;
             font-size: 1.5em;
             color: #667eea;
         }
-        
+        /* ===== FORMULÁRIO ===== */
         .input-group {
             margin-bottom: 20px;
         }
-        
         .input-group label {
             display: block;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             font-weight: 500;
             color: #ccc;
-            font-size: 0.95em;
         }
-        
-        select {
+        input, select {
             width: 100%;
             padding: 15px;
             background: rgba(255, 255, 255, 0.1);
@@ -90,50 +87,21 @@
             font-size: 16px;
             transition: all 0.3s ease;
         }
-        
-        select:focus {
+        input:focus, select:focus {
             outline: none;
             border-color: #667eea;
             background: rgba(255, 255, 255, 0.15);
         }
-        
-        select option {
-            background: #1a1a2e;
+        select {
+            color: #aaa;
+        }
+        select:valid {
             color: white;
         }
-        
-        .month-selector {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
+        input::placeholder {
+            color: #aaa;
         }
-        
-        .month-btn {
-            padding: 14px 8px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            color: white;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: center;
-            font-weight: 600;
-            font-size: 14px;
-        }
-        
-        .month-btn:hover {
-            background: rgba(102, 126, 234, 0.3);
-            transform: scale(1.05);
-            border-color: rgba(102, 126, 234, 0.5);
-        }
-        
-        .month-btn.selected {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-color: #667eea;
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-            transform: scale(1.05);
-        }
-        
+        /* ===== BOTÕES ===== */
         button {
             width: 100%;
             padding: 15px;
@@ -146,30 +114,28 @@
             cursor: pointer;
             transition: all 0.3s ease;
             margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        
         button:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
         }
-        
         .btn-print {
             background: #4CAF50;
             margin-top: 15px;
         }
-        
-        .btn-whatsapp {
-            background: #25D366;
-            margin-top: 10px;
+        .btn-print:hover {
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
         }
-        
+        /* ===== GRUPOS RÁPIDOS ===== */
         .quick-groups {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 10px;
             margin-top: 20px;
         }
-        
         .group-btn {
             padding: 12px 5px;
             background: rgba(255, 255, 255, 0.1);
@@ -181,28 +147,24 @@
             text-align: center;
             font-weight: bold;
         }
-        
         .group-btn:hover {
             background: rgba(102, 126, 234, 0.3);
             transform: scale(1.05);
         }
-        
+        /* ===== LOADER ===== */
         .loading {
             text-align: center;
             padding: 20px;
             display: none;
         }
-        
         .loading.visible {
             display: block;
         }
-        
         .fish-loader {
             width: 150px;
             height: 67.5px;
             margin: 20px auto;
         }
-        
         .fish {
             fill: none;
             stroke: #ffffff;
@@ -213,11 +175,12 @@
             filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
             animation: trace 2s linear infinite;
         }
-        
         @keyframes trace {
-            to { stroke-dashoffset: 0; }
+            to {
+                stroke-dashoffset: 0;
+            }
         }
-        
+        /* ===== RESULTADOS ===== */
         .resultado {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
@@ -227,19 +190,17 @@
             display: none;
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
-        
         .resultado.visible {
             display: block;
             animation: fadeIn 0.5s ease;
         }
-        
         .resultado h3 {
             color: #667eea;
             margin-bottom: 20px;
             text-align: center;
             font-size: 1.4em;
         }
-        
+        /* ===== ITENS DA ESCALA ===== */
         .escala-item {
             background: rgba(255, 255, 255, 0.15);
             margin: 10px 0;
@@ -247,23 +208,26 @@
             border-radius: 10px;
             border-left: 4px solid #4CAF50;
             transition: all 0.3s ease;
+            font-size: 0.95em;
         }
-        
         .escala-item:hover {
             transform: translateX(5px);
             background: rgba(255, 255, 255, 0.2);
         }
-        
         .escala-item.cafe {
             border-left-color: #ffc107;
             background: rgba(255, 193, 7, 0.1);
         }
-        
+        .escala-item.diaconia-culto {
+            border-left-color: #764ba2;
+        }
+        .escala-item.diaconia-ebd {
+            border-left-color: #667eea;
+        }
         .escala-item.feriado-alerta {
             border-left-color: #ff9800 !important;
             background: rgba(255, 152, 0, 0.1) !important;
         }
-        
         .alerta-feriado {
             display: block;
             color: #ff9800;
@@ -271,18 +235,98 @@
             margin-top: 5px;
             font-size: 0.9em;
         }
-        
         .no-data {
             text-align: center;
             padding: 30px;
             color: #ccc;
             font-style: italic;
         }
-        
+        /* ===== RODAPÉ ===== */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #667eea;
+            font-size: 0.9em;
+            margin-top: 40px;
+            line-height: 1.6;
+        }
+        /* ===== ESTILOS DE IMPRESSÃO ===== */
+        @media print {
+            .header, .consultas, .loading, .footer, button {
+                display: none !important;
+            }
+            body, .container {
+                background: #ffffff !important;
+                color: #000000 !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                max-width: 100% !important;
+            }
+            .resultado {
+                display: block !important;
+                background: #ffffff !important;
+                color: #000000 !important;
+                padding: 20px !important;
+                border: 2px solid #5b2c7e !important;
+                border-radius: 10px !important;
+                margin: 0 !important;
+                box-shadow: none !important;
+            }
+            .resultado h3 {
+                color: #5b2c7e !important;
+                font-size: 1.4em !important;
+                font-weight: bold !important;
+                border-bottom: 2px solid #5b2c7e !important;
+                padding-bottom: 10px !important;
+            }
+            .escala-item {
+                background: #f8f9fa !important;
+                color: #000000 !important;
+                border-left-color: #5b2c7e !important;
+                border-radius: 5px !important;
+            }
+            .escala-item.cafe {
+                background: #fff3cd !important;
+                border-left-color: #ffc107 !important;
+            }
+            .escala-item.feriado-alerta {
+                background: #ffe0b2 !important;
+            }
+            .alerta-feriado {
+                color: #d84315 !important;
+            }
+        }
+        /* ===== ANIMAÇÕES ===== */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* ===== RESPONSIVIDADE ===== */
+        @media (max-width: 600px) {
+            .container {
+                margin: 20px auto;
+                padding: 0 15px;
+            }
+            .consultas {
+                padding: 20px;
+            }
+            .quick-groups {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .group-btn {
+                padding: 10px 5px;
+                font-size: 14px;
+            }
+            .church-name {
+                font-size: 1.5em;
+            }
+        }
+        /* ===== PAINEL DE ACESSIBILIDADE (PROFISSIONAL) ===== */
         .accessibility-panel {
             position: fixed;
             right: 20px;
-            top: 20px;
+            top: 50%;
+            transform: translateY(-50%);
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -294,15 +338,16 @@
             gap: 8px;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
-        
         .accessibility-btn {
-            width: 48px;
-            height: 48px;
-            background: rgba(102, 126, 234, 0.9);
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border: none;
             border-radius: 8px;
             color: white;
-            font-size: 18px;
+            font-size: 14px;
+            font-weight: 600;
+            font-family: 'Segoe UI', system-ui, sans-serif;
             cursor: pointer;
             transition: all 0.25s ease;
             display: flex;
@@ -310,73 +355,29 @@
             justify-content: center;
             position: relative;
         }
-        
         .accessibility-btn:hover {
-            background: rgba(102, 126, 234, 1);
-            transform: scale(1.05);
+            transform: scale(1.08);
             box-shadow: 0 4px 12px rgba(102, 126, 234, 0.5);
         }
-        
+        .accessibility-btn.active {
+            background: #4CAF50;
+            box-shadow: 0 0 12px #4CAF50;
+        }
         .accessibility-tooltip {
             position: absolute;
-            right: 58px;
-            background: rgba(0, 0, 0, 0.9);
+            right: 52px;
+            background: rgba(0, 0, 0, 0.85);
             color: white;
-            padding: 8px 12px;
+            padding: 6px 10px;
             border-radius: 6px;
             white-space: nowrap;
-            font-size: 13px;
+            font-size: 12px;
             pointer-events: none;
             opacity: 0;
             transition: opacity 0.25s ease;
         }
-        
         .accessibility-btn:hover .accessibility-tooltip {
             opacity: 1;
-        }
-        
-        .footer {
-            text-align: center;
-            padding: 30px 20px;
-            color: #667eea;
-            font-size: 0.9em;
-            margin-top: 40px;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @media (max-width: 600px) {
-            .container {
-                margin: 20px auto;
-                padding: 0 15px;
-            }
-            .consultas {
-                padding: 20px;
-            }
-            .month-selector {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .church-name {
-                font-size: 1.5em;
-            }
-        }
-        
-        @media print {
-            .header, .consultas, .loading, .footer, button, .accessibility-panel {
-                display: none !important;
-            }
-            body {
-                background: white !important;
-                color: black !important;
-            }
-            .resultado {
-                display: block !important;
-                background: white !important;
-                color: black !important;
-            }
         }
     </style>
 </head>
@@ -386,15 +387,13 @@
         <div class="church-name">IGREJA BATISTA JESUS LÍRIO DOS VALES</div>
         <div class="church-subtitle">Consultor de Escalas 2026</div>
     </div>
-
     <div class="container">
         <div class="consultas">
             <div class="consulta-box">
                 <h3>🔍 CONSULTAR ESCALAS</h3>
-                
                 <div class="input-group">
                     <label>Selecione o Grupo:</label>
-                    <select id="grupoSelect">
+                    <select id="grupoSelect" required>
                         <option value="">Selecione um grupo</option>
                         <option value="G1">Grupo 1 (G1)</option>
                         <option value="G2">Grupo 2 (G2)</option>
@@ -406,234 +405,760 @@
                         <option value="G8">Grupo 8 (G8)</option>
                     </select>
                 </div>
-
                 <div class="input-group">
                     <label>Selecione o Mês:</label>
-                    <div class="month-selector">
-                        <div class="month-btn" data-mes="Janeiro">Janeiro</div>
-                        <div class="month-btn" data-mes="Fevereiro">Fevereiro</div>
-                        <div class="month-btn" data-mes="Março">Março</div>
-                        <div class="month-btn" data-mes="Abril">Abril</div>
-                        <div class="month-btn" data-mes="Maio">Maio</div>
-                        <div class="month-btn" data-mes="Junho">Junho</div>
-                        <div class="month-btn" data-mes="Julho">Julho</div>
-                        <div class="month-btn" data-mes="Agosto">Agosto</div>
-                        <div class="month-btn" data-mes="Setembro">Setembro</div>
-                        <div class="month-btn" data-mes="Outubro">Outubro</div>
-                        <div class="month-btn" data-mes="Novembro">Novembro</div>
-                        <div class="month-btn" data-mes="Dezembro">Dezembro</div>
-                    </div>
+                    <select id="mesSelect" required>
+                        <option value="">Selecione o mês</option>
+                        <option value="Janeiro">Janeiro</option>
+                        <option value="Fevereiro">Fevereiro</option>
+                        <option value="Março">Março</option>
+                        <option value="Abril">Abril</option>
+                        <option value="Maio">Maio</option>
+                        <option value="Junho">Junho</option>
+                        <option value="Julho">Julho</option>
+                        <option value="Agosto">Agosto</option>
+                        <option value="Setembro">Setembro</option>
+                        <option value="Outubro">Outubro</option>
+                        <option value="Novembro">Novembro</option>
+                        <option value="Dezembro">Dezembro</option>
+                    </select>
                 </div>
-
                 <button onclick="consultarGrupo()">BUSCAR ESCALAS</button>
                 <button class="btn-print" onclick="imprimirEscala()">🖨️ Imprimir / Gerar PDF</button>
-
                 <div class="quick-groups">
-                    <div class="group-btn" data-grupo="G1">G1</div>
-                    <div class="group-btn" data-grupo="G2">G2</div>
-                    <div class="group-btn" data-grupo="G3">G3</div>
-                    <div class="group-btn" data-grupo="G4">G4</div>
-                    <div class="group-btn" data-grupo="G5">G5</div>
-                    <div class="group-btn" data-grupo="G6">G6</div>
-                    <div class="group-btn" data-grupo="G7">G7</div>
-                    <div class="group-btn" data-grupo="G8">G8</div>
+                    <div class="group-btn" onclick="selecionarGrupo('G1')">G1</div>
+                    <div class="group-btn" onclick="selecionarGrupo('G2')">G2</div>
+                    <div class="group-btn" onclick="selecionarGrupo('G3')">G3</div>
+                    <div class="group-btn" onclick="selecionarGrupo('G4')">G4</div>
+                    <div class="group-btn" onclick="selecionarGrupo('G5')">G5</div>
+                    <div class="group-btn" onclick="selecionarGrupo('G6')">G6</div>
+                    <div class="group-btn" onclick="selecionarGrupo('G7')">G7</div>
+                    <div class="group-btn" onclick="selecionarGrupo('G8')">G8</div>
                 </div>
             </div>
         </div>
-
         <div class="loading" id="loading">
-            <div class="fish-loader">
+            <div id="fishLoader" class="fish-loader">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 160" width="100%" height="100%">
-                    <path class="fish" d="M 340,15 C 215,185 90,145 20,75 C 90,15 215,-25 340,140" />
+                    <path class="fish" 
+                        d="M 340,15 C 215,185 90,145 20,75 C 90,15 215,-25 340,140" />
                 </svg>
             </div>
         </div>
-
         <div class="resultado" id="resultado">
             <div class="no-data">Selecione seu grupo e o mês para começar a consulta.</div>
         </div>
     </div>
-
     <div class="footer">
         IBJLV - Diaconia © 2026
         <br>
-        Use a função "Imprimir / Gerar PDF".
+         Use a função "Imprimir / Gerar PDF".
     </div>
-
-    <div class="accessibility-panel">
-        <button class="accessibility-btn" id="speakBtn" title="Ler Escala">
-            <span class="accessibility-tooltip">Ler Escala</span>
-            🔊
-        </button>
-        <button class="accessibility-btn" id="fontIncreaseBtn" title="Aumentar Fonte">
-            <span class="accessibility-tooltip">Aumentar Fonte</span>
-            A+
-        </button>
-        <button class="accessibility-btn" id="fontDecreaseBtn" title="Diminuir Fonte">
-            <span class="accessibility-tooltip">Diminuir Fonte</span>
-            A-
-        </button>
-        <button class="accessibility-btn" id="stopSpeakBtn" title="Parar Leitura" style="display: none;">
-            <span class="accessibility-tooltip">Parar</span>
-            ⏹
-        </button>
+    <!-- ===== PAINEL DE ACESSIBILIDADE (PROFISSIONAL) ===== -->
+    <div class="accessibility-panel" id="accessibilityPanel">
+      <button class="accessibility-btn" id="speakBtn" title="Ler Escala">
+        <span class="accessibility-tooltip">Ler Escala</span>
+        A🔊
+      </button>
+      <button class="accessibility-btn" id="fontIncreaseBtn" title="Aumentar Fonte">
+        <span class="accessibility-tooltip">Aumentar Fonte</span>
+        A+
+      </button>
+      <button class="accessibility-btn" id="fontDecreaseBtn" title="Diminuir Fonte">
+        <span class="accessibility-tooltip">Diminuir Fonte</span>
+        A-
+      </button>
+      <button class="accessibility-btn" id="contrastBtn" title="Alto Contraste">
+        <span class="accessibility-tooltip">Alto Contraste</span>
+        C
+      </button>
+      <button class="accessibility-btn" id="stopSpeakBtn" title="Parar Leitura" style="display: none;">
+        <span class="accessibility-tooltip">Parar</span>
+        ⏹
+      </button>
     </div>
-
-    <script src="escalas-data.js"></script>
+    <div class="reading-indicator" id="readingIndicator" style="display: none;"></div>
     <script>
-        let mesSelecionado = '';
-        let grupoSelecionado = '';
-
-        // Seleção de mês
-        document.querySelectorAll('.month-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                mesSelecionado = this.getAttribute('data-mes');
-                
-                document.querySelectorAll('.month-btn').forEach(b => b.classList.remove('selected'));
-                this.classList.add('selected');
-                
-                if (grupoSelecionado) {
-                    consultarGrupo();
-                }
-            });
-        });
-
-        // Seleção de grupo pelos botões rápidos
-        document.querySelectorAll('.group-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                grupoSelecionado = this.getAttribute('data-grupo');
-                document.getElementById('grupoSelect').value = grupoSelecionado;
-                
-                if (mesSelecionado) {
-                    consultarGrupo();
-                }
-            });
-        });
-
-        // Seleção de grupo pelo select
-        document.getElementById('grupoSelect').addEventListener('change', function() {
-            grupoSelecionado = this.value;
-            if (mesSelecionado && grupoSelecionado) {
+        // ============ DADOS COMPLETOS DAS ESCALAS 2026 ============
+        const escalas = [
+            // JANEIRO
+            { mes: "Janeiro", dia: 2, dia_semana: "Sexta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Janeiro", dia: 3, dia_semana: "Sábado", grupo: "G2", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Janeiro", dia: 4, dia_semana: "Domingo", grupo: "", EBD: "G6", Tarde: "G7", Noite: "G8", cafe: "" },
+            { mes: "Janeiro", dia: 7, dia_semana: "Quarta-feira", grupo: "G3", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Janeiro", dia: 9, dia_semana: "Sexta-feira", grupo: "G5", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Janeiro", dia: 10, dia_semana: "Sábado", grupo: "G1", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Janeiro", dia: 11, dia_semana: "Domingo", grupo: "", EBD: "G4", Tarde: "G2", Noite: "G3", cafe: "" },
+            { mes: "Janeiro", dia: 14, dia_semana: "Quarta-feira", grupo: "G7", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Janeiro", dia: 16, dia_semana: "Sexta-feira", grupo: "G8", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Janeiro", dia: 17, dia_semana: "Sábado", grupo: "G6", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Janeiro", dia: 18, dia_semana: "Domingo", grupo: "", EBD: "G1", Tarde: "G4", Noite: "G5", cafe: "" },
+            { mes: "Janeiro", dia: 21, dia_semana: "Quarta-feira", grupo: "G2", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Janeiro", dia: 23, dia_semana: "Sexta-feira", grupo: "G3", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Janeiro", dia: 24, dia_semana: "Sábado", grupo: "G4", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Janeiro", dia: 25, dia_semana: "Domingo", grupo: "", EBD: "G7", Tarde: "G8", Noite: "G1", cafe: "" },
+            { mes: "Janeiro", dia: 28, dia_semana: "Quarta-feira", grupo: "G5", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Janeiro", dia: 29, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", cafe: "G2" },
+            { mes: "Janeiro", dia: 30, dia_semana: "Sexta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Janeiro", dia: 31, dia_semana: "Sábado", grupo: "G7", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            // FEVEREIRO
+            { mes: "Fevereiro", dia: 1, dia_semana: "Domingo", grupo: "", EBD: "G1", Tarde: "G2", Noite: "G3", cafe: "" },
+            { mes: "Fevereiro", dia: 4, dia_semana: "Quarta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Fevereiro", dia: 6, dia_semana: "Sexta-feira", grupo: "G7", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Fevereiro", dia: 7, dia_semana: "Sábado", grupo: "G3", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Fevereiro", dia: 8, dia_semana: "Domingo", grupo: "", EBD: "G4", Tarde: "G5", Noite: "G6", cafe: "" },
+            { mes: "Fevereiro", dia: 11, dia_semana: "Quarta-feira", grupo: "G7", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Fevereiro", dia: 13, dia_semana: "Sexta-feira", grupo: "G8", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Fevereiro", dia: 14, dia_semana: "Sábado", grupo: "G5", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Fevereiro", dia: 15, dia_semana: "Domingo", grupo: "", EBD: "G3", Tarde: "G7", Noite: "G1", cafe: "" },
+            { mes: "Fevereiro", dia: 18, dia_semana: "Quarta-feira", grupo: "G4", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Fevereiro", dia: 20, dia_semana: "Sexta-feira", grupo: "G5", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Fevereiro", dia: 21, dia_semana: "Sábado", grupo: "G6", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Fevereiro", dia: 22, dia_semana: "Domingo", grupo: "", EBD: "G8", Tarde: "G4", Noite: "G2", cafe: "" },
+            { mes: "Fevereiro", dia: 25, dia_semana: "Quarta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Fevereiro", dia: 26, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", cafe: "G1" },
+            { mes: "Fevereiro", dia: 27, dia_semana: "Sexta-feira", grupo: "G3", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Fevereiro", dia: 28, dia_semana: "Sábado", grupo: "G8", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            // MARÇO
+            { mes: "Março", dia: 1, dia_semana: "Domingo", grupo: "", EBD: "G4", Tarde: "G5", Noite: "G6", cafe: "" },
+            { mes: "Março", dia: 4, dia_semana: "Quarta-feira", grupo: "G2", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Março", dia: 6, dia_semana: "Sexta-feira", grupo: "G8", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Março", dia: 7, dia_semana: "Sábado", grupo: "G7", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Março", dia: 8, dia_semana: "Domingo", grupo: "", EBD: "G1", Tarde: "G2", Noite: "G3", cafe: "" },
+            { mes: "Março", dia: 11, dia_semana: "Quarta-feira", grupo: "G4", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Março", dia: 13, dia_semana: "Sexta-feira", grupo: "G2", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Março", dia: 14, dia_semana: "Sábado", grupo: "G6", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Março", dia: 15, dia_semana: "Domingo", grupo: "", EBD: "G7", Tarde: "G8", Noite: "G1", cafe: "" },
+            { mes: "Março", dia: 18, dia_semana: "Quarta-feira", grupo: "G5", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Março", dia: 20, dia_semana: "Sexta-feira", grupo: "G7", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Março", dia: 21, dia_semana: "Sábado", grupo: "G3", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Março", dia: 22, dia_semana: "Domingo", grupo: "", EBD: "G3", Tarde: "G4", Noite: "G5", cafe: "" },
+            { mes: "Março", dia: 25, dia_semana: "Quarta-feira", grupo: "G8", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Março", dia: 26, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", cafe: "G3" },
+            { mes: "Março", dia: 27, dia_semana: "Sexta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Março", dia: 28, dia_semana: "Sábado", grupo: "G2", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Março", dia: 29, dia_semana: "Domingo", grupo: "", EBD: "G8", Tarde: "G6", Noite: "G7", cafe: "" },
+            // ABRIL
+            { mes: "Abril", dia: 1, dia_semana: "Quarta-feira", grupo: "G2", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Abril", dia: 3, dia_semana: "Sexta-feira", grupo: "G3", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Abril", dia: 4, dia_semana: "Sábado", grupo: "G4", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Abril", dia: 5, dia_semana: "Domingo", grupo: "", EBD: "G7", Tarde: "G8", Noite: "G1", cafe: "" },
+            { mes: "Abril", dia: 8, dia_semana: "Quarta-feira", grupo: "G3", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Abril", dia: 10, dia_semana: "Sexta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Abril", dia: 11, dia_semana: "Sábado", grupo: "G7", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Abril", dia: 12, dia_semana: "Domingo", grupo: "", EBD: "G2", Tarde: "G5", Noite: "G4", cafe: "" },
+            { mes: "Abril", dia: 15, dia_semana: "Quarta-feira", grupo: "G8", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Abril", dia: 17, dia_semana: "Sexta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Abril", dia: 18, dia_semana: "Sábado", grupo: "G2", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Abril", dia: 19, dia_semana: "Domingo", grupo: "", EBD: "G6", Tarde: "G7", Noite: "G3", cafe: "" },
+            { mes: "Abril", dia: 22, dia_semana: "Quarta-feira", grupo: "G5", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Abril", dia: 24, dia_semana: "Sexta-feira", grupo: "G4", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Abril", dia: 25, dia_semana: "Sábado", grupo: "G5", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Abril", dia: 26, dia_semana: "Domingo", grupo: "", EBD: "G8", Tarde: "G1", Noite: "G2", cafe: "" },
+            { mes: "Abril", dia: 29, dia_semana: "Quarta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Abril", dia: 30, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", cafe: "G4" },
+            // MAIO
+            { mes: "Maio", dia: 1, dia_semana: "Sexta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Maio", dia: 2, dia_semana: "Sábado", grupo: "G6", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Maio", dia: 3, dia_semana: "Domingo", grupo: "", EBD: "G2", Tarde: "G3", Noite: "G4", cafe: "" },
+            { mes: "Maio", dia: 6, dia_semana: "Quarta-feira", grupo: "G5", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Maio", dia: 8, dia_semana: "Sexta-feira", grupo: "G8", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Maio", dia: 9, dia_semana: "Sábado", grupo: "G4", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Maio", dia: 10, dia_semana: "Domingo", grupo: "", EBD: "G1", Tarde: "G2", Noite: "G3", cafe: "" },
+            { mes: "Maio", dia: 13, dia_semana: "Quarta-feira", grupo: "G7", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Maio", dia: 15, dia_semana: "Sexta-feira", grupo: "G5", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Maio", dia: 16, dia_semana: "Sábado", grupo: "G7", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Maio", dia: 17, dia_semana: "Domingo", grupo: "", EBD: "G4", Tarde: "G8", Noite: "G1", cafe: "" },
+            { mes: "Maio", dia: 20, dia_semana: "Quarta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Maio", dia: 22, dia_semana: "Sexta-feira", grupo: "G4", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Maio", dia: 23, dia_semana: "Sábado", grupo: "G3", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Maio", dia: 24, dia_semana: "Domingo", grupo: "", EBD: "G6", Tarde: "G5", Noite: "G7", cafe: "" },
+            { mes: "Maio", dia: 27, dia_semana: "Quarta-feira", grupo: "G8", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Maio", dia: 28, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", cafe: "G8" },
+            { mes: "Maio", dia: 29, dia_semana: "Sexta-feira", grupo: "G3", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Maio", dia: 30, dia_semana: "Sábado", grupo: "G1", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Maio", dia: 31, dia_semana: "Domingo", grupo: "", EBD: "G5", Tarde: "G6", Noite: "G2", cafe: "" },
+            // JUNHO
+            { mes: "Junho", dia: 3, dia_semana: "Quarta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Junho", dia: 5, dia_semana: "Sexta-feira", grupo: "G4", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Junho", dia: 6, dia_semana: "Sábado", grupo: "G8", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Junho", dia: 7, dia_semana: "Domingo", grupo: "", EBD: "G5", Tarde: "G6", Noite: "G7", cafe: "" },
+            { mes: "Junho", dia: 10, dia_semana: "Quarta-feira", grupo: "G4", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Junho", dia: 12, dia_semana: "Sexta-feira", grupo: "G3", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Junho", dia: 13, dia_semana: "Sábado", grupo: "G5", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Junho", dia: 14, dia_semana: "Domingo", grupo: "", EBD: "G8", Tarde: "G1", Noite: "G2", cafe: "" },
+            { mes: "Junho", dia: 17, dia_semana: "Quarta-feira", grupo: "G3", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Junho", dia: 19, dia_semana: "Sexta-feira", grupo: "G7", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Junho", dia: 20, dia_semana: "Sábado", grupo: "G2", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Junho", dia: 21, dia_semana: "Domingo", grupo: "", EBD: "G3", Tarde: "G4", Noite: "G5", cafe: "" },
+            { mes: "Junho", dia: 24, dia_semana: "Quarta-feira", grupo: "G2", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Junho", dia: 25, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", cafe: "G6" },
+            { mes: "Junho", dia: 26, dia_semana: "Sexta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Junho", dia: 27, dia_semana: "Sábado", grupo: "G4", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Junho", dia: 28, dia_semana: "Domingo", grupo: "", EBD: "G6", Tarde: "G7", Noite: "G8", cafe: "" },
+            // JULHO
+            { mes: "Julho", dia: 1, dia_semana: "Quarta-feira", grupo: "G4", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Julho", dia: 3, dia_semana: "Sexta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Julho", dia: 4, dia_semana: "Sábado", grupo: "G7", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Julho", dia: 5, dia_semana: "Domingo", grupo: "", EBD: "G8", Tarde: "G1", Noite: "G2", cafe: "" },
+            { mes: "Julho", dia: 8, dia_semana: "Quarta-feira", grupo: "G7", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Julho", dia: 10, dia_semana: "Sexta-feira", grupo: "G3", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Julho", dia: 11, dia_semana: "Sábado", grupo: "G4", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Julho", dia: 12, dia_semana: "Domingo", grupo: "", EBD: "G2", Tarde: "G8", Noite: "G1", cafe: "" },
+            { mes: "Julho", dia: 15, dia_semana: "Quarta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Julho", dia: 17, dia_semana: "Sexta-feira", grupo: "G5", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Julho", dia: 18, dia_semana: "Sábado", grupo: "G2", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Julho", dia: 19, dia_semana: "Domingo", grupo: "", EBD: "G3", Tarde: "G4", Noite: "G5", cafe: "" },
+            { mes: "Julho", dia: 22, dia_semana: "Quarta-feira", grupo: "G8", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Julho", dia: 24, dia_semana: "Sexta-feira", grupo: "G2", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Julho", dia: 25, dia_semana: "Sábado", grupo: "G3", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Julho", dia: 26, dia_semana: "Domingo", grupo: "", EBD: "G6", Tarde: "G7", Noite: "G8", cafe: "" },
+            { mes: "Julho", dia: 29, dia_semana: "Quarta-feira", grupo: "G5", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Julho", dia: 30, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", cafe: "G7" },
+            { mes: "Julho", dia: 31, dia_semana: "Sexta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            // AGOSTO
+            { mes: "Agosto", dia: 1, dia_semana: "Sábado", grupo: "G7", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Agosto", dia: 2, dia_semana: "Domingo", grupo: "", EBD: "G3", Tarde: "G4", Noite: "G5", cafe: "" },
+            { mes: "Agosto", dia: 5, dia_semana: "Quarta-feira", grupo: "G8", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Agosto", dia: 7, dia_semana: "Sexta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Agosto", dia: 8, dia_semana: "Sábado", grupo: "G6", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Agosto", dia: 9, dia_semana: "Domingo", grupo: "", EBD: "G1", Tarde: "G2", Noite: "G3", cafe: "" },
+            { mes: "Agosto", dia: 12, dia_semana: "Quarta-feira", grupo: "G5", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Agosto", dia: 14, dia_semana: "Sexta-feira", grupo: "G7", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Agosto", dia: 15, dia_semana: "Sábado", grupo: "G3", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Agosto", dia: 16, dia_semana: "Domingo", grupo: "", EBD: "G4", Tarde: "G5", Noite: "G6", cafe: "" },
+            { mes: "Agosto", dia: 19, dia_semana: "Quarta-feira", grupo: "G7", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Agosto", dia: 21, dia_semana: "Sexta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Agosto", dia: 22, dia_semana: "Sábado", grupo: "G4", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Agosto", dia: 23, dia_semana: "Domingo", grupo: "", EBD: "G7", Tarde: "G8", Noite: "G1", cafe: "" },
+            { mes: "Agosto", dia: 26, dia_semana: "Quarta-feira", grupo: "G2", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Agosto", dia: 27, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", cafe: "G5" },
+            { mes: "Agosto", dia: 28, dia_semana: "Sexta-feira", grupo: "G8", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Agosto", dia: 29, dia_semana: "Sábado", grupo: "G5", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Agosto", dia: 30, dia_semana: "Domingo", grupo: "", EBD: "G2", Tarde: "G3", Noite: "G4", cafe: "" },
+            // SETEMBRO
+            { mes: "Setembro", dia: 2, dia_semana: "Quarta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Setembro", dia: 4, dia_semana: "Sexta-feira", grupo: "G3", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Setembro", dia: 5, dia_semana: "Sábado", grupo: "G5", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Setembro", dia: 6, dia_semana: "Domingo", grupo: "", EBD: "G6", Tarde: "G7", Noite: "G8", cafe: "" },
+            { mes: "Setembro", dia: 9, dia_semana: "Quarta-feira", grupo: "G5", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Setembro", dia: 11, dia_semana: "Sexta-feira", grupo: "G2", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Setembro", dia: 12, dia_semana: "Sábado", grupo: "G7", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Setembro", dia: 13, dia_semana: "Domingo", grupo: "", EBD: "G4", Tarde: "G5", Noite: "G3", cafe: "" },
+            { mes: "Setembro", dia: 16, dia_semana: "Quarta-feira", grupo: "G2", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Setembro", dia: 18, dia_semana: "Sexta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Setembro", dia: 19, dia_semana: "Sábado", grupo: "G3", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Setembro", dia: 20, dia_semana: "Domingo", grupo: "", EBD: "G7", Tarde: "G8", Noite: "G1", cafe: "" },
+            { mes: "Setembro", dia: 23, dia_semana: "Quarta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Setembro", dia: 24, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", cafe: "G1" },
+            { mes: "Setembro", dia: 25, dia_semana: "Sexta-feira", grupo: "G4", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Setembro", dia: 26, dia_semana: "Sábado", grupo: "G8", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Setembro", dia: 27, dia_semana: "Domingo", grupo: "", EBD: "G2", Tarde: "G1", Noite: "G6", cafe: "" },
+            { mes: "Setembro", dia: 30, dia_semana: "Quarta-feira", grupo: "G4", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            // OUTUBRO
+            { mes: "Outubro", dia: 2, dia_semana: "Sexta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Outubro", dia: 3, dia_semana: "Sábado", grupo: "G5", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Outubro", dia: 4, dia_semana: "Domingo", grupo: "", EBD: "G1", Tarde: "G2", Noite: "G3", cafe: "" },
+            { mes: "Outubro", dia: 7, dia_semana: "Quarta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Outubro", dia: 9, dia_semana: "Sexta-feira", grupo: "G7", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Outubro", dia: 10, dia_semana: "Sábado", grupo: "G2", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Outubro", dia: 11, dia_semana: "Domingo", grupo: "", EBD: "G4", Tarde: "G8", Noite: "G1", cafe: "" },
+            { mes: "Outubro", dia: 14, dia_semana: "Quarta-feira", grupo: "G5", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Outubro", dia: 16, dia_semana: "Sexta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Outubro", dia: 17, dia_semana: "Sábado", grupo: "G7", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Outubro", dia: 18, dia_semana: "Domingo", grupo: "", EBD: "G2", Tarde: "G3", Noite: "G4", cafe: "" },
+            { mes: "Outubro", dia: 21, dia_semana: "Quarta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Outubro", dia: 23, dia_semana: "Sexta-feira", grupo: "G4", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Outubro", dia: 24, dia_semana: "Sábado", grupo: "G8", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Outubro", dia: 25, dia_semana: "Domingo", grupo: "", EBD: "G6", Tarde: "G5", Noite: "G7", cafe: "" },
+            { mes: "Outubro", dia: 28, dia_semana: "Quarta-feira", grupo: "G8", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Outubro", dia: 29, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", cafe: "G3" },
+            { mes: "Outubro", dia: 30, dia_semana: "Sexta-feira", grupo: "G2", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Outubro", dia: 31, dia_semana: "Sábado", grupo: "G3", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            // NOVEMBRO
+            { mes: "Novembro", dia: 1, dia_semana: "Domingo", grupo: "", EBD: "G4", Tarde: "G5", Noite: "G6", cafe: "" },
+            { mes: "Novembro", dia: 4, dia_semana: "Quarta-feira", grupo: "G7", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Novembro", dia: 6, dia_semana: "Sexta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Novembro", dia: 7, dia_semana: "Sábado", grupo: "G1", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Novembro", dia: 8, dia_semana: "Domingo", grupo: "", EBD: "G2", Tarde: "G3", Noite: "G4", cafe: "" },
+            { mes: "Novembro", dia: 11, dia_semana: "Quarta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Novembro", dia: 13, dia_semana: "Sexta-feira", grupo: "G2", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Novembro", dia: 14, dia_semana: "Sábado", grupo: "G8", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Novembro", dia: 15, dia_semana: "Domingo", grupo: "", EBD: "G5", Tarde: "G6", Noite: "G7", cafe: "" },
+            { mes: "Novembro", dia: 18, dia_semana: "Quarta-feira", grupo: "G4", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Novembro", dia: 20, dia_semana: "Sexta-feira", grupo: "G5", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Novembro", dia: 21, dia_semana: "Sábado", grupo: "G3", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Novembro", dia: 22, dia_semana: "Domingo", grupo: "", EBD: "G8", Tarde: "G1", Noite: "G2", cafe: "" },
+            { mes: "Novembro", dia: 25, dia_semana: "Quarta-feira", grupo: "G5", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Novembro", dia: 26, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", cafe: "G2" },
+            { mes: "Novembro", dia: 27, dia_semana: "Sexta-feira", grupo: "G8", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Novembro", dia: 28, dia_semana: "Sábado", grupo: "G7", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Novembro", dia: 29, dia_semana: "Domingo", grupo: "", EBD: "G6", Tarde: "G4", Noite: "G3", cafe: "" },
+            // DEZEMBRO
+            { mes: "Dezembro", dia: 2, dia_semana: "Quarta-feira", grupo: "G2", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Dezembro", dia: 4, dia_semana: "Sexta-feira", grupo: "G3", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Dezembro", dia: 5, dia_semana: "Sábado", grupo: "G4", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Dezembro", dia: 6, dia_semana: "Domingo", grupo: "", EBD: "G7", Tarde: "G8", Noite: "G1", cafe: "" },
+            { mes: "Dezembro", dia: 9, dia_semana: "Quarta-feira", grupo: "G5", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Dezembro", dia: 11, dia_semana: "Sexta-feira", grupo: "G8", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Dezembro", dia: 12, dia_semana: "Sábado", grupo: "G3", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Dezembro", dia: 13, dia_semana: "Domingo", grupo: "", EBD: "G5", Tarde: "G6", Noite: "G7", cafe: "" },
+            { mes: "Dezembro", dia: 16, dia_semana: "Quarta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Dezembro", dia: 18, dia_semana: "Sexta-feira", grupo: "G2", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Dezembro", dia: 19, dia_semana: "Sábado", grupo: "G6", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Dezembro", dia: 20, dia_semana: "Domingo", grupo: "", EBD: "G8", Tarde: "G1", Noite: "G2", cafe: "" },
+            { mes: "Dezembro", dia: 23, dia_semana: "Quarta-feira", grupo: "G7", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Dezembro", dia: 25, dia_semana: "Sexta-feira", grupo: "G5", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Dezembro", dia: 26, dia_semana: "Sábado", grupo: "G1", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Dezembro", dia: 27, dia_semana: "Domingo", grupo: "", EBD: "G3", Tarde: "G4", Noite: "G8", cafe: "" },
+            { mes: "Dezembro", dia: 30, dia_semana: "Quarta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "", cafe: "" },
+            { mes: "Dezembro", dia: 31, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", cafe: "G4" },
+        ];
+        // ============ FERIADOS RELEVANTES 2026 ============
+        const feriados2026 = [
+            { mes: "Janeiro", dia: 1, dia_semana: "Quinta-feira", nome: "Confraternização Universal" },
+            { mes: "Fevereiro", dia: 16, dia_semana: "Segunda-feira", nome: "Carnaval (Ponto Facultativo)" },
+            { mes: "Fevereiro", dia: 17, dia_semana: "Terça-feira", nome: "Carnaval (Ponto Facultativo)" },
+            { mes: "Fevereiro", dia: 18, dia_semana: "Quarta-feira", nome: "Quarta-feira de Cinzas (Ponto Facultativo)" },
+            { mes: "Abril", dia: 3, dia_semana: "Sexta-feira", nome: "Paixão de Cristo (Sexta-feira Santa)" },
+            { mes: "Abril", dia: 21, dia_semana: "Terça-feira", nome: "Tiradentes" },
+            { mes: "Maio", dia: 1, dia_semana: "Sexta-feira", nome: "Dia do Trabalho" },
+            { mes: "Junho", dia: 4, dia_semana: "Quinta-feira", nome: "Corpus Christi (Ponto Facultativo)" },
+            { mes: "Junho", dia: 13, dia_semana: "Sábado", nome: "Dia de Santo Antônio (Jequié - Municipal)" },
+            { mes: "Junho", dia: 24, dia_semana: "Quarta-feira", nome: "São João (Jequié - Municipal)" },
+            { mes: "Julho", dia: 2, dia_semana: "Quinta-feira", nome: "Independência da Bahia (Estadual)" },
+            { mes: "Agosto", dia: 20, dia_semana: "Quinta-feira", nome: "Dia do Evangélico (Jequié - Municipal)" },
+            { mes: "Setembro", dia: 7, dia_semana: "Segunda-feira", nome: "Independência do Brasil" },
+            { mes: "Outubro", dia: 12, dia_semana: "Segunda-feira", nome: "Dia das Crianças" },
+            { mes: "Outubro", dia: 25, dia_semana: "Domingo", nome: "Aniversário de Jequié (Municipal)" },
+            { mes: "Novembro", dia: 2, dia_semana: "Segunda-feira", nome: "Finados" },
+            { mes: "Novembro", dia: 15, dia_semana: "Domingo", nome: "Proclamação da República" },
+            { mes: "Novembro", dia: 20, dia_semana: "Sexta-feira", nome: "Dia da Consciência Negra" },
+            { mes: "Dezembro", dia: 25, dia_semana: "Sexta-feira", nome: "Natal" }
+        ];
+        // ===== FUNÇÕES PRINCIPAIS =====
+        function selecionarGrupo(grupo) {
+            document.getElementById('grupoSelect').value = grupo;
+            const mesSelecionado = document.getElementById('mesSelect').value;
+            if (mesSelecionado) {
                 consultarGrupo();
             }
-        });
-
-        function consultarGrupo() {
-            const grupo = document.getElementById('grupoSelect').value;
-            const mes = mesSelecionado;
-            
-            if (!grupo || !mes) {
-                alert('Por favor, selecione um grupo e um mês.');
-                return;
+        }
+        function getFeriado(mes, dia) {
+            const feriado = feriados2026.find(f => f.mes === mes && f.dia === dia);
+            return feriado ? feriado.nome : null;
+        }
+        function formatDate(mes, dia) {
+            const meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+            const mesIndex = meses.indexOf(mes);
+            return new Date(2026, mesIndex, dia);
+        }
+        function checarAlertasFeriado(item) {
+            const diaDaEscala = formatDate(item.mes, item.dia);
+            let alertas = [];
+            let classes = '';
+            const feriadoNoDia = getFeriado(item.mes, item.dia);
+            if (feriadoNoDia) {
+                alertas.push(`🚨 **Feriado:** ${feriadoNoDia}`);
+                classes += ' feriado-alerta';
             }
-
+            const diaAnterior = new Date(diaDaEscala);
+            diaAnterior.setDate(diaDaEscala.getDate() - 1);
+            if (diaAnterior.getFullYear() === 2026) {
+                const nomeMesAnterior = new Date(2026, diaAnterior.getMonth()).toLocaleString('pt-BR', { month: 'long', timeZone: 'UTC' });
+                const mesAnterior = nomeMesAnterior.charAt(0).toUpperCase() + nomeMesAnterior.slice(1);
+                const feriadoAnterior = getFeriado(mesAnterior, diaAnterior.getDate());
+                if (feriadoAnterior && !feriadoNoDia) {
+                    alertas.push(`⚠️ **Dia após Feriado:** ${feriadoAnterior} (Dia anterior foi feriado)`);
+                }
+            }
+            const diaSeguinte = new Date(diaDaEscala);
+            diaSeguinte.setDate(diaDaEscala.getDate() + 1);
+            if (diaSeguinte.getFullYear() === 2026) {
+                const nomeMesSeguinte = new Date(2026, diaSeguinte.getMonth()).toLocaleString('pt-BR', { month: 'long', timeZone: 'UTC' });
+                const mesSeguinte = nomeMesSeguinte.charAt(0).toUpperCase() + nomeMesSeguinte.slice(1);
+                const feriadoSeguinte = getFeriado(mesSeguinte, diaSeguinte.getDate());
+                if (feriadoSeguinte && !feriadoNoDia) {
+                    alertas.push(`⚠️ **Véspera de Feriado:** ${feriadoSeguinte} (Dia seguinte é feriado)`);
+                }
+            }
+            if (alertas.length > 0 && !feriadoNoDia) {
+                classes += ' feriado-alerta';
+            }
+            return { alertas, classes };
+        }
+        function consultarGrupo() {
+            const grupoSelecionado = document.getElementById('grupoSelect').value;
+            const mesSelecionado = document.getElementById('mesSelect').value;
             const loadingDiv = document.getElementById('loading');
             const resultadoDiv = document.getElementById('resultado');
-            
+            if (!grupoSelecionado || !mesSelecionado) {
+                resultadoDiv.classList.remove('visible');
+                resultadoDiv.innerHTML = '<div class="no-data">Por favor, selecione <strong>ambos</strong> o Grupo e o Mês.</div>';
+                resultadoDiv.classList.add('visible');
+                return;
+            }
             resultadoDiv.classList.remove('visible');
             loadingDiv.classList.add('visible');
-
             setTimeout(() => {
-                const resultados = escalas.filter(e => 
-                    e.mes === mes && (
-                        e.grupo === grupo || 
-                        e.EBD === grupo || 
-                        e.Tarde === grupo || 
-                        e.Noite === grupo || 
-                        e.cafe === grupo
-                    )
-                );
-
-                let html = `<h3>Escalas de ${grupo} em ${mes}</h3>`;
-                
+                const resultados = escalas.filter(escala => {
+                    const isMes = escala.mes === mesSelecionado;
+                    const isGrupo = escala.grupo === grupoSelecionado || 
+                                    escala.EBD === grupoSelecionado || 
+                                    escala.Tarde === grupoSelecionado || 
+                                    escala.Noite === grupoSelecionado ||
+                                    escala.cafe === grupoSelecionado;
+                    return isMes && isGrupo;
+                });
+                let conteudoEscalas = `<h3>Escalas de ${grupoSelecionado} em ${mesSelecionado}</h3>`;
                 if (resultados.length > 0) {
                     resultados.forEach(item => {
-                        let funcao = '';
-                        let classe = '';
-                        
-                        if (item.cafe === grupo) {
-                            funcao = '☕ Café das Mulheres';
-                            classe = 'cafe';
-                        } else if (item.grupo === grupo) {
-                            funcao = `Diaconia no Culto (${item.dia_semana})`;
-                        } else if (item.EBD === grupo) {
-                            funcao = 'Diaconia na EBD (Manhã)';
-                        } else if (item.Tarde === grupo) {
-                            funcao = 'Diaconia no Culto da Tarde';
-                        } else if (item.Noite === grupo) {
-                            funcao = 'Diaconia no Culto da Noite';
+                        let classesExtras = '';
+                        let funcaoPrincipal = '';
+                        if (item.cafe === grupoSelecionado) {
+                            funcaoPrincipal = '☕ Café das Mulheres';
+                            classesExtras = ' cafe';
+                        } else if (item.grupo === grupoSelecionado) {
+                            funcaoPrincipal = `Diaconia no Culto (${item.dia_semana})`;
+                            classesExtras = ' diaconia-culto';
+                            funcaoPrincipal += (item.grupo === 'G?') ? ' (GRUPO PENDENTE DE DEFINIÇÃO)' : '';
+                        } else if (item.EBD === grupoSelecionado) {
+                            funcaoPrincipal = 'Diaconia na EBD (Manhã)';
+                            classesExtras = ' diaconia-ebd';
+                        } else if (item.Tarde === grupoSelecionado) {
+                            funcaoPrincipal = 'Diaconia no Culto da Tarde';
+                            classesExtras = ' diaconia-culto';
+                        } else if (item.Noite === grupoSelecionado) {
+                            funcaoPrincipal = 'Diaconia no Culto da Noite';
+                            classesExtras = ' diaconia-culto';
                         }
-                        
-                        html += `
-                            <div class="escala-item ${classe}">
+                        const feriadoData = checarAlertasFeriado(item);
+                        classesExtras += feriadoData.classes;
+                        let alertasHtml = feriadoData.alertas.map(alerta => 
+                            `<span class="alerta-feriado">${alerta.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</span>`
+                        ).join('');
+                        conteudoEscalas += `
+                            <div class="escala-item${classesExtras}">
                                 <strong>Dia ${item.dia} (${item.dia_semana})</strong>
                                 <br>
-                                ${funcao}
+                                <div class="funcao-texto">${funcaoPrincipal}</div>
+                                ${alertasHtml}
                             </div>
                         `;
                     });
+                    conteudoEscalas += `
+                        <div class="footer" style="display: none;">
+                            IBJLV - Diaconia © 2026<br>
+                            <small>Use a função "Imprimir / Gerar PDF"</small>
+                        </div>
+                    `;
+                    resultadoDiv.innerHTML = conteudoEscalas;
                 } else {
-                    html += '<div class="no-data">Nenhuma escala encontrada.</div>';
+                    resultadoDiv.innerHTML = '<div class="no-data">Nenhuma escala encontrada para este grupo e mês.</div>';
                 }
-                
-                resultadoDiv.innerHTML = html;
                 loadingDiv.classList.remove('visible');
                 resultadoDiv.classList.add('visible');
-            }, 1500);
+            }, 2000);
         }
-
         function imprimirEscala() {
             const grupo = document.getElementById('grupoSelect').value;
-            if (!grupo || !mesSelecionado) {
-                alert('Selecione um grupo e mês antes de imprimir.');
+            const mes = document.getElementById('mesSelect').value;
+            if (!grupo || !mes) {
+                alert('❌ Por favor, selecione um grupo e mês antes de imprimir.');
                 return;
             }
-            window.print();
+            const resultadoDiv = document.getElementById('resultado');
+            const escalaItems = resultadoDiv.querySelectorAll('.escala-item');
+            if (escalaItems.length === 0) {
+                alert('❌ Não há escalas para imprimir.');
+                return;
+            }
+            const janelaImpressao = window.open('', '_blank');
+            const estilo = `
+                <style>
+                    body { 
+                        font-family: Arial, sans-serif; 
+                        margin: 20px; 
+                        color: #000; 
+                        background: #fff;
+                    }
+                    .cabecalho { 
+                        text-align: center; 
+                        color: #5b2c7e; 
+                        margin-bottom: 30px;
+                        border-bottom: 3px solid #5b2c7e;
+                        padding-bottom: 15px;
+                    }
+                    .escala-item { 
+                        background: #f8f9fa; 
+                        margin: 10px 0; 
+                        padding: 15px; 
+                        border-left: 4px solid #5b2c7e;
+                        border-radius: 5px;
+                    }
+                    .escala-item.cafe { 
+                        background: #fff3cd; 
+                        border-left-color: #ffc107;
+                    }
+                    .feriado-alerta { 
+                        background: #ffe0b2 !important;
+                    }
+                    .alerta-feriado { 
+                        color: #d84315; 
+                        font-weight: bold; 
+                        display: block; 
+                        margin-top: 5px;
+                    }
+                    .rodape { 
+                        text-align: center; 
+                        margin-top: 40px; 
+                        padding-top: 20px; 
+                        border-top: 2px solid #5b2c7e; 
+                        color: #5b2c7e; 
+                        font-size: 0.9em;
+                    }
+                    strong { color: #5b2c7e; }
+                    .logo-print {
+                        max-width: 80px; 
+                        margin-bottom: 10px;
+                        border-radius: 50%;
+                    }
+                </style>
+            `;
+            const conteudo = `
+                <html>
+                    <head>
+                        <title>Escala ${grupo} - ${mes} - IBJLV</title>
+                        ${estilo}
+                    </head>
+                    <body>
+                        <div class="cabecalho">
+                            <img src="logo-ibjlv.png" alt="Logo IBJLV" class="logo-print">
+                            <h1>Escalas de ${grupo} em ${mes}</h1>
+                            <h2>IGREJA BATISTA JESUS LÍRIO DOS VALES</h2>
+                        </div>
+                        ${resultadoDiv.innerHTML}
+                        <div class="rodape">
+                            IBJLV - Diaconia © 2026<br>
+                            <small>Emitido em ${new Date().toLocaleDateString('pt-BR')}</small>
+                        </div>
+                    </body>
+                </html>
+            `;
+            janelaImpressao.document.write(conteudo);
+            janelaImpressao.document.close();
+            setTimeout(() => {
+                janelaImpressao.print();
+            }, 500);
         }
-
-        // Acessibilidade
-        const accessibility = { fontSize: 'normal', speaking: false };
-        
-        document.getElementById('speakBtn')?.addEventListener('click', () => {
-            const texto = document.getElementById('resultado').textContent;
+        // ============================================
+        // PWA: SERVICE WORKER (APENAS REGISTRO - OFFLINE FUNCIONAL)
+        // ============================================
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./service-worker.js')
+                    .catch(error => console.error('❌ Erro ao registrar Service Worker:', error));
+            });
+        }
+        // ============================================
+        // SISTEMA DE ACESSIBILIDADE (SEM NOTIFICAÇÕES)
+        // ============================================
+        const accessibility = {
+            fontSize: 'normal',
+            highContrast: false,
+            speaking: false
+        };
+        const speakBtn = document.getElementById('speakBtn');
+        const stopSpeakBtn = document.getElementById('stopSpeakBtn');
+        const fontIncreaseBtn = document.getElementById('fontIncreaseBtn');
+        const fontDecreaseBtn = document.getElementById('fontDecreaseBtn');
+        const contrastBtn = document.getElementById('contrastBtn');
+        const readingIndicator = document.getElementById('readingIndicator');
+        if (!('speechSynthesis' in window)) {
+            speakBtn.style.opacity = '0.5';
+            speakBtn.style.cursor = 'not-allowed';
+        }
+        function speakSchedule() {
+            window.speechSynthesis.cancel();
+            const resultadoDiv = document.getElementById('resultado');
+            const escalaItems = resultadoDiv.querySelectorAll('.escala-item');
+            if (escalaItems.length === 0) {
+                speak('Nenhuma escala selecionada. Por favor, selecione um grupo e um mês.');
+                return;
+            }
+            const grupo = document.getElementById('grupoSelect').value;
+            const mes = document.getElementById('mesSelect').value;
+            accessibility.speaking = true;
+            speakBtn.style.display = 'none';
+            stopSpeakBtn.style.display = 'flex';
+            readingIndicator.style.display = 'block';
+            let textoCompleto = `Escalas do ${grupo} no mês de ${mes}. `;
+            escalaItems.forEach((item) => {
+                const texto = item.textContent.trim();
+                textoCompleto += texto + '. ';
+            });
+            speak(textoCompleto, () => {
+                accessibility.speaking = false;
+                speakBtn.style.display = 'flex';
+                stopSpeakBtn.style.display = 'none';
+                readingIndicator.style.display = 'none';
+            });
+        }
+        function speak(text, onEnd) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'pt-BR';
+            utterance.rate = 0.9;
+            utterance.pitch = 1;
+            utterance.volume = 1;
+            const voices = window.speechSynthesis.getVoices();
+            const ptVoice = voices.find(voice => voice.lang.includes('pt'));
+            if (ptVoice) {
+                utterance.voice = ptVoice;
+            }
+            utterance.onend = () => {
+                if (onEnd) onEnd();
+            };
+            utterance.onerror = (error) => {
+                console.error('Erro na síntese de voz:', error);
+                accessibility.speaking = false;
+                speakBtn.style.display = 'flex';
+                stopSpeakBtn.style.display = 'none';
+                readingIndicator.style.display = 'none';
+            };
+            window.speechSynthesis.speak(utterance);
+        }
+        function stopSpeaking() {
+            window.speechSynthesis.cancel();
+            accessibility.speaking = false;
+            speakBtn.style.display = 'flex';
+            stopSpeakBtn.style.display = 'none';
+            readingIndicator.style.display = 'none';
+        }
+        function changeFontSize(action) {
+            const body = document.body;
+            if (action === 'increase') {
+                if (accessibility.fontSize === 'normal') {
+                    accessibility.fontSize = 'medium';
+                    body.classList.remove('font-large');
+                    body.classList.add('font-medium');
+                } else if (accessibility.fontSize === 'medium') {
+                    accessibility.fontSize = 'large';
+                    body.classList.remove('font-medium');
+                    body.classList.add('font-large');
+                }
+            } else if (action === 'decrease') {
+                if (accessibility.fontSize === 'large') {
+                    accessibility.fontSize = 'medium';
+                    body.classList.remove('font-large');
+                    body.classList.add('font-medium');
+                } else if (accessibility.fontSize === 'medium') {
+                    accessibility.fontSize = 'normal';
+                    body.classList.remove('font-medium');
+                }
+            }
+            localStorage.setItem('accessibility_fontSize', accessibility.fontSize);
+        }
+        function toggleHighContrast() {
+            accessibility.highContrast = !accessibility.highContrast;
+            document.body.classList.toggle('high-contrast');
+            if (accessibility.highContrast) {
+                contrastBtn.classList.add('active');
+            } else {
+                contrastBtn.classList.remove('active');
+            }
+            localStorage.setItem('accessibility_contrast', accessibility.highContrast);
+        }
+        speakBtn.addEventListener('click', speakSchedule);
+        stopSpeakBtn.addEventListener('click', stopSpeaking);
+        fontIncreaseBtn.addEventListener('click', () => changeFontSize('increase'));
+        fontDecreaseBtn.addEventListener('click', () => changeFontSize('decrease'));
+        contrastBtn.addEventListener('click', toggleHighContrast);
+        window.addEventListener('load', () => {
             if ('speechSynthesis' in window) {
-                const utterance = new SpeechSynthesisUtterance(texto);
-                utterance.lang = 'pt-BR';
-                utterance.rate = 0.85;
-                window.speechSynthesis.speak(utterance);
-                
-                document.getElementById('speakBtn').style.display = 'none';
-                document.getElementById('stopSpeakBtn').style.display = 'flex';
+                window.speechSynthesis.getVoices();
+            }
+            const savedFontSize = localStorage.getItem('accessibility_fontSize');
+            if (savedFontSize) {
+                accessibility.fontSize = savedFontSize;
+                if (savedFontSize === 'medium') {
+                    document.body.classList.add('font-medium');
+                } else if (savedFontSize === 'large') {
+                    document.body.classList.add('font-large');
+                }
+            }
+            const savedContrast = localStorage.getItem('accessibility_contrast');
+            if (savedContrast === 'true') {
+                accessibility.highContrast = true;
+                document.body.classList.add('high-contrast');
+                contrastBtn.classList.add('active');
             }
         });
-
-        document.getElementById('stopSpeakBtn')?.addEventListener('click', () => {
-            if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel();
-                document.getElementById('speakBtn').style.display = 'flex';
-                document.getElementById('stopSpeakBtn').style.display = 'none';
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === 'l') {
+                e.preventDefault();
+                speakSchedule();
+            }
+            if (e.ctrlKey && (e.key === '+' || e.key === '=')) {
+                e.preventDefault();
+                changeFontSize('increase');
+            }
+            if (e.ctrlKey && e.key === '-') {
+                e.preventDefault();
+                changeFontSize('decrease');
+            }
+            if (e.ctrlKey && e.key === 'h') {
+                e.preventDefault();
+                toggleHighContrast();
+            }
+            if (e.key === 'Escape' && accessibility.speaking) {
+                stopSpeaking();
             }
         });
-
-        document.getElementById('fontIncreaseBtn')?.addEventListener('click', () => {
-            if (accessibility.fontSize === 'normal') {
-                document.body.style.fontSize = '110%';
-                accessibility.fontSize = 'medium';
-            } else if (accessibility.fontSize === 'medium') {
-                document.body.style.fontSize = '120%';
-                accessibility.fontSize = 'large';
+        // ============================================
+        // COMPARTILHAR ESCALA NO WHATSAPP
+        // ============================================
+        function compartilharEscalaWhatsApp() {
+            const grupo = document.getElementById('grupoSelect').value;
+            const mes = document.getElementById('mesSelect').value;
+            const resultadoDiv = document.getElementById('resultado');
+            const escalaItems = resultadoDiv.querySelectorAll('.escala-item');
+            if (!grupo || !mes || escalaItems.length === 0) {
+                alert('❌ Por favor, busque uma escala primeiro!');
+                return;
             }
-        });
-
-        document.getElementById('fontDecreaseBtn')?.addEventListener('click', () => {
-            if (accessibility.fontSize === 'large') {
-                document.body.style.fontSize = '110%';
-                accessibility.fontSize = 'medium';
-            } else if (accessibility.fontSize === 'medium') {
-                document.body.style.fontSize = '100%';
-                accessibility.fontSize = 'normal';
-            }
-        });
+            let texto = `📋 *Escalas ${grupo} - ${mes} 2026*
+`;
+            texto += `🏛️ *IBJLV - Diaconia*
+`;
+            escalaItems.forEach((item, index) => {
+                const textoItem = item.textContent.trim().replace(/\s+/g, ' - ');
+                texto += `${index + 1}. ${textoItem}
+`;
+            });
+            texto += `
+📱 Consulte todas as escalas: ${window.location.href}`;
+            const url = `https://wa.me/?text=${encodeURIComponent(texto)}`;
+            window.open(url, '_blank');
+        }
+        const originalConsultarGrupo = consultarGrupo;
+        consultarGrupo = function() {
+            originalConsultarGrupo();
+            setTimeout(() => {
+                const resultadoDiv = document.getElementById('resultado');
+                const btnPrint = document.querySelector('.btn-print');
+                if (resultadoDiv.classList.contains('visible') && btnPrint) {
+                    const hasShareBtn = document.getElementById('shareWhatsAppEscalaBtn');
+                    if (!hasShareBtn) {
+                        const shareBtn = document.createElement('button');
+                        shareBtn.id = 'shareWhatsAppEscalaBtn';
+                        shareBtn.className = 'share-whatsapp-btn';
+                        shareBtn.innerHTML = '<span style="font-size: 1.5em;">💬</span> Compartilhar no WhatsApp';
+                        shareBtn.onclick = compartilharEscalaWhatsApp;
+                        btnPrint.parentNode.insertBefore(shareBtn, btnPrint.nextSibling);
+                    }
+                }
+            }, 2100);
+        };
     </script>
 </body>
 </html>
