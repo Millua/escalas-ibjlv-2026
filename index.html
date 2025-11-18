@@ -1,109 +1,487 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+<meta name="theme-color" content="#1e88e5">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#667eea">
     <title>Escalas 2026 - IBJLV</title>
-    <link rel="manifest" href="manifest.json">
     <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        body{font-family:'Segoe UI',sans-serif;background:linear-gradient(135deg,#000 0%,#1a1a2e 50%,#16213e 100%);color:#fff;min-height:100vh}
-        .header{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);padding:30px 20px;text-align:center;box-shadow:0 4px 15px #0006}
-        .logo{max-width:100px;border-radius:50%;margin-bottom:15px}
-        .church-name{font-size:1.8em;font-weight:bold;text-shadow:2px 2px 6px #0008}
-        .container{max-width:560px;margin:30px auto;padding:0 20px}
-        .tabs{display:flex;background:rgba(255,255,255,0.1);border-radius:12px;overflow:hidden;margin-bottom:20px}
-        .tab{flex:1;padding:15px;text-align:center;cursor:pointer;transition:.3s}
-        .tab.active{background:#667eea;font-weight:bold}
-        .consultas{background:rgba(255,255,255,0.1);backdrop-filter:blur(12px);padding:30px;border-radius:15px;border:1px solid rgba(255,255,255,0.2);box-shadow:0 8px 32px #0006}
-        h3{text-align:center;margin-bottom:25px;color:#667eea;font-size:1.5em}
-        label{display:block;margin-bottom:8px;color:#ddd;font-weight:500}
-        input,select{width:100%;padding:15px;background:rgba(255,255,255,0.1);border:2px solid rgba(255,255,255,0.2);border-radius:10px;color:#fff;font-size:16px;transition:.3s}
-        input:focus,select:focus{border-color:#667eea;outline:none}
-        button{width:100%;padding:15px;margin-top:12px;border:none;border-radius:10px;color:#fff;font-weight:bold;cursor:pointer;transition:.3s}
-        button:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(102,126,234,0.5)}
-        .btn-main{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%)}
-        .btn-print{background:#4CAF50}
-        .btn-wa{background:#25D366}
-        .quick-groups{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:20px}
-        .group-btn{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);padding:12px;border-radius:8px;text-align:center;font-weight:bold;cursor:pointer;transition:.3s}
-        .group-btn:hover{background:#667eea60;transform:scale(1.08)}
-        .loading{text-align:center;padding:30px;display:none}
-        .loading.visible{display:block}
-        .fish-loader{width:160px;margin:20px auto}
-        .fish{fill:none;stroke:#fff;stroke-width:10;stroke-linecap:round;stroke-dasharray:755;stroke-dashoffset:755;animation:dash 2s linear infinite}
-        @keyframes dash{to{stroke-dashoffset:0}}
-        .resultado{background:rgba(255,255,255,0.1);backdrop-filter:blur(12px);padding:25px;border-radius:15px;margin-top:25px;display:none;border:1px solid rgba(255,255,255,0.2)}
-        .resultado.visible{display:block;animation:fade .5s}
-        @keyframes fade{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
-        .escala-item{background:rgba(255,255,255,0.15);padding:16px;margin:10px 0;border-radius:10px;border-left:5px solid #4CAF50;transition:.3s}
-        .escala-item:hover{transform:translateX(6px)}
-        .escala-item.cafe{border-left-color:#ffc107;background:rgba(255,193,7,0.15)}
-        .escala-item.feriado-alerta{border-left-color:#ff9800;background:rgba(255,152,0,0.15)!important}
-        .alerta-feriado{color:#ff9800;font-weight:bold;margin-top:8px;display:block}
-        .no-data{text-align:center;color:#aaa;padding:40px;font-style:italic}
-        .footer{text-align:center;padding:30px;color:#667eea;font-size:0.9em}
-        .font-medium *{font-size:1.2rem!important}
-        .font-large *{font-size:1.45rem!important}
-        .high-contrast{background:#000!important;color:#fff!important}
-        .high-contrast *{background:#000!important;color:#fff!important;border-color:#fff!important}
-        .accessibility-panel{position:fixed;right:15px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);border-radius:12px;padding:10px;z-index:9999;display:flex;flex-direction:column;gap:8px}
-        .accessibility-btn{width:44px;height:44px;border:none;border-radius:8px;background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;font-weight:bold;cursor:pointer;transition:.3s}
-        .accessibility-btn:hover{transform:scale(1.1)}
-        .accessibility-btn.active{background:#4CAF50}
-        @media print{
-            body{background:#fff!important;color:#000!important}
-            .header,.tabs,.consultas,.loading,.footer,button,.accessibility-panel{display:none!important}
-            .resultado{display:block!important;background:#fff!important;color:#000!important;border:2px solid #667eea;padding:30px}
-            .escala-item{border-left:6px solid #667eea;background:#f8f9fa;padding:20px;margin:15px 0}
+        /* ===== ESTILOS GLOBAIS ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #000000;
+            color: white;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #000000 0%, #1a1a2e 50%, #16213e 100%);
+        }
+        /* ===== CABEÇALHO COM LOGO ===== */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .logo {
+            max-width: 100px;
+            height: auto;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
+            border-radius: 50%;
+        }
+        .church-name {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .church-subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+            margin-bottom: 0;
+        }
+        /* ===== CONTAINER PRINCIPAL ===== */
+        .container {
+            max-width: 500px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        .consultas {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        }
+        .consulta-box h3 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 1.5em;
+            color: #667eea;
+        }
+        /* ===== FORMULÁRIO ===== */
+        .input-group {
+            margin-bottom: 20px;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #ccc;
+        }
+        input, select {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            color: white;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+            background: rgba(255, 255, 255, 0.15);
+        }
+        select {
+            color: #aaa;
+        }
+        select:valid {
+            color: white;
+        }
+        input::placeholder {
+            color: #aaa;
+        }
+        /* ===== BOTÕES ===== */
+        button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        .btn-print {
+            background: #4CAF50;
+            margin-top: 15px;
+        }
+        .btn-print:hover {
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+        }
+        /* ===== GRUPOS RÁPIDOS ===== */
+        .quick-groups {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .group-btn {
+            padding: 12px 5px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-weight: bold;
+        }
+        .group-btn:hover {
+            background: rgba(102, 126, 234, 0.3);
+            transform: scale(1.05);
+        }
+        /* ===== LOADER ===== */
+        .loading {
+            text-align: center;
+            padding: 20px;
+            display: none;
+        }
+        .loading.visible {
+            display: block;
+        }
+        .fish-loader {
+            width: 150px;
+            height: 67.5px;
+            margin: 20px auto;
+        }
+        .fish {
+            fill: none;
+            stroke: #ffffff;
+            stroke-width: 10;
+            stroke-linecap: round;
+            stroke-dasharray: 755;
+            stroke-dashoffset: 755;
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+            animation: trace 2s linear infinite;
+        }
+        @keyframes trace {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+        /* ===== RESULTADOS ===== */
+        .resultado {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 25px;
+            display: none;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .resultado.visible {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        .resultado h3 {
+            color: #667eea;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.4em;
+        }
+        /* ===== ITENS DA ESCALA ===== */
+        .escala-item {
+            background: rgba(255, 255, 255, 0.15);
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #4CAF50;
+            transition: all 0.3s ease;
+            font-size: 0.95em;
+        }
+        .escala-item:hover {
+            transform: translateX(5px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .escala-item.cafe {
+            border-left-color: #ffc107;
+            background: rgba(255, 193, 7, 0.1);
+        }
+        .escala-item.diaconia-culto {
+            border-left-color: #764ba2;
+        }
+        .escala-item.diaconia-ebd {
+            border-left-color: #667eea;
+        }
+        .escala-item.feriado-alerta {
+            border-left-color: #ff9800 !important;
+            background: rgba(255, 152, 0, 0.1) !important;
+        }
+        .alerta-feriado {
+            display: block;
+            color: #ff9800;
+            font-weight: bold;
+            margin-top: 5px;
+            font-size: 0.9em;
+        }
+        .no-data {
+            text-align: center;
+            padding: 30px;
+            color: #ccc;
+            font-style: italic;
+        }
+        /* ===== RODAPÉ ===== */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #667eea;
+            font-size: 0.9em;
+            margin-top: 40px;
+            line-height: 1.6;
+        }
+        /* ===== ESTILOS DE IMPRESSÃO ===== */
+        @media print {
+            .header, .consultas, .loading, .footer, button {
+                display: none !important;
+            }
+            body, .container {
+                background: #ffffff !important;
+                color: #000000 !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                max-width: 100% !important;
+            }
+            .resultado {
+                display: block !important;
+                background: #ffffff !important;
+                color: #000000 !important;
+                padding: 20px !important;
+                border: 2px solid #5b2c7e !important;
+                border-radius: 10px !important;
+                margin: 0 !important;
+                box-shadow: none !important;
+            }
+            .resultado h3 {
+                color: #5b2c7e !important;
+                font-size: 1.4em !important;
+                font-weight: bold !important;
+                border-bottom: 2px solid #5b2c7e !important;
+                padding-bottom: 10px !important;
+            }
+            .escala-item {
+                background: #f8f9fa !important;
+                color: #000000 !important;
+                border-left-color: #5b2c7e !important;
+                border-radius: 5px !important;
+            }
+            .escala-item.cafe {
+                background: #fff3cd !important;
+                border-left-color: #ffc107 !important;
+            }
+            .escala-item.feriado-alerta {
+                background: #ffe0b2 !important;
+            }
+            .alerta-feriado {
+                color: #d84315 !important;
+            }
+        }
+        /* ===== ANIMAÇÕES ===== */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* ===== RESPONSIVIDADE ===== */
+        @media (max-width: 600px) {
+            .container {
+                margin: 20px auto;
+                padding: 0 15px;
+            }
+            .consultas {
+                padding: 20px;
+            }
+            .quick-groups {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .group-btn {
+                padding: 10px 5px;
+                font-size: 14px;
+            }
+            .church-name {
+                font-size: 1.5em;
+            }
+        }
+        /* ===== PAINEL DE ACESSIBILIDADE (PROFISSIONAL) ===== */
+        .accessibility-panel {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 12px;
+            z-index: 9998;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        .accessibility-btn {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .accessibility-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.5);
+        }
+        .accessibility-btn.active {
+            background: #4CAF50;
+            box-shadow: 0 0 12px #4CAF50;
+        }
+        .accessibility-tooltip {
+            position: absolute;
+            right: 52px;
+            background: rgba(0, 0, 0, 0.85);
+            color: white;
+            padding: 6px 10px;
+            border-radius: 6px;
+            white-space: nowrap;
+            font-size: 12px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.25s ease;
+        }
+        .accessibility-btn:hover .accessibility-tooltip {
+            opacity: 1;
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <img src="logo-ibjlv.png" alt="IBJLV" class="logo" onerror="this.style.display='none'">
+        <img src="logo-ibjlv.png" alt="Logo IBJLV" class="logo">
         <div class="church-name">IGREJA BATISTA JESUS LÍRIO DOS VALES</div>
-        <div>Escalas de Diaconia 2026</div>
+        <div class="church-subtitle">Consultor de Escalas 2026</div>
     </div>
-
     <div class="container">
-        <div class="tabs">
-            <div class="tab active" onclick="aba('grupo')">Por Grupo</div>
-            <div class="tab" onclick="aba('data')">Por Data</div>
-        </div>
-
-        <div id="aba-grupo" class="consultas">
-            <h3>Consulta por Grupo</h3>
-            <div class="input-group"><label>Grupo</label><select id="grupoSelect"><option value="">Selecione</option><option>G1</option><option>G2</option><option>G3</option><option>G4</option><option>G5</option><option>G6</option><option>G7</option><option>G8</option></select></div>
-            <div class="input-group"><label>Mês</label><select id="mesSelect"><option value="">Selecione</option><option>Janeiro</option><option>Fevereiro</option><option>Março</option><option>Abril</option><option>Maio</option><option>Junho</option><option>Julho</option><option>Agosto</option><option>Setembro</option><option>Outubro</option><option>Novembro</option><option>Dezembro</option></select></div>
-            <button class="btn-main" onclick="consultarGrupo()">BUSCAR ESCALA</button>
-            <button class="btn-print" onclick="window.print()">IMPRIMIR / PDF</button>
-            <div class="quick-groups">
-                <div class="group-btn" onclick="quick('G1')">G1</div><div class="group-btn" onclick="quick('G2')">G2</div><div class="group-btn" onclick="quick('G3')">G3</div><div class="group-btn" onclick="quick('G4')">G4</div>
-                <div class="group-btn" onclick="quick('G5')">G5</div><div class="group-btn" onclick="quick('G6')">G6</div><div class="group-btn" onclick="quick('G7')">G7</div><div class="group-btn" onclick="quick('G8')">G8</div>
+        <div class="consultas">
+            <div class="consulta-box">
+                <h3>🔍 CONSULTAR ESCALAS</h3>
+                <div class="input-group">
+                    <label>Selecione o Grupo:</label>
+                    <select id="grupoSelect" required>
+                        <option value="">Selecione um grupo</option>
+                        <option value="G1">Grupo 1 (G1)</option>
+                        <option value="G2">Grupo 2 (G2)</option>
+                        <option value="G3">Grupo 3 (G3)</option>
+                        <option value="G4">Grupo 4 (G4)</option>
+                        <option value="G5">Grupo 5 (G5)</option>
+                        <option value="G6">Grupo 6 (G6)</option>
+                        <option value="G7">Grupo 7 (G7)</option>
+                        <option value="G8">Grupo 8 (G8)</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Selecione o Mês:</label>
+                    <select id="mesSelect" required>
+                        <option value="">Selecione o mês</option>
+                        <option value="Janeiro">Janeiro</option>
+                        <option value="Fevereiro">Fevereiro</option>
+                        <option value="Março">Março</option>
+                        <option value="Abril">Abril</option>
+                        <option value="Maio">Maio</option>
+                        <option value="Junho">Junho</option>
+                        <option value="Julho">Julho</option>
+                        <option value="Agosto">Agosto</option>
+                        <option value="Setembro">Setembro</option>
+                        <option value="Outubro">Outubro</option>
+                        <option value="Novembro">Novembro</option>
+                        <option value="Dezembro">Dezembro</option>
+                    </select>
+                </div>
+                <button onclick="consultarGrupo()">BUSCAR ESCALAS</button>
+                <button class="btn-print" onclick="imprimirEscala()">🖨️ Imprimir / Gerar PDF</button>
+                <div class="quick-groups">
+                    <div class="group-btn" onclick="selecionarGrupo('G1')">G1</div>
+                    <div class="group-btn" onclick="selecionarGrupo('G2')">G2</div>
+                    <div class="group-btn" onclick="selecionarGrupo('G3')">G3</div>
+                    <div class="group-btn" onclick="selecionarGrupo('G4')">G4</div>
+                    <div class="group-btn" onclick="selecionarGrupo('G5')">G5</div>
+                    <div class="group-btn" onclick="selecionarGrupo('G6')">G6</div>
+                    <div class="group-btn" onclick="selecionarGrupo('G7')">G7</div>
+                    <div class="group-btn" onclick="selecionarGrupo('G8')">G8</div>
+                </div>
             </div>
         </div>
-
-        <div id="aba-data" class="consultas" style="display:none">
-            <h3>Consulta por Data (Páscoa, Natal, etc.)</h3>
-            <div class="input-group"><label>Data</label><input type="date" id="dataInput" min="2026-01-01" max="2026-12-31"></div>
-            <button class="btn-main" onclick="consultarData()">BUSCAR QUEM ESCALA</button>
-            <p style="margin-top:20px;font-size:0.9em;color:#bbb">Exemplos 2026:<br>• Páscoa: 05/04<br>• São João: 24/06<br>• Natal: 25/12</p>
-        </div>
-
         <div class="loading" id="loading">
-            <div class="fish-loader"><svg viewBox="0 0 360 160"><path class="fish" d="M340,15 C215,185 90,145 20,75 C90,15 215,-25 340,140"/></svg></div>
+            <div id="fishLoader" class="fish-loader">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 160" width="100%" height="100%">
+                    <path class="fish" 
+                        d="M 340,15 C 215,185 90,145 20,75 C 90,15 215,-25 340,140" />
+                </svg>
+            </div>
         </div>
-
-        <div class="resultado" id="resultado"><div class="no-data">Selecione uma opção acima</div></div>
+        <div class="resultado" id="resultado">
+            <div class="no-data">Selecione seu grupo e o mês para começar a consulta.</div>
+        </div>
     </div>
-
-    <div class="footer">IBJLV - Diaconia © 2026</div>
-
+    <div class="footer">
+        IBJLV - Diaconia © 2026
+        <br>
+         Use a função "Imprimir / Gerar PDF".
+    </div>
+    <!-- ===== PAINEL DE ACESSIBILIDADE (PROFISSIONAL) ===== -->
+    <div class="accessibility-panel" id="accessibilityPanel">
+      <button class="accessibility-btn" id="speakBtn" title="Ler Escala">
+        <span class="accessibility-tooltip">Ler Escala</span>
+        A🔊
+      </button>
+      <button class="accessibility-btn" id="fontIncreaseBtn" title="Aumentar Fonte">
+        <span class="accessibility-tooltip">Aumentar Fonte</span>
+        A+
+      </button>
+      <button class="accessibility-btn" id="fontDecreaseBtn" title="Diminuir Fonte">
+        <span class="accessibility-tooltip">Diminuir Fonte</span>
+        A-
+      </button>
+      <button class="accessibility-btn" id="contrastBtn" title="Alto Contraste">
+        <span class="accessibility-tooltip">Alto Contraste</span>
+        C
+      </button>
+      <button class="accessibility-btn" id="stopSpeakBtn" title="Parar Leitura" style="display: none;">
+        <span class="accessibility-tooltip">Parar</span>
+        ⏹
+      </button>
+    </div>
+    <div class="reading-indicator" id="readingIndicator" style="display: none;"></div>
     <script>
+        // ============ DADOS COMPLETOS DAS ESCALAS 2026 ============
         const escalas = [
-                        // JANEIRO
+            // JANEIRO
             { mes: "Janeiro", dia: 2, dia_semana: "Sexta-feira", grupo: "G1", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Janeiro", dia: 3, dia_semana: "Sábado", grupo: "G2", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Janeiro", dia: 4, dia_semana: "Domingo", grupo: "", EBD: "G6", Tarde: "G7", Noite: "G8", cafe: "" },
@@ -335,55 +713,452 @@
             { mes: "Dezembro", dia: 27, dia_semana: "Domingo", grupo: "", EBD: "G3", Tarde: "G4", Noite: "G8", cafe: "" },
             { mes: "Dezembro", dia: 30, dia_semana: "Quarta-feira", grupo: "G6", EBD: "", Tarde: "", Noite: "", cafe: "" },
             { mes: "Dezembro", dia: 31, dia_semana: "Quinta-feira", grupo: "", EBD: "", Tarde: "", Noite: "", cafe: "G4" },
-
-        const feriados2026 = [
-            {mes:"Janeiro",dia:1,nome:"Confraternização Universal"},
-            {mes:"Fevereiro",dia:16,nome:"Carnaval"},{mes:"Fevereiro",dia:17,nome:"Carnaval"},{mes:"Fevereiro",dia:18,nome:"Quarta de Cinzas"},
-            {mes:"Abril",dia:3,nome:"Paixão de Cristo"},{mes:"Abril",dia:21,nome:"Tiradentes"},
-            {mes:"Maio",dia:1,nome:"Dia do Trabalho"},{mes:"Junho",dia:4,nome:"Corpus Christi"},
-            {mes:"Junho",dia:13,nome:"Santo Antônio (Jequié)"},{mes:"Junho",dia:24,nome:"São João (Jequié)"},
-            {mes:"Julho",dia:2,nome:"Independência da Bahia"},{mes:"Agosto",dia:20,nome:"Dia do Evangélico"},
-            {mes:"Setembro",dia:7,nome:"Independência do Brasil"},{mes:"Outubro",dia:12,nome:"N. Sra. Aparecida"},
-            {mes:"Novembro",dia:2,nome:"Finados"},{mes:"Novembro",dia:15,nome:"Proclamação da República"},
-            {mes:"Novembro",dia:20,nome:"Consciência Negra"},{mes:"Dezembro",dia:25,nome:"Natal"}
         ];
-
-        function aba(x){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));event.target.classList.add('active');document.getElementById('aba-grupo').style.display=x==='grupo'?'block':'none';document.getElementById('aba-data').style.display=x==='data'?'block':'none';document.getElementById('resultado').innerHTML='<div class="no-data">Selecione uma opção</div>';}
-        function quick(g){document.getElementById('grupoSelect').value=g;consultarGrupo();}
-        function consultarGrupo(){
-            const g=document.getElementById('grupoSelect').value, m=document.getElementById('mesSelect').value;
-            if(!g||!m)return alert("Selecione grupo e mês");
-            document.getElementById('loading').classList.add('visible');
-            setTimeout(()=>{const r=escalas.filter(e=>e.mes===m&&(e.grupo===g||e.EBD===g||e.Tarde===g||e.Noite===g||e.cafe===g));mostrar(r,`Escala ${g} - ${m}`);},1000);
+        // ============ FERIADOS RELEVANTES 2026 ============
+        const feriados2026 = [
+            { mes: "Janeiro", dia: 1, dia_semana: "Quinta-feira", nome: "Confraternização Universal" },
+            { mes: "Fevereiro", dia: 16, dia_semana: "Segunda-feira", nome: "Carnaval (Ponto Facultativo)" },
+            { mes: "Fevereiro", dia: 17, dia_semana: "Terça-feira", nome: "Carnaval (Ponto Facultativo)" },
+            { mes: "Fevereiro", dia: 18, dia_semana: "Quarta-feira", nome: "Quarta-feira de Cinzas (Ponto Facultativo)" },
+            { mes: "Abril", dia: 3, dia_semana: "Sexta-feira", nome: "Paixão de Cristo (Sexta-feira Santa)" },
+            { mes: "Abril", dia: 21, dia_semana: "Terça-feira", nome: "Tiradentes" },
+            { mes: "Maio", dia: 1, dia_semana: "Sexta-feira", nome: "Dia do Trabalho" },
+            { mes: "Junho", dia: 4, dia_semana: "Quinta-feira", nome: "Corpus Christi (Ponto Facultativo)" },
+            { mes: "Junho", dia: 13, dia_semana: "Sábado", nome: "Dia de Santo Antônio (Jequié - Municipal)" },
+            { mes: "Junho", dia: 24, dia_semana: "Quarta-feira", nome: "São João (Jequié - Municipal)" },
+            { mes: "Julho", dia: 2, dia_semana: "Quinta-feira", nome: "Independência da Bahia (Estadual)" },
+            { mes: "Agosto", dia: 20, dia_semana: "Quinta-feira", nome: "Dia do Evangélico (Jequié - Municipal)" },
+            { mes: "Setembro", dia: 7, dia_semana: "Segunda-feira", nome: "Independência do Brasil" },
+            { mes: "Outubro", dia: 12, dia_semana: "Segunda-feira", nome: "Dia das Crianças" },
+            { mes: "Outubro", dia: 25, dia_semana: "Domingo", nome: "Aniversário de Jequié (Municipal)" },
+            { mes: "Novembro", dia: 2, dia_semana: "Segunda-feira", nome: "Finados" },
+            { mes: "Novembro", dia: 15, dia_semana: "Domingo", nome: "Proclamação da República" },
+            { mes: "Novembro", dia: 20, dia_semana: "Sexta-feira", nome: "Dia da Consciência Negra" },
+            { mes: "Dezembro", dia: 25, dia_semana: "Sexta-feira", nome: "Natal" }
+        ];
+        // ===== FUNÇÕES PRINCIPAIS =====
+        function selecionarGrupo(grupo) {
+            document.getElementById('grupoSelect').value = grupo;
+            const mesSelecionado = document.getElementById('mesSelect').value;
+            if (mesSelecionado) {
+                consultarGrupo();
+            }
         }
-        function consultarData(){
-            const d=document.getElementById('dataInput').value;
-            if(!d)return alert("Escolha a data");
-            const date=new Date(d), mes=date.toLocaleString('pt-BR',{month:'long'}).replace(/^\w/,c=>c.toUpperCase()), dia=date.getDate();
-            document.getElementById('loading').classList.add('visible');
-            setTimeout(()=>{const r=escalas.filter(e=>e.mes===mes&&e.dia===dia);mostrar(r,`Escalas - ${dia} de ${mes} de 2026`,true);},1000);
+        function getFeriado(mes, dia) {
+            const feriado = feriados2026.find(f => f.mes === mes && f.dia === dia);
+            return feriado ? feriado.nome : null;
         }
-        function mostrar(items,titulo,isData=false){
-            let html=`<h3>${titulo}</h3>`;
-            if(items.length===0)html+='<div class="no-data">Nenhuma escala neste dia</div>';
-            else items.forEach(i=>{
-                const f=[]; if(i.EBD)f.push(i.EBD+" (EBD)"); if(i.Tarde)f.push(i.Tarde+" (Tarde)"); if(i.Noite)f.push(i.Noite+" (Noite)"); if(i.cafe)f.push(i.cafe+" (Café)"); if(i.grupo&&f.length===0)f.push(i.grupo+" (Diaconia)");
-                const fer=feriados2026.find(x=>x.mes===i.mes&&x.dia===i.dia);
-                html+=`<div class="escala-item ${i.cafe?'cafe':''} ${fer?'feriado-alerta':''}">
-                    <strong>${i.dia} ${i.dia_semana}</strong><br>${f.map(x=>`• ${x}`).join('<br>')}${fer?`<span class="alerta-feriado">Feriado: ${fer.nome}</span>`:''}
-                </div>`;
+        function formatDate(mes, dia) {
+            const meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+            const mesIndex = meses.indexOf(mes);
+            return new Date(2026, mesIndex, dia);
+        }
+        function checarAlertasFeriado(item) {
+            const diaDaEscala = formatDate(item.mes, item.dia);
+            let alertas = [];
+            let classes = '';
+            const feriadoNoDia = getFeriado(item.mes, item.dia);
+            if (feriadoNoDia) {
+                alertas.push(`🚨 **Feriado:** ${feriadoNoDia}`);
+                classes += ' feriado-alerta';
+            }
+            const diaAnterior = new Date(diaDaEscala);
+            diaAnterior.setDate(diaDaEscala.getDate() - 1);
+            if (diaAnterior.getFullYear() === 2026) {
+                const nomeMesAnterior = new Date(2026, diaAnterior.getMonth()).toLocaleString('pt-BR', { month: 'long', timeZone: 'UTC' });
+                const mesAnterior = nomeMesAnterior.charAt(0).toUpperCase() + nomeMesAnterior.slice(1);
+                const feriadoAnterior = getFeriado(mesAnterior, diaAnterior.getDate());
+                if (feriadoAnterior && !feriadoNoDia) {
+                    alertas.push(`⚠️ **Dia após Feriado:** ${feriadoAnterior} (Dia anterior foi feriado)`);
+                }
+            }
+            const diaSeguinte = new Date(diaDaEscala);
+            diaSeguinte.setDate(diaDaEscala.getDate() + 1);
+            if (diaSeguinte.getFullYear() === 2026) {
+                const nomeMesSeguinte = new Date(2026, diaSeguinte.getMonth()).toLocaleString('pt-BR', { month: 'long', timeZone: 'UTC' });
+                const mesSeguinte = nomeMesSeguinte.charAt(0).toUpperCase() + nomeMesSeguinte.slice(1);
+                const feriadoSeguinte = getFeriado(mesSeguinte, diaSeguinte.getDate());
+                if (feriadoSeguinte && !feriadoNoDia) {
+                    alertas.push(`⚠️ **Véspera de Feriado:** ${feriadoSeguinte} (Dia seguinte é feriado)`);
+                }
+            }
+            if (alertas.length > 0 && !feriadoNoDia) {
+                classes += ' feriado-alerta';
+            }
+            return { alertas, classes };
+        }
+        function consultarGrupo() {
+            const grupoSelecionado = document.getElementById('grupoSelect').value;
+            const mesSelecionado = document.getElementById('mesSelect').value;
+            const loadingDiv = document.getElementById('loading');
+            const resultadoDiv = document.getElementById('resultado');
+            if (!grupoSelecionado || !mesSelecionado) {
+                resultadoDiv.classList.remove('visible');
+                resultadoDiv.innerHTML = '<div class="no-data">Por favor, selecione <strong>ambos</strong> o Grupo e o Mês.</div>';
+                resultadoDiv.classList.add('visible');
+                return;
+            }
+            resultadoDiv.classList.remove('visible');
+            loadingDiv.classList.add('visible');
+            setTimeout(() => {
+                const resultados = escalas.filter(escala => {
+                    const isMes = escala.mes === mesSelecionado;
+                    const isGrupo = escala.grupo === grupoSelecionado || 
+                                    escala.EBD === grupoSelecionado || 
+                                    escala.Tarde === grupoSelecionado || 
+                                    escala.Noite === grupoSelecionado ||
+                                    escala.cafe === grupoSelecionado;
+                    return isMes && isGrupo;
+                });
+                let conteudoEscalas = `<h3>Escalas de ${grupoSelecionado} em ${mesSelecionado}</h3>`;
+                if (resultados.length > 0) {
+                    resultados.forEach(item => {
+                        let classesExtras = '';
+                        let funcaoPrincipal = '';
+                        if (item.cafe === grupoSelecionado) {
+                            funcaoPrincipal = '☕ Café das Mulheres';
+                            classesExtras = ' cafe';
+                        } else if (item.grupo === grupoSelecionado) {
+                            funcaoPrincipal = `Diaconia no Culto (${item.dia_semana})`;
+                            classesExtras = ' diaconia-culto';
+                            funcaoPrincipal += (item.grupo === 'G?') ? ' (GRUPO PENDENTE DE DEFINIÇÃO)' : '';
+                        } else if (item.EBD === grupoSelecionado) {
+                            funcaoPrincipal = 'Diaconia na EBD (Manhã)';
+                            classesExtras = ' diaconia-ebd';
+                        } else if (item.Tarde === grupoSelecionado) {
+                            funcaoPrincipal = 'Diaconia no Culto da Tarde';
+                            classesExtras = ' diaconia-culto';
+                        } else if (item.Noite === grupoSelecionado) {
+                            funcaoPrincipal = 'Diaconia no Culto da Noite';
+                            classesExtras = ' diaconia-culto';
+                        }
+                        const feriadoData = checarAlertasFeriado(item);
+                        classesExtras += feriadoData.classes;
+                        let alertasHtml = feriadoData.alertas.map(alerta => 
+                            `<span class="alerta-feriado">${alerta.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</span>`
+                        ).join('');
+                        conteudoEscalas += `
+                            <div class="escala-item${classesExtras}">
+                                <strong>Dia ${item.dia} (${item.dia_semana})</strong>
+                                <br>
+                                <div class="funcao-texto">${funcaoPrincipal}</div>
+                                ${alertasHtml}
+                            </div>
+                        `;
+                    });
+                    conteudoEscalas += `
+                        <div class="footer" style="display: none;">
+                            IBJLV - Diaconia © 2026<br>
+                            <small>Use a função "Imprimir / Gerar PDF"</small>
+                        </div>
+                    `;
+                    resultadoDiv.innerHTML = conteudoEscalas;
+                } else {
+                    resultadoDiv.innerHTML = '<div class="no-data">Nenhuma escala encontrada para este grupo e mês.</div>';
+                }
+                loadingDiv.classList.remove('visible');
+                resultadoDiv.classList.add('visible');
+            }, 2000);
+        }
+        function imprimirEscala() {
+            const grupo = document.getElementById('grupoSelect').value;
+            const mes = document.getElementById('mesSelect').value;
+            if (!grupo || !mes) {
+                alert('❌ Por favor, selecione um grupo e mês antes de imprimir.');
+                return;
+            }
+            const resultadoDiv = document.getElementById('resultado');
+            const escalaItems = resultadoDiv.querySelectorAll('.escala-item');
+            if (escalaItems.length === 0) {
+                alert('❌ Não há escalas para imprimir.');
+                return;
+            }
+            const janelaImpressao = window.open('', '_blank');
+            const estilo = `
+                <style>
+                    body { 
+                        font-family: Arial, sans-serif; 
+                        margin: 20px; 
+                        color: #000; 
+                        background: #fff;
+                    }
+                    .cabecalho { 
+                        text-align: center; 
+                        color: #5b2c7e; 
+                        margin-bottom: 30px;
+                        border-bottom: 3px solid #5b2c7e;
+                        padding-bottom: 15px;
+                    }
+                    .escala-item { 
+                        background: #f8f9fa; 
+                        margin: 10px 0; 
+                        padding: 15px; 
+                        border-left: 4px solid #5b2c7e;
+                        border-radius: 5px;
+                    }
+                    .escala-item.cafe { 
+                        background: #fff3cd; 
+                        border-left-color: #ffc107;
+                    }
+                    .feriado-alerta { 
+                        background: #ffe0b2 !important;
+                    }
+                    .alerta-feriado { 
+                        color: #d84315; 
+                        font-weight: bold; 
+                        display: block; 
+                        margin-top: 5px;
+                    }
+                    .rodape { 
+                        text-align: center; 
+                        margin-top: 40px; 
+                        padding-top: 20px; 
+                        border-top: 2px solid #5b2c7e; 
+                        color: #5b2c7e; 
+                        font-size: 0.9em;
+                    }
+                    strong { color: #5b2c7e; }
+                    .logo-print {
+                        max-width: 80px; 
+                        margin-bottom: 10px;
+                        border-radius: 50%;
+                    }
+                </style>
+            `;
+            const conteudo = `
+                <html>
+                    <head>
+                        <title>Escala ${grupo} - ${mes} - IBJLV</title>
+                        ${estilo}
+                    </head>
+                    <body>
+                        <div class="cabecalho">
+                            <img src="logo-ibjlv.png" alt="Logo IBJLV" class="logo-print">
+                            <h1>Escalas de ${grupo} em ${mes}</h1>
+                            <h2>IGREJA BATISTA JESUS LÍRIO DOS VALES</h2>
+                        </div>
+                        ${resultadoDiv.innerHTML}
+                        <div class="rodape">
+                            IBJLV - Diaconia © 2026<br>
+                            <small>Emitido em ${new Date().toLocaleDateString('pt-BR')}</small>
+                        </div>
+                    </body>
+                </html>
+            `;
+            janelaImpressao.document.write(conteudo);
+            janelaImpressao.document.close();
+            setTimeout(() => {
+                janelaImpressao.print();
+            }, 500);
+        }
+        // ============================================
+        // PWA: SERVICE WORKER (APENAS REGISTRO - OFFLINE FUNCIONAL)
+        // ============================================
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./service-worker.js')
+                    .catch(error => console.error('❌ Erro ao registrar Service Worker:', error));
             });
-            html+=`<button class="btn-print" onclick="window.print()">Imprimir / PDF</button>
-                    <button class="btn-wa" onclick="share()">WhatsApp</button>`;
-            document.getElementById('resultado').innerHTML=html;
-            document.getElementById('loading').classList.remove('visible');
-            document.getElementById('resultado').classList.add('visible');
         }
-        function share(){
-            const texto = document.getElementById('resultado').innerText + "\n\nAcesse: " + location.href;
-            open("https://wa.me/?text="+encodeURIComponent(texto));
+        // ============================================
+        // SISTEMA DE ACESSIBILIDADE (SEM NOTIFICAÇÕES)
+        // ============================================
+        const accessibility = {
+            fontSize: 'normal',
+            highContrast: false,
+            speaking: false
+        };
+        const speakBtn = document.getElementById('speakBtn');
+        const stopSpeakBtn = document.getElementById('stopSpeakBtn');
+        const fontIncreaseBtn = document.getElementById('fontIncreaseBtn');
+        const fontDecreaseBtn = document.getElementById('fontDecreaseBtn');
+        const contrastBtn = document.getElementById('contrastBtn');
+        const readingIndicator = document.getElementById('readingIndicator');
+        if (!('speechSynthesis' in window)) {
+            speakBtn.style.opacity = '0.5';
+            speakBtn.style.cursor = 'not-allowed';
         }
-        if('serviceWorker' in navigator) navigator.serviceWorker.register('service-worker.js');
+        function speakSchedule() {
+            window.speechSynthesis.cancel();
+            const resultadoDiv = document.getElementById('resultado');
+            const escalaItems = resultadoDiv.querySelectorAll('.escala-item');
+            if (escalaItems.length === 0) {
+                speak('Nenhuma escala selecionada. Por favor, selecione um grupo e um mês.');
+                return;
+            }
+            const grupo = document.getElementById('grupoSelect').value;
+            const mes = document.getElementById('mesSelect').value;
+            accessibility.speaking = true;
+            speakBtn.style.display = 'none';
+            stopSpeakBtn.style.display = 'flex';
+            readingIndicator.style.display = 'block';
+            let textoCompleto = `Escalas do ${grupo} no mês de ${mes}. `;
+            escalaItems.forEach((item) => {
+                const texto = item.textContent.trim();
+                textoCompleto += texto + '. ';
+            });
+            speak(textoCompleto, () => {
+                accessibility.speaking = false;
+                speakBtn.style.display = 'flex';
+                stopSpeakBtn.style.display = 'none';
+                readingIndicator.style.display = 'none';
+            });
+        }
+        function speak(text, onEnd) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'pt-BR';
+            utterance.rate = 0.9;
+            utterance.pitch = 1;
+            utterance.volume = 1;
+            const voices = window.speechSynthesis.getVoices();
+            const ptVoice = voices.find(voice => voice.lang.includes('pt'));
+            if (ptVoice) {
+                utterance.voice = ptVoice;
+            }
+            utterance.onend = () => {
+                if (onEnd) onEnd();
+            };
+            utterance.onerror = (error) => {
+                console.error('Erro na síntese de voz:', error);
+                accessibility.speaking = false;
+                speakBtn.style.display = 'flex';
+                stopSpeakBtn.style.display = 'none';
+                readingIndicator.style.display = 'none';
+            };
+            window.speechSynthesis.speak(utterance);
+        }
+        function stopSpeaking() {
+            window.speechSynthesis.cancel();
+            accessibility.speaking = false;
+            speakBtn.style.display = 'flex';
+            stopSpeakBtn.style.display = 'none';
+            readingIndicator.style.display = 'none';
+        }
+        function changeFontSize(action) {
+            const body = document.body;
+            if (action === 'increase') {
+                if (accessibility.fontSize === 'normal') {
+                    accessibility.fontSize = 'medium';
+                    body.classList.remove('font-large');
+                    body.classList.add('font-medium');
+                } else if (accessibility.fontSize === 'medium') {
+                    accessibility.fontSize = 'large';
+                    body.classList.remove('font-medium');
+                    body.classList.add('font-large');
+                }
+            } else if (action === 'decrease') {
+                if (accessibility.fontSize === 'large') {
+                    accessibility.fontSize = 'medium';
+                    body.classList.remove('font-large');
+                    body.classList.add('font-medium');
+                } else if (accessibility.fontSize === 'medium') {
+                    accessibility.fontSize = 'normal';
+                    body.classList.remove('font-medium');
+                }
+            }
+            localStorage.setItem('accessibility_fontSize', accessibility.fontSize);
+        }
+        function toggleHighContrast() {
+            accessibility.highContrast = !accessibility.highContrast;
+            document.body.classList.toggle('high-contrast');
+            if (accessibility.highContrast) {
+                contrastBtn.classList.add('active');
+            } else {
+                contrastBtn.classList.remove('active');
+            }
+            localStorage.setItem('accessibility_contrast', accessibility.highContrast);
+        }
+        speakBtn.addEventListener('click', speakSchedule);
+        stopSpeakBtn.addEventListener('click', stopSpeaking);
+        fontIncreaseBtn.addEventListener('click', () => changeFontSize('increase'));
+        fontDecreaseBtn.addEventListener('click', () => changeFontSize('decrease'));
+        contrastBtn.addEventListener('click', toggleHighContrast);
+        window.addEventListener('load', () => {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.getVoices();
+            }
+            const savedFontSize = localStorage.getItem('accessibility_fontSize');
+            if (savedFontSize) {
+                accessibility.fontSize = savedFontSize;
+                if (savedFontSize === 'medium') {
+                    document.body.classList.add('font-medium');
+                } else if (savedFontSize === 'large') {
+                    document.body.classList.add('font-large');
+                }
+            }
+            const savedContrast = localStorage.getItem('accessibility_contrast');
+            if (savedContrast === 'true') {
+                accessibility.highContrast = true;
+                document.body.classList.add('high-contrast');
+                contrastBtn.classList.add('active');
+            }
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === 'l') {
+                e.preventDefault();
+                speakSchedule();
+            }
+            if (e.ctrlKey && (e.key === '+' || e.key === '=')) {
+                e.preventDefault();
+                changeFontSize('increase');
+            }
+            if (e.ctrlKey && e.key === '-') {
+                e.preventDefault();
+                changeFontSize('decrease');
+            }
+            if (e.ctrlKey && e.key === 'h') {
+                e.preventDefault();
+                toggleHighContrast();
+            }
+            if (e.key === 'Escape' && accessibility.speaking) {
+                stopSpeaking();
+            }
+        });
+        // ============================================
+        // COMPARTILHAR ESCALA NO WHATSAPP
+        // ============================================
+        function compartilharEscalaWhatsApp() {
+            const grupo = document.getElementById('grupoSelect').value;
+            const mes = document.getElementById('mesSelect').value;
+            const resultadoDiv = document.getElementById('resultado');
+            const escalaItems = resultadoDiv.querySelectorAll('.escala-item');
+            if (!grupo || !mes || escalaItems.length === 0) {
+                alert('❌ Por favor, busque uma escala primeiro!');
+                return;
+            }
+            let texto = `📋 *Escalas ${grupo} - ${mes} 2026*
+`;
+            texto += `🏛️ *IBJLV - Diaconia*
+`;
+            escalaItems.forEach((item, index) => {
+                const textoItem = item.textContent.trim().replace(/\s+/g, ' - ');
+                texto += `${index + 1}. ${textoItem}
+`;
+            });
+            texto += `
+📱 Consulte todas as escalas: ${window.location.href}`;
+            const url = `https://wa.me/?text=${encodeURIComponent(texto)}`;
+            window.open(url, '_blank');
+        }
+        const originalConsultarGrupo = consultarGrupo;
+        consultarGrupo = function() {
+            originalConsultarGrupo();
+            setTimeout(() => {
+                const resultadoDiv = document.getElementById('resultado');
+                const btnPrint = document.querySelector('.btn-print');
+                if (resultadoDiv.classList.contains('visible') && btnPrint) {
+                    const hasShareBtn = document.getElementById('shareWhatsAppEscalaBtn');
+                    if (!hasShareBtn) {
+                        const shareBtn = document.createElement('button');
+                        shareBtn.id = 'shareWhatsAppEscalaBtn';
+                        shareBtn.className = 'share-whatsapp-btn';
+                        shareBtn.innerHTML = '<span style="font-size: 1.5em;">💬</span> Compartilhar no WhatsApp';
+                        shareBtn.onclick = compartilharEscalaWhatsApp;
+                        btnPrint.parentNode.insertBefore(shareBtn, btnPrint.nextSibling);
+                    }
+                }
+            }, 2100);
+        };
     </script>
 </body>
 </html>
